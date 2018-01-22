@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace MechanicalModel.ViewModels
 {
-    public class MechanicalModelListViewModel : ViewModelBase
+    public class MechanicalModelListViewModel : PropertyChangedBaseCommonClass
     {
         public MechanicalModelListViewModel()
         {
@@ -19,12 +19,11 @@ namespace MechanicalModel.ViewModels
             List<TreeViewNode> treeViewNodeList = new List<TreeViewNode>();
 
             // The second layer for the first node
-            TreeViewNode JiHeMoXingDaoRu = new TreeViewNode("几何模型导入", ViewType.Others);
-            TreeViewNode JiHeMoXingZhuangPei = new TreeViewNode("几何模型装配", ViewType.Others);
+            TreeViewNode JiHeMoXingDaoRuZhuangPei = new TreeViewNode("几何模型导入/装配", ViewType.JiHeMoXingDaoRuZhuangPei);
 
             // The first layer for the first node
             TreeViewNode CanShuHuaMoXing = new TreeViewNode("参数化模型", ViewType.Others);
-            CanShuHuaMoXing.Nodes = new List<TreeViewNode>() { JiHeMoXingDaoRu, JiHeMoXingZhuangPei };
+            CanShuHuaMoXing.Nodes = new List<TreeViewNode>() { JiHeMoXingDaoRuZhuangPei };
 
             // The third layer for the second node
             TreeViewNode WangGeHuaFen = new TreeViewNode("网格划分", ViewType.WangGeHuaFen);

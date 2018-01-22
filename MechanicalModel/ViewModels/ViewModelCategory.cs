@@ -12,7 +12,7 @@ namespace MechanicalModel.ViewModels
         ViewType Type { get; }
     }
 
-    public class WangGeHuaFenViewModel : ViewModelBase, IViewModelCategory
+    public class WangGeHuaFenViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
     {
         public WangGeHuaFenViewModel()
         {
@@ -27,7 +27,7 @@ namespace MechanicalModel.ViewModels
         }
     }
 
-    public class JiSuanCanShuShuRuViewModel : ViewModelBase, IViewModelCategory
+    public class JiSuanCanShuShuRuViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
     {
         public JiSuanCanShuShuRuViewModel()
         {
@@ -42,7 +42,7 @@ namespace MechanicalModel.ViewModels
         }
     }
 
-    public class JiSuanViewModel : ViewModelBase, IViewModelCategory
+    public class JiSuanViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
     {
         public JiSuanViewModel()
         {
@@ -57,7 +57,7 @@ namespace MechanicalModel.ViewModels
         }
     }
 
-    public class JiSuanJieGuoShuChuViewModel : ViewModelBase, IViewModelCategory
+    public class JiSuanJieGuoShuChuViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
     {
         public JiSuanJieGuoShuChuViewModel()
         {

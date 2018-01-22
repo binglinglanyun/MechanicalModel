@@ -12,6 +12,7 @@ namespace MechanicalModel.Utils
 {
     public class MechanicalModelViewUIConverter : IValueConverter
     {
+        private JiHeMoXingDaoRuZhuangPeiControl _jiHeMoXingDaoRuZhuangPeiControl = null;
         private WangGeHuaFenControl _wangGeHuaFenControl = null;
         private JiSuanCanShuShuRuControl _jiSuanCanShuShuRuControl = null;
         private JiSuanControl _jiSuanControl = null;
@@ -25,6 +26,10 @@ namespace MechanicalModel.Utils
             {
                 switch (viewModel.Type)
                 {
+                    case ViewType.JiHeMoXingDaoRuZhuangPei:
+                        _jiHeMoXingDaoRuZhuangPeiControl = _jiHeMoXingDaoRuZhuangPeiControl ?? new JiHeMoXingDaoRuZhuangPeiControl();
+                        control = _jiHeMoXingDaoRuZhuangPeiControl;
+                        break;
                     case ViewType.WangGeHuaFen:
                         _wangGeHuaFenControl = _wangGeHuaFenControl ?? new WangGeHuaFenControl();
                         control = _wangGeHuaFenControl;
