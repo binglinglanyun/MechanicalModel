@@ -17,14 +17,18 @@
             <ColumnDefinition x:Uid="ColumnDefinition_2" Width="3"/>
             <ColumnDefinition x:Uid="ColumnDefinition_3"/>
         </Grid.ColumnDefinitions>
-        <controls:MechanicalModelListControl Grid.Column="0" DataContext="{Binding Path=MechanicalModelListViewModel}"/>
+        <Border BorderBrush="LightGray" BorderThickness="0,2,0,0" Grid.Column="0">
+            <controls:MechanicalModelListControl DataContext="{Binding Path=MechanicalModelListViewModel}"/>
+        </Border>
         <GridSplitter x:Uid="GridSplitter_1" Grid.Column="1" Width="3" Background="LightGray" ResizeBehavior="PreviousAndNext" ResizeDirection="Columns"/>
-        <ContentControl x:Uid="ContentControl_1" Grid.Column="2">
-            <ContentControl.Style>
-                <Style TargetType="ContentControl">
-                    <Setter Property="Content" Value="{Binding Path=MechanicalModelViewHostViewModel, Converter={StaticResource ResourceKey=UIConverter}, ConverterParameter=False}" />
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
+        <Border BorderBrush="LightGray" BorderThickness="0,2,0,0" Grid.Column="2">
+            <ContentControl x:Uid="ContentControl_1" Visibility="{Binding MechanicalModelContentVisibility}">
+                <ContentControl.Style>
+                    <Style TargetType="ContentControl">
+                        <Setter Property="Content" Value="{Binding Path=MechanicalModelViewHostViewModel, Converter={StaticResource ResourceKey=UIConverter}, ConverterParameter=False}" />
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Border>
     </Grid>
 </Window>

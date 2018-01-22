@@ -18,9 +18,6 @@ namespace MechanicalModel.ViewModels
         /// <param name="propertyName"></param>
         protected void NotifyPropertyChanged([CallerMemberName]string propertyName = null)
         {
-            // disabled debug.assert for performance consideration as valid usages don't have this case
-            // Debug.Assert(propertyName != null, "NotifyPropertyChanged [CallerMemberName] propertyName == null");
-
             if (_propertyChanged != null)
             {
                 _propertyChanged(this, new PropertyChangedEventArgs(propertyName));
@@ -69,7 +66,6 @@ namespace MechanicalModel.ViewModels
             }
 
             Debug.Assert(propertyName != null, "SetProperty [CallerMemberName] propertyName == null");
-            ValidationAction(propertyName, newValue);
             currentValue = newValue;
             NotifyPropertyChanged(propertyName);
         }
@@ -90,7 +86,6 @@ namespace MechanicalModel.ViewModels
             }
 
             Debug.Assert(propertyName != null, "SetProperty [CallerMemberName] propertyName == null");
-            ValidationAction(propertyName, newValue);
             currentValue = newValue;
             NotifyPropertyChanged(propertyName);
         }
@@ -105,7 +100,6 @@ namespace MechanicalModel.ViewModels
         protected void SetPropertyAndNotifyWithoutCheck<T>(T newValue, ref T currentValue, [CallerMemberName]string propertyName = null)
         {
             Debug.Assert(propertyName != null, "SetProperty [CallerMemberName] propertyName == null");
-            ValidationAction(propertyName, newValue);
             currentValue = newValue;
             NotifyPropertyChanged(propertyName);
         }
@@ -128,7 +122,6 @@ namespace MechanicalModel.ViewModels
             }
 
             Debug.Assert(propertyName != null, "SetProperty [CallerMemberName] propertyName == null");
-            ValidationAction(propertyName, newValue);
             currentValue = newValue;
             NotifyPropertyChanged(propertyName);
         }
@@ -139,22 +132,6 @@ namespace MechanicalModel.ViewModels
         public virtual void ResetEventHandler()
         {
             _propertyChanged = null;
-        }
-
-        /// <summary>
-        /// Value validation action
-        /// </summary>
-        /// <param name="propertyName"></param>
-        /// <param name="v"></param>
-        protected abstract void ValidationAction(string propertyName, Object v);
-    }
-
-    [Serializable]
-    public class ViewModelBase : PropertyChangedBaseCommonClass
-    {
-        protected override void ValidationAction(string propertyName, object v)
-        {
-            // do nothing here
         }
     }
 }

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MechanicalModel.ViewModels
 {
-    public class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : PropertyChangedBaseCommonClass
     {
         public MainWindowViewModel()
         {
@@ -42,6 +43,19 @@ namespace MechanicalModel.ViewModels
             }
         }
 
+        private Visibility _mechanicalModelContentVisibility = Visibility.Collapsed;
+        public Visibility MechanicalModelContentVisibility
+        {
+            get
+            {
+                return _mechanicalModelContentVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _mechanicalModelContentVisibility);
+            }
+        }
+
         public ICommand OpenNewView
         {
             get
@@ -51,24 +65,30 @@ namespace MechanicalModel.ViewModels
                     TreeViewNode node = o as TreeViewNode;
                     if (node != null)
                     {
+                        MechanicalModelContentVisibility = Visibility.Visible;
                         switch (node.ViewType)
                         {
+                            case ViewType.JiHeMoXingDaoRuZhuangPei:
+                                this.MechanicalModelViewHostViewModel = new JiHeMoXingDaoRuZhuangPeiViewModel();
+                                return;
                             case ViewType.WangGeHuaFen:
                                 this.MechanicalModelViewHostViewModel = new WangGeHuaFenViewModel();
-                                break;
+                                return;
                             case ViewType.JiSuanCanShuShuRu:
                                 this.MechanicalModelViewHostViewModel = new JiSuanCanShuShuRuViewModel();
-                                break;
+                                return;
                             case ViewType.JiSuan:
                                 this.MechanicalModelViewHostViewModel = new JiSuanViewModel();
-                                break;
+                                return;
                             case ViewType.JiSuanJieGuoShuChu:
                                 this.MechanicalModelViewHostViewModel = new JiSuanJieGuoShuChuViewModel();
-                                break;
-                            case ViewType.Others:
                                 return;
+                            case ViewType.Others:
+                                break;
                         }
                     }
+
+                    MechanicalModelContentVisibility = Visibility.Collapsed;
                 });
             }
         }
