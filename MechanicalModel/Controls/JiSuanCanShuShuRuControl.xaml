@@ -16,29 +16,42 @@
     <Grid>
         <StackPanel Margin="20" Orientation="Vertical">
             <StackPanel.Resources>
-                <Style TargetType="StackPanel" BasedOn="{StaticResource PropertyItemStyle}"/>
                 <Style TargetType="TextBlock" BasedOn="{StaticResource PropertyNameStyle}"/>
                 <Style TargetType="TextBox" BasedOn="{StaticResource PropertyValueStyle}"/>
+                <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxStyle}"/>
             </StackPanel.Resources>
-            <StackPanel>
-                <TextBlock Text="物质定义:" />
-                <TextBox/>
-                <TextBox/>
+            <Label Content="物质定义" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
+                <CheckBox Content="空气"/>
+                <CheckBox Content="油"/>
             </StackPanel>
-            <StackPanel>
-                <TextBlock Text="边界条件定义:" />
-                <TextBox/>
-                <TextBox/>
+
+            <Border Style="{DynamicResource SplitBorderStyle}"/>
+            <Label Content="边界条件定义" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="初始转速:" />
+                    <TextBox/>
+                    <TextBlock Text="rpm" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="指令油压:" />
+                    <TextBox/>
+                    <TextBlock Text="pa" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="压力油箱压力:" />
+                    <TextBox/>
+                    <TextBlock Text="pa" Margin="5,0,0,0"/>
+                </StackPanel>
             </StackPanel>
-            <StackPanel>
-                <TextBlock Text="计算条件定义:" />
-                <TextBox/>
-                <TextBox/>
-            </StackPanel>
-            <StackPanel>
-                <TextBlock Text="物理模型定义:" />
-                <TextBox/>
-                <TextBox/>
+
+            <Border Style="{DynamicResource SplitBorderStyle}"/>
+            <Label Content="物理模型选择" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
+                <CheckBox Content="端流模型"/>
+                <CheckBox Content="多相流模型"/>
+                <CheckBox Content="运动模型"/>
             </StackPanel>
         </StackPanel>
     </Grid>
