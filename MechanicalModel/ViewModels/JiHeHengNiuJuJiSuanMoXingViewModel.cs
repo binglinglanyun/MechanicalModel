@@ -5,13 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows;
 
 namespace MechanicalModel.ViewModels
 {
-    public class JiHeMoXingDaoRuZhuangPeiViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
+    public class JiHeHengNiuJuJiSuanMoXingViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
     {
-        public JiHeMoXingDaoRuZhuangPeiViewModel()
+        public JiHeHengNiuJuJiSuanMoXingViewModel()
         {
             InitializeItems();
         }
@@ -19,12 +18,12 @@ namespace MechanicalModel.ViewModels
         private void InitializeItems()
         {
             List<DataItem> items = new List<DataItem>();
-            items.Add(new DataItem("模型1", false));
-            items.Add(new DataItem("模型2", false));
-            items.Add(new DataItem("模型3", false));
-            items.Add(new DataItem("模型4", false));
-            items.Add(new DataItem("模型5", false));
-            items.Add(new DataItem("模型6", false));
+            items.Add(new DataItem("动轮", false));
+            items.Add(new DataItem("定轮", false));
+            items.Add(new DataItem("壳体", false));
+            items.Add(new DataItem("背压阀", false));
+            items.Add(new DataItem("滑阀", false));
+            items.Add(new DataItem("其他", false));
 
             this.Items = items;
         }
@@ -83,7 +82,7 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return ViewType.JiHeMoXingDaoRuZhuangPei;
+                return ViewType.JiHeHengNiuJuJiSuanMoXing;
             }
         }
     }

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MechanicalModel.Controls
 {
     /// <summary>
-    /// Interaction logic for JiSuanControl.xaml
+    /// Interaction logic for ShuXueHengNiuJuJiSuanCanShuShuRuControl.xaml
     /// </summary>
-    public partial class JiSuanControl : UserControl
+    public partial class ShuXueHengNiuJuJiSuanCanShuShuRuControl : UserControl
     {
-        public JiSuanControl()
+        public ShuXueHengNiuJuJiSuanCanShuShuRuControl()
         {
             InitializeComponent();
         }

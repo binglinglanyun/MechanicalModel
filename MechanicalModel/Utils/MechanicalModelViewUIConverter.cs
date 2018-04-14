@@ -12,11 +12,16 @@ namespace MechanicalModel.Utils
 {
     public class MechanicalModelViewUIConverter : IValueConverter
     {
-        private JiHeMoXingDaoRuZhuangPeiControl _jiHeMoXingDaoRuZhuangPeiControl = null;
-        private WangGeHuaFenControl _wangGeHuaFenControl = null;
-        private JiSuanCanShuShuRuControl _jiSuanCanShuShuRuControl = null;
-        private JiSuanControl _jiSuanControl = null;
-        private JiSuanJieGuoShuChuControl _jiSuanJieGuoShuChuControl = null;
+        private JiHeKongSunJiSuanMoXingControl _jiHeKongSunJiSuanMoXingControl = null;
+        private JiHeHengNiuJuJiSuanMoXingControl _jiHeHengNiuJuJiSuanMoXingControl = null;
+        private ShuXueKongSunWangGeHuaFenControl _shuXueKongSunWangGeHuaFenControl = null;
+        private ShuXueKongSunJiSuanCanShuShuRuControl _shuXueKongSunJiSuanCanShuShuRuControll = null;
+        private ShuXueKongSunJiSuanControl _shuXueKongSunJiSuanControl = null;
+        private ShuXueKongSunJiSuanJieGuoShuChuControl _shuXueKongSunJiSuanJieGuoShuChuControl = null;
+        private ShuXueHengNiuJuWangGeHuaFenControl _shuXueHengNiuJuWangGeHuaFenControl = null;
+        private ShuXueHengNiuJuJiSuanCanShuShuRuControl _shuXueHengNiuJuJiSuanCanShuShuRuControl = null;
+        private ShuXueHengNiuJuJiSuanControl _shuXueHengNiuJuJiSuanControl = null;
+        private ShuXueHengNiuJuJiSuanJieGuoShuChuControl _shuXueHengNiuJuJiSuanJieGuoShuChuControl = null;
 
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
@@ -26,25 +31,45 @@ namespace MechanicalModel.Utils
             {
                 switch (viewModel.Type)
                 {
-                    case ViewType.JiHeMoXingDaoRuZhuangPei:
-                        _jiHeMoXingDaoRuZhuangPeiControl = _jiHeMoXingDaoRuZhuangPeiControl ?? new JiHeMoXingDaoRuZhuangPeiControl();
-                        control = _jiHeMoXingDaoRuZhuangPeiControl;
+                    case ViewType.JiHeKongSunJiSuanMoXing:
+                        _jiHeKongSunJiSuanMoXingControl = _jiHeKongSunJiSuanMoXingControl ?? new JiHeKongSunJiSuanMoXingControl();
+                        control = _jiHeKongSunJiSuanMoXingControl;
                         break;
-                    case ViewType.WangGeHuaFen:
-                        _wangGeHuaFenControl = _wangGeHuaFenControl ?? new WangGeHuaFenControl();
-                        control = _wangGeHuaFenControl;
+                    case ViewType.JiHeHengNiuJuJiSuanMoXing:
+                        _jiHeHengNiuJuJiSuanMoXingControl = _jiHeHengNiuJuJiSuanMoXingControl ?? new JiHeHengNiuJuJiSuanMoXingControl();
+                        control = _jiHeHengNiuJuJiSuanMoXingControl;
                         break;
-                    case ViewType.JiSuanCanShuShuRu:
-                        _jiSuanCanShuShuRuControl = _jiSuanCanShuShuRuControl ?? new JiSuanCanShuShuRuControl();
-                        control = _jiSuanCanShuShuRuControl;
+                    case ViewType.ShuXueKongSunWangGeHuaFen:
+                        _shuXueKongSunWangGeHuaFenControl = _shuXueKongSunWangGeHuaFenControl ?? new ShuXueKongSunWangGeHuaFenControl();
+                        control = _shuXueKongSunWangGeHuaFenControl;
                         break;
-                    case ViewType.JiSuan:
-                        _jiSuanControl = _jiSuanControl ?? new JiSuanControl();
-                        control = _jiSuanControl;
+                    case ViewType.ShuXueKongSunJiSuanCanShuShuRu:
+                        _shuXueKongSunJiSuanCanShuShuRuControll = _shuXueKongSunJiSuanCanShuShuRuControll ?? new ShuXueKongSunJiSuanCanShuShuRuControl();
+                        control = _shuXueKongSunJiSuanCanShuShuRuControll;
                         break;
-                    case ViewType.JiSuanJieGuoShuChu:
-                        _jiSuanJieGuoShuChuControl = _jiSuanJieGuoShuChuControl ?? new JiSuanJieGuoShuChuControl();
-                        control = _jiSuanJieGuoShuChuControl;
+                    case ViewType.ShuXueKongSunJiSuan:
+                        _shuXueKongSunJiSuanControl = _shuXueKongSunJiSuanControl ?? new ShuXueKongSunJiSuanControl();
+                        control = _shuXueKongSunJiSuanControl;
+                        break;
+                    case ViewType.ShuXueKongSunJiSuanJieGuoShuChu:
+                        _shuXueKongSunJiSuanJieGuoShuChuControl = _shuXueKongSunJiSuanJieGuoShuChuControl ?? new ShuXueKongSunJiSuanJieGuoShuChuControl();
+                        control = _shuXueKongSunJiSuanJieGuoShuChuControl;
+                        break;
+                    case ViewType.ShuXueHengNiuJuWangGeHuaFen:
+                        _shuXueHengNiuJuWangGeHuaFenControl = _shuXueHengNiuJuWangGeHuaFenControl ?? new ShuXueHengNiuJuWangGeHuaFenControl();
+                        control = _shuXueHengNiuJuWangGeHuaFenControl;
+                        break;
+                    case ViewType.ShuXueHengNiuJuJiSuanCanShuShuRu:
+                        _shuXueHengNiuJuJiSuanCanShuShuRuControl = _shuXueHengNiuJuJiSuanCanShuShuRuControl ?? new ShuXueHengNiuJuJiSuanCanShuShuRuControl();
+                        control = _shuXueHengNiuJuJiSuanCanShuShuRuControl;
+                        break;
+                    case ViewType.ShuXueHengNiuJuJiSuan:
+                        _shuXueHengNiuJuJiSuanControl = _shuXueHengNiuJuJiSuanControl ?? new ShuXueHengNiuJuJiSuanControl();
+                        control = _shuXueHengNiuJuJiSuanControl;
+                        break;
+                    case ViewType.ShuXueHengNiuJuJiSuanJieGuoShuChu:
+                        _shuXueHengNiuJuJiSuanJieGuoShuChuControl = _shuXueHengNiuJuJiSuanJieGuoShuChuControl ?? new ShuXueHengNiuJuJiSuanJieGuoShuChuControl();
+                        control = _shuXueHengNiuJuJiSuanJieGuoShuChuControl;
                         break;
                 }
             }

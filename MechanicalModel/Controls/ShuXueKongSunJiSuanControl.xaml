@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="MechanicalModel.Controls.JiSuanCanShuShuRuControl"
+﻿<UserControl x:Class="MechanicalModel.Controls.ShuXueKongSunJiSuanControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -20,39 +20,39 @@
                 <Style TargetType="TextBox" BasedOn="{StaticResource PropertyValueStyle}"/>
                 <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxStyle}"/>
             </StackPanel.Resources>
-            <Label Content="物质定义" Style="{DynamicResource LabelBoldTextStyle}"/>
-            <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
-                <CheckBox Content="空气"/>
-                <CheckBox Content="油"/>
-            </StackPanel>
-
-            <Border Style="{DynamicResource SplitBorderStyle}"/>
-            <Label Content="边界条件定义" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <Label Content="计算控制参数" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                    <TextBlock Text="初始转速:" />
-                    <TextBox/>
-                    <TextBlock Text="rpm" Margin="5,0,0,0"/>
+                    <TextBlock Text="时间步长:" />
+                    <ComboBox MaxHeight="20" MinWidth="200"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                    <TextBlock Text="指令油压:" />
+                    <TextBlock Text="迭代步数:" />
                     <TextBox/>
-                    <TextBlock Text="pa" Margin="5,0,0,0"/>
-                </StackPanel>
-                <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                    <TextBlock Text="压力油箱压力:" />
-                    <TextBox/>
-                    <TextBlock Text="pa" Margin="5,0,0,0"/>
                 </StackPanel>
             </StackPanel>
-
-            <Border Style="{DynamicResource SplitBorderStyle}"/>
-            <Label Content="物理模型选择" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <Label Content="计算过程监控" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
-                <CheckBox Content="端流模型"/>
-                <CheckBox Content="多相流模型"/>
-                <CheckBox Content="运动模型"/>
+                <TextBlock Text="坐标参数：" Margin="0,5,0,5" />
+                <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,5">
+                    <TextBlock Text="X：" />
+                    <TextBox/>
+                    <TextBlock Text="m" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,5">
+                    <TextBlock Text="Y：" />
+                    <TextBox/>
+                    <TextBlock Text="m" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,0">
+                    <TextBlock Text="Z：" />
+                    <TextBox/>
+                    <TextBlock Text="m" Margin="5,0,0,0"/>
+                </StackPanel>
+                <CheckBox Content="压力监测"/>
+                <CheckBox Content="气相体积分数监测"/>
             </StackPanel>
+            <Button Content="计算" Margin="20,20,0,0" MinWidth="50" HorizontalAlignment="Left"/>
         </StackPanel>
     </Grid>
 </UserControl>
