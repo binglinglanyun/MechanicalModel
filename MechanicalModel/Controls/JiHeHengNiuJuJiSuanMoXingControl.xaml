@@ -10,13 +10,14 @@
         <ResourceDictionary x:Uid="ResourceDictionary_1">
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Themes/CheckBoxListStyle.xaml"/>
+                <ResourceDictionary Source="/Themes/PropertyItemStyle.xaml"/>
                 <ResourceDictionary Source="/Themes/UserControlStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
         <StackPanel Style="{StaticResource FrameStackPanel}">
-            <TextBlock Text="几何模型导入" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+            <Label Content="几何模型导入" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
                 <TextBlock Text="模型位置:" VerticalAlignment="Center"/>
                 <ComboBox Text="{Binding LocationString}" HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="20,0,0,0"/>
@@ -25,19 +26,19 @@
             </StackPanel>
             <Button Content="导入" MinWidth="50" HorizontalAlignment="Left"/>
 
-            <Border Margin="0,20,0,20" BorderBrush="LightGray" BorderThickness="1"/>
+            <Border Style="{DynamicResource SplitBorderStyle}"/>
 
-            <TextBlock Text="几何模型装配" FontSize="16" FontWeight="Bold"/>
+            <Label Content="几何模型装配" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
                 <TextBlock Text="模型列表:" VerticalAlignment="Stretch" Margin="0,0,10,0"/>
                 <ListBox x:Name="checkListBox" Style="{StaticResource DataItemCheckListBoxStyle}" ItemsSource="{Binding Path=Items}"/>
             </StackPanel>
             <Button Content="生成装配体几何" MinWidth="50" HorizontalAlignment="Left"/>
 
-            <Border Margin="0,20,0,20" BorderBrush="LightGray" BorderThickness="1"/>
+            <Border Style="{DynamicResource SplitBorderStyle}"/>
 
-            <TextBlock Text="几何模型显示" FontSize="16" FontWeight="Bold"/>
-            <Image Source="C:\Src\Projects\WPFProjects\MechanicalModel\MechanicalModel\Resources\HengNiuJuJiHeMoXing.png" Margin="0,-40,0,0" Height="400" Width="400"/>
+            <Label Content="几何模型显示" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <Image Source="C:\Src\Projects\WPFProjects\MechanicalModel\MechanicalModel\Resources\HengNiuJuJiHeMoXing.png" Margin="0,-20,0,0" Height="400" Width="400"/>
         </StackPanel>
     </Grid>
 </UserControl>

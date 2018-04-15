@@ -29,7 +29,7 @@
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>
     <Style TargetType="Border" x:Key="SplitBorderStyle">
-        <Setter Property="Margin" Value="0,20,0,5"/>
+        <Setter Property="Margin" Value="0,10,0,5"/>
         <Setter Property="BorderBrush" Value="LightGray"/>
         <Setter Property="BorderThickness" Value="1"/>
     </Style>
