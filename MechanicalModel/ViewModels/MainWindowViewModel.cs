@@ -68,20 +68,35 @@ namespace MechanicalModel.ViewModels
                         MechanicalModelContentVisibility = Visibility.Visible;
                         switch (node.ViewType)
                         {
-                            case ViewType.JiHeMoXingDaoRuZhuangPei:
-                                this.MechanicalModelViewHostViewModel = new JiHeMoXingDaoRuZhuangPeiViewModel();
+                            case ViewType.JiHeKongSunJiSuanMoXing:
+                                this.MechanicalModelViewHostViewModel = new JiHeKongSunJiSuanMoXingViewModel();
                                 return;
-                            case ViewType.WangGeHuaFen:
-                                this.MechanicalModelViewHostViewModel = new WangGeHuaFenViewModel();
+                            case ViewType.JiHeHengNiuJuJiSuanMoXing:
+                                this.MechanicalModelViewHostViewModel = new JiHeHengNiuJuJiSuanMoXingViewModel();
                                 return;
-                            case ViewType.JiSuanCanShuShuRu:
-                                this.MechanicalModelViewHostViewModel = new JiSuanCanShuShuRuViewModel();
+                            case ViewType.ShuXueKongSunWangGeHuaFen:
+                                this.MechanicalModelViewHostViewModel = new ShuXueKongSunWangGeHuaFenViewModel();
                                 return;
-                            case ViewType.JiSuan:
-                                this.MechanicalModelViewHostViewModel = new JiSuanViewModel();
+                            case ViewType.ShuXueKongSunJiSuanCanShuShuRu:
+                                this.MechanicalModelViewHostViewModel = new ShuXueKongSunJiSuanCanShuShuRuViewModel();
                                 return;
-                            case ViewType.JiSuanJieGuoShuChu:
-                                this.MechanicalModelViewHostViewModel = new JiSuanJieGuoShuChuViewModel();
+                            case ViewType.ShuXueKongSunJiSuan:
+                                this.MechanicalModelViewHostViewModel = new ShuXueKongSunJiSuanViewModel();
+                                return;
+                            case ViewType.ShuXueKongSunJiSuanJieGuoShuChu:
+                                this.MechanicalModelViewHostViewModel = new ShuXueKongSunJiSuanJieGuoShuChuViewModel();
+                                return;
+                            case ViewType.ShuXueHengNiuJuWangGeHuaFen:
+                                this.MechanicalModelViewHostViewModel = new ShuXueHengNiuJuWangGeHuaFenViewModel();
+                                return;
+                            case ViewType.ShuXueHengNiuJuJiSuanCanShuShuRu:
+                                this.MechanicalModelViewHostViewModel = new ShuXueHengNiuJuJiSuanCanShuShuRuViewModel();
+                                return;
+                            case ViewType.ShuXueHengNiuJuJiSuan:
+                                this.MechanicalModelViewHostViewModel = new ShuXueHengNiuJuJiSuanViewModel();
+                                return;
+                            case ViewType.ShuXueHengNiuJuJiSuanJieGuoShuChu:
+                                this.MechanicalModelViewHostViewModel = new ShuXueHengNiuJuJiSuanJieGuoShuChuViewModel();
                                 return;
                             case ViewType.Others:
                                 break;

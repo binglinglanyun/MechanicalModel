@@ -56,26 +56,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controls\JiHeMoXingDaoRuZhuangPeiControl.xaml.cs">
-      <DependentUpon>JiHeMoXingDaoRuZhuangPeiControl.xaml</DependentUpon>
+    <Compile Include="Controls\JiHeHengNiuJuJiSuanMoXingControl.xaml.cs">
+      <DependentUpon>JiHeHengNiuJuJiSuanMoXingControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\JiSuanCanShuShuRuControl.xaml.cs">
-      <DependentUpon>JiSuanCanShuShuRuControl.xaml</DependentUpon>
+    <Compile Include="Controls\JiHeKongSunJiSuanMoXingControl.xaml.cs">
+      <DependentUpon>JiHeKongSunJiSuanMoXingControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\JiSuanControl.xaml.cs">
-      <DependentUpon>JiSuanControl.xaml</DependentUpon>
+    <Compile Include="Controls\ShuXueHengNiuJuJiSuanCanShuShuRuControl.xaml.cs">
+      <DependentUpon>ShuXueHengNiuJuJiSuanCanShuShuRuControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\JiSuanJieGuoShuChuControl.xaml.cs">
-      <DependentUpon>JiSuanJieGuoShuChuControl.xaml</DependentUpon>
+    <Compile Include="Controls\ShuXueHengNiuJuJiSuanControl.xaml.cs">
+      <DependentUpon>ShuXueHengNiuJuJiSuanControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\WangGeHuaFenControl.xaml.cs">
-      <DependentUpon>WangGeHuaFenControl.xaml</DependentUpon>
+    <Compile Include="Controls\ShuXueHengNiuJuJiSuanJieGuoShuChuControl.xaml.cs">
+      <DependentUpon>ShuXueHengNiuJuJiSuanJieGuoShuChuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ShuXueKongSunJiSuanCanShuShuRuControl.xaml.cs">
+      <DependentUpon>ShuXueKongSunJiSuanCanShuShuRuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ShuXueKongSunJiSuanControl.xaml.cs">
+      <DependentUpon>ShuXueKongSunJiSuanControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ShuXueKongSunJiSuanJieGuoShuChuControl.xaml.cs">
+      <DependentUpon>ShuXueKongSunJiSuanJieGuoShuChuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ShuXueKongSunWangGeHuaFenControl.xaml.cs">
+      <DependentUpon>ShuXueKongSunWangGeHuaFenControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ShuXueHengNiuJuWangGeHuaFenControl.xaml.cs">
+      <DependentUpon>ShuXueHengNiuJuWangGeHuaFenControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Utils\MechanicalModelViewUIConverter.cs" />
     <Compile Include="Utils\TaskCommand.cs" />
     <Compile Include="ViewModels\DataItem.cs" />
-    <Compile Include="ViewModels\JiHeMoXingDaoRuZhuangPeiViewModel.cs" />
+    <Compile Include="ViewModels\JiHeHengNiuJuJiSuanMoXingViewModel.cs" />
+    <Compile Include="ViewModels\JiHeKongSunJiSuanMoXingViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MechanicalModelListViewModel.cs" />
     <Compile Include="ViewModels\ViewModelCategory.cs" />
@@ -83,23 +99,43 @@
     <Compile Include="ViewModels\TreeViewNode.cs" />
     <Compile Include="ViewModels\PropertyChangedBaseCommonClass.cs" />
     <Compile Include="ViewModels\ViewType.cs" />
-    <Page Include="Controls\JiHeMoXingDaoRuZhuangPeiControl.xaml">
+    <Page Include="Controls\JiHeHengNiuJuJiSuanMoXingControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\JiSuanCanShuShuRuControl.xaml">
+    <Page Include="Controls\JiHeKongSunJiSuanMoXingControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\JiSuanControl.xaml">
+    <Page Include="Controls\ShuXueHengNiuJuJiSuanCanShuShuRuControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\JiSuanJieGuoShuChuControl.xaml">
+    <Page Include="Controls\ShuXueHengNiuJuJiSuanControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\WangGeHuaFenControl.xaml">
+    <Page Include="Controls\ShuXueHengNiuJuJiSuanJieGuoShuChuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ShuXueKongSunJiSuanCanShuShuRuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ShuXueKongSunJiSuanControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ShuXueKongSunJiSuanJieGuoShuChuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ShuXueKongSunWangGeHuaFenControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ShuXueHengNiuJuWangGeHuaFenControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\PropertyItemStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\UserControlStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

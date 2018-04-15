@@ -18,23 +18,31 @@ namespace MechanicalModel.ViewModels
         {
             List<TreeViewNode> treeViewNodeList = new List<TreeViewNode>();
 
-            // The second layer for the first node
-            TreeViewNode JiHeMoXingDaoRuZhuangPei = new TreeViewNode("几何模型导入/装配", ViewType.JiHeMoXingDaoRuZhuangPei);
+            // The second layer for "参数化几何模型"
+            TreeViewNode JiHeKongSunJiSuanMoXing = new TreeViewNode("空损计算模型", ViewType.JiHeKongSunJiSuanMoXing);
+            TreeViewNode JiHeHengNiuJuJiSuanMoXing = new TreeViewNode("恒扭矩计算模型", ViewType.JiHeHengNiuJuJiSuanMoXing);
 
             // The first layer for the first node
-            TreeViewNode CanShuHuaMoXing = new TreeViewNode("参数化模型", ViewType.Others);
-            CanShuHuaMoXing.Nodes = new List<TreeViewNode>() { JiHeMoXingDaoRuZhuangPei };
+            TreeViewNode CanShuHuaMoXing = new TreeViewNode("参数化几何模型", ViewType.Others);
+            CanShuHuaMoXing.Nodes = new List<TreeViewNode>() { JiHeKongSunJiSuanMoXing, JiHeHengNiuJuJiSuanMoXing };
 
-            // The third layer for the second node
-            TreeViewNode WangGeHuaFen = new TreeViewNode("网格划分", ViewType.WangGeHuaFen);
-            TreeViewNode JiSuanCanShuShuRu = new TreeViewNode("计算参数输入", ViewType.JiSuanCanShuShuRu);
-            TreeViewNode JiSuan = new TreeViewNode("计算", ViewType.JiSuan);
-            TreeViewNode JiSuanJieGuoShuChu = new TreeViewNode("计算结果输出", ViewType.JiSuanJieGuoShuChu);
+            // The third layer for "恒扭矩计算"
+            TreeViewNode ShuXueHengNiuJuWangGeHuaFen = new TreeViewNode("网格划分", ViewType.ShuXueHengNiuJuWangGeHuaFen);
+            TreeViewNode ShuXueHengNiuJuJiSuanCanShuShuRu = new TreeViewNode("计算参数输入", ViewType.ShuXueHengNiuJuJiSuanCanShuShuRu);
+            TreeViewNode ShuXueHengNiuJuJiSuan = new TreeViewNode("计算", ViewType.ShuXueHengNiuJuJiSuan);
+            TreeViewNode ShuXueHengNiuJuJiSuanJieGuoShuChu = new TreeViewNode("计算结果输出", ViewType.ShuXueHengNiuJuJiSuanJieGuoShuChu);
 
-            // The second layer for the second node
+            // The third layer for "空损计算"
+            TreeViewNode ShuXueKongSunWangGeHuaFen = new TreeViewNode("网格划分", ViewType.ShuXueKongSunWangGeHuaFen);
+            TreeViewNode ShuXueKongSunJiSuanCanShuShuRu = new TreeViewNode("计算参数输入", ViewType.ShuXueKongSunJiSuanCanShuShuRu);
+            TreeViewNode ShuXueKongSunJiSuan = new TreeViewNode("计算", ViewType.ShuXueKongSunJiSuan);
+            TreeViewNode ShuXueKongSunJiSuanJieGuoShuChu = new TreeViewNode("计算结果输出", ViewType.ShuXueKongSunJiSuanJieGuoShuChu);
+
+            // The second layer for "流场仿真数学模型"
             TreeViewNode HengNiuJuJiSuan = new TreeViewNode("恒扭矩计算", ViewType.Others);
-            HengNiuJuJiSuan.Nodes = new List<TreeViewNode>() { WangGeHuaFen, JiSuanCanShuShuRu, JiSuan, JiSuanJieGuoShuChu };
+            HengNiuJuJiSuan.Nodes = new List<TreeViewNode>() { ShuXueHengNiuJuWangGeHuaFen, ShuXueHengNiuJuJiSuanCanShuShuRu, ShuXueHengNiuJuJiSuan, ShuXueHengNiuJuJiSuanJieGuoShuChu };
             TreeViewNode KongSunJiSuan = new TreeViewNode("空损计算", ViewType.Others);
+            KongSunJiSuan.Nodes = new List<TreeViewNode>() { ShuXueKongSunWangGeHuaFen, ShuXueKongSunJiSuanCanShuShuRu, ShuXueKongSunJiSuan, ShuXueKongSunJiSuanJieGuoShuChu };
 
             // The first layer for the second node
             TreeViewNode LiuChangFangZhen = new TreeViewNode("流场仿真数学模型", ViewType.Others);
