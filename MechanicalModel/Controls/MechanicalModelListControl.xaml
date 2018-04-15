@@ -20,7 +20,7 @@
             </TreeView.ItemContainerStyle>
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type viewModels:TreeViewNode}" ItemsSource="{Binding Path=Nodes}">
-                    <TextBlock Text="{Binding NodeName}" FontSize="14"/>
+                    <TextBlock Text="{Binding NodeName}" FontSize="16"/>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>

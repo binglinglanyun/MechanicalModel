@@ -10,11 +10,12 @@
         <ResourceDictionary x:Uid="ResourceDictionary_1">
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Themes/PropertyItemStyle.xaml"/>
+                <ResourceDictionary Source="/Themes/UserControlStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <StackPanel Margin="20" Orientation="Vertical">
+        <StackPanel Style="{StaticResource FrameStackPanel}">
             <StackPanel.Resources>
                 <Style TargetType="TextBlock" BasedOn="{StaticResource PropertyNameStyle}"/>
                 <Style TargetType="TextBox" BasedOn="{StaticResource PropertyValueStyle}"/>
@@ -54,22 +55,92 @@
             <Label Content="边界条件定义" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                    <TextBlock Text="初始转速:" />
+                    <TextBlock Text="充油进口:" />
+                    <TextBox/>
+                    <TextBlock Text="MPa" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="通气孔:" />
+                    <TextBox/>
+                    <TextBlock Text="MPa" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="排气口:" />
+                    <TextBox/>
+                    <TextBlock Text="MPa" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="定轮初始转速:" />
                     <TextBox/>
                     <TextBlock Text="rpm" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                    <TextBlock Text="指令油压:" />
+                    <TextBlock Text="动轮初始转速:" />
                     <TextBox/>
-                    <TextBlock Text="pa" Margin="5,0,0,0"/>
+                    <TextBlock Text="rpm" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                    <TextBlock Text="压力油箱压力:" />
+                    <TextBlock Text="动轮转动惯量:" />
                     <TextBox/>
-                    <TextBlock Text="pa" Margin="5,0,0,0"/>
+                    <TextBlock Text="kg.m2" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="背压阀出口:" />
+                    <TextBox/>
+                    <TextBlock Text="MPa" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="反馈压力入口:" />
+                    <TextBox/>
+                    <TextBlock Text="MPa" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="指令油入口:" />
+                    <TextBox/>
+                    <TextBlock Text="MPa" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="滑阀回油出口:" />
+                    <TextBox/>
+                    <TextBlock Text="MPa" Margin="5,0,0,0"/>
                 </StackPanel>
             </StackPanel>
-
+            
+            <Border Style="{DynamicResource SplitBorderStyle}"/>
+            <Label Content="阀门参数" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="备压阀阀芯质量:" />
+                    <TextBox/>
+                    <TextBlock Text="kg" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="备压阀弹簧刚度:" />
+                    <TextBox/>
+                    <TextBlock Text="N/m" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="备压阀弹簧预紧力:" />
+                    <TextBox/>
+                    <TextBlock Text="N" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="滑阀阀芯质量:" />
+                    <TextBox/>
+                    <TextBlock Text="kg" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="滑阀弹簧刚度:" />
+                    <TextBox/>
+                    <TextBlock Text="N/m" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="滑阀弹簧预紧力:" />
+                    <TextBox/>
+                    <TextBlock Text="N" Margin="5,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+            
             <Border Style="{DynamicResource SplitBorderStyle}"/>
             <Label Content="物理模型选择" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Style="{DynamicResource SectionStackPanelStyle}">

@@ -10,11 +10,12 @@
         <ResourceDictionary x:Uid="ResourceDictionary_1">
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Themes/PropertyItemStyle.xaml"/>
+                <ResourceDictionary Source="/Themes/UserControlStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <StackPanel Margin="20" Orientation="Vertical">
+        <StackPanel Style="{StaticResource FrameStackPanel}">
             <StackPanel.Resources>
                 <Style TargetType="StackPanel" BasedOn="{StaticResource PropertyItemStyle}"/>
                 <Style TargetType="TextBlock" BasedOn="{StaticResource PropertyNameStyle}"/>
@@ -67,6 +68,8 @@
             <Button Content="网格划分" Margin="10,20,0,0" MinWidth="50" HorizontalAlignment="Left"/>
             <Border Style="{DynamicResource SplitBorderStyle}"/>
             <Label Content="网格显示" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <TextBlock Text="恒扭矩模型网格数量: 1,710,000"/>
+            <Image Source="C:\Src\Projects\WPFProjects\MechanicalModel\MechanicalModel\Resources\HengNiuJuMoXingWangGe.png" Margin="0,-40,0,0" Height="400" Width="400"/>
         </StackPanel>
     </Grid>
 </UserControl>
