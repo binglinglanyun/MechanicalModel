@@ -95,7 +95,7 @@
                         <TextBox Text="620,000"/>
                     </StackPanel>
                 </StackPanel>
-                <Image Source="C:\Src\Projects\WPFProjects\MechanicalModel\MechanicalModel\Resources\KongSunMoXingWangGe.png" Margin="0,-40,0,0" Height="400" Width="400"/>
+                <Image Source="D:\Projects\WPFProjects\MechanicalModel\MechanicalModel\Resources\KongSunMoXingWangGe.png" Margin="0,-40,0,0" Height="400" Width="400"/>
             </StackPanel>
         </StackPanel>
     </Grid>

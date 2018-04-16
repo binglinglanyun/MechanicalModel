@@ -58,16 +58,6 @@
             <Label Content="边界条件定义" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                    <TextBlock Text="进口:" />
-                    <TextBox Text="0"/>
-                    <TextBlock Text="MPa" Margin="5,0,0,0"/>
-                </StackPanel>
-                <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                    <TextBlock Text="出口:" />
-                    <TextBox Text="0"/>
-                    <TextBlock Text="MPa" Margin="5,0,0,0"/>
-                </StackPanel>
-                <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="通气孔:" />
                     <TextBox Text="0.1"/>
                     <TextBlock Text="MPa" Margin="5,0,0,0"/>
@@ -76,11 +66,6 @@
                     <TextBlock Text="排气口:" />
                     <TextBox Text="0.1"/>
                     <TextBlock Text="MPa" Margin="5,0,0,0"/>
-                </StackPanel>
-                <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                    <TextBlock Text="定轮转速:" />
-                    <TextBox Text="0"/>
-                    <TextBlock Text="rpm" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="动轮转速:" />
