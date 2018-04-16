@@ -20,32 +20,35 @@
                 <Style TargetType="TextBlock" BasedOn="{StaticResource PropertyNameStyle}"/>
                 <Style TargetType="TextBox" BasedOn="{StaticResource PropertyValueStyle}"/>
                 <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxStyle}"/>
+                <Style TargetType="ComboBox" BasedOn="{StaticResource ComboBoxPropertyValueStyle}"/>
             </StackPanel.Resources>
             <Label Content="物质定义" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                 <StackPanel>
-                    <CheckBox Content="空气"/>
+                    <CheckBox Content="空气" IsChecked="True"/>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
                         <TextBlock Text="密度:" />
-                        <ComboBox MinWidth="200" MaxHeight="20"/>
+                        <ComboBox SelectedIndex="0">
+                            <ComboBoxItem>Ideal Gas Law</ComboBoxItem>
+                        </ComboBox>
                         <TextBlock Text="kg/m3" Margin="5,0,0,0"/>
                     </StackPanel>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
                         <TextBlock Text="粘度:" />
-                        <TextBox/>
+                        <TextBox  Text="1.853e-5"/>
                         <TextBlock Text="Pa.s" Margin="5,0,0,0"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel>
-                    <CheckBox Content="油"/>
+                    <CheckBox Content="油" IsChecked="True"/>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
                         <TextBlock Text="密度:" />
-                        <TextBox/>
+                        <TextBox Text="860"/>
                         <TextBlock Text="kg/m3" Margin="5,0,0,0"/>
                     </StackPanel>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
                         <TextBlock Text="粘度:" />
-                        <TextBox/>
+                        <TextBox Text="0.026"/>
                         <TextBlock Text="Pa.s" Margin="5,0,0,0"/>
                     </StackPanel>
                 </StackPanel>
@@ -56,37 +59,37 @@
             <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="进口:" />
-                    <TextBox/>
+                    <TextBox Text="0"/>
                     <TextBlock Text="MPa" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="出口:" />
-                    <TextBox/>
+                    <TextBox Text="0"/>
                     <TextBlock Text="MPa" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="通气孔:" />
-                    <TextBox/>
+                    <TextBox Text="0.1"/>
                     <TextBlock Text="MPa" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="排气口:" />
-                    <TextBox/>
+                    <TextBox Text="0.1"/>
                     <TextBlock Text="MPa" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="定轮转速:" />
-                    <TextBox/>
+                    <TextBox Text="0"/>
                     <TextBlock Text="rpm" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="动轮转速:" />
-                    <TextBox/>
+                    <TextBox Text="3600"/>
                     <TextBlock Text="rpm" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="油液体积分数:" />
-                    <TextBox/>
+                    <TextBox Text="0.14"/>
                     <TextBlock Text="%" Margin="5,0,0,0"/>
                 </StackPanel>
             </StackPanel>
@@ -94,9 +97,9 @@
             <Border Style="{DynamicResource SplitBorderStyle}"/>
             <Label Content="物理模型选择" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
-                <CheckBox Content="端流模型"/>
-                <CheckBox Content="多相流模型"/>
-                <CheckBox Content="运动模型"/>
+                <CheckBox Content="端流模型" IsChecked="True"/>
+                <CheckBox Content="多相流模型" IsChecked="True"/>
+                <CheckBox Content="运动模型" IsChecked="True"/>
             </StackPanel>
         </StackPanel>
     </Grid>

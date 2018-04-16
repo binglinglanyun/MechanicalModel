@@ -22,12 +22,9 @@
                 <Style TargetType="TextBox" BasedOn="{StaticResource PropertyValueStyle}"/>
             </StackPanel.Resources>
             <StackPanel>
-                <TextBlock Text="空损功率Pk:" />
-                <TextBox/>
-            </StackPanel>
-            <StackPanel>
                 <TextBlock Text="起效时间t0:" />
                 <TextBox/>
+                <TextBlock Text="s" Margin="5,0,0,0"/>
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="控制扭矩Mk:" />
