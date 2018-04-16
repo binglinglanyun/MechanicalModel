@@ -14,6 +14,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <ApplicationIcon>Resources\Shortcut.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,9 +34,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>Shortcut.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -97,6 +95,8 @@
     <Compile Include="ViewModels\JiHeKongSunJiSuanMoXingViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MechanicalModelListViewModel.cs" />
+    <Compile Include="ViewModels\ShuXueHengNiuJuWangGeHuaFenViewModel.cs" />
+    <Compile Include="ViewModels\ShuXueKongSunWangGeHuaFenViewModel.cs" />
     <Compile Include="ViewModels\ViewModelCategory.cs" />
     <Compile Include="Utils\TreeViewMouseUpCommandBehavior.cs" />
     <Compile Include="ViewModels\TreeViewNode.cs" />
@@ -201,8 +201,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <PropertyGroup>
+    <PngResources>
+	  Resources\HengNiuJuJiHeMoXing.png;
+	  Resources\HengNiuJuMoXingWangGe.png;
+	  Resources\KongSunJiHeMoXing.png;
+	  Resources\KongSunMoXingWangGe.png
+	</PngResources>
+  </PropertyGroup>
   <ItemGroup>
-    <Resource Include="Shortcut.ico" />
+    <Resource Include="Resources\Shortcut.ico" />
+    <Content Include="$(PngResources)">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

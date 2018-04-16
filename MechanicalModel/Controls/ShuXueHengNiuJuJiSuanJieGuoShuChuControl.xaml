@@ -21,16 +21,19 @@
                 <Style TargetType="TextBlock" BasedOn="{StaticResource PropertyNameStyle}"/>
                 <Style TargetType="TextBox" BasedOn="{StaticResource PropertyValueStyle}"/>
             </StackPanel.Resources>
-            <StackPanel>
-                <TextBlock Text="起效时间t0:" />
-                <TextBox/>
-                <TextBlock Text="s" Margin="5,0,0,0"/>
+            <Label Content="计算结果数据输出" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="起效时间t0:" />
+                    <TextBox Text="0.35"/>
+                    <TextBlock Text="s" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="控制扭矩Mk:" />
+                    <TextBox Text="10,300"/>
+                    <TextBlock Text="N.m" Margin="5,0,0,0"/>
+                </StackPanel>
             </StackPanel>
-            <StackPanel>
-                <TextBlock Text="控制扭矩Mk:" />
-                <TextBox/>
-            </StackPanel>
-            <Label Content="曲线显示"/>
         </StackPanel>   
     </Grid>
 </UserControl>

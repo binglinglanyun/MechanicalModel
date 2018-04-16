@@ -74,11 +74,6 @@
                             <TextBlock Text="MPa" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="排气口:" />
-                            <TextBox Text="0"/>
-                            <TextBlock Text="MPa" Margin="5,0,0,0"/>
-                        </StackPanel>
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="动轮初始转速:" />
                             <TextBox Text="3600"/>
                             <TextBlock Text="rpm" Margin="5,0,0,0"/>

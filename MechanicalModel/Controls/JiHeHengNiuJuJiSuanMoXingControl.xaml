@@ -37,8 +37,8 @@
 
             <Border Style="{DynamicResource SplitBorderStyle}"/>
 
-            <Label Content="几何模型显示" Style="{DynamicResource LabelBoldTextStyle}"/>
-            <Image Source="C:\Src\Projects\WPFProjects\MechanicalModel\MechanicalModel\Resources\HengNiuJuJiHeMoXing.png" Margin="0,-20,0,0" Height="400" Width="400"/>
+            <Label Content="几何模型显示" Style="{DynamicResource LabelBoldTextStyle}"/> 
+            <Image Source="{Binding SourceUri}" Margin="0,-20,0,0" Height="400" Width="400"/>
         </StackPanel>
     </Grid>
 </UserControl>

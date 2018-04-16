@@ -1,6 +1,7 @@
 ﻿using MechanicalModel.Utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -84,6 +85,14 @@ namespace MechanicalModel.ViewModels
             get
             {
                 return ViewType.JiHeHengNiuJuJiSuanMoXing;
+            }
+        }
+
+        public string SourceUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/HengNiuJuJiHeMoXing.png"); ;
             }
         }
     }
