@@ -15,13 +15,13 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <Label Content="计算结果数据输出" Style="{DynamicResource LabelBoldTextStyle}"/>
         <StackPanel Style="{StaticResource FrameStackPanel}">
             <StackPanel.Resources>
                 <Style TargetType="StackPanel" BasedOn="{StaticResource PropertyItemStyle}"/>
                 <Style TargetType="TextBlock" BasedOn="{StaticResource PropertyNameStyle}"/>
                 <Style TargetType="TextBox" BasedOn="{StaticResource PropertyValueStyle}"/>
             </StackPanel.Resources>
+            <Label Content="计算结果数据输出" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="起效时间t0:" />
