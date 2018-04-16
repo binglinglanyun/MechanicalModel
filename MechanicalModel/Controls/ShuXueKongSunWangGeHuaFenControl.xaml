@@ -21,55 +21,82 @@
                 <Style TargetType="TextBlock" BasedOn="{StaticResource PropertyNameStyle}"/>
                 <Style TargetType="TextBox" BasedOn="{StaticResource PropertyValueStyle}"/>
             </StackPanel.Resources>
-            <StackPanel Orientation="Vertical">
-                <Label Content="定轮网格局部控制" Style="{DynamicResource LabelBoldTextStyle}"/>
-                <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
-                    <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                        <TextBlock Text="临界界面角:" />
-                        <TextBox/>
-                        <TextBlock Text="度" Margin="5,0,0,0"/>
-                    </StackPanel>
-                    <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                        <TextBlock Text="曲线分辨率:" />
-                        <TextBox/>
-                    </StackPanel>
-                    <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                        <TextBlock Text="最大网格尺度:" />
-                        <TextBox/>
-                    </StackPanel>
-                    <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                        <TextBlock Text="最小网格尺度:" />
-                        <TextBox/>
-                    </StackPanel>
+            <Label Content="全局网格控制" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="控制方法:" />
+                    <TextBox Text="Normal Mode"/>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <Label Content="动轮网格局部控制" Style="{DynamicResource LabelBoldTextStyle}"/>
-                <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
-                    <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                        <TextBlock Text="临界界面角:" />
-                        <TextBox/>
-                        <TextBlock Text="度" Margin="5,0,0,0"/>
-                    </StackPanel>
-                    <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                        <TextBlock Text="曲线分辨率:" />
-                        <TextBox/>
-                    </StackPanel>
-                    <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                        <TextBlock Text="最大网格尺度:" />
-                        <TextBox/>
-                    </StackPanel>
-                    <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                        <TextBlock Text="最小网格尺度:" />
-                        <TextBox/>
-                    </StackPanel>
-                </StackPanel>
-            </StackPanel>
-            <Button Content="网格划分" Margin="10,20,0,0" MinWidth="50" HorizontalAlignment="Left"/>
+
             <Border Style="{DynamicResource SplitBorderStyle}"/>
-            <Label Content="网格显示" Style="{DynamicResource LabelBoldTextStyle}"/>
-            <TextBlock Text="空损模型网格数量: 620,000"/>
-            <Image Source="C:\Src\Projects\WPFProjects\MechanicalModel\MechanicalModel\Resources\KongSunMoXingWangGe.png" Margin="0,-40,0,0" Height="400" Width="400"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical" Grid.Column="0">
+                    <Label Content="定轮网格局部控制" Style="{DynamicResource LabelBoldTextStyle}"/>
+                    <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                            <TextBlock Text="临界界面角:" />
+                            <TextBox Text="15"/>
+                            <TextBlock Text="°C" Margin="5,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                            <TextBlock Text="曲线分辨率:" />
+                            <TextBox Text="20"/>
+                        </StackPanel>
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                            <TextBlock Text="最大网格尺度:" />
+                            <TextBox Text="0.006"/>
+                            <TextBlock Text="m" Margin="5,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                            <TextBlock Text="最小网格尺度:" />
+                            <TextBox Text="0.0005"/>
+                            <TextBlock Text="m" Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+                    <Label Content="动轮网格局部控制" Style="{DynamicResource LabelBoldTextStyle}"/>
+                    <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                            <TextBlock Text="临界界面角:" />
+                            <TextBox Text="30"/>
+                            <TextBlock Text="°C" Margin="5,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                            <TextBlock Text="曲线分辨率:" />
+                            <TextBox Text="35"/>
+                        </StackPanel>
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                            <TextBlock Text="最大网格尺度:" />
+                            <TextBox Text="0.006"/>
+                            <TextBlock Text="m" Margin="5,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                            <TextBlock Text="最小网格尺度:" />
+                            <TextBox Text="0.001"/>
+                            <TextBlock Text="m" Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Button Content="网格划分" Margin="10,20,0,0" MinWidth="50" HorizontalAlignment="Left"/>
+            
+            <Border Style="{DynamicResource SplitBorderStyle}"/>
+            <StackPanel Orientation="Vertical">
+                <Label Content="网格显示" Style="{DynamicResource LabelBoldTextStyle}"/>
+                <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
+                    <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                        <TextBlock Text="空损模型网格数量:" />
+                        <TextBox Text="620,000"/>
+                    </StackPanel>
+                </StackPanel>
+                <Image Source="C:\Src\Projects\WPFProjects\MechanicalModel\MechanicalModel\Resources\KongSunMoXingWangGe.png" Margin="0,-40,0,0" Height="400" Width="400"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

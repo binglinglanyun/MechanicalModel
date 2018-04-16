@@ -25,14 +25,6 @@
                 <TextBlock Text="空损功率Pk:" />
                 <TextBox/>
             </StackPanel>
-            <StackPanel>
-                <TextBlock Text="起效时间t0:" />
-                <TextBox/>
-            </StackPanel>
-            <StackPanel>
-                <TextBlock Text="控制扭矩Mk:" />
-                <TextBox/>
-            </StackPanel>
             <Label Content="曲线显示"/>
         </StackPanel>
     </Grid>

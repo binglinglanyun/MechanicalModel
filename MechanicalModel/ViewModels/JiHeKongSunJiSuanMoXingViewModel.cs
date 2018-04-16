@@ -19,10 +19,10 @@ namespace MechanicalModel.ViewModels
         private void InitializeItems()
         {
             List<DataItem> items = new List<DataItem>();
-            items.Add(new DataItem("动轮", false));
-            items.Add(new DataItem("定轮", false));
-            items.Add(new DataItem("壳体", false));
-            items.Add(new DataItem("其他", false));
+            items.Add(new DataItem("动轮", true));
+            items.Add(new DataItem("定轮", true));
+            items.Add(new DataItem("壳体", true));
+            items.Add(new DataItem("其他", true));
 
             this.Items = items;
         }
@@ -56,6 +56,7 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
+                _locationString = "D:\\380流场计算\\几何模型"; //TODO: Remove hard code
                 return _locationString;
             }
             set
