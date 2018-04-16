@@ -21,11 +21,14 @@
                 <Style TargetType="TextBlock" BasedOn="{StaticResource PropertyNameStyle}"/>
                 <Style TargetType="TextBox" BasedOn="{StaticResource PropertyValueStyle}"/>
             </StackPanel.Resources>
-            <StackPanel>
-                <TextBlock Text="空损功率Pk:" />
-                <TextBox/>
+            <Label Content="计算结果数据输出" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="空损功率Pk:" />
+                    <TextBox Text="11,700"/>
+                    <TextBlock Text="W" Margin="5,0,0,0"/>
+                </StackPanel>
             </StackPanel>
-            <Label Content="曲线显示"/>
         </StackPanel>
     </Grid>
 </UserControl>
