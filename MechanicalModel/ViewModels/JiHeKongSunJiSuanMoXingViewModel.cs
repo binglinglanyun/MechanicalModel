@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
+using System.IO;
 
 namespace MechanicalModel.ViewModels
 {
@@ -83,6 +84,14 @@ namespace MechanicalModel.ViewModels
             get
             {
                 return ViewType.JiHeKongSunJiSuanMoXing;
+            }
+        }
+
+        public string SourceUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/KongSunJiHeMoXing.png"); ;
             }
         }
     }

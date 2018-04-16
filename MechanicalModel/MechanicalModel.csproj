@@ -95,6 +95,8 @@
     <Compile Include="ViewModels\JiHeKongSunJiSuanMoXingViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MechanicalModelListViewModel.cs" />
+    <Compile Include="ViewModels\ShuXueHengNiuJuWangGeHuaFenViewModel.cs" />
+    <Compile Include="ViewModels\ShuXueKongSunWangGeHuaFenViewModel.cs" />
     <Compile Include="ViewModels\ViewModelCategory.cs" />
     <Compile Include="Utils\TreeViewMouseUpCommandBehavior.cs" />
     <Compile Include="ViewModels\TreeViewNode.cs" />
@@ -199,8 +201,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <PropertyGroup>
+    <PngResources>
+	  Resources\HengNiuJuJiHeMoXing.png;
+	  Resources\HengNiuJuMoXingWangGe.png;
+	  Resources\KongSunJiHeMoXing.png;
+	  Resources\KongSunMoXingWangGe.png
+	</PngResources>
+  </PropertyGroup>
   <ItemGroup>
     <Resource Include="Resources\Shortcut.ico" />
+    <Content Include="$(PngResources)">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
