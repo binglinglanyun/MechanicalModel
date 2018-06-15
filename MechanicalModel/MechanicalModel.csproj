@@ -87,6 +87,7 @@
     <Compile Include="Controls\ShuXueHengNiuJuWangGeHuaFenControl.xaml.cs">
       <DependentUpon>ShuXueHengNiuJuWangGeHuaFenControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Scripts\ConstantStringForKongSun.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Utils\MechanicalModelViewUIConverter.cs" />
     <Compile Include="Utils\TaskCommand.cs" />
@@ -95,7 +96,11 @@
     <Compile Include="ViewModels\JiHeKongSunJiSuanMoXingViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MechanicalModelListViewModel.cs" />
+    <Compile Include="ViewModels\ShuXueHengNiuJuJiSuanCanShuShuRuViewModel.cs" />
+    <Compile Include="ViewModels\ShuXueHengNiuJuJiSuanViewModel.cs" />
     <Compile Include="ViewModels\ShuXueHengNiuJuWangGeHuaFenViewModel.cs" />
+    <Compile Include="ViewModels\ShuXueKongSunJiSuanCanShuShuRuViewModel.cs" />
+    <Compile Include="ViewModels\ShuXueKongSunJiSuanViewModel.cs" />
     <Compile Include="ViewModels\ShuXueKongSunWangGeHuaFenViewModel.cs" />
     <Compile Include="ViewModels\ViewModelCategory.cs" />
     <Compile Include="Utils\TreeViewMouseUpCommandBehavior.cs" />
@@ -198,9 +203,6 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
   <PropertyGroup>
     <PngResources>
 	  Resources\HengNiuJuJiHeMoXing.png;
@@ -215,6 +217,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

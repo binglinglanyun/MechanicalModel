@@ -49,12 +49,17 @@
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="最大网格尺度:" />
-                            <TextBox Text="0.006"/>
+                            <TextBox Text="{Binding DingLunZuiDaWangGeChiDu}"/>
                             <TextBlock Text="m" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="最小网格尺度:" />
-                            <TextBox Text="0.0005"/>
+                            <TextBox Text="{Binding DingLunZuiXiaoWangGeChiDu}"/>
+                            <TextBlock Text="m" Margin="5,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                            <TextBlock Text="最大面网格尺度:" />
+                            <TextBox Text="{Binding DingLunZuiDaMianWangGeChiDu}"/>
                             <TextBlock Text="m" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
@@ -73,12 +78,17 @@
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="最大网格尺度:" />
-                            <TextBox Text="0.006"/>
+                            <TextBox Text="{Binding DongLunZuiDaWangGeChiDu}"/>
                             <TextBlock Text="m" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="最小网格尺度:" />
-                            <TextBox Text="0.001"/>
+                            <TextBox Text="{Binding DongLunZuiXiaoWangGeChiDu}"/>
+                            <TextBlock Text="m" Margin="5,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                            <TextBlock Text="最大面网格尺度:" />
+                            <TextBox Text="{Binding DongLunZuiDaMianWangGeChiDu}"/>
                             <TextBlock Text="m" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>

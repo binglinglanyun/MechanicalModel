@@ -13,36 +13,6 @@ namespace MechanicalModel.ViewModels
     }
 
     // TODO: seperate it out of this file
-    public class ShuXueHengNiuJuJiSuanCanShuShuRuViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
-    {
-        public ShuXueHengNiuJuJiSuanCanShuShuRuViewModel()
-        {
-        }
-
-        public ViewType Type
-        {
-            get
-            {
-                return ViewType.ShuXueHengNiuJuJiSuanCanShuShuRu;
-            }
-        }
-    }
-
-    public class ShuXueHengNiuJuJiSuanViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
-    {
-        public ShuXueHengNiuJuJiSuanViewModel()
-        {
-        }
-
-        public ViewType Type
-        {
-            get
-            {
-                return ViewType.ShuXueHengNiuJuJiSuan;
-            }
-        }
-    }
-
     public class ShuXueHengNiuJuJiSuanJieGuoShuChuViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
     {
         public ShuXueHengNiuJuJiSuanJieGuoShuChuViewModel()
@@ -54,36 +24,6 @@ namespace MechanicalModel.ViewModels
             get
             {
                 return ViewType.ShuXueHengNiuJuJiSuanJieGuoShuChu;
-            }
-        }
-    }
-
-    public class ShuXueKongSunJiSuanCanShuShuRuViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
-    {
-        public ShuXueKongSunJiSuanCanShuShuRuViewModel()
-        {
-        }
-
-        public ViewType Type
-        {
-            get
-            {
-                return ViewType.ShuXueKongSunJiSuanCanShuShuRu;
-            }
-        }
-    }
-
-    public class ShuXueKongSunJiSuanViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
-    {
-        public ShuXueKongSunJiSuanViewModel()
-        {
-        }
-
-        public ViewType Type
-        {
-            get
-            {
-                return ViewType.ShuXueKongSunJiSuan;
             }
         }
     }
