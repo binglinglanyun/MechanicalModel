@@ -21,7 +21,7 @@ namespace MechanicalModel.ViewModels
         }
 
         private string _shiJianBuChang = "200000";
-        private string ShiJianBuChang
+        public string ShiJianBuChang
         {
             get
             {
@@ -34,7 +34,7 @@ namespace MechanicalModel.ViewModels
         }
 
         private string _canShuX = "-0.05";
-        private string CanShuX
+        public string CanShuX
         {
             get
             {
@@ -47,7 +47,7 @@ namespace MechanicalModel.ViewModels
         }
 
         private string _canShuY = "0.083";
-        private string CanShuY
+        public string CanShuY
         {
             get
             {
@@ -60,7 +60,7 @@ namespace MechanicalModel.ViewModels
         }
 
         private string _canShuZ = "0.224";
-        private string CanShuZ
+        public string CanShuZ
         {
             get
             {

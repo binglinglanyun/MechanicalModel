@@ -97,9 +97,11 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MechanicalModelListViewModel.cs" />
     <Compile Include="ViewModels\ShuXueHengNiuJuJiSuanCanShuShuRuViewModel.cs" />
+    <Compile Include="ViewModels\ShuXueHengNiuJuJiSuanJieGuoShuChuViewModel.cs" />
     <Compile Include="ViewModels\ShuXueHengNiuJuJiSuanViewModel.cs" />
     <Compile Include="ViewModels\ShuXueHengNiuJuWangGeHuaFenViewModel.cs" />
     <Compile Include="ViewModels\ShuXueKongSunJiSuanCanShuShuRuViewModel.cs" />
+    <Compile Include="ViewModels\ShuXueKongSunJiSuanJieGuoShuChuViewModel.cs" />
     <Compile Include="ViewModels\ShuXueKongSunJiSuanViewModel.cs" />
     <Compile Include="ViewModels\ShuXueKongSunWangGeHuaFenViewModel.cs" />
     <Compile Include="ViewModels\ViewModelCategory.cs" />

@@ -11,35 +11,4 @@ namespace MechanicalModel.ViewModels
     {
         ViewType Type { get; }
     }
-
-    // TODO: seperate it out of this file
-    public class ShuXueHengNiuJuJiSuanJieGuoShuChuViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
-    {
-        public ShuXueHengNiuJuJiSuanJieGuoShuChuViewModel()
-        {
-        }
-
-        public ViewType Type
-        {
-            get
-            {
-                return ViewType.ShuXueHengNiuJuJiSuanJieGuoShuChu;
-            }
-        }
-    }
-
-    public class ShuXueKongSunJiSuanJieGuoShuChuViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
-    {
-        public ShuXueKongSunJiSuanJieGuoShuChuViewModel()
-        {
-        }
-
-        public ViewType Type
-        {
-            get
-            {
-                return ViewType.ShuXueKongSunJiSuanJieGuoShuChu;
-            }
-        }
-    }
 }
