@@ -87,8 +87,8 @@
     <Compile Include="Controls\ShuXueHengNiuJuWangGeHuaFenControl.xaml.cs">
       <DependentUpon>ShuXueHengNiuJuWangGeHuaFenControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Scripts\StaticStringForKongSun.cs" />
-    <Compile Include="Scripts\StringTemplateForKongSun.cs" />
+    <Compile Include="Scripts\ScriptWrapperForKongSun.cs" />
+    <Compile Include="Scripts\ScriptTemplateForKongSun.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Utils\MechanicalModelViewUIConverter.cs" />
     <Compile Include="Utils\TaskCommand.cs" />

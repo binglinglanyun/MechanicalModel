@@ -87,17 +87,17 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    StaticStringForKongSun.ShiJianBuChang = string.Format(StringTemplateForKongSun.ShiJianBuChang,
+                    ScriptWrapperForKongSun.ShiJianBuChang = string.Format(ScriptTemplateForKongSun.ShiJianBuChang,
                         this.ShiJianBuChang);
 
-                    string scriptContent = StaticStringForKongSun.CreateScriptForJiSuan();
+                    string scriptContent = ScriptWrapperForKongSun.CreateScriptForJiSuan();
                     if (scriptContent != null)
                     {
-                        string scriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, StaticStringForKongSun.ScriptName);
+                        string scriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, ScriptWrapperForKongSun.ScriptName);
                         File.WriteAllText(scriptPath, scriptContent);
-                        if (!File.Exists(StaticStringForKongSun.DestSgrdFilePath))
+                        if (!File.Exists(ScriptWrapperForKongSun.DestSgrdFilePath))
                         {
-                            File.Copy(StaticStringForKongSun.SourceSgrdFilePath, StaticStringForKongSun.DestSgrdFilePath);
+                            File.Copy(ScriptWrapperForKongSun.SourceSgrdFilePath, ScriptWrapperForKongSun.DestSgrdFilePath);
                         }
 
                         //Open with PumpLink

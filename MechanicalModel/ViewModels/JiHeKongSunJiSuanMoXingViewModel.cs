@@ -74,7 +74,7 @@ namespace MechanicalModel.ViewModels
                         try
                         {
                             string filename = Path.GetFileName(this.LocationString);
-                            StaticStringForKongSun.ImportScript = string.Format(StringTemplateForKongSun.ImportScript, filename);
+                            ScriptWrapperForKongSun.ImportScript = string.Format(ScriptTemplateForKongSun.ImportScript, filename);
                             string destScriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, filename);
                             if (File.Exists(destScriptPath))
                             {
