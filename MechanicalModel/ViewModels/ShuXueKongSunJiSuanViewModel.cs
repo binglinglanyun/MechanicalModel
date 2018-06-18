@@ -1,8 +1,14 @@
-﻿using System;
+﻿using MechanicalModel.Scripts;
+using MechanicalModel.Utils;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace MechanicalModel.ViewModels
 {
@@ -69,6 +75,50 @@ namespace MechanicalModel.ViewModels
             set
             {
                 SetValueProperty(value, ref _canShuZ);
+            }
+        }
+
+        /// <summary>
+        /// ShiJianBuChang + JianKongDianCanShu
+        /// </summary>
+        public ICommand JiSuanButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    StaticStringForKongSun.ShiJianBuChang = string.Format(StringTemplateForKongSun.ShiJianBuChang,
+                        this.ShiJianBuChang);
+
+                    string scriptContent = StaticStringForKongSun.CreateScriptForJiSuan();
+                    if (scriptContent != null)
+                    {
+                        string scriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, StaticStringForKongSun.ScriptName);
+                        File.WriteAllText(scriptPath, scriptContent);
+                        if (!File.Exists(StaticStringForKongSun.DestSgrdFilePath))
+                        {
+                            File.Copy(StaticStringForKongSun.SourceSgrdFilePath, StaticStringForKongSun.DestSgrdFilePath);
+                        }
+
+                        //Open with PumpLink
+                        ProcessStartInfo info = new ProcessStartInfo();
+                        info.FileName = "PumpLinx.exe";
+                        info.Arguments = scriptPath;
+                        info.WorkingDirectory = @"C:\Program Files\Simerics\";
+                        info.WindowStyle = ProcessWindowStyle.Hidden;
+                        info.CreateNoWindow = true;
+                        Process proc;
+                        try
+                        {
+                            proc = System.Diagnostics.Process.Start(info);
+                        }
+                        catch (System.ComponentModel.Win32Exception ex)
+                        {
+                            Console.WriteLine("系统找不到指定的程序文件。\r{0}", ex);
+                            return;
+                        }
+                    }
+                });
             }
         }
     }

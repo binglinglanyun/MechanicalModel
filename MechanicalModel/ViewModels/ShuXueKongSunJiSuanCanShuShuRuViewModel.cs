@@ -1,8 +1,12 @@
-﻿using System;
+﻿using MechanicalModel.Scripts;
+using MechanicalModel.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace MechanicalModel.ViewModels
 {
@@ -10,6 +14,14 @@ namespace MechanicalModel.ViewModels
     {
         public ShuXueKongSunJiSuanCanShuShuRuViewModel()
         {
+        }
+
+        public ViewType Type
+        {
+            get
+            {
+                return ViewType.ShuXueKongSunJiSuanCanShuShuRu;
+            }
         }
 
         private string _miDuOfOil = "860";
@@ -77,11 +89,26 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public ViewType Type
+        /// <summary>
+        /// DongLunZhuanSu + TongQiKongAndPaiQiKong + MiDuNianDuOfOil
+        /// </summary>
+        public ICommand CanShuShuRuButtonClick
         {
             get
             {
-                return ViewType.ShuXueKongSunJiSuanCanShuShuRu;
+                return new TaskCommand<object>((o) =>
+                {
+                    StaticStringForKongSun.DongLunZhuanSu = string.Format(StringTemplateForKongSun.DongLunZhuanSu,
+                        this.DongLunZhuanSu);
+
+                    StaticStringForKongSun.TongQiKongAndPaiQiKong = string.Format(StringTemplateForKongSun.TongQiKongAndPaiQiKong,
+                        this.PaiQiKou, this.TongQiKong);
+
+                    StaticStringForKongSun.MiDuNianDuOfOil = string.Format(StringTemplateForKongSun.MiDuNianDuOfOil,
+                         this.NianDuOfOil, this.MiDuOfOil);
+
+                    MessageBox.Show("参数输入成功");
+                });
             }
         }
     }

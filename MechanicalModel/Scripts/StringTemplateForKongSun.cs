@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace MechanicalModel.Scripts
 {
-    public static class ConstantStringForKongSun
+    public static class StringTemplateForKongSun
     {
-        // {0} script file name
-        static string ImportScript = @"
-<?xml version=""1.0"" encoding=""ISO-8859-1""?>
+        public const string ScriptXMLHeader = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
 
-<simulation program=""PumpLinx"" version=""4.0.3"" customer=""Customer"" date=""Tue Jun 12 13:48:04 2018"">
-  
+<simulation program=""PumpLinx"" version=""4.0.3"" customer=""Customer"" date=""Tue Jun 12 13:48:04 2018"">";
+
+        public const string ScriptXMLTail = @"
+</simulation>";
+
+        // {0} script file name
+        public const string ImportScript = @" 
   <import vendor=""Simerics"">
 	<surface name=""inlet_inlet"" file=""{0}"" scale=""1""/>
   </import>
@@ -110,7 +113,7 @@ namespace MechanicalModel.Scripts
     <patch name=""air_inlet3_mgi_stator""/>
   </mgi>";
 
-        static string WangGeHuafenScript1 = @"  <build
+        public const string WangGeHuafenConstScript = @"  <build
     operation=""general mesh""
     name=""air_inlet1""
     new_mesh_name=""air_inlet1""
@@ -172,7 +175,7 @@ namespace MechanicalModel.Scripts
   </build>";
 
         // 动轮 {0} - 最大网格尺度 {1} - 最小网格尺度 {2} - 最大面网格尺度
-        static string DongLunForWangGeHuaFen = @"  <build
+        public const string DongLunForWangGeHuaFen = @"  <build
     operation=""general mesh""
     name=""rotor""
     new_mesh_name=""rotor""
@@ -186,7 +189,7 @@ namespace MechanicalModel.Scripts
   </build>";
 
         // 定轮 {0} - 最大网格尺度 {1} - 最小网格尺度 {2} - 最大面网格尺度
-        static string DingLunForWangGeHuaFen = @"  <build
+        public const string DingLunForWangGeHuaFen = @"  <build
     operation=""general mesh""
     name=""stator""
     new_mesh_name=""stator""
@@ -198,16 +201,18 @@ namespace MechanicalModel.Scripts
     volume_by_surfs_prefix=""off""
     names_by_size=""off""/>";
 
-        // {0} - 时间步长 {1} - 动轮转速
-        static string DongLunZhuanSu = @"  <module type=""share"" iteration=""{0}"" template_mode=""advanced_mode""/>
-  <module type=""flow"" state=""active"" numeric_scheme=""2ndorderupwind upwind""/>
+        // {0} - 时间步长
+        public const string ShiJianBuChang = @"  <module type = ""share"" iteration=""{0}"" template_mode=""advanced_mode""/>";  
+        
+        // {0} - 动轮转速
+        public const string DongLunZhuanSu = @"  <module type=""flow"" state=""active"" numeric_scheme=""2ndorderupwind upwind""/>
   <module type=""turbulence"" state=""active""/>
   <module
     type=""centrifugal""
     state=""active""
     method=""mrf""
     rotation_direction=""counter_clockwise""
-    omega=""{1}""
+    omega=""{0}""
     rotate_axis_direction=""1 0 0""
     number_blades=""20"">
     <bc patch=""rotor_blades"" type=""rotor""/>
@@ -227,7 +232,7 @@ namespace MechanicalModel.Scripts
   </module>";
 
         // {0} - 排气孔 {1} - 通气孔
-        static string TongQiKongAndPaiQiKong = @"  <module
+        public const string TongQiKongAndPaiQiKong = @"  <module
     type=""multiphase""
     state=""active""
     components=""oil air""
@@ -241,7 +246,7 @@ namespace MechanicalModel.Scripts
   </module>";
 
         // {0} -- 粘度 {1} -- 密度
-        static string MiDuNianDuOfOil = @"  <module type=""flowphasecomp"" flowphasecomp=""oil"">
+        public const string MiDuNianDuOfOil = @"  <module type=""flowphasecomp"" flowphasecomp=""oil"">
     <vc volume=""air_inlet1"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
     <vc volume=""air_inlet2"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
     <vc volume=""air_inlet3"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
@@ -299,8 +304,7 @@ namespace MechanicalModel.Scripts
     <ic volume=""outlet"" type=""fix_value"" default=""yes"" value=""0.9982""/>
     <ic volume=""rotor"" type=""fix_value"" default=""yes"" value=""0.9982""/>
     <ic volume=""stator"" type=""fix_value"" default=""yes"" value=""0.9982""/>
-  </module>
-</simulation>";
+  </module>";
 
     }
 }

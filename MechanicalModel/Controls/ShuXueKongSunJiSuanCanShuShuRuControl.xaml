@@ -86,6 +86,7 @@
                 <CheckBox Content="多相流模型" IsChecked="True"/>
                 <CheckBox Content="运动模型" IsChecked="True"/>
             </StackPanel>
+            <Button Content="参数输入" Margin="10,20,0,0" Command="{Binding CanShuShuRuButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
         </StackPanel>
     </Grid>
 </UserControl>
