@@ -25,7 +25,7 @@
             <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="时间步长:" />
-                    <TextBox Text="200000"/>
+                    <TextBox Text="{Binding ShiJianBuChang}"/>
                 </StackPanel>
             </StackPanel>
             <Label Content="计算过程监测" Style="{DynamicResource LabelBoldTextStyle}"/>
@@ -34,17 +34,17 @@
                     <TextBlock Text="监测点坐标参数：" Margin="0,5,0,5" />
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,5">
                         <TextBlock Text="X：" />
-                        <TextBox Text="-0.05"/>
+                        <TextBox Text="{Binding CanShuX}"/>
                         <TextBlock Text="m" Margin="5,0,0,0"/>
                     </StackPanel>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,5">
                         <TextBlock Text="Y：" />
-                        <TextBox Text="0.083"/>
+                        <TextBox Text="{Binding CanShuY}"/>
                         <TextBlock Text="m" Margin="5,0,0,0"/>
                     </StackPanel>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,0">
                         <TextBlock Text="Z：" />
-                        <TextBox Text="0.224"/>
+                        <TextBox Text="{Binding CanShuZ}"/>
                         <TextBlock Text="m" Margin="5,0,0,0"/>
                     </StackPanel>
                     <CheckBox Content="压力监测" IsChecked="True"/>
@@ -58,7 +58,7 @@
                     <CheckBox Content="出口流量监测" IsChecked="True"/>
                 </StackPanel>
             </StackPanel>
-            <Button Content="计算" Margin="20,20,0,0" MinWidth="50" HorizontalAlignment="Left"/>
+            <Button Content="计算" Margin="20,20,0,0" Command="{Binding JiSuanButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
         </StackPanel>
     </Grid>
 </UserControl>
