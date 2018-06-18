@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MechanicalModel.Scripts
 {
-    public static class StringTemplateForKongSun
+    public static class ScriptTemplateForKongSun
     {
         public const string ScriptXMLHeader = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
 

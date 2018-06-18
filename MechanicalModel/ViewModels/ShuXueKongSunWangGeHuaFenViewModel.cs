@@ -127,20 +127,20 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    StaticStringForKongSun.DingLunForWangGeHuaFen = string.Format(StringTemplateForKongSun.DingLunForWangGeHuaFen,
+                    ScriptWrapperForKongSun.DingLunForWangGeHuaFen = string.Format(ScriptTemplateForKongSun.DingLunForWangGeHuaFen,
                         this.DingLunZuiDaWangGeChiDu, this.DingLunZuiXiaoWangGeChiDu, this.DingLunZuiDaMianWangGeChiDu);
 
-                    StaticStringForKongSun.DongLunForWangGeHuaFen = string.Format(StringTemplateForKongSun.DongLunForWangGeHuaFen, 
+                    ScriptWrapperForKongSun.DongLunForWangGeHuaFen = string.Format(ScriptTemplateForKongSun.DongLunForWangGeHuaFen, 
                         this.DongLunZuiDaWangGeChiDu, this.DongLunZuiXiaoWangGeChiDu, this.DongLunZuiDaMianWangGeChiDu);
 
-                    string scriptContent = StaticStringForKongSun.CreateScriptForWangGeHuaFen();
+                    string scriptContent = ScriptWrapperForKongSun.CreateScriptForWangGeHuaFen();
                     if (scriptContent != null)
                     {
-                        string scriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, StaticStringForKongSun.ScriptName);
+                        string scriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, ScriptWrapperForKongSun.ScriptName);
                         File.WriteAllText(scriptPath, scriptContent);
-                        if (!File.Exists(StaticStringForKongSun.DestSgrdFilePath))
+                        if (!File.Exists(ScriptWrapperForKongSun.DestSgrdFilePath))
                         {
-                            File.Copy(StaticStringForKongSun.SourceSgrdFilePath, StaticStringForKongSun.DestSgrdFilePath);
+                            File.Copy(ScriptWrapperForKongSun.SourceSgrdFilePath, ScriptWrapperForKongSun.DestSgrdFilePath);
                         }
 
                         //Open with PumpLink

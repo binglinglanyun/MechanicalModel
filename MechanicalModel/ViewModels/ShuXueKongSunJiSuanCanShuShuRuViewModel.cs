@@ -98,13 +98,13 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    StaticStringForKongSun.DongLunZhuanSu = string.Format(StringTemplateForKongSun.DongLunZhuanSu,
+                    ScriptWrapperForKongSun.DongLunZhuanSu = string.Format(ScriptTemplateForKongSun.DongLunZhuanSu,
                         this.DongLunZhuanSu);
 
-                    StaticStringForKongSun.TongQiKongAndPaiQiKong = string.Format(StringTemplateForKongSun.TongQiKongAndPaiQiKong,
+                    ScriptWrapperForKongSun.TongQiKongAndPaiQiKong = string.Format(ScriptTemplateForKongSun.TongQiKongAndPaiQiKong,
                         this.PaiQiKou, this.TongQiKong);
 
-                    StaticStringForKongSun.MiDuNianDuOfOil = string.Format(StringTemplateForKongSun.MiDuNianDuOfOil,
+                    ScriptWrapperForKongSun.MiDuNianDuOfOil = string.Format(ScriptTemplateForKongSun.MiDuNianDuOfOil,
                          this.NianDuOfOil, this.MiDuOfOil);
 
                     MessageBox.Show("参数输入成功");
