@@ -1,10 +1,12 @@
-﻿using MechanicalModel.Utils;
+﻿using MechanicalModel.Scripts;
+using MechanicalModel.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MechanicalModel.ViewModels
@@ -36,12 +38,13 @@ namespace MechanicalModel.ViewModels
                 return new DelegateCommand<object>((o) =>
                 {
                     string localFolder;
-                    System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
-                    dialog.Description = "模型位置";
+                    System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
+                    dialog.Title = "模型位置";
+                    dialog.DefaultExt = ".stl";
                     System.Windows.Forms.DialogResult result = dialog.ShowDialog();
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {
-                        localFolder = dialog.SelectedPath;
+                        localFolder = dialog.FileName;
                     }
                     else
                     {
@@ -53,12 +56,46 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _locationString = null;
+        public ICommand ImportButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    if (File.Exists(this.LocationString))
+                    {
+                        try
+                        {
+                            string filename = Path.GetFileName(this.LocationString);
+                            ScriptWrapperForHengNiuJu.ImportScript = string.Format(ScriptWrapperForHengNiuJu.ImportScript, filename);
+                            string destScriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, filename);
+                            if (File.Exists(destScriptPath))
+                            {
+                                File.Delete(destScriptPath);
+                            }
+
+                            File.Copy(this.LocationString, destScriptPath);
+                            MessageBox.Show("模型导入成功");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("模型导入失败，错误信息：{0}", ex.Message);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("模型文件不存在");
+                    }
+                });
+            }
+        }
+
+        #region Properties
+        private string _locationString = "D:\\380流场计算\\几何模型";
         public string LocationString
         {
             get
             {
-                _locationString = "D:\\380流场计算\\几何模型"; //TODO: Remove hard code
                 return _locationString;
             }
             set
@@ -95,5 +132,6 @@ namespace MechanicalModel.ViewModels
                 return Path.GetFullPath("Resources/HengNiuJuJiHeMoXing.png"); ;
             }
         }
+        #endregion
     }
 }

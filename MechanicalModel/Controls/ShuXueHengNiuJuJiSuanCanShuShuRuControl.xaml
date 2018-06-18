@@ -44,12 +44,12 @@
                         <CheckBox Content="油" IsChecked="True"/>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
                             <TextBlock Text="密度:" />
-                            <TextBox Text="860"/>
+                            <TextBox Text="{Binding MiDuOfOil}"/>
                             <TextBlock Text="kg/m3" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
                             <TextBlock Text="粘度:" />
-                            <TextBox Text="0.026"/>
+                            <TextBox Text="{Binding NianDuOfOil}"/>
                             <TextBlock Text="Pa.s" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
@@ -65,17 +65,17 @@
                     <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="充油进口:" />
-                            <TextBox Text="0.2"/>
+                            <TextBox Text="{Binding ChongYouJinKou}"/>
                             <TextBlock Text="MPa" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="通气孔:" />
-                            <TextBox Text="0.1"/>
+                            <TextBox Text="{Binding TongQiKong}"/>
                             <TextBlock Text="MPa" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="动轮初始转速:" />
-                            <TextBox Text="3600"/>
+                            <TextBox Text="{Binding DongLunZhuanSu}"/>
                             <TextBlock Text="rpm" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
@@ -87,22 +87,22 @@
                     <StackPanel Orientation="Vertical" Grid.Column="1">
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="背压阀出口:" />
-                            <TextBox Text="0.1"/>
+                            <TextBox Text="{Binding BeiYaFaChuKou}"/>
                             <TextBlock Text="MPa" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="反馈压力入口:" />
-                            <TextBox Text="2.1"/>
+                            <TextBox Text="{Binding FanKuiYaLiRuKou}"/>
                             <TextBlock Text="MPa" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="指令油入口:" />
-                            <TextBox Text="0.6"/>
+                            <TextBox Text="{Binding ZhiLingYouRuKou}"/>
                             <TextBlock Text="MPa" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="滑阀回油出口:" />
-                            <TextBox Text="0.2"/>
+                            <TextBox Text="{Binding HuaFaHuiYouChuKou}"/>
                             <TextBlock Text="MPa" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
@@ -161,6 +161,7 @@
                     <CheckBox Content="多相流模型" IsChecked="True"/>
                     <CheckBox Content="运动模型" IsChecked="True"/>
                 </StackPanel>
+                <Button Content="参数输入" Margin="10,20,0,0" Command="{Binding CanShuShuRuButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

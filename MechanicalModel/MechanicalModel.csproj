@@ -87,6 +87,8 @@
     <Compile Include="Controls\ShuXueHengNiuJuWangGeHuaFenControl.xaml.cs">
       <DependentUpon>ShuXueHengNiuJuWangGeHuaFenControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Scripts\ScriptTemplateForHengNiuJu.cs" />
+    <Compile Include="Scripts\ScriptWrapperForHengNiuJu.cs" />
     <Compile Include="Scripts\ScriptWrapperForKongSun.cs" />
     <Compile Include="Scripts\ScriptTemplateForKongSun.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
