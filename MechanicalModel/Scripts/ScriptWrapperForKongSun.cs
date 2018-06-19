@@ -19,12 +19,15 @@ namespace MechanicalModel.Scripts
         public static string WangGeHuafenConstScript = ScriptTemplateForKongSun.WangGeHuafenConstScript;
         public static string DongLunForWangGeHuaFen = string.Empty;
         public static string DingLunForWangGeHuaFen = string.Empty;
-        public static string DongLunZhuanSu = string.Empty;
-        public static string TongQiKongAndPaiQiKong = string.Empty;
-        public static string MiDuNianDuOfOil = string.Empty;
-        public static string ShiJianBuChang = string.Empty;
+        public static string BianJieTiaoJianDingYi = string.Empty;
+        public static string WuZhiDingYi = string.Empty;
+        public static string JiSuanKongZhiCanShu = string.Empty;
         public static string JianKongDianCanShu = string.Empty;
 
+        /// <summary>
+        /// ImportScript + WangGeHuafenConstScript + DongLunForWangGeHuaFen + DingLunForWangGeHuaFen
+        /// </summary>
+        /// <returns></returns>
         private static string CreateBasicScript()
         {
             StringBuilder sb = new StringBuilder();
@@ -53,6 +56,11 @@ namespace MechanicalModel.Scripts
             return sb.ToString();
         }
 
+        /// <summary>
+        /// ScriptXMLHeader + 
+        /// ImportScript + WangGeHuafenConstScript + DongLunForWangGeHuaFen + DingLunForWangGeHuaFen +  ==> basic script
+        /// ScriptXMLTail
+        /// </summary>
         public static string CreateScriptForWangGeHuaFen()
         {
             StringBuilder sb = new StringBuilder();
@@ -67,27 +75,34 @@ namespace MechanicalModel.Scripts
             return sb.ToString();
         }
 
+        /// <summary>
+        /// ScriptXMLHeader + 
+        /// ImportScript + WangGeHuafenConstScript + DongLunForWangGeHuaFen + DingLunForWangGeHuaFen + ==> basic script
+        /// ShiJianBuChang + DongLunZhuanSu + TongQiKongAndPaiQiKong + MiDuNianDuOfOil + JianKongDianCanShu + 
+        /// ScriptXMLTail
+        /// </summary>
+        /// <returns></returns>
         public static string CreateScriptForJiSuan()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(ScriptWrapperForKongSun.ScriptXMLHeader);
+            sb.AppendLine(ScriptXMLHeader);
             string basicString = CreateBasicScript();
             if (!string.IsNullOrEmpty(basicString))
             {
                 sb.AppendLine(basicString);
             }
 
-            if (string.IsNullOrEmpty(ScriptWrapperForKongSun.ShiJianBuChang))
+            if (string.IsNullOrEmpty(JiSuanKongZhiCanShu))
             {
                 MessageBox.Show("请输入时间步长");
                 return null;
             }
             else
             {
-                sb.AppendLine(ScriptWrapperForKongSun.ShiJianBuChang);
+                sb.AppendLine(JiSuanKongZhiCanShu);
             }
 
-            if (string.IsNullOrEmpty(ScriptWrapperForKongSun.DongLunZhuanSu) || string.IsNullOrEmpty(TongQiKongAndPaiQiKong) || string.IsNullOrEmpty(MiDuNianDuOfOil))
+            if (string.IsNullOrEmpty(BianJieTiaoJianDingYi) || string.IsNullOrEmpty(WuZhiDingYi))
             {
                 MessageBox.Show("请输入参数");
                 return null;

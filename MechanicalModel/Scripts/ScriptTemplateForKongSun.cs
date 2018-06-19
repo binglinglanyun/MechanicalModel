@@ -202,10 +202,10 @@ namespace MechanicalModel.Scripts
     names_by_size=""off""/>";
 
         // {0} - 时间步长
-        public const string ShiJianBuChang = @"  <module type = ""share"" iteration=""{0}"" template_mode=""advanced_mode""/>";  
-        
-        // {0} - 动轮转速
-        public const string DongLunZhuanSu = @"  <module type=""flow"" state=""active"" numeric_scheme=""2ndorderupwind upwind""/>
+        public const string JiSuanKongZhiCanShu = @"  <module type = ""share"" iteration=""{0}"" template_mode=""advanced_mode""/>";
+
+        // {0} - 动轮转速 {1} - 排气孔 {2} - 通气孔
+        public const string BianJieTiaoJianDingYi = @"  <module type=""flow"" state=""active"" numeric_scheme=""2ndorderupwind upwind""/>
   <module type=""turbulence"" state=""active""/>
   <module
     type=""centrifugal""
@@ -229,24 +229,22 @@ namespace MechanicalModel.Scripts
     <vc volume=""outlet"" type=""property"" default=""yes"" pump_material=""air""/>
     <vc volume=""rotor"" type=""property"" default=""yes"" pump_material=""air""/>
     <vc volume=""stator"" type=""property"" default=""yes"" pump_material=""air""/>
-  </module>";
-
-        // {0} - 排气孔 {1} - 通气孔
-        public const string TongQiKongAndPaiQiKong = @"  <module
+  </module>
+  <module
     type=""multiphase""
     state=""active""
     components=""oil air""
     courant_number=""0.34""
     adaptive_courant_number=""off""/>
   <module type=""multiflow"" numeric_scheme=""2ndorderupwind upwind"">
-    <bc patch=""outlet_outlet_air"" type=""fix_pressure"" value=""{0}""/>
-    <bc patch=""air_inlet1_inlet"" type=""fix_totalp"" default=""yes"" totalp=""{1}""/>
-    <bc patch=""air_inlet3_inlet"" type=""fix_totalp"" default=""yes"" totalp=""{1}""/>
-    <bc patch=""air_inlet2_inlet"" type=""fix_totalp"" default=""yes"" totalp=""{1}""/>
+    <bc patch=""outlet_outlet_air"" type=""fix_pressure"" value=""{1}""/>
+    <bc patch=""air_inlet1_inlet"" type=""fix_totalp"" default=""yes"" totalp=""{2}""/>
+    <bc patch=""air_inlet3_inlet"" type=""fix_totalp"" default=""yes"" totalp=""{2}""/>
+    <bc patch=""air_inlet2_inlet"" type=""fix_totalp"" default=""yes"" totalp=""{2}""/>
   </module>";
 
         // {0} -- 粘度 {1} -- 密度
-        public const string MiDuNianDuOfOil = @"  <module type=""flowphasecomp"" flowphasecomp=""oil"">
+        public const string WuZhiDingYi = @"  <module type=""flowphasecomp"" flowphasecomp=""oil"">
     <vc volume=""air_inlet1"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
     <vc volume=""air_inlet2"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
     <vc volume=""air_inlet3"" type=""const_viscosity"" default=""yes"" value=""{0}""/>

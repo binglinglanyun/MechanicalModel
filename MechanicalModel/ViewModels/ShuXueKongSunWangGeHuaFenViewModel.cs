@@ -116,11 +116,6 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        /// <summary>
-        /// ScriptXMLHeader + 
-        /// ImportScript + WangGeHuafenConstScript + DongLunForWangGeHuaFen + DingLunForWangGeHuaFen
-        /// ScriptXMLTail
-        /// </summary>
         public ICommand WangGeHuaFenButtonClick
         {
             get

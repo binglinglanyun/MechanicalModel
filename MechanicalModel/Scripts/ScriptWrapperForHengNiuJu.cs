@@ -19,11 +19,16 @@ namespace MechanicalModel.Scripts
         public static string WangGeHuafenConstScript = ScriptTemplateForHengNiuJu.WangGeHuafenConstScript;
         public static string DongLunForWangGeHuaFen = string.Empty;
         public static string DingLunForWangGeHuaFen = string.Empty;
-        public static string BianJieTiaoJian = string.Empty;
-        public static string MiDuNianDuOfOil = string.Empty;
-        public static string ShiJianBuChang = string.Empty;
+        public static string BianJieTiaoJianDingYi = string.Empty;
+        public static string FaMenCanShu = string.Empty;
+        public static string WuZhiDingYi = string.Empty;
+        public static string JiSuanKongZhiCanShu = string.Empty;
         public static string JianKongDianCanShu = string.Empty;
 
+        /// <summary>
+        /// ImportScript + WangGeHuafenConstScript + DongLunForWangGeHuaFen + DingLunForWangGeHuaFen
+        /// </summary>
+        /// <returns></returns>
         private static string CreateBasicScript()
         {
             StringBuilder sb = new StringBuilder();
@@ -52,6 +57,11 @@ namespace MechanicalModel.Scripts
             return sb.ToString();
         }
 
+        /// <summary>
+        /// ScriptXMLHeader + 
+        /// ImportScript + WangGeHuafenConstScript + DongLunForWangGeHuaFen + DingLunForWangGeHuaFen +  ==> basic script
+        /// ScriptXMLTail
+        /// </summary>
         public static string CreateScriptForWangGeHuaFen()
         {
             StringBuilder sb = new StringBuilder();
@@ -66,6 +76,13 @@ namespace MechanicalModel.Scripts
             return sb.ToString();
         }
 
+        /// <summary>
+        /// ScriptXMLHeader + 
+        /// ImportScript + WangGeHuafenConstScript + DongLunForWangGeHuaFen + DingLunForWangGeHuaFen +  ==> basic script
+        /// MiDuNianDuOfOil + BianJieTiaoJian + FaMenCanShu
+        /// ScriptXMLTail
+        /// </summary>
+        /// <returns></returns>
         public static string CreateScriptForJiSuan()
         {
             return null;
