@@ -87,7 +87,7 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    ScriptWrapperForKongSun.ShiJianBuChang = string.Format(ScriptTemplateForKongSun.ShiJianBuChang,
+                    ScriptWrapperForKongSun.JiSuanKongZhiCanShu = string.Format(ScriptTemplateForKongSun.JiSuanKongZhiCanShu,
                         this.ShiJianBuChang);
 
                     string scriptContent = ScriptWrapperForKongSun.CreateScriptForJiSuan();

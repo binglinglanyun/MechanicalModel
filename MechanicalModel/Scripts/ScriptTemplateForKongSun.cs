@@ -111,24 +111,27 @@ namespace MechanicalModel.Scripts
   <mgi name=""MGI07"">
     <patch name=""stator_mgi_air_inlet3""/>
     <patch name=""air_inlet3_mgi_stator""/>
-  </mgi>";
+  </mgi>
+";
 
         public const string WangGeHuafenConstScript = @"  <build
     operation=""general mesh""
     name=""air_inlet1""
     new_mesh_name=""air_inlet1""
     surfaces=""air_inlet1_inlet air_inlet1_mgi_stator air_inlet1_wall""
-    
+    maximum_size=""0.02""
     minimum_size=""0.001""
+    maximum_at_surface=""0.02""
     volume_by_surfs_prefix=""off""
-	names_by_size=""off""/>
-   <build
+    names_by_size=""off""/>
+  <build
     operation=""general mesh""
     name=""air_inlet2""
     new_mesh_name=""air_inlet2""
     surfaces=""air_inlet2_inlet air_inlet2_mgi_stator air_inlet2_wall""
-    
+    maximum_size=""0.02""
     minimum_size=""0.001""
+    maximum_at_surface=""0.02""
     volume_by_surfs_prefix=""off""
     names_by_size=""off""/>
   <build
@@ -136,8 +139,9 @@ namespace MechanicalModel.Scripts
     name=""air_inlet3""
     new_mesh_name=""air_inlet3""
     surfaces=""air_inlet3_inlet air_inlet3_mgi_stator air_inlet3_wall""
-    
+    maximum_size=""0.02""
     minimum_size=""0.001""
+    maximum_at_surface=""0.02""
     volume_by_surfs_prefix=""off""
     names_by_size=""off""/>
   <build
@@ -145,33 +149,21 @@ namespace MechanicalModel.Scripts
     name=""inlet""
     new_mesh_name=""inlet""
     surfaces=""inlet_inlet inlet_mgi_rotor inlet_wall""
-    
     maximum_size=""0.01""
     minimum_size=""0.001""
+    maximum_at_surface=""0.01""
     volume_by_surfs_prefix=""off""
     names_by_size=""off""/>
   <build
     operation=""general mesh""
     name=""outlet""
     new_mesh_name=""outlet""
-   
     maximum_size=""0.01""
-    minimum_size=""0.001""
-    volume_by_surfs_prefix=""off""
-    names_by_size=""off"">
-    <attribute surfaces=""outlet_mgi_rotor outlet_mgi_rotor_cyl outlet_outlet outlet_outlet_air outlet_wall""/>
-  </build>
-  <build
-    operation=""general mesh""
-    name=""rotor""
-    new_mesh_name=""rotor""
-    
-    maximum_size=""0.02""
     minimum_size=""0.001""
     maximum_at_surface=""0.01""
     volume_by_surfs_prefix=""off""
     names_by_size=""off"">
-    <attribute surfaces=""rotor_blades rotor_mgi_inlet rotor_mgi_outlet rotor_mgi_outlet_cyl rotor_mgi_stator""/>
+    <attribute surfaces=""outlet_mgi_rotor outlet_mgi_rotor_cyl outlet_outlet outlet_outlet_air outlet_wall""/>
   </build>";
 
         // 动轮 {0} - 最大网格尺度 {1} - 最小网格尺度 {2} - 最大面网格尺度
@@ -179,13 +171,12 @@ namespace MechanicalModel.Scripts
     operation=""general mesh""
     name=""rotor""
     new_mesh_name=""rotor""
-    
     maximum_size=""{0}""
     minimum_size=""{1}""
     maximum_at_surface=""{2}""
     volume_by_surfs_prefix=""off""
     names_by_size=""off"">
-    <attribute surfaces=""rotor_blades rotor_mgi_inlet rotor_mgi_outlet rotor_mgi_outlet_cyl rotor_mgi_stator""/>
+ <attribute surfaces=""rotor_blades rotor_mgi_inlet rotor_mgi_outlet rotor_mgi_outlet_cyl rotor_mgi_stator""/>
   </build>";
 
         // 定轮 {0} - 最大网格尺度 {1} - 最小网格尺度 {2} - 最大面网格尺度
@@ -193,16 +184,16 @@ namespace MechanicalModel.Scripts
     operation=""general mesh""
     name=""stator""
     new_mesh_name=""stator""
-    surfaces=""stator_mgi_air_inlet stator_mgi_rotor stator_wall""
-    
     maximum_size=""{0}""
     minimum_size=""{1}""
     maximum_at_surface=""{2}""
     volume_by_surfs_prefix=""off""
-    names_by_size=""off""/>";
+    names_by_size=""off"">
+<attribute surfaces=""stator_mgi_air_inlet1 stator_mgi_air_inlet2 stator_mgi_air_inlet3 stator_mgi_rotor stator_wall""/>
+  </build>";
 
         // {0} - 时间步长
-        public const string JiSuanKongZhiCanShu = @"  <module type = ""share"" iteration=""{0}"" template_mode=""advanced_mode""/>";
+        public const string JiSuanKongZhiCanShu = @"  <module type=""share"" iteration=""{0}"" template_mode=""advanced_mode""/>";
 
         // {0} - 动轮转速 {1} - 排气孔 {2} - 通气孔
         public const string BianJieTiaoJianDingYi = @"  <module type=""flow"" state=""active"" numeric_scheme=""2ndorderupwind upwind""/>
@@ -210,6 +201,7 @@ namespace MechanicalModel.Scripts
   <module
     type=""centrifugal""
     state=""active""
+    user_mode=""advanced_mode""
     method=""mrf""
     rotation_direction=""counter_clockwise""
     omega=""{0}""
@@ -222,14 +214,16 @@ namespace MechanicalModel.Scripts
     <bc patch=""air_inlet1_inlet"" type=""inlet""/>
     <bc patch=""air_inlet3_inlet"" type=""inlet""/>
     <bc patch=""air_inlet2_inlet"" type=""inlet""/>
-    <vc volume=""air_inlet1"" type=""property"" default=""yes"" pump_material=""air""/>
-    <vc volume=""air_inlet2"" type=""property"" default=""yes"" pump_material=""air""/>
-    <vc volume=""air_inlet3"" type=""property"" default=""yes"" pump_material=""air""/>
-    <vc volume=""inlet"" type=""property"" default=""yes"" pump_material=""air""/>
-    <vc volume=""outlet"" type=""property"" default=""yes"" pump_material=""air""/>
-    <vc volume=""rotor"" type=""property"" default=""yes"" pump_material=""air""/>
-    <vc volume=""stator"" type=""property"" default=""yes"" pump_material=""air""/>
+    <bc patch=""sub-features_2"" type=""rotor""/>
+    <vc volume=""general mesh"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""general mesh_1"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""general mesh_2"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""general mesh_3"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""general mesh_4"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""general mesh_5"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""general mesh_6"" type=""property"" default=""yes"" pump_material=""oil""/>
   </module>
+
   <module
     type=""multiphase""
     state=""active""
@@ -243,66 +237,75 @@ namespace MechanicalModel.Scripts
     <bc patch=""air_inlet2_inlet"" type=""fix_totalp"" default=""yes"" totalp=""{2}""/>
   </module>";
 
-        // {0} -- 粘度 {1} -- 密度
+        // {0} -- 油粘度 {1} -- 空气粘度 {2} -- 油密度
         public const string WuZhiDingYi = @"  <module type=""flowphasecomp"" flowphasecomp=""oil"">
-    <vc volume=""air_inlet1"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""air_inlet2"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""air_inlet3"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""inlet"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""outlet"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""rotor"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""stator"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""air_inlet1"" type=""surface_tension""/>
-    <vc volume=""stator"" type=""surface_tension""/>
-    <vc volume=""rotor"" type=""surface_tension""/>
-    <vc volume=""outlet"" type=""surface_tension""/>
-    <vc volume=""inlet"" type=""surface_tension""/>
-    <vc volume=""air_inlet3"" type=""surface_tension""/>
-    <vc volume=""air_inlet2"" type=""surface_tension""/>
+    <vc volume=""general mesh"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""general mesh_1"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""general mesh_2"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""general mesh_3"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""general mesh_4"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""general mesh_5"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""general mesh_6"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""general mesh"" type=""surface_tension"" surface_tension=""0.0721""/>
+    <vc volume=""general mesh_6"" type=""surface_tension"" surface_tension=""0.0721""/>
+    <vc volume=""general mesh_5"" type=""surface_tension"" surface_tension=""0.0721""/>
+    <vc volume=""general mesh_4"" type=""surface_tension"" surface_tension=""0.0721""/>
+    <vc volume=""general mesh_3"" type=""surface_tension"" surface_tension=""0.0721""/>
+    <vc volume=""general mesh_2"" type=""surface_tension"" surface_tension=""0.0721""/>
+    <vc volume=""general mesh_1"" type=""surface_tension"" surface_tension=""0.0721""/>
+  </module>
+
+  <module type=""flowphasecomp"" flowphasecomp=""air"">
+    <vc volume=""general mesh"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
+    <vc volume=""general mesh_1"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
+    <vc volume=""general mesh_2"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
+    <vc volume=""general mesh_3"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
+    <vc volume=""general mesh_4"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
+    <vc volume=""general mesh_5"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
+    <vc volume=""general mesh_6"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
   </module>
 
   <module type=""sharephasecomp"" sharephasecomp=""oil"">
-    <vc volume=""air_inlet1"" type=""const_density"" default=""yes"" value=""{1}""/>
-    <vc volume=""air_inlet2"" type=""const_density"" default=""yes"" value=""{1}""/>
-    <vc volume=""air_inlet3"" type=""const_density"" default=""yes"" value=""{1}""/>
-    <vc volume=""inlet"" type=""const_density"" default=""yes"" value=""{1}""/>
-    <vc volume=""outlet"" type=""const_density"" default=""yes"" value=""{1}""/>
-    <vc volume=""rotor"" type=""const_density"" default=""yes"" value=""{1}""/>
-    <vc volume=""stator"" type=""const_density"" default=""yes"" value=""{1}""/>
-  </module>
-
-  <module type=""phasecomp"" phasecomp=""oil"">
-    <ic volume=""air_inlet1"" type=""fix_value"" default=""yes"" value=""0.0018""/>
-    <ic volume=""air_inlet2"" type=""fix_value"" default=""yes"" value=""0.0018""/>
-    <ic volume=""air_inlet3"" type=""fix_value"" default=""yes"" value=""0.0018""/>
-    <ic volume=""inlet"" type=""fix_value"" default=""yes"" value=""0.0018""/>
-    <ic volume=""outlet"" type=""fix_value"" default=""yes"" value=""0.0018""/>
-    <ic volume=""rotor"" type=""fix_value"" default=""yes"" value=""0.0018""/>
-    <ic volume=""stator"" type=""fix_value"" default=""yes"" value=""0.0018""/>
+    <vc volume=""general mesh"" type=""const_density"" value=""{2}""/>
+    <vc volume=""general mesh_1"" type=""const_density"" value=""{2}""/>
+    <vc volume=""general mesh_2"" type=""const_density"" value=""{2}""/>
+    <vc volume=""general mesh_3"" type=""const_density"" value=""{2}""/>
+    <vc volume=""general mesh_4"" type=""const_density"" value=""{2}""/>
+    <vc volume=""general mesh_5"" type=""const_density"" value=""{2}""/>
+    <vc volume=""general mesh_6"" type=""const_density"" value=""{2}""/>
   </module>
 
   <module type=""sharephasecomp"" sharephasecomp=""air"">
-    <vc volume=""air_inlet1"" type=""ideal_gas_law""/>
-    <vc volume=""stator"" type=""ideal_gas_law""/>
-    <vc volume=""rotor"" type=""ideal_gas_law""/>
-    <vc volume=""outlet"" type=""ideal_gas_law""/>
-    <vc volume=""inlet"" type=""ideal_gas_law""/>
-    <vc volume=""air_inlet3"" type=""ideal_gas_law""/>
-    <vc volume=""air_inlet2"" type=""ideal_gas_law""/>
+    <vc volume=""general mesh"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
+    <vc volume=""general mesh_6"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
+    <vc volume=""general mesh_5"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
+    <vc volume=""general mesh_4"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
+    <vc volume=""general mesh_3"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
+    <vc volume=""general mesh_2"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
+    <vc volume=""general mesh_1"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
+  </module>
+
+  <module type=""phasecomp"" phasecomp=""oil"">
+    <ic volume=""general mesh"" type=""fix_value"" default=""yes"" value=""0.0018""/>
+    <ic volume=""general mesh_1"" type=""fix_value"" default=""yes"" value=""0.0018""/>
+    <ic volume=""general mesh_2"" type=""fix_value"" default=""yes"" value=""0.0018""/>
+    <ic volume=""general mesh_3"" type=""fix_value"" default=""yes"" value=""0.0018""/>
+    <ic volume=""general mesh_4"" type=""fix_value"" default=""yes"" value=""0.0018""/>
+    <ic volume=""general mesh_5"" type=""fix_value"" default=""yes"" value=""0.0018""/>
+    <ic volume=""general mesh_6"" type=""fix_value"" default=""yes"" value=""0.0018""/>
   </module>
 
   <module type=""phasecomp"" phasecomp=""air"">
     <bc patch=""air_inlet1_inlet"" type=""fix_value"" value=""1""/>
     <bc patch=""air_inlet3_inlet"" type=""fix_value"" value=""1""/>
     <bc patch=""air_inlet2_inlet"" type=""fix_value"" value=""1""/>
-    <ic volume=""air_inlet1"" type=""fix_value"" default=""yes"" value=""0.9982""/>
-    <ic volume=""air_inlet2"" type=""fix_value"" default=""yes"" value=""0.9982""/>
-    <ic volume=""air_inlet3"" type=""fix_value"" default=""yes"" value=""0.9982""/>
-    <ic volume=""inlet"" type=""fix_value"" default=""yes"" value=""0.9982""/>
-    <ic volume=""outlet"" type=""fix_value"" default=""yes"" value=""0.9982""/>
-    <ic volume=""rotor"" type=""fix_value"" default=""yes"" value=""0.9982""/>
-    <ic volume=""stator"" type=""fix_value"" default=""yes"" value=""0.9982""/>
+    <ic volume=""general mesh"" type=""fix_value"" default=""yes"" value=""0.9982""/>
+    <ic volume=""general mesh_1"" type=""fix_value"" default=""yes"" value=""0.9982""/>
+    <ic volume=""general mesh_2"" type=""fix_value"" default=""yes"" value=""0.9982""/>
+    <ic volume=""general mesh_3"" type=""fix_value"" default=""yes"" value=""0.9982""/>
+    <ic volume=""general mesh_4"" type=""fix_value"" default=""yes"" value=""0.9982""/>
+    <ic volume=""general mesh_5"" type=""fix_value"" default=""yes"" value=""0.9982""/>
+    <ic volume=""general mesh_6"" type=""fix_value"" default=""yes"" value=""0.9982""/>
   </module>";
-
     }
 }

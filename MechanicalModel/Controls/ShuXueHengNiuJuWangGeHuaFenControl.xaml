@@ -39,15 +39,6 @@
                     <Label Content="定轮网格局部控制" Style="{DynamicResource LabelBoldTextStyle}"/>
                     <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="临界界面角:" />
-                            <TextBox Text="15"/>
-                            <TextBlock Text="°C" Margin="5,0,0,0"/>
-                        </StackPanel>
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="曲线分辨率:" />
-                            <TextBox Text="20"/>
-                        </StackPanel>
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="最大网格尺度:" />
                             <TextBox Text="{Binding DingLunZuiDaWangGeChiDu}"/>
                             <TextBlock Text="m" Margin="5,0,0,0"/>
@@ -62,15 +53,6 @@
                 <StackPanel Orientation="Vertical" Grid.Column="1">
                     <Label Content="动轮网格局部控制" Style="{DynamicResource LabelBoldTextStyle}"/>
                     <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="临界界面角:" />
-                            <TextBox Text="30"/>
-                            <TextBlock Text="°C" Margin="5,0,0,0"/>
-                        </StackPanel>
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="曲线分辨率:" />
-                            <TextBox Text="35"/>
-                        </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="最大网格尺度:" />
                             <TextBox Text="{Binding DongLunZuiDaWangGeChiDu}"/>

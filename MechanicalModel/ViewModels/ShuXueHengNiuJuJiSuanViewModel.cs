@@ -99,7 +99,7 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    ScriptWrapperForHengNiuJu.ShiJianBuChang = string.Format(ScriptTemplateForHengNiuJu.ShiJianBuChang,
+                    ScriptWrapperForHengNiuJu.JiSuanKongZhiCanShu = string.Format(ScriptTemplateForHengNiuJu.JiSuanKongZhiCanShu,
                         this.ShiJianBuChang, this.BaoCunPinLv);
 
                     string scriptContent = ScriptWrapperForHengNiuJu.CreateScriptForJiSuan();

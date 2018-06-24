@@ -660,7 +660,7 @@ namespace MechanicalModel.Scripts
   <probe_point name=""Point 06"" position=""-0.03980238649763423 0.09385995490348284 0.2433976844376425""/>";
 
         // {0} -- 迭代步数 {1} -- 保存频率
-        public static string ShiJianBuChang = @"  <module type=""share"" iteration=""0{}"" save_result_interval=""{1}"" template_mode=""advanced_mode"">
+        public static string JiSuanKongZhiCanShu = @"  <module type=""share"" iteration=""0{}"" save_result_interval=""{1}"" template_mode=""advanced_mode"">
     <vc volume=""inlet"" type=""output_var"" default=""yes"" print_volume=""on""/>
     <vc volume=""rotor2"" type=""output_var"" default=""yes"" print_volume=""on""/>
     <vc volume=""volute"" type=""output_var"" default=""yes"" print_volume=""on""/>
@@ -833,7 +833,7 @@ namespace MechanicalModel.Scripts
     adaptive_courant_number=""off""/>";
 
         // {0} -- 滑阀回油出口 {1} -- 背压阀出口 {2} -- 指令油入口 {3} -- 反馈压力入口
-        public static string BianJieTiaoJian = @"  <module
+        public static string BianJieTiaoJianDingYi = @"  <module
     type=""multiflow""
     numeric_scheme=""2ndorderupwind upwind""
     gravity=""on""
@@ -887,7 +887,7 @@ namespace MechanicalModel.Scripts
   </module>";
 
         // {0} -- 粘度 {1} -- 密度
-        public static string MiDuNianDuOfOil = @"  <module type=""flowphasecomp"" flowphasecomp=""oil"">
+        public static string WuZhiDingYi = @"  <module type=""flowphasecomp"" flowphasecomp=""oil"">
     <vc volume=""valve2_up"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
     <vc volume=""valve2_bot"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
     <vc volume=""valve1_bot"" type=""const_viscosity"" default=""yes"" value=""{0}""/>

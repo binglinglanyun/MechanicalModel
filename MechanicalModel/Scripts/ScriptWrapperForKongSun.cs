@@ -11,7 +11,7 @@ namespace MechanicalModel.Scripts
     public static class ScriptWrapperForKongSun
     {
         public static string ScriptName = "torque_kongsun.spro";
-        public static string SourceSgrdFilePath = @"C:\Users\xnl\OneDrive - Microsoft\MechanicsModel\Script\torque_kongsun_test2.sgrd";
+        public static string SourceSgrdFilePath = @"C:\Users\xnl\OneDrive - Microsoft\MechanicsModel\Script\torque_kongsun_test.sgrd";
         public static string DestSgrdFilePath = Path.Combine(ConstantValues.CurrentWorkDirectory, "torque_kongsun.sgrd");
         public static string ScriptXMLHeader = ScriptTemplateForKongSun.ScriptXMLHeader;
         public static string ScriptXMLTail = ScriptTemplateForKongSun.ScriptXMLTail;
@@ -78,7 +78,7 @@ namespace MechanicalModel.Scripts
         /// <summary>
         /// ScriptXMLHeader + 
         /// ImportScript + WangGeHuafenConstScript + DongLunForWangGeHuaFen + DingLunForWangGeHuaFen + ==> basic script
-        /// ShiJianBuChang + DongLunZhuanSu + TongQiKongAndPaiQiKong + MiDuNianDuOfOil + JianKongDianCanShu + 
+        /// JiSuanKongZhiCanShu + BianJieTiaoJianDingYi + JianKongDianCanShu + 
         /// ScriptXMLTail
         /// </summary>
         /// <returns></returns>
@@ -94,7 +94,7 @@ namespace MechanicalModel.Scripts
 
             if (string.IsNullOrEmpty(JiSuanKongZhiCanShu))
             {
-                MessageBox.Show("请输入时间步长");
+                MessageBox.Show("请输入计算控制参数");
                 return null;
             }
             else
@@ -104,13 +104,13 @@ namespace MechanicalModel.Scripts
 
             if (string.IsNullOrEmpty(BianJieTiaoJianDingYi) || string.IsNullOrEmpty(WuZhiDingYi))
             {
-                MessageBox.Show("请输入参数");
+                MessageBox.Show("请输入边界条件定义参数和物质定义参数");
                 return null;
             }
+            else
             {
-                sb.AppendLine(ScriptWrapperForKongSun.DongLunZhuanSu);
-                sb.AppendLine(ScriptWrapperForKongSun.TongQiKongAndPaiQiKong);
-                sb.AppendLine(ScriptWrapperForKongSun.MiDuNianDuOfOil);
+                sb.AppendLine(ScriptWrapperForKongSun.BianJieTiaoJianDingYi);
+                sb.AppendLine(ScriptWrapperForKongSun.WuZhiDingYi);;
             }
             sb.AppendLine(ScriptWrapperForKongSun.ScriptXMLTail);
 

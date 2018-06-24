@@ -50,6 +50,19 @@ namespace MechanicalModel.ViewModels
             }
         }
 
+        private string _nianDuOfAir = "1.853e-5";
+        public string NianDuOfAir
+        {
+            get
+            {
+                return _nianDuOfAir;
+            }
+            set
+            {
+                SetValueProperty(value, ref _nianDuOfAir);
+            }
+        }
+
         private string _tongQiKong = "0.1";
         public string TongQiKong
         {
@@ -98,14 +111,11 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    ScriptWrapperForKongSun.DongLunZhuanSu = string.Format(ScriptTemplateForKongSun.DongLunZhuanSu,
-                        this.DongLunZhuanSu);
+                    ScriptWrapperForKongSun.BianJieTiaoJianDingYi = string.Format(ScriptTemplateForKongSun.BianJieTiaoJianDingYi,
+                        this.DongLunZhuanSu, this.PaiQiKou, this.TongQiKong);
 
-                    ScriptWrapperForKongSun.TongQiKongAndPaiQiKong = string.Format(ScriptTemplateForKongSun.TongQiKongAndPaiQiKong,
-                        this.PaiQiKou, this.TongQiKong);
-
-                    ScriptWrapperForKongSun.MiDuNianDuOfOil = string.Format(ScriptTemplateForKongSun.MiDuNianDuOfOil,
-                         this.NianDuOfOil, this.MiDuOfOil);
+                    ScriptWrapperForKongSun.WuZhiDingYi = string.Format(ScriptTemplateForKongSun.WuZhiDingYi,
+                         this.NianDuOfOil, this.NianDuOfAir, this.MiDuOfOil);
 
                     MessageBox.Show("参数输入成功");
                 });

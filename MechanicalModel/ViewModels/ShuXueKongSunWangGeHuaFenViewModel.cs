@@ -148,7 +148,7 @@ namespace MechanicalModel.ViewModels
                         Process proc;
                         try
                         {
-                            proc = System.Diagnostics.Process.Start(info);
+                            //proc = System.Diagnostics.Process.Start(info);
                         }
                         catch (System.ComponentModel.Win32Exception ex)
                         {

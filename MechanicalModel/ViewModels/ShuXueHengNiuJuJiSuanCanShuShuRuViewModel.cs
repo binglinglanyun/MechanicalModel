@@ -150,11 +150,11 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    ScriptWrapperForHengNiuJu.BianJieTiaoJian = string.Format(ScriptTemplateForHengNiuJu.BianJieTiaoJian,
-                        this.HuaFaHuiYouChuKou, this.BeiYaFaChuKou, this.ZhiLingYouRuKou, this.FanKuiYaLiRuKou);
-
-                    ScriptWrapperForHengNiuJu.MiDuNianDuOfOil = string.Format(ScriptTemplateForHengNiuJu.MiDuNianDuOfOil,
+                    ScriptWrapperForHengNiuJu.WuZhiDingYi = string.Format(ScriptTemplateForHengNiuJu.WuZhiDingYi,
                          this.NianDuOfOil, this.MiDuOfOil);
+
+                    ScriptWrapperForHengNiuJu.BianJieTiaoJianDingYi = string.Format(ScriptTemplateForHengNiuJu.BianJieTiaoJianDingYi,
+                        this.HuaFaHuiYouChuKou, this.BeiYaFaChuKou, this.ZhiLingYouRuKou, this.FanKuiYaLiRuKou);
 
                     MessageBox.Show("参数输入成功");
                 });
