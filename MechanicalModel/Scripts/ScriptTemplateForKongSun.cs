@@ -195,7 +195,7 @@ namespace MechanicalModel.Scripts
         // {0} - 时间步长
         public const string JiSuanKongZhiCanShu = @"  <module type=""share"" iteration=""{0}"" template_mode=""advanced_mode""/>";
 
-        // {0} - 动轮转速 {1} - 排气孔 {2} - 通气孔
+        // {0} - 动轮转速 {1} - 排气孔 {2} - 通气孔 {3} - 油液体积分数
         public const string BianJieTiaoJianDingYi = @"  <module type=""flow"" state=""active"" numeric_scheme=""2ndorderupwind upwind""/>
   <module type=""turbulence"" state=""active""/>
   <module
@@ -235,9 +235,19 @@ namespace MechanicalModel.Scripts
     <bc patch=""air_inlet1_inlet"" type=""fix_totalp"" default=""yes"" totalp=""{2}""/>
     <bc patch=""air_inlet3_inlet"" type=""fix_totalp"" default=""yes"" totalp=""{2}""/>
     <bc patch=""air_inlet2_inlet"" type=""fix_totalp"" default=""yes"" totalp=""{2}""/>
+  </module>
+
+  <module type=""phasecomp"" phasecomp=""oil"">
+    <ic volume=""general mesh"" type=""fix_value"" default=""yes"" value=""{3}""/>
+    <ic volume=""general mesh_1"" type=""fix_value"" default=""yes"" value=""{3}""/>
+    <ic volume=""general mesh_2"" type=""fix_value"" default=""yes"" value=""{3}""/>
+    <ic volume=""general mesh_3"" type=""fix_value"" default=""yes"" value=""{3}""/>
+    <ic volume=""general mesh_4"" type=""fix_value"" default=""yes"" value=""{3}""/>
+    <ic volume=""general mesh_5"" type=""fix_value"" default=""yes"" value=""{3}""/>
+    <ic volume=""general mesh_6"" type=""fix_value"" default=""yes"" value=""{3}""/>
   </module>";
 
-        // {0} -- 油粘度 {1} -- 空气粘度 {2} -- 油密度
+        // {0} -- 油粘度 {1} -- 空气粘度 {2} -- 油密度 
         public const string WuZhiDingYi = @"  <module type=""flowphasecomp"" flowphasecomp=""oil"">
     <vc volume=""general mesh"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
     <vc volume=""general mesh_1"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
@@ -283,16 +293,6 @@ namespace MechanicalModel.Scripts
     <vc volume=""general mesh_3"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
     <vc volume=""general mesh_2"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
     <vc volume=""general mesh_1"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-  </module>
-
-  <module type=""phasecomp"" phasecomp=""oil"">
-    <ic volume=""general mesh"" type=""fix_value"" default=""yes"" value=""0.0018""/>
-    <ic volume=""general mesh_1"" type=""fix_value"" default=""yes"" value=""0.0018""/>
-    <ic volume=""general mesh_2"" type=""fix_value"" default=""yes"" value=""0.0018""/>
-    <ic volume=""general mesh_3"" type=""fix_value"" default=""yes"" value=""0.0018""/>
-    <ic volume=""general mesh_4"" type=""fix_value"" default=""yes"" value=""0.0018""/>
-    <ic volume=""general mesh_5"" type=""fix_value"" default=""yes"" value=""0.0018""/>
-    <ic volume=""general mesh_6"" type=""fix_value"" default=""yes"" value=""0.0018""/>
   </module>
 
   <module type=""phasecomp"" phasecomp=""air"">

@@ -74,7 +74,7 @@
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="油液体积分数:" />
-                    <TextBox Text="0.14"/>
+                    <TextBox Text="{Binding YouYeTiJiFenShu}"/>
                     <TextBlock Text="%" Margin="5,0,0,0"/>
                 </StackPanel>
             </StackPanel>

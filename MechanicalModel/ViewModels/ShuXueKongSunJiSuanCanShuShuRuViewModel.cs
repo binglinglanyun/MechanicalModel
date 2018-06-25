@@ -102,8 +102,22 @@ namespace MechanicalModel.ViewModels
             }
         }
 
+        private string _youYeTiJiFenShu = "0.14";
+        public string YouYeTiJiFenShu
+        {
+            get
+            {
+                return _youYeTiJiFenShu;
+            }
+            set
+            {
+                SetValueProperty(value, ref _youYeTiJiFenShu);
+            }
+        }
+
         /// <summary>
-        /// DongLunZhuanSu + TongQiKongAndPaiQiKong + MiDuNianDuOfOil
+        /// BianJieTiaoJianDingYi = DongLunZhuanSu + TongQiKong + PaiQiKong + YouYeTiJiFenShu
+        /// WuZhiDingYi = NianDuOfOil + NianDuOfAir + MiDuOfOil
         /// </summary>
         public ICommand CanShuShuRuButtonClick
         {
@@ -112,7 +126,7 @@ namespace MechanicalModel.ViewModels
                 return new TaskCommand<object>((o) =>
                 {
                     ScriptWrapperForKongSun.BianJieTiaoJianDingYi = string.Format(ScriptTemplateForKongSun.BianJieTiaoJianDingYi,
-                        this.DongLunZhuanSu, this.PaiQiKou, this.TongQiKong);
+                        this.DongLunZhuanSu, this.PaiQiKou, this.TongQiKong, this.YouYeTiJiFenShu);
 
                     ScriptWrapperForKongSun.WuZhiDingYi = string.Format(ScriptTemplateForKongSun.WuZhiDingYi,
                          this.NianDuOfOil, this.NianDuOfAir, this.MiDuOfOil);
