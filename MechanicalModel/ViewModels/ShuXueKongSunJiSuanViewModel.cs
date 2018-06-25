@@ -90,6 +90,9 @@ namespace MechanicalModel.ViewModels
                     ScriptWrapperForKongSun.JiSuanKongZhiCanShu = string.Format(ScriptTemplateForKongSun.JiSuanKongZhiCanShu,
                         this.ShiJianBuChang);
 
+                    ScriptWrapperForKongSun.JianKongDianZuoBiaoCanShu = string.Format(ScriptTemplateForKongSun.JianKongDianZuoBiaoCanShu,
+                        this.CanShuX, this,CanShuY, this,CanShuZ);
+                    
                     string scriptContent = ScriptWrapperForKongSun.CreateScriptForJiSuan();
                     if (scriptContent != null)
                     {

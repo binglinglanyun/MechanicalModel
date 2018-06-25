@@ -22,7 +22,7 @@ namespace MechanicalModel.Scripts
         public static string BianJieTiaoJianDingYi = string.Empty;
         public static string WuZhiDingYi = string.Empty;
         public static string JiSuanKongZhiCanShu = string.Empty;
-        public static string JianKongDianCanShu = string.Empty;
+        public static string JianKongDianZuoBiaoCanShu = string.Empty;
 
         /// <summary>
         /// ImportScript + WangGeHuafenConstScript + DongLunForWangGeHuaFen + DingLunForWangGeHuaFen
@@ -92,13 +92,14 @@ namespace MechanicalModel.Scripts
                 sb.AppendLine(basicString);
             }
 
-            if (string.IsNullOrEmpty(JiSuanKongZhiCanShu))
+            if (string.IsNullOrEmpty(JiSuanKongZhiCanShu) || string.IsNullOrEmpty(JianKongDianZuoBiaoCanShu))
             {
-                MessageBox.Show("请输入计算控制参数");
+                MessageBox.Show("请输入计算控制参数和监控点坐标参数");
                 return null;
             }
             else
             {
+                sb.AppendLine(JianKongDianZuoBiaoCanShu);
                 sb.AppendLine(JiSuanKongZhiCanShu);
             }
 

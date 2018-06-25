@@ -307,5 +307,8 @@ namespace MechanicalModel.Scripts
     <ic volume=""general mesh_5"" type=""fix_value"" default=""yes"" value=""0.9982""/>
     <ic volume=""general mesh_6"" type=""fix_value"" default=""yes"" value=""0.9982""/>
   </module>";
+
+        // {0} -- X {1} -- Y {2} -- Z
+        public const string JianKongDianZuoBiaoCanShu = @"  <probe_point name=""Point 01"" position=""{0} {1} {2}"" />";
     }
 }
