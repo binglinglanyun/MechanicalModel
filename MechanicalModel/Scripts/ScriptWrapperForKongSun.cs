@@ -94,15 +94,15 @@ namespace MechanicalModel.Scripts
         public static string CreateFullScriptForImportMoXing()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(ScriptWrapperForHengNiuJu.ScriptXMLHeader);
+            sb.AppendLine(ScriptXMLHeader);
 
             string importScript = GetImportMoXingScript();
-            if (string.IsNullOrEmpty(importScript))
+            if (!string.IsNullOrEmpty(importScript))
             {
                 sb.AppendLine(importScript);
             }
 
-            sb.AppendLine(ScriptWrapperForHengNiuJu.ScriptXMLTail);
+            sb.AppendLine(ScriptXMLTail);
             return sb.ToString();
         }
 
@@ -115,21 +115,21 @@ namespace MechanicalModel.Scripts
         public static string CreateFullScriptForWangGeHuaFen()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(ScriptTemplateForHengNiuJu.ScriptXMLHeader);
+            sb.AppendLine(ScriptXMLHeader);
 
             string importScript = GetImportMoXingScript();
-            if (string.IsNullOrEmpty(importScript))
+            if (!string.IsNullOrEmpty(importScript))
             {
                 sb.AppendLine(importScript);
             }
 
             string wangGeHuaFenScript = GetWangGeHuaFenScript();
-            if (string.IsNullOrEmpty(wangGeHuaFenScript))
+            if (!string.IsNullOrEmpty(wangGeHuaFenScript))
             {
                 sb.AppendLine(wangGeHuaFenScript);
             }
 
-            sb.AppendLine(ScriptTemplateForHengNiuJu.ScriptXMLTail);
+            sb.AppendLine(ScriptXMLTail);
             return sb.ToString();
         }
 
@@ -144,27 +144,27 @@ namespace MechanicalModel.Scripts
         public static string CreateFullScriptForJiSuan()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(ScriptTemplateForHengNiuJu.ScriptXMLHeader);
+            sb.AppendLine(ScriptXMLHeader);
 
             string importScript = GetImportMoXingScript();
-            if (string.IsNullOrEmpty(importScript))
+            if (!string.IsNullOrEmpty(importScript))
             {
                 sb.AppendLine(importScript);
             }
 
             string wangGeHuaFenScript = GetWangGeHuaFenScript();
-            if (string.IsNullOrEmpty(wangGeHuaFenScript))
+            if (!string.IsNullOrEmpty(wangGeHuaFenScript))
             {
                 sb.AppendLine(wangGeHuaFenScript);
             }
 
             string jiSuanScript = GetJiSuanScript();
-            if (string.IsNullOrEmpty(jiSuanScript))
+            if (!string.IsNullOrEmpty(jiSuanScript))
             {
                 sb.AppendLine(jiSuanScript);
             }
 
-            sb.AppendLine(ScriptTemplateForHengNiuJu.ScriptXMLTail);
+            sb.AppendLine(ScriptXMLTail);
             return sb.ToString();
         }
     }

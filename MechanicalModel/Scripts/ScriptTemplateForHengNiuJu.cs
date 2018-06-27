@@ -790,7 +790,7 @@ namespace MechanicalModel.Scripts
 
         // {0} - 背压阀阀芯质量 {1} - 背压阀弹簧刚度 {2} - 背压阀弹簧预紧力
         // {3} - 滑阀阀芯质量  {4} - 滑阀弹簧刚度 {5} - 滑阀弹簧预紧力
-        public static string FaMenCanShu = @"  < module
+        public static string FaMenCanShu = @"  <module
     type=""flow""
     state=""active""
     converge_criterion=""0.1""

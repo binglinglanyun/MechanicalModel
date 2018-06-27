@@ -82,7 +82,7 @@
             <StackPanel Orientation="Vertical">
                 <Label Content="网格显示" Style="{DynamicResource LabelBoldTextStyle}"/>
                 <Image Source="{Binding SourceUri}" Margin="0,-20,0,0" Height="400" Width="400"/>
-                <Button Content="显示" Margin="20,0,0,0" Command="{Binding ShowButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
+                <Button Content="显示" Margin="20,-20,0,0" Command="{Binding ShowButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
             </StackPanel>
         </StackPanel>
     </Grid>
