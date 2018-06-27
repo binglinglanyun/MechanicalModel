@@ -96,7 +96,7 @@ namespace MechanicalModel.Scripts
         public static string CreateFullScriptForImportMoXing()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(ScriptWrapperForHengNiuJu.ScriptXMLHeader);
+            sb.AppendLine(ScriptXMLHeader);
 
             string importScript = GetImportMoXingScript();
             if (!string.IsNullOrEmpty(importScript))
@@ -104,7 +104,7 @@ namespace MechanicalModel.Scripts
                 sb.AppendLine(importScript);
             }
 
-            sb.AppendLine(ScriptWrapperForHengNiuJu.ScriptXMLTail);
+            sb.AppendLine(ScriptXMLTail);
             return sb.ToString();
         }
 
@@ -117,7 +117,7 @@ namespace MechanicalModel.Scripts
         public static string CreateFullScriptForWangGeHuaFen()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(ScriptTemplateForHengNiuJu.ScriptXMLHeader);
+            sb.AppendLine(ScriptXMLHeader);
 
             string importScript = GetImportMoXingScript();
             if (!string.IsNullOrEmpty(importScript))
@@ -131,7 +131,7 @@ namespace MechanicalModel.Scripts
                 sb.AppendLine(wangGeHuaFenScript);
             }
 
-            sb.AppendLine(ScriptTemplateForHengNiuJu.ScriptXMLTail);
+            sb.AppendLine(ScriptXMLTail);
             return sb.ToString();
         }
 
@@ -146,7 +146,7 @@ namespace MechanicalModel.Scripts
         public static string CreateFullScriptForJiSuan()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(ScriptTemplateForHengNiuJu.ScriptXMLHeader);
+            sb.AppendLine(ScriptXMLHeader);
 
             string importScript = GetImportMoXingScript();
             if (!string.IsNullOrEmpty(importScript))
@@ -166,7 +166,7 @@ namespace MechanicalModel.Scripts
                 sb.AppendLine(jiSuanScript);
             }
 
-            sb.AppendLine(ScriptTemplateForHengNiuJu.ScriptXMLTail);
+            sb.AppendLine(ScriptXMLTail);
             return sb.ToString();
         }
     }

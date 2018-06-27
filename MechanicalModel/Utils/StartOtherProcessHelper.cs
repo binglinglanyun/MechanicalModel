@@ -18,9 +18,9 @@ namespace MechanicalModel.Utils
             info.FileName = "PumpLinx.exe";
             info.Arguments = scriptPath;
             info.WorkingDirectory = @"C:\Program Files\Simerics\";
-            info.WindowStyle = ProcessWindowStyle.Hidden;
+            info.WindowStyle = ProcessWindowStyle.Minimized;
             info.CreateNoWindow = true;
-            info.UseShellExecute = false;
+            //info.UseShellExecute = false;
             
             try
             {
