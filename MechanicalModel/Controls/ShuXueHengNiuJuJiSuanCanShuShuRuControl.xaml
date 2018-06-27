@@ -36,7 +36,7 @@
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
                             <TextBlock Text="粘度:" />
-                            <TextBox  Text="1.853e-5"/>
+                            <TextBox Text="{Binding NianDuOfAir}"/>
                             <TextBlock Text="Pa.s" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
@@ -75,12 +75,12 @@
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="动轮初始转速:" />
-                            <TextBox Text="{Binding DongLunZhuanSu}"/>
+                            <TextBox Text="{Binding DongLunChuShiZhuanSu}"/>
                             <TextBlock Text="rpm" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="动轮转动惯量:" />
-                            <TextBox Text="150"/>
+                            <TextBox Text="{Binding DongLunZhuanDongGuanLiang}"/>
                             <TextBlock Text="kg.m2" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
@@ -118,18 +118,18 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                             <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                                <TextBlock Text="备压阀阀芯质量:" />
-                                <TextBox Text="0.55"/>
+                                <TextBlock Text="背压阀阀芯质量:" />
+                                <TextBox Text="{Binding BeiYaFaFaXinZhiLiang}"/>
                                 <TextBlock Text="kg" Margin="5,0,0,0"/>
                             </StackPanel>
                             <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                                <TextBlock Text="备压阀弹簧刚度:" />
-                                <TextBox Text="12800"/>
+                                <TextBlock Text="背压阀弹簧刚度:" />
+                                <TextBox Text="{Binding BeiYaFaTanHuangGangDu}"/>
                                 <TextBlock Text="N/m" Margin="5,0,0,0"/>
                             </StackPanel>
                             <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                                <TextBlock Text="备压阀弹簧预紧力:" />
-                                <TextBox Text="156"/>
+                                <TextBlock Text="背压阀弹簧预紧力:" />
+                                <TextBox Text="{Binding BeiYaFaTanHuangYuJinLi}"/>
                                 <TextBlock Text="N" Margin="5,0,0,0"/>
                             </StackPanel>
                         </StackPanel>
@@ -137,17 +137,17 @@
                     <StackPanel Orientation="Vertical" Grid.Column="1">
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="滑阀阀芯质量:" />
-                            <TextBox Text="0.01"/>
+                            <TextBox Text="{Binding HuaFaFaXinZhiLiang}"/>
                             <TextBlock Text="kg" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="滑阀弹簧刚度:" />
-                            <TextBox Text="0"/>
+                            <TextBox Text="{Binding HuaFaTanHuangGangDu}"/>
                             <TextBlock Text="N/m" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="滑阀弹簧预紧力:" />
-                            <TextBox Text="0"/>
+                            <TextBox Text="{Binding HuaFaTanHuangYuJinLi}"/>
                             <TextBlock Text="N" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>

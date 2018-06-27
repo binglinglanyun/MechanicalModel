@@ -78,9 +78,6 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        /// <summary>
-        /// ShiJianBuChang + JianKongDianCanShu
-        /// </summary>
         public ICommand JiSuanButtonClick
         {
             get
@@ -93,33 +90,10 @@ namespace MechanicalModel.ViewModels
                     ScriptWrapperForKongSun.JianKongDianZuoBiaoCanShu = string.Format(ScriptTemplateForKongSun.JianKongDianZuoBiaoCanShu,
                         this.CanShuX, this.CanShuY, this.CanShuZ);
                     
-                    string scriptContent = ScriptWrapperForKongSun.CreateScriptForJiSuan();
+                    string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForJiSuan();
                     if (scriptContent != null)
                     {
-                        string scriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, ScriptWrapperForKongSun.ScriptName);
-                        File.WriteAllText(scriptPath, scriptContent);
-                        if (!File.Exists(ScriptWrapperForKongSun.DestSgrdFilePath))
-                        {
-                            File.Copy(ScriptWrapperForKongSun.SourceSgrdFilePath, ScriptWrapperForKongSun.DestSgrdFilePath);
-                        }
-
-                        //Open with PumpLink
-                        ProcessStartInfo info = new ProcessStartInfo();
-                        info.FileName = "PumpLinx.exe";
-                        info.Arguments = scriptPath;
-                        info.WorkingDirectory = @"C:\Program Files\Simerics\";
-                        info.WindowStyle = ProcessWindowStyle.Hidden;
-                        info.CreateNoWindow = true;
-                        Process proc;
-                        try
-                        {
-                            proc = System.Diagnostics.Process.Start(info);
-                        }
-                        catch (System.ComponentModel.Win32Exception ex)
-                        {
-                            Console.WriteLine("系统找不到指定的程序文件。\r{0}", ex);
-                            return;
-                        }
+                        StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);
                     }
                 });
             }

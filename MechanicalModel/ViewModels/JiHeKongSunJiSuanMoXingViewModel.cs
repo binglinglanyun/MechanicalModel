@@ -85,36 +85,12 @@ namespace MechanicalModel.ViewModels
 
                             // Create import script
                             ScriptWrapperForKongSun.ImportScript = string.Format(ScriptTemplateForKongSun.ImportScript, filename);
-                            string scriptContent = ScriptWrapperForKongSun.CreateScriptForImportMoXing();
+                            string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForImportMoXing();
                             if (scriptContent != null)
                             {
-                                string scriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, ScriptWrapperForKongSun.ScriptName);
-                                File.WriteAllText(scriptPath, scriptContent);
-                                if (!File.Exists(ScriptWrapperForKongSun.DestSgrdFilePath))
-                                {
-                                    File.Copy(ScriptWrapperForKongSun.SourceSgrdFilePath, ScriptWrapperForKongSun.DestSgrdFilePath);
-                                }
-
-                                //Open with PumpLink
-                                ProcessStartInfo info = new ProcessStartInfo();
-                                info.FileName = "PumpLinx.exe";
-                                info.Arguments = scriptPath;
-                                info.WorkingDirectory = @"C:\Program Files\Simerics\";
-                                info.WindowStyle = ProcessWindowStyle.Hidden;
-                                info.CreateNoWindow = true;
-                                Process proc;
-                                try
-                                {
-                                    proc = System.Diagnostics.Process.Start(info);
-                                }
-                                catch (System.ComponentModel.Win32Exception ex)
-                                {
-                                    Console.WriteLine("系统找不到指定的程序文件。\r{0}", ex);
-                                    return;
-                                }
+                                StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);
+                                MessageBox.Show("模型导入成功");
                             }
-
-                            MessageBox.Show("模型导入成功");
                         }
                         catch (Exception ex)
                         {

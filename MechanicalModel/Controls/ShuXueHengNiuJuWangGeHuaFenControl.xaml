@@ -48,6 +48,11 @@
                             <TextBox Text="{Binding DingLunZuiXiaoWangGeChiDu}"/>
                             <TextBlock Text="m" Margin="5,0,0,0"/>
                         </StackPanel>
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                            <TextBlock Text="最大面网格尺度:" />
+                            <TextBox Text="{Binding DingLunZuiDaMianWangGeChiDu}"/>
+                            <TextBlock Text="m" Margin="5,0,0,0"/>
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Column="1">
@@ -63,10 +68,15 @@
                             <TextBox Text="{Binding DongLunZuiXiaoWangGeChiDu}"/>
                             <TextBlock Text="m" Margin="5,0,0,0"/>
                         </StackPanel>
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                            <TextBlock Text="最大面网格尺度:" />
+                            <TextBox Text="{Binding DongLunZuiDaMianWangGeChiDu}"/>
+                            <TextBlock Text="m" Margin="5,0,0,0"/>
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
             </Grid>
-            <Button Content="网格划分" Margin="10,20,0,0" MinWidth="50" HorizontalAlignment="Left"/>
+            <Button Content="网格划分" Command="{Binding WangGeHuaFenButtonClick}" Margin="10,20,0,0" MinWidth="50" HorizontalAlignment="Left"/>
 
             <Border Style="{DynamicResource SplitBorderStyle}"/>
             <StackPanel Orientation="Vertical">

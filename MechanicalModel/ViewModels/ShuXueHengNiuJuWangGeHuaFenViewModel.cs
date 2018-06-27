@@ -1,9 +1,12 @@
-﻿using System;
+﻿using MechanicalModel.Scripts;
+using MechanicalModel.Utils;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace MechanicalModel.ViewModels
 {
@@ -108,6 +111,38 @@ namespace MechanicalModel.ViewModels
             get
             {
                 return Path.GetFullPath("Resources/HengNiuJuMoXingWangGe.png"); ;
+            }
+        }
+
+        public ICommand WangGeHuaFenButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    ScriptWrapperForHengNiuJu.DingLunForWangGeHuaFen = string.Format(ScriptTemplateForHengNiuJu.DingLunForWangGeHuaFen,
+                        this.DingLunZuiDaWangGeChiDu, this.DingLunZuiXiaoWangGeChiDu, this.DingLunZuiDaMianWangGeChiDu);
+
+                    ScriptWrapperForHengNiuJu.DongLunForWangGeHuaFen = string.Format(ScriptTemplateForHengNiuJu.DongLunForWangGeHuaFen,
+                        this.DongLunZuiDaWangGeChiDu, this.DongLunZuiXiaoWangGeChiDu, this.DongLunZuiDaMianWangGeChiDu);
+
+                    string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForWangGeHuaFen();
+                    if (scriptContent != null)
+                    {
+                        StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
+                    }
+                });
+            }
+        }
+
+        public ICommand ShowButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    // Show background processes
+                });
             }
         }
     }

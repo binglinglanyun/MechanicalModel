@@ -93,6 +93,7 @@
     <Compile Include="Scripts\ScriptTemplateForKongSun.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Utils\MechanicalModelViewUIConverter.cs" />
+    <Compile Include="Utils\StartOtherProcessHelper.cs" />
     <Compile Include="Utils\TaskCommand.cs" />
     <Compile Include="ViewModels\DataItem.cs" />
     <Compile Include="ViewModels\JiHeHengNiuJuJiSuanMoXingViewModel.cs" />

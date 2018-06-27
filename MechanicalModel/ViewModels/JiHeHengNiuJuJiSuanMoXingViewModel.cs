@@ -67,7 +67,6 @@ namespace MechanicalModel.ViewModels
                         try
                         {
                             string filename = Path.GetFileName(this.LocationString);
-                            ScriptWrapperForHengNiuJu.ImportScript = string.Format(ScriptWrapperForHengNiuJu.ImportScript, filename);
                             string destScriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, filename);
                             if (File.Exists(destScriptPath))
                             {
@@ -75,7 +74,15 @@ namespace MechanicalModel.ViewModels
                             }
 
                             File.Copy(this.LocationString, destScriptPath);
-                            MessageBox.Show("模型导入成功");
+
+                            // Create import script
+                            ScriptWrapperForHengNiuJu.ImportScript = string.Format(ScriptTemplateForHengNiuJu.ImportScript, filename);
+                            string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForImportMoXing();
+                            if (scriptContent != null)
+                            {
+                                StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
+                                MessageBox.Show("模型导入成功");
+                            }
                         }
                         catch (Exception ex)
                         {
