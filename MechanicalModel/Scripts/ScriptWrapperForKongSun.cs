@@ -56,6 +56,24 @@ namespace MechanicalModel.Scripts
             return sb.ToString();
         }
 
+        public static string CreateScriptForImportMoXing()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(ScriptWrapperForKongSun.ScriptXMLHeader);
+            if (string.IsNullOrEmpty(ScriptWrapperForKongSun.ImportScript))
+            {
+                MessageBox.Show("请导入模型文件");
+                return null;
+            }
+            else
+            {
+                sb.AppendLine(ScriptWrapperForKongSun.ImportScript);
+            }
+            sb.AppendLine(ScriptWrapperForKongSun.ScriptXMLTail);
+
+            return sb.ToString();
+        }
+
         /// <summary>
         /// ScriptXMLHeader + 
         /// ImportScript + WangGeHuafenConstScript + DongLunForWangGeHuaFen + DingLunForWangGeHuaFen +  ==> basic script

@@ -148,7 +148,7 @@ namespace MechanicalModel.ViewModels
                         Process proc;
                         try
                         {
-                            //proc = System.Diagnostics.Process.Start(info);
+                            proc = System.Diagnostics.Process.Start(info);
                         }
                         catch (System.ComponentModel.Win32Exception ex)
                         {
@@ -156,6 +156,17 @@ namespace MechanicalModel.ViewModels
                             return;
                         }
                     }
+                });
+            }
+        }
+
+        public ICommand ShowButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    // Show background processes
                 });
             }
         }

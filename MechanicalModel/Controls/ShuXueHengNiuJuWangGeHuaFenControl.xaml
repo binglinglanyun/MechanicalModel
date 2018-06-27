@@ -71,13 +71,8 @@
             <Border Style="{DynamicResource SplitBorderStyle}"/>
             <StackPanel Orientation="Vertical">
                 <Label Content="网格显示" Style="{DynamicResource LabelBoldTextStyle}"/>
-                <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
-                    <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                        <TextBlock Text="空损模型网格数量:" />
-                        <TextBox Text="1,710,000"/>
-                    </StackPanel>
-                </StackPanel>
                 <Image Source="{Binding SourceUri}" Margin="0,-20,0,0" Height="400" Width="400"/>
+                <Button Content="显示" Margin="20,0,0,0" Command="{Binding ShowButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
             </StackPanel>
         </StackPanel>
     </Grid>

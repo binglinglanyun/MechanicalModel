@@ -19,8 +19,9 @@ namespace MechanicalModel.Scripts
         public const string ImportScript = @" 
   <import vendor=""Simerics"">
 	<surface name=""inlet_inlet"" file=""{0}"" scale=""1""/>
-  </import>
-  
+  </import>";
+
+        public const string WangGeHuafenConstScript = @"
   <include file=""torque_kongsun.sgrd""/>
 
   <volume name=""air_inlet1""/>
@@ -112,9 +113,8 @@ namespace MechanicalModel.Scripts
     <patch name=""stator_mgi_air_inlet3""/>
     <patch name=""air_inlet3_mgi_stator""/>
   </mgi>
-";
 
-        public const string WangGeHuafenConstScript = @"  <build
+  <build
     operation=""general mesh""
     name=""air_inlet1""
     new_mesh_name=""air_inlet1""

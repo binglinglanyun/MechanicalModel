@@ -91,7 +91,7 @@ namespace MechanicalModel.ViewModels
                         this.ShiJianBuChang);
 
                     ScriptWrapperForKongSun.JianKongDianZuoBiaoCanShu = string.Format(ScriptTemplateForKongSun.JianKongDianZuoBiaoCanShu,
-                        this.CanShuX, this,CanShuY, this,CanShuZ);
+                        this.CanShuX, this.CanShuY, this.CanShuZ);
                     
                     string scriptContent = ScriptWrapperForKongSun.CreateScriptForJiSuan();
                     if (scriptContent != null)

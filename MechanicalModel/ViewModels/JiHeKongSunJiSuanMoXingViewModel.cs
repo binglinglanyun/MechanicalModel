@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Windows;
 using System.IO;
 using MechanicalModel.Scripts;
+using System.Diagnostics;
 
 namespace MechanicalModel.ViewModels
 {
@@ -74,7 +75,6 @@ namespace MechanicalModel.ViewModels
                         try
                         {
                             string filename = Path.GetFileName(this.LocationString);
-                            ScriptWrapperForKongSun.ImportScript = string.Format(ScriptTemplateForKongSun.ImportScript, filename);
                             string destScriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, filename);
                             if (File.Exists(destScriptPath))
                             {
@@ -82,6 +82,38 @@ namespace MechanicalModel.ViewModels
                             }
 
                             File.Copy(this.LocationString, destScriptPath);
+
+                            // Create import script
+                            ScriptWrapperForKongSun.ImportScript = string.Format(ScriptTemplateForKongSun.ImportScript, filename);
+                            string scriptContent = ScriptWrapperForKongSun.CreateScriptForImportMoXing();
+                            if (scriptContent != null)
+                            {
+                                string scriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, ScriptWrapperForKongSun.ScriptName);
+                                File.WriteAllText(scriptPath, scriptContent);
+                                if (!File.Exists(ScriptWrapperForKongSun.DestSgrdFilePath))
+                                {
+                                    File.Copy(ScriptWrapperForKongSun.SourceSgrdFilePath, ScriptWrapperForKongSun.DestSgrdFilePath);
+                                }
+
+                                //Open with PumpLink
+                                ProcessStartInfo info = new ProcessStartInfo();
+                                info.FileName = "PumpLinx.exe";
+                                info.Arguments = scriptPath;
+                                info.WorkingDirectory = @"C:\Program Files\Simerics\";
+                                info.WindowStyle = ProcessWindowStyle.Hidden;
+                                info.CreateNoWindow = true;
+                                Process proc;
+                                try
+                                {
+                                    proc = System.Diagnostics.Process.Start(info);
+                                }
+                                catch (System.ComponentModel.Win32Exception ex)
+                                {
+                                    Console.WriteLine("系统找不到指定的程序文件。\r{0}", ex);
+                                    return;
+                                }
+                            }
+
                             MessageBox.Show("模型导入成功");
                         }
                         catch (Exception ex)
@@ -93,6 +125,17 @@ namespace MechanicalModel.ViewModels
                     {
                         MessageBox.Show("模型文件不存在");
                     }
+                });
+            }
+        }
+
+        public ICommand ShowButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    // Show background processes
                 });
             }
         }

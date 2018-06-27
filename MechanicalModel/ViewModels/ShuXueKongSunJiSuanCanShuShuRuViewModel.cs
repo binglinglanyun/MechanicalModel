@@ -125,8 +125,9 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
+                    double dongLunZhuanSu = Math.Round(double.Parse(this.DongLunZhuanSu) * Math.PI / 30, 5);
                     ScriptWrapperForKongSun.BianJieTiaoJianDingYi = string.Format(ScriptTemplateForKongSun.BianJieTiaoJianDingYi,
-                        this.DongLunZhuanSu, this.PaiQiKou, this.TongQiKong, this.YouYeTiJiFenShu);
+                        dongLunZhuanSu, this.PaiQiKou, this.TongQiKong, this.YouYeTiJiFenShu);
 
                     ScriptWrapperForKongSun.WuZhiDingYi = string.Format(ScriptTemplateForKongSun.WuZhiDingYi,
                          this.NianDuOfOil, this.NianDuOfAir, this.MiDuOfOil);
