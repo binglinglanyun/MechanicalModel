@@ -24,7 +24,7 @@
 
                 <Button Name="buttonBrowse" Content="浏览..." Command="{Binding BrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
-            <Button Content="导入" Margin="20,0,0,0" MinWidth="50" HorizontalAlignment="Left"/>
+            <Button Content="导入" Margin="20,0,0,0"  Command="{Binding ImportButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
 
             <Border Style="{DynamicResource SplitBorderStyle}"/>
 

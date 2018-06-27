@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Windows;
 using System.IO;
 using MechanicalModel.Scripts;
+using System.Diagnostics;
 
 namespace MechanicalModel.ViewModels
 {
@@ -74,7 +75,6 @@ namespace MechanicalModel.ViewModels
                         try
                         {
                             string filename = Path.GetFileName(this.LocationString);
-                            ScriptWrapperForKongSun.ImportScript = string.Format(ScriptTemplateForKongSun.ImportScript, filename);
                             string destScriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, filename);
                             if (File.Exists(destScriptPath))
                             {
@@ -82,7 +82,15 @@ namespace MechanicalModel.ViewModels
                             }
 
                             File.Copy(this.LocationString, destScriptPath);
-                            MessageBox.Show("模型导入成功");
+
+                            // Create import script
+                            ScriptWrapperForKongSun.ImportScript = string.Format(ScriptTemplateForKongSun.ImportScript, filename);
+                            string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForImportMoXing();
+                            if (scriptContent != null)
+                            {
+                                StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);
+                                MessageBox.Show("模型导入成功");
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -93,6 +101,17 @@ namespace MechanicalModel.ViewModels
                     {
                         MessageBox.Show("模型文件不存在");
                     }
+                });
+            }
+        }
+
+        public ICommand ShowButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    // Show background processes
                 });
             }
         }
