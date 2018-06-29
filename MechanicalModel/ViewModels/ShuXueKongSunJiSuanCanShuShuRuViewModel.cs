@@ -129,8 +129,9 @@ namespace MechanicalModel.ViewModels
                     ScriptWrapperForKongSun.BianJieTiaoJianDingYi = string.Format(ScriptTemplateForKongSun.BianJieTiaoJianDingYi,
                         dongLunZhuanSu, this.PaiQiKou, this.TongQiKong, this.YouYeTiJiFenShu);
 
+                    double value = 1 - double.Parse(this.YouYeTiJiFenShu);
                     ScriptWrapperForKongSun.WuZhiDingYi = string.Format(ScriptTemplateForKongSun.WuZhiDingYi,
-                         this.NianDuOfOil, this.NianDuOfAir, this.MiDuOfOil);
+                         this.NianDuOfOil, this.NianDuOfAir, this.MiDuOfOil, value);
 
                     MessageBox.Show("参数输入成功");
                 });

@@ -20,7 +20,80 @@ namespace MechanicalModel.Scripts
         // {0} script file name
         public const string ImportScript = @" 
   <import vendor=""Simerics"">
+	<surface name=""airout1_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""airout1_mgi_stator"" file=""{0}"" scale=""1""/>
+	<surface name=""airout1_outlet"" file=""{0}"" scale=""1""/>
+	<surface name=""airout2_mgi_stator"" file=""{0}"" scale=""1""/>
+	<surface name=""airout2_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""airout2_outlet"" file=""{0}"" scale=""1""/>
+	<surface name=""airout3_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""airout3_mgi_stator"" file=""{0}"" scale=""1""/>
+	<surface name=""airout3_outlet"" file=""{0}"" scale=""1""/>
+	<surface name=""pipe_mgi_valve1"" file=""{0}"" scale=""1""/>
+	<surface name=""pipe_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""pipe_mgi_valve2"" file=""{0}"" scale=""1""/>
+	<surface name=""inlet_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""inlet_mgi_rotor2"" file=""{0}"" scale=""1""/>
 	<surface name=""inlet_inlet"" file=""{0}"" scale=""1""/>
+	<surface name=""rotor2_mgi_volute_top"" file=""{0}"" scale=""1""/>
+	<surface name=""rotor2_mgi_volute_side2"" file=""{0}"" scale=""1""/>
+	<surface name=""rotor2_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""rotor2_mgi_volute_side1"" file=""{0}"" scale=""1""/>
+	<surface name=""rotor2_mgi_gap"" file=""{0}"" scale=""1""/>
+	<surface name=""rotor2_mgi_stator"" file=""{0}"" scale=""1""/>
+	<surface name=""rotor2_mgi_inlet"" file=""{0}"" scale=""1""/>
+	<surface name=""stator_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""stator_mgi_rotor2"" file=""{0}"" scale=""1""/>
+	<surface name=""stator_mgi_airoutlet1"" file=""{0}"" scale=""1""/>
+	<surface name=""stator_mgi_airoutlet2"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_mid_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_mid_mgi"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_outlet_outlet1"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_outlet_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_outlet_mgi_mdi_up"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_outlet_outlet2"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_chamber_wall1"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_chamber_mgi_bot"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_chamber_wall2"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_up_gap_valve"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_up_gap_cylinder_out"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_up_gap_cylinder_in"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_up_gap_end"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_up_cylinder"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_up_valve"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_up_end"" file=""{0}"" scale=""1""/>
+	<surface name=""valve1_up_end_mgi_volute"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_bot_end"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_bot_cylinder"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_bot_valve"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_mid_cylinder_mgi"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_mid_mgi_up"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_mid_valve"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_outlet1_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_outlet1_mgi_gap3"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_outlet1_outlet"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_outlet2_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_outlet2_mgi_gap4"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_outlet2_outlet"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_gap4_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_gap4_mgi_bot"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_gap4_mgi_outlet2"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_gap3_mgi_mid"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_gap3_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_gap3_mgi_outlet1"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_gap2_mgi_mid"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_gap2_mgi_gap1"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_gap2_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_gap1_mgi_up"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_gap1_mgi_gap2"" file=""{0}"" scale=""1""/>
+	<surface name=""valve2_gap1_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""volute_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""volute_side_mgi_rotor2"" file=""{0}"" scale=""1""/>
+	<surface name=""volute_top_mgi_rotor2"" file=""{0}"" scale=""1""/>
+	<surface name=""volute_wall_mgi_gap"" file=""{0}"" scale=""1""/>
+	<surface name=""volute_side_mgi_rotor1"" file=""{0}"" scale=""1""/>
+	<surface name=""volute_kongsun_inlet"" file=""{0}"" scale=""1""/>
+	<surface name=""volute_mgi_valve"" file=""{0}"" scale=""1""/>
   </import>";
 
         public static string WangGeHuafenConstScript = @"<include file=""torque_hengniuju.sgrd""/>
@@ -118,11 +191,11 @@ namespace MechanicalModel.Scripts
   <patch name=""volute_side_mgi_rotor1"" volume=""volute""/>
   <patch name=""volute_kongsun_inlet"" volume=""volute""/>
   <patch name=""volute_mgi_valve"" volume=""volute""/>
-  <patch name=""valve2_gap4_wall1"" volume=""valve2_gap4""/>
+  <patch name=""valve2_gap4_wall"" volume=""valve2_gap4""/>
   <patch name=""valve2_gap4_mgi_bot"" volume=""valve2_gap4""/>
   <patch name=""valve2_gap4_wall2"" volume=""valve2_gap4""/>
   <patch name=""valve2_gap4_mgi_outlet2"" volume=""valve2_gap4""/>
-  <patch name=""valve2_gap3_wall1"" volume=""valve2_gap3""/>
+  <patch name=""valve2_gap3_wall"" volume=""valve2_gap3""/>
   <patch name=""valve2_gap3_mgi_mid"" volume=""valve2_gap3""/>
   <patch name=""valve2_gap3_wall2"" volume=""valve2_gap3""/>
   <patch name=""valve2_gap3_mgi_outlet1"" volume=""valve2_gap3""/>
@@ -130,7 +203,7 @@ namespace MechanicalModel.Scripts
   <patch name=""valve2_gap2_mgi_mid"" volume=""valve2_gap2""/>
   <patch name=""valve2_gap2_wall"" volume=""valve2_gap2""/>
   <patch name=""valve2_gap2_cylinder_wall"" volume=""valve2_gap2""/>
-  <patch name=""valve2_gap1_wall1"" volume=""valve2_gap1""/>
+  <patch name=""valve2_gap1_wall"" volume=""valve2_gap1""/>
   <patch name=""valve2_gap1_mgi_up"" volume=""valve2_gap1""/>
   <patch name=""valve2_gap1_mgi_gap2"" volume=""valve2_gap1""/>
   <patch name=""valve2_gap1_cylinder_wall"" volume=""valve2_gap1""/>
@@ -417,6 +490,7 @@ namespace MechanicalModel.Scripts
     <patch name=""cylinder_min_5""/>
     <patch name=""cylinder_6""/>
   </mgi>
+
   <build
     operation=""general mesh""
     name=""airout1""
@@ -553,7 +627,6 @@ namespace MechanicalModel.Scripts
     annulus_outer_radius=""0.19225""
     number_cell_i=""8""
     number_cell_j=""5""/>
-
   <build
     operation=""template mesh""
     name=""valve1_bot""
@@ -629,7 +702,7 @@ namespace MechanicalModel.Scripts
     spool_maximum_cell_size=""0.02""
     spool_maximum_boundary_cell=""0.02""
     spool_layers_valve_to_seat=""10""/>
-
+ 
   <build
     operation=""build valve""
     name=""valve2_bot""
@@ -892,6 +965,11 @@ namespace MechanicalModel.Scripts
     <bc patch=""sub-features_6"" type=""valve_wall""/>
     <bc patch=""dir_min_3"" type=""outlet""/>
     <bc patch=""dir_min_8"" type=""inlet""/>
+    <bc patch=""sub-features_5"" type=""valve_wall""/>
+    <bc patch=""dir_min_7"" type=""valve_wall""/>
+    <bc patch=""dir_max_7"" type=""valve_end""/>
+    <bc patch=""cylinder_min_7"" type=""cylinder_wall""/>
+    <bc patch=""cylinder_7"" type=""cylinder_wall""/>
     <vc volume=""valve2_up"" type=""property"" default=""yes"" valve_material=""oil""/>
     <vc volume=""valve2_bot"" type=""property"" default=""yes"" valve_material=""oil""/>
     <vc volume=""valve1_bot"" type=""property"" default=""yes"" valve_material=""oil""/>
@@ -949,6 +1027,9 @@ namespace MechanicalModel.Scripts
     <bc patch=""sub-features_7"" type=""valve_wall""/>
     <bc patch=""dir_min_3"" type=""outlet""/>
     <bc patch=""dir_min_8"" type=""inlet""/>
+    <bc patch=""dir_max_13"" type=""valve_end""/>
+    <bc patch=""dir_min_13"" type=""valve_wall""/>
+    <bc patch=""cylinder_13"" type=""cylinder_wall""/>
     <vc volume=""valve2_up"" type=""property"" default=""yes"" valve_material=""oil""/>
     <vc volume=""valve2_bot"" type=""property"" default=""yes"" valve_material=""oil""/>
     <vc volume=""valve1_bot"" type=""property"" default=""yes"" valve_material=""oil""/>
@@ -981,7 +1062,7 @@ namespace MechanicalModel.Scripts
     <vc volume=""rotor_gap2"" type=""property"" default=""yes"" valve_material=""oil""/>
     <vc volume=""rotor_gap3"" type=""property"" default=""yes"" valve_material=""oil""/>
   </module>
-  
+
   <module
     type=""trans_1d""
     trans_1d=""3""
@@ -1073,7 +1154,7 @@ namespace MechanicalModel.Scripts
 
         // {0} - 油粘度 {1} - 空气粘度 {2} - 油密度
         public static string WuZhiDingYi = @"  <module type=""flowphasecomp"" flowphasecomp=""oil"">
-     <vc volume=""general mesh"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""general mesh"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
     <vc volume=""general mesh_1"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
     <vc volume=""general mesh_2"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
     <vc volume=""template mesh"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
@@ -1286,7 +1367,7 @@ namespace MechanicalModel.Scripts
     <vc volume=""general mesh_13"" type=""output_var"" default=""yes"" print_mass_frac=""on""
       print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
 
-     <ic volume=""general mesh"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""general mesh"" type=""fix_value"" default=""yes"" value=""0""/>
     <ic volume=""general mesh_1"" type=""fix_value"" default=""yes"" value=""0""/>
     <ic volume=""general mesh_2"" type=""fix_value"" default=""yes"" value=""0""/>
     <ic volume=""template mesh"" type=""fix_value"" default=""yes"" value=""0"" output=""user_select""/>
@@ -1349,7 +1430,6 @@ namespace MechanicalModel.Scripts
     <vc volume=""general mesh_13"" type=""output_var"" default=""yes"" print_mass_frac=""on""
       print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
 
-
     <ic volume=""general mesh"" type=""fix_value"" default=""yes"" value=""1""/>
     <ic volume=""general mesh_1"" type=""fix_value"" default=""yes"" value=""1""/>
     <ic volume=""general mesh_2"" type=""fix_value"" default=""yes"" value=""1""/>
@@ -1368,6 +1448,19 @@ namespace MechanicalModel.Scripts
     <ic volume=""spool valve"" type=""fix_value"" default=""yes"" value=""1""/>
     <ic volume=""spool valve_1"" type=""fix_value"" default=""yes"" value=""1""/>
     <ic volume=""general mesh_13"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""general mesh_4"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""template mesh_7"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""template mesh_8"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""general mesh_7"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""spool valve_2"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""template mesh_9"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""template mesh_10"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""template mesh_11"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""template mesh_12"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""general mesh_10"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""general mesh_11"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""general mesh_12"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""template mesh_13"" type=""fix_value"" default=""yes"" value=""0""/>
   </module>";
     }
 }

@@ -18,7 +18,33 @@ namespace MechanicalModel.Scripts
         // {0} script file name
         public const string ImportScript = @" 
   <import vendor=""Simerics"">
+	<surface name=""air_inlet1_mgi_stator"" file=""{0}"" scale=""1""/>
+	<surface name=""air_inlet1_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""air_inlet1_inlet"" file=""{0}"" scale=""1""/>
+	<surface name=""air_inlet2_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""air_inlet2_mgi_stator"" file=""{0}"" scale=""1""/>
+	<surface name=""air_inlet2_inlet"" file=""{0}"" scale=""1""/>
+	<surface name=""air_inlet3_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""air_inlet3_mgi_stator"" file=""{0}"" scale=""1""/>
+	<surface name=""air_inlet3_inlet"" file=""{0}"" scale=""1""/>
+	<surface name=""inlet_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""inlet_mgi_rotor"" file=""{0}"" scale=""1""/>
 	<surface name=""inlet_inlet"" file=""{0}"" scale=""1""/>
+	<surface name=""outlet_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""outlet_mgi_rotor"" file=""{0}"" scale=""1""/>
+	<surface name=""outlet_mgi_rotor_cyl"" file=""{0}"" scale=""1""/>
+	<surface name=""outlet_outlet_air"" file=""{0}"" scale=""1""/>
+	<surface name=""outlet_outlet"" file=""{0}"" scale=""1""/>
+	<surface name=""rotor_mgi_outlet"" file=""{0}"" scale=""1""/>
+	<surface name=""rotor_mgi_outlet_cyl"" file=""{0}"" scale=""1""/>
+	<surface name=""rotor_blades"" file=""{0}"" scale=""1""/>
+	<surface name=""rotor_mgi_stator"" file=""{0}"" scale=""1""/>
+	<surface name=""rotor_mgi_inlet"" file=""{0}"" scale=""1""/>
+	<surface name=""stator_mgi_rotor"" file=""{0}"" scale=""1""/>
+	<surface name=""stator_wall"" file=""{0}"" scale=""1""/>
+	<surface name=""stator_mgi_air_inlet3"" file=""{0}"" scale=""1""/>
+	<surface name=""stator_mgi_air_inlet1"" file=""{0}"" scale=""1""/>
+	<surface name=""stator_mgi_air_inlet2"" file=""{0}"" scale=""1""/>
   </import>";
 
         public const string WangGeHuafenConstScript = @"
@@ -247,7 +273,7 @@ namespace MechanicalModel.Scripts
     <ic volume=""general mesh_6"" type=""fix_value"" default=""yes"" value=""{3}""/>
   </module>";
 
-        // {0} -- 油粘度 {1} -- 空气粘度 {2} -- 油密度 
+        // {0} -- 油粘度 {1} -- 空气粘度 {2} -- 油密度  {3} -- "1 - 油液体积分数"
         public const string WuZhiDingYi = @"  <module type=""flowphasecomp"" flowphasecomp=""oil"">
     <vc volume=""general mesh"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
     <vc volume=""general mesh_1"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
@@ -299,13 +325,13 @@ namespace MechanicalModel.Scripts
     <bc patch=""air_inlet1_inlet"" type=""fix_value"" value=""1""/>
     <bc patch=""air_inlet3_inlet"" type=""fix_value"" value=""1""/>
     <bc patch=""air_inlet2_inlet"" type=""fix_value"" value=""1""/>
-    <ic volume=""general mesh"" type=""fix_value"" default=""yes"" value=""0.9982""/>
-    <ic volume=""general mesh_1"" type=""fix_value"" default=""yes"" value=""0.9982""/>
-    <ic volume=""general mesh_2"" type=""fix_value"" default=""yes"" value=""0.9982""/>
-    <ic volume=""general mesh_3"" type=""fix_value"" default=""yes"" value=""0.9982""/>
-    <ic volume=""general mesh_4"" type=""fix_value"" default=""yes"" value=""0.9982""/>
-    <ic volume=""general mesh_5"" type=""fix_value"" default=""yes"" value=""0.9982""/>
-    <ic volume=""general mesh_6"" type=""fix_value"" default=""yes"" value=""0.9982""/>
+    <ic volume=""general mesh"" type=""fix_value"" default=""yes"" value=""{3}""/>
+    <ic volume=""general mesh_1"" type=""fix_value"" default=""yes"" value=""{3}""/>
+    <ic volume=""general mesh_2"" type=""fix_value"" default=""yes"" value=""{3}""/>
+    <ic volume=""general mesh_3"" type=""fix_value"" default=""yes"" value=""{3}""/>
+    <ic volume=""general mesh_4"" type=""fix_value"" default=""yes"" value=""{3}""/>
+    <ic volume=""general mesh_5"" type=""fix_value"" default=""yes"" value=""{3}""/>
+    <ic volume=""general mesh_6"" type=""fix_value"" default=""yes"" value=""{3}""/>
   </module>";
 
         // {0} -- X {1} -- Y {2} -- Z
