@@ -38,13 +38,12 @@ namespace MechanicalModel.ViewModels
                 return new DelegateCommand<object>((o) =>
                 {
                     string localFolder;
-                    System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
-                    dialog.Title = "模型位置";
-                    dialog.DefaultExt = ".stl";
+                    System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
+                    dialog.Description = "模型位置";
                     System.Windows.Forms.DialogResult result = dialog.ShowDialog();
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {
-                        localFolder = dialog.FileName;
+                        localFolder = dialog.SelectedPath;
                     }
                     else
                     {
@@ -62,36 +61,20 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    if (File.Exists(this.LocationString))
+                    try
                     {
-                        try
-                        {
-                            string filename = Path.GetFileName(this.LocationString);
-                            string destScriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, filename);
-                            if (File.Exists(destScriptPath))
-                            {
-                                File.Delete(destScriptPath);
-                            }
+                        CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForHengNiuJu.WorkDirectory);
 
-                            File.Copy(this.LocationString, destScriptPath);
-
-                            // Create import script
-                            ScriptWrapperForHengNiuJu.ImportScript = string.Format(ScriptTemplateForHengNiuJu.ImportScript, filename);
-                            string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForImportMoXing();
-                            if (scriptContent != null)
-                            {
-                                StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
-                                MessageBox.Show("模型导入成功");
-                            }
-                        }
-                        catch (Exception ex)
+                        // Create import script
+                        string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForImportMoXing();
+                        if (scriptContent != null)
                         {
-                            MessageBox.Show("模型导入失败，错误信息：{0}", ex.Message);
+                            StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
                         }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("模型文件不存在");
+                        MessageBox.Show(string.Format("模型导入失败，错误信息：{0}", ex.Message));
                     }
                 });
             }

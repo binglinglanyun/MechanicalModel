@@ -18,33 +18,33 @@ namespace MechanicalModel.Scripts
         // {0} script file name
         public const string ImportScript = @" 
   <import vendor=""Simerics"">
-	<surface name=""air_inlet1_mgi_stator"" file=""{0}"" scale=""1""/>
-	<surface name=""air_inlet1_wall"" file=""{0}"" scale=""1""/>
-	<surface name=""air_inlet1_inlet"" file=""{0}"" scale=""1""/>
-	<surface name=""air_inlet2_wall"" file=""{0}"" scale=""1""/>
-	<surface name=""air_inlet2_mgi_stator"" file=""{0}"" scale=""1""/>
-	<surface name=""air_inlet2_inlet"" file=""{0}"" scale=""1""/>
-	<surface name=""air_inlet3_wall"" file=""{0}"" scale=""1""/>
-	<surface name=""air_inlet3_mgi_stator"" file=""{0}"" scale=""1""/>
-	<surface name=""air_inlet3_inlet"" file=""{0}"" scale=""1""/>
-	<surface name=""inlet_wall"" file=""{0}"" scale=""1""/>
-	<surface name=""inlet_mgi_rotor"" file=""{0}"" scale=""1""/>
-	<surface name=""inlet_inlet"" file=""{0}"" scale=""1""/>
-	<surface name=""outlet_wall"" file=""{0}"" scale=""1""/>
-	<surface name=""outlet_mgi_rotor"" file=""{0}"" scale=""1""/>
-	<surface name=""outlet_mgi_rotor_cyl"" file=""{0}"" scale=""1""/>
-	<surface name=""outlet_outlet_air"" file=""{0}"" scale=""1""/>
-	<surface name=""outlet_outlet"" file=""{0}"" scale=""1""/>
-	<surface name=""rotor_mgi_outlet"" file=""{0}"" scale=""1""/>
-	<surface name=""rotor_mgi_outlet_cyl"" file=""{0}"" scale=""1""/>
-	<surface name=""rotor_blades"" file=""{0}"" scale=""1""/>
-	<surface name=""rotor_mgi_stator"" file=""{0}"" scale=""1""/>
-	<surface name=""rotor_mgi_inlet"" file=""{0}"" scale=""1""/>
-	<surface name=""stator_mgi_rotor"" file=""{0}"" scale=""1""/>
-	<surface name=""stator_wall"" file=""{0}"" scale=""1""/>
-	<surface name=""stator_mgi_air_inlet3"" file=""{0}"" scale=""1""/>
-	<surface name=""stator_mgi_air_inlet1"" file=""{0}"" scale=""1""/>
-	<surface name=""stator_mgi_air_inlet2"" file=""{0}"" scale=""1""/>
+	<surface name=""air_inlet1_mgi_stator"" file=""air_inlet1_mgi_stator.stl"" scale=""1""/>
+	<surface name=""air_inlet1_wall"" file=""air_inlet1_wall.stl"" scale=""1""/>
+	<surface name=""air_inlet1_inlet"" file=""air_inlet1_inlet.stl"" scale=""1""/>
+	<surface name=""air_inlet2_wall"" file=""air_inlet2_wall.stl"" scale=""1""/>
+	<surface name=""air_inlet2_mgi_stator"" file=""air_inlet2_mgi_stator.stl"" scale=""1""/>
+	<surface name=""air_inlet2_inlet"" file=""air_inlet2_inlet.stl"" scale=""1""/>
+	<surface name=""air_inlet3_wall"" file=""air_inlet3_wall.stl"" scale=""1""/>
+	<surface name=""air_inlet3_mgi_stator"" file=""air_inlet3_mgi_stator.stl"" scale=""1""/>
+	<surface name=""air_inlet3_inlet"" file=""air_inlet3_inlet.stl"" scale=""1""/>
+	<surface name=""inlet_wall"" file=""inlet_wall.stl"" scale=""1""/>
+	<surface name=""inlet_mgi_rotor"" file=""inlet_mgi_rotor.stl"" scale=""1""/>
+	<surface name=""inlet_inlet"" file=""inlet_inlet.stl"" scale=""1""/>
+	<surface name=""outlet_wall"" file=""outlet_wall.stl"" scale=""1""/>
+	<surface name=""outlet_mgi_rotor"" file=""outlet_mgi_rotor.stl"" scale=""1""/>
+	<surface name=""outlet_mgi_rotor_cyl"" file=""outlet_mgi_rotor_cyl.stl"" scale=""1""/>
+	<surface name=""outlet_outlet_air"" file=""outlet_outlet_air.stl"" scale=""1""/>
+	<surface name=""outlet_outlet"" file=""outlet_outlet.stl"" scale=""1""/>
+	<surface name=""rotor_mgi_outlet"" file=""rotor_mgi_outlet.stl"" scale=""1""/>
+	<surface name=""rotor_mgi_outlet_cyl"" file=""rotor_mgi_outlet_cyl.stl"" scale=""1""/>
+	<surface name=""rotor_blades"" file=""rotor_blades.stl"" scale=""1""/>
+	<surface name=""rotor_mgi_stator"" file=""rotor_mgi_stator.stl"" scale=""1""/>
+	<surface name=""rotor_mgi_inlet"" file=""rotor_mgi_inlet.stl"" scale=""1""/>
+	<surface name=""stator_mgi_rotor"" file=""stator_mgi_rotor.stl"" scale=""1""/>
+	<surface name=""stator_wall"" file=""stator_wall.stl"" scale=""1""/>
+	<surface name=""stator_mgi_air_inlet3"" file=""stator_mgi_air_inlet3.stl"" scale=""1""/>
+	<surface name=""stator_mgi_air_inlet1"" file=""stator_mgi_air_inlet1.stl"" scale=""1""/>
+	<surface name=""stator_mgi_air_inlet2"" file=""stator_mgi_air_inlet2.stl"" scale=""1""/>
   </import>";
 
         public const string WangGeHuafenConstScript = @"

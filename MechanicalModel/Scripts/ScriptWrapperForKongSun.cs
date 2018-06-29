@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MechanicalModel.Utils;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,12 +11,13 @@ namespace MechanicalModel.Scripts
 {
     public static class ScriptWrapperForKongSun
     {
+        public static string WorkDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "KongSun");
         public static string ScriptName = "torque_kongsun.spro";
-        public static string SourceSgrdFilePath = @"C:\Users\xnl\OneDrive - Microsoft\MechanicsModel\Script\torque_kongsun_test.sgrd";
-        public static string DestSgrdFilePath = Path.Combine(ConstantValues.CurrentWorkDirectory, "torque_kongsun.sgrd");
+        public static string SourceSgrdFilePath = @"C:\Users\xnl\OneDrive - Microsoft\MechanicsModel\Script\Final\torque_kongsun_final.sgrd";
+        public static string DestSgrdFilePath = Path.Combine(WorkDirectory, "torque_kongsun.sgrd");
         public static string ScriptXMLHeader = ScriptTemplateForKongSun.ScriptXMLHeader;
         public static string ScriptXMLTail = ScriptTemplateForKongSun.ScriptXMLTail;
-        public static string ImportScript = string.Empty;
+        public static string ImportScript = ScriptTemplateForKongSun.ImportScript;
         public static string WangGeHuafenConstScript = ScriptTemplateForKongSun.WangGeHuafenConstScript;
         public static string DongLunForWangGeHuaFen = string.Empty;
         public static string DingLunForWangGeHuaFen = string.Empty;
@@ -23,22 +25,6 @@ namespace MechanicalModel.Scripts
         public static string WuZhiDingYi = string.Empty;
         public static string JiSuanKongZhiCanShu = string.Empty;
         public static string JianKongDianZuoBiaoCanShu = string.Empty;
-
-        private static string GetImportMoXingScript()
-        {
-            StringBuilder sb = new StringBuilder();
-            if (string.IsNullOrEmpty(ImportScript))
-            {
-                MessageBox.Show("请导入模型文件");
-                return null;
-            }
-            else
-            {
-                sb.AppendLine(ImportScript);
-            }
-
-            return sb.ToString();
-        }
 
         private static string GetWangGeHuaFenScript()
         {
@@ -95,13 +81,7 @@ namespace MechanicalModel.Scripts
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(ScriptXMLHeader);
-
-            string importScript = GetImportMoXingScript();
-            if (!string.IsNullOrEmpty(importScript))
-            {
-                sb.AppendLine(importScript);
-            }
-
+            sb.AppendLine(ImportScript);
             sb.AppendLine(ScriptXMLTail);
             return sb.ToString();
         }
@@ -116,17 +96,16 @@ namespace MechanicalModel.Scripts
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(ScriptXMLHeader);
-
-            string importScript = GetImportMoXingScript();
-            if (!string.IsNullOrEmpty(importScript))
-            {
-                sb.AppendLine(importScript);
-            }
+            sb.AppendLine(ImportScript);
 
             string wangGeHuaFenScript = GetWangGeHuaFenScript();
             if (!string.IsNullOrEmpty(wangGeHuaFenScript))
             {
                 sb.AppendLine(wangGeHuaFenScript);
+            }
+            else
+            {
+                return null;
             }
 
             sb.AppendLine(ScriptXMLTail);
@@ -145,17 +124,16 @@ namespace MechanicalModel.Scripts
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(ScriptXMLHeader);
-
-            string importScript = GetImportMoXingScript();
-            if (!string.IsNullOrEmpty(importScript))
-            {
-                sb.AppendLine(importScript);
-            }
+            sb.AppendLine(ImportScript);
 
             string wangGeHuaFenScript = GetWangGeHuaFenScript();
             if (!string.IsNullOrEmpty(wangGeHuaFenScript))
             {
                 sb.AppendLine(wangGeHuaFenScript);
+            }
+            else
+            {
+                return null;
             }
 
             string jiSuanScript = GetJiSuanScript();
@@ -163,14 +141,13 @@ namespace MechanicalModel.Scripts
             {
                 sb.AppendLine(jiSuanScript);
             }
+            else
+            {
+                return null;
+            }
 
             sb.AppendLine(ScriptXMLTail);
             return sb.ToString();
         }
-    }
-
-    public static class ConstantValues
-    {
-        public static string CurrentWorkDirectory = Directory.GetCurrentDirectory();
     }
 }

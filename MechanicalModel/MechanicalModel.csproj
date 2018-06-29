@@ -91,6 +91,7 @@
     <Compile Include="Scripts\ScriptWrapperForHengNiuJu.cs" />
     <Compile Include="Scripts\ScriptWrapperForKongSun.cs" />
     <Compile Include="Scripts\ScriptTemplateForKongSun.cs" />
+    <Compile Include="Utils\CommonUtils.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Utils\MechanicalModelViewUIConverter.cs" />
     <Compile Include="Utils\StartOtherProcessHelper.cs" />
