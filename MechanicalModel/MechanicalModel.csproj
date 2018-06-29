@@ -91,6 +91,7 @@
     <Compile Include="Scripts\ScriptWrapperForHengNiuJu.cs" />
     <Compile Include="Scripts\ScriptWrapperForKongSun.cs" />
     <Compile Include="Scripts\ScriptTemplateForKongSun.cs" />
+    <Compile Include="Utils\CommonUtils.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Utils\MechanicalModelViewUIConverter.cs" />
     <Compile Include="Utils\StartOtherProcessHelper.cs" />
@@ -170,6 +171,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\CheckBoxListStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\CustomProgressBarLineStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

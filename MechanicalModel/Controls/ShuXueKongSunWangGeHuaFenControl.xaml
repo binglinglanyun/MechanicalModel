@@ -76,13 +76,13 @@
                     </StackPanel>
                 </StackPanel>
             </Grid>
-            <Button Content="网格划分" Margin="10,20,0,0" Command="{Binding WangGeHuaFenButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
+            <Button Content="确认设置" Margin="10,20,0,0" Command="{Binding ConfirmButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
             
             <Border Style="{DynamicResource SplitBorderStyle}"/>
             <StackPanel Orientation="Vertical">
                 <Label Content="网格显示" Style="{DynamicResource LabelBoldTextStyle}"/>
                 <Image Source="{Binding SourceUri}" Margin="0,-40,0,0" Height="400" Width="400"/>
-                <Button Content="显示" Margin="20,0,0,0" Command="{Binding ShowButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
+                <Button Content="网格划分及显示" Margin="20,0,0,0" Command="{Binding WangGeHuaFenAndShowButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
             </StackPanel>
         </StackPanel>
     </Grid>

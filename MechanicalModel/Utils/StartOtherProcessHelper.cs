@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +12,12 @@ namespace MechanicalModel.Utils
 {
     public class StartOtherProcessHelper
     {
+        private const int SW_HIDE = 0;
+        private const int SW_RESTORE = 9;
+
+        [DllImport("User32.dll")]
+        private static extern bool ShowWindow(IntPtr handle, int nCmdShow);
+
         private static void StartPumpLinx(string scriptPath)
         {
             //Open with PumpLink
@@ -35,7 +42,7 @@ namespace MechanicalModel.Utils
 
         public static void StartPumpLinxForKongSun(string scriptContent)
         {
-            string scriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, ScriptWrapperForKongSun.ScriptName);
+            string scriptPath = Path.Combine(ScriptWrapperForKongSun.WorkDirectory, ScriptWrapperForKongSun.ScriptName);
             File.WriteAllText(scriptPath, scriptContent);
 
             if (!File.Exists(ScriptWrapperForKongSun.DestSgrdFilePath))
@@ -48,7 +55,7 @@ namespace MechanicalModel.Utils
 
         public static void StartPumpLinxForHengNiuJu(string scriptContent)
         {
-            string scriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, ScriptWrapperForHengNiuJu.ScriptName);
+            string scriptPath = Path.Combine(ScriptWrapperForHengNiuJu.WorkDirectory, ScriptWrapperForHengNiuJu.ScriptName);
             File.WriteAllText(scriptPath, scriptContent);
 
             if (!File.Exists(ScriptWrapperForHengNiuJu.DestSgrdFilePath))

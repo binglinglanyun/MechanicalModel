@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MechanicalModel.ViewModels
@@ -114,7 +115,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public ICommand WangGeHuaFenButtonClick
+        public ICommand ConfirmButtonClick
         {
             get
             {
@@ -126,22 +127,22 @@ namespace MechanicalModel.ViewModels
                     ScriptWrapperForHengNiuJu.DongLunForWangGeHuaFen = string.Format(ScriptTemplateForHengNiuJu.DongLunForWangGeHuaFen,
                         this.DongLunZuiDaWangGeChiDu, this.DongLunZuiXiaoWangGeChiDu, this.DongLunZuiDaMianWangGeChiDu);
 
-                    string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForWangGeHuaFen();
-                    if (scriptContent != null)
-                    {
-                        StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
-                    }
+                    MessageBox.Show("设置成功");
                 });
             }
         }
 
-        public ICommand ShowButtonClick
+        public ICommand WangGeHuaFenAndShowButtonClick
         {
             get
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    // Show background processes
+                    string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForWangGeHuaFen();
+                    if (scriptContent != null)
+                    {
+                        StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
+                    }
                 });
             }
         }

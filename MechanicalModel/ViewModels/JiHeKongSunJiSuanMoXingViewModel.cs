@@ -46,13 +46,12 @@ namespace MechanicalModel.ViewModels
                 return new DelegateCommand<object>((o) =>
                 {
                     string localFolder;
-                    System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
-                    dialog.Title = "模型位置";
-                    dialog.DefaultExt = ".stl";
+                    System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
+                    dialog.Description = "模型位置";
                     System.Windows.Forms.DialogResult result = dialog.ShowDialog();
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {
-                        localFolder = dialog.FileName;
+                        localFolder = dialog.SelectedPath;
                     }
                     else
                     {
@@ -64,54 +63,45 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public ICommand ImportButtonClick
+        public ICommand ConfirmButtonClick
         {
             get
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    if (File.Exists(this.LocationString))
+                    try
                     {
-                        try
-                        {
-                            string filename = Path.GetFileName(this.LocationString);
-                            string destScriptPath = Path.Combine(ConstantValues.CurrentWorkDirectory, filename);
-                            if (File.Exists(destScriptPath))
-                            {
-                                File.Delete(destScriptPath);
-                            }
-
-                            File.Copy(this.LocationString, destScriptPath);
-
-                            // Create import script
-                            ScriptWrapperForKongSun.ImportScript = string.Format(ScriptTemplateForKongSun.ImportScript, filename);
-                            string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForImportMoXing();
-                            if (scriptContent != null)
-                            {
-                                StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);
-                                MessageBox.Show("模型导入成功");
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("模型导入失败，错误信息：{0}", ex.Message);
-                        }
+                        this.LoadingVisibility = Visibility.Visible;
+                        CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForKongSun.WorkDirectory);
+                        this.LoadingVisibility = Visibility.Collapsed;
+                        MessageBox.Show("设置成功");
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("模型文件不存在");
+                        MessageBox.Show(string.Format("模型导入失败，错误信息：{0}", ex.Message));
                     }
                 });
             }
         }
 
-        public ICommand ShowButtonClick
+        public ICommand ImportAndShowButtonClick
         {
             get
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    // Show background processes
+                    if (!Directory.Exists(LocationString) || !Directory.Exists(ScriptWrapperForKongSun.WorkDirectory))
+                    {
+                        MessageBox.Show("请设置模型导入路径并确认设置");
+                        return;
+                    }
+
+                    // Create import script
+                    string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForImportMoXing();
+                    if (scriptContent != null)
+                    {
+                        StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);
+                    }
                 });
             }
         }
@@ -149,6 +139,19 @@ namespace MechanicalModel.ViewModels
             get
             {
                 return Path.GetFullPath("Resources/KongSunJiHeMoXing.png"); ;
+            }
+        }
+
+        private Visibility _loadingVisibility = Visibility.Collapsed;
+        public Visibility LoadingVisibility
+        {
+            get
+            {
+                return _loadingVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _loadingVisibility);
             }
         }
         #endregion

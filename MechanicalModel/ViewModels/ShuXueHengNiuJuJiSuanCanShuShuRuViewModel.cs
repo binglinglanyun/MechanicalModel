@@ -251,7 +251,7 @@ namespace MechanicalModel.ViewModels
         }
         #endregion
 
-        public ICommand CanShuShuRuButtonClick
+        public ICommand ConfirmButtonClick
         {
             get
             {
@@ -262,9 +262,16 @@ namespace MechanicalModel.ViewModels
 
                     // {0} - 动轮初始转速(rad/s)  {1} - 动轮转动惯量 {2} - 背压阀出口  {3} - 滑阀回油出口
                     // {4} - 指令油入口   {5} - 充油进口   {6} - 通气孔   {7} - 反馈压力入口
+                    double dongLunChuShiZhuanSu = Math.Round(double.Parse(this.DongLunChuShiZhuanSu) * Math.PI / 30, 5);
+                    double beiYaFaChuKou = double.Parse(this.BeiYaFaChuKou) * 1000000;
+                    double huaFaHuiYouChuKou = double.Parse(this.HuaFaHuiYouChuKou) * 1000000;
+                    double zhiLingYouRuKou = double.Parse(this.ZhiLingYouRuKou) * 1000000;
+                    double chongYouJinKou = double.Parse(this.ChongYouJinKou) * 1000000;
+                    double tongQiKong = double.Parse(this.TongQiKong) * 1000000;
+                    double fanKuiYaLiRuKou = double.Parse(this.FanKuiYaLiRuKou) * 1000000;
                     ScriptWrapperForHengNiuJu.BianJieTiaoJianDingYi = string.Format(ScriptTemplateForHengNiuJu.BianJieTiaoJianDingYi,
-                        this.DongLunChuShiZhuanSu, this.DongLunZhuanDongGuanLiang, this.BeiYaFaChuKou, this.HuaFaHuiYouChuKou,
-                        this.ZhiLingYouRuKou, this.ChongYouJinKou, this.TongQiKong, this.FanKuiYaLiRuKou);
+                        dongLunChuShiZhuanSu, this.DongLunZhuanDongGuanLiang, beiYaFaChuKou, huaFaHuiYouChuKou,
+                        zhiLingYouRuKou, chongYouJinKou, tongQiKong, fanKuiYaLiRuKou);
 
                     // {0} - 背压阀阀芯质量 {1} - 背压阀弹簧刚度 {2} - 背压阀弹簧预紧力
                     // {3} - 滑阀阀芯质量  {4} - 滑阀弹簧刚度 {5} - 滑阀弹簧预紧力
@@ -272,7 +279,7 @@ namespace MechanicalModel.ViewModels
                         this.BeiYaFaFaXinZhiLiang, this.BeiYaFaTanHuangGangDu, this.BeiYaFaTanHuangYuJinLi, 
                         this.HuaFaFaXinZhiLiang, this.HuaFaTanHuangGangDu, this.HuaFaTanHuangYuJinLi);
 
-                    MessageBox.Show("参数输入成功");
+                    MessageBox.Show("设置成功");
                 });
             }
         }

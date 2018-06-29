@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="/Themes/CheckBoxListStyle.xaml"/>
                 <ResourceDictionary Source="/Themes/PropertyItemStyle.xaml"/>
                 <ResourceDictionary Source="/Themes/UserControlStyle.xaml"/>
+                <ResourceDictionary Source="/Themes/CustomProgressBarLineStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -24,7 +25,6 @@
 
                 <Button Name="buttonBrowse" Content="浏览..." Command="{Binding BrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
-            <Button Content="导入" Margin="20,0,0,0"  Command="{Binding ImportButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
 
             <Border Style="{DynamicResource SplitBorderStyle}"/>
 
@@ -33,13 +33,17 @@
                 <TextBlock Text="模型列表:" VerticalAlignment="Stretch" Margin="0,0,10,0"/>
                 <ListBox x:Name="checkListBox" Style="{StaticResource DataItemCheckListBoxStyle}" ItemsSource="{Binding Path=Items}"/>
             </StackPanel>
-            <Button Content="生成装配体几何" Margin="20,0,0,0" MinWidth="50" HorizontalAlignment="Left"/>
+            <Button Content="设置确认" Margin="20,0,0,0" Command="{Binding ConfirmButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
 
             <Border Style="{DynamicResource SplitBorderStyle}"/>
 
             <Label Content="几何模型显示" Style="{DynamicResource LabelBoldTextStyle}"/> 
             <Image Source="{Binding SourceUri}" Margin="0,-20,0,0" Height="400" Width="400"/>
-            <Button Content="显示" Margin="20,0,0,0" Command="{Binding ShowButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
+            <Button Content="导入及显示" Margin="20,0,0,0" Command="{Binding ImportAndShowButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
         </StackPanel>
+        <ProgressBar IsIndeterminate="True" Grid.Column="0" 
+                     VerticalAlignment="Top" SnapsToDevicePixels="True" 
+                     Style="{DynamicResource CustomProgressBarLineStyle}"
+                     Visibility="{Binding LoadingVisibility}"/>
     </Grid>
 </UserControl>

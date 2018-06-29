@@ -58,7 +58,7 @@
                     <CheckBox Content="出口流量监测" IsChecked="True"/>
                 </StackPanel>
             </StackPanel>
-            <Button Content="计算" Margin="20,20,0,0" Command="{Binding JiSuanButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
+            <Button Content="计算及显示" Margin="20,20,0,0" Command="{Binding JiSuanButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
         </StackPanel>
     </Grid>
 </UserControl>

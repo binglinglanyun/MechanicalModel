@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MechanicalModel.Themes">
+
+    <Style x:Key="CustomProgressBarStyle" TargetType="ProgressBar" BasedOn="{StaticResource {x:Type ProgressBar}}">
+        <Setter Property="Foreground" Value="{DynamicResource VsBrush.FileTabHotBorder}" />
+        <Setter Property="Background" Value="{DynamicResource VsBrush.ComboBoxBorder}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Height" Value="14"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+    </Style>
+
+    <Style TargetType="ProgressBar" BasedOn="{StaticResource CustomProgressBarStyle}"/>
+
+    <Style x:Key="CustomProgressBarLineStyle" TargetType="ProgressBar" BasedOn="{StaticResource CustomProgressBarStyle}">
+        <Setter Property="Height" Value="2"/>
+    </Style>
+
+</ResourceDictionary>

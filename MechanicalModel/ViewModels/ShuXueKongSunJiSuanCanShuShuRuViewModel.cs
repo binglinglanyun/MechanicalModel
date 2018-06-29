@@ -119,20 +119,23 @@ namespace MechanicalModel.ViewModels
         /// BianJieTiaoJianDingYi = DongLunZhuanSu + TongQiKong + PaiQiKong + YouYeTiJiFenShu
         /// WuZhiDingYi = NianDuOfOil + NianDuOfAir + MiDuOfOil
         /// </summary>
-        public ICommand CanShuShuRuButtonClick
+        public ICommand ConfirmButtonClick
         {
             get
             {
                 return new TaskCommand<object>((o) =>
                 {
                     double dongLunZhuanSu = Math.Round(double.Parse(this.DongLunZhuanSu) * Math.PI / 30, 5);
+                    double paiQiKou = double.Parse(this.PaiQiKou) *  1000000;
+                    double tongQiKong = double.Parse(this.TongQiKong) * 1000000;
                     ScriptWrapperForKongSun.BianJieTiaoJianDingYi = string.Format(ScriptTemplateForKongSun.BianJieTiaoJianDingYi,
-                        dongLunZhuanSu, this.PaiQiKou, this.TongQiKong, this.YouYeTiJiFenShu);
+                        dongLunZhuanSu, paiQiKou, tongQiKong, this.YouYeTiJiFenShu);
 
+                    double value = 1 - double.Parse(this.YouYeTiJiFenShu);
                     ScriptWrapperForKongSun.WuZhiDingYi = string.Format(ScriptTemplateForKongSun.WuZhiDingYi,
-                         this.NianDuOfOil, this.NianDuOfAir, this.MiDuOfOil);
+                         this.NianDuOfOil, this.NianDuOfAir, this.MiDuOfOil, value);
 
-                    MessageBox.Show("参数输入成功");
+                    MessageBox.Show("设置成功");
                 });
             }
         }
