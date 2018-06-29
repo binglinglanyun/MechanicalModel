@@ -251,7 +251,7 @@ namespace MechanicalModel.ViewModels
         }
         #endregion
 
-        public ICommand CanShuShuRuButtonClick
+        public ICommand ConfirmButtonClick
         {
             get
             {
@@ -279,7 +279,7 @@ namespace MechanicalModel.ViewModels
                         this.BeiYaFaFaXinZhiLiang, this.BeiYaFaTanHuangGangDu, this.BeiYaFaTanHuangYuJinLi, 
                         this.HuaFaFaXinZhiLiang, this.HuaFaTanHuangGangDu, this.HuaFaTanHuangYuJinLi);
 
-                    MessageBox.Show("参数输入成功");
+                    MessageBox.Show("设置成功");
                 });
             }
         }

@@ -119,7 +119,7 @@ namespace MechanicalModel.ViewModels
         /// BianJieTiaoJianDingYi = DongLunZhuanSu + TongQiKong + PaiQiKong + YouYeTiJiFenShu
         /// WuZhiDingYi = NianDuOfOil + NianDuOfAir + MiDuOfOil
         /// </summary>
-        public ICommand CanShuShuRuButtonClick
+        public ICommand ConfirmButtonClick
         {
             get
             {
@@ -135,7 +135,7 @@ namespace MechanicalModel.ViewModels
                     ScriptWrapperForKongSun.WuZhiDingYi = string.Format(ScriptTemplateForKongSun.WuZhiDingYi,
                          this.NianDuOfOil, this.NianDuOfAir, this.MiDuOfOil, value);
 
-                    MessageBox.Show("参数输入成功");
+                    MessageBox.Show("设置成功");
                 });
             }
         }

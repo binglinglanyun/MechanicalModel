@@ -116,7 +116,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public ICommand WangGeHuaFenButtonClick
+        public ICommand ConfirmButtonClick
         {
             get
             {
@@ -128,22 +128,22 @@ namespace MechanicalModel.ViewModels
                     ScriptWrapperForKongSun.DongLunForWangGeHuaFen = string.Format(ScriptTemplateForKongSun.DongLunForWangGeHuaFen, 
                         this.DongLunZuiDaWangGeChiDu, this.DongLunZuiXiaoWangGeChiDu, this.DongLunZuiDaMianWangGeChiDu);
 
-                    string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForWangGeHuaFen();
-                    if (scriptContent != null)
-                    {
-                        StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);
-                    }
+                    MessageBox.Show("设置成功");
                 });
             }
         }
 
-        public ICommand ShowButtonClick
+        public ICommand WangGeHuaFenAndShowButtonClick
         {
             get
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    // Show background processes
+                    string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForWangGeHuaFen();
+                    if (scriptContent != null)
+                    {
+                        StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);
+                    }
                 });
             }
         }

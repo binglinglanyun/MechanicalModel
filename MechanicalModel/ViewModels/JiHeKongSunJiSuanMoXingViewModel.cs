@@ -63,7 +63,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public ICommand ImportButtonClick
+        public ICommand ConfirmButtonClick
         {
             get
             {
@@ -71,31 +71,37 @@ namespace MechanicalModel.ViewModels
                 {
                     try
                     {
+                        this.LoadingVisibility = Visibility.Visible;
                         CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForKongSun.WorkDirectory);
-
-                        // Create import script
-                        string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForImportMoXing();
-                        if (scriptContent != null)
-                        {
-                            StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);
-                        }
+                        this.LoadingVisibility = Visibility.Collapsed;
+                        MessageBox.Show("设置成功");
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(string.Format("模型导入失败，错误信息：{0}", ex.Message));
                     }
-
                 });
             }
         }
 
-        public ICommand ShowButtonClick
+        public ICommand ImportAndShowButtonClick
         {
             get
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    // Show background processes
+                    if (!Directory.Exists(LocationString) || !Directory.Exists(ScriptWrapperForKongSun.WorkDirectory))
+                    {
+                        MessageBox.Show("请设置模型导入路径并确认设置");
+                        return;
+                    }
+
+                    // Create import script
+                    string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForImportMoXing();
+                    if (scriptContent != null)
+                    {
+                        StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);
+                    }
                 });
             }
         }
@@ -133,6 +139,19 @@ namespace MechanicalModel.ViewModels
             get
             {
                 return Path.GetFullPath("Resources/KongSunJiHeMoXing.png"); ;
+            }
+        }
+
+        private Visibility _loadingVisibility = Visibility.Collapsed;
+        public Visibility LoadingVisibility
+        {
+            get
+            {
+                return _loadingVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _loadingVisibility);
             }
         }
         #endregion

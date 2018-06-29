@@ -55,26 +55,44 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public ICommand ImportButtonClick
+        public ICommand ConfirmButtonClick
+        {
+            get
+            {
+                return new DelegateCommand<object>((o) =>
+                {
+                    try
+                    {
+                        this.LoadingVisibility = Visibility.Visible;
+                        CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForHengNiuJu.WorkDirectory);
+                        this.LoadingVisibility = Visibility.Collapsed;
+                        MessageBox.Show("设置成功");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(string.Format("模型导入失败，错误信息：{0}", ex.Message));
+                    }
+                });
+            }
+        }
+
+        public ICommand ImportAndShowButtonClick
         {
             get
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    try
+                    if (!Directory.Exists(LocationString) || !Directory.Exists(ScriptWrapperForKongSun.WorkDirectory))
                     {
-                        CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForHengNiuJu.WorkDirectory);
-
-                        // Create import script
-                        string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForImportMoXing();
-                        if (scriptContent != null)
-                        {
-                            StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
-                        }
+                        MessageBox.Show("请设置模型导入路径并确认设置");
+                        return;
                     }
-                    catch (Exception ex)
+
+                    // Create import script
+                    string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForImportMoXing();
+                    if (scriptContent != null)
                     {
-                        MessageBox.Show(string.Format("模型导入失败，错误信息：{0}", ex.Message));
+                        StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
                     }
                 });
             }
@@ -120,6 +138,19 @@ namespace MechanicalModel.ViewModels
             get
             {
                 return Path.GetFullPath("Resources/HengNiuJuJiHeMoXing.png"); ;
+            }
+        }
+
+        private Visibility _loadingVisibility = Visibility.Collapsed;
+        public Visibility LoadingVisibility
+        {
+            get
+            {
+                return _loadingVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _loadingVisibility);
             }
         }
         #endregion
