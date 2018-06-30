@@ -12,7 +12,7 @@ namespace MechanicalModel.Scripts
     public static class ScriptWrapperForKongSun
     {
         public static string WorkDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "KongSun");
-        public static string ScriptName = "torque_kongsun.spro";
+        public const string ScriptName = "torque_kongsun.spro";
         public static string SourceSgrdFilePath = @"C:\Users\xnl\OneDrive - Microsoft\MechanicsModel\Script\Final\torque_kongsun_final.sgrd";
         public static string DestSgrdFilePath = Path.Combine(WorkDirectory, "torque_kongsun.sgrd");
         public static string ScriptXMLHeader = ScriptTemplateForKongSun.ScriptXMLHeader;
@@ -25,6 +25,8 @@ namespace MechanicalModel.Scripts
         public static string WuZhiDingYi = string.Empty;
         public static string JiSuanKongZhiCanShu = string.Empty;
         public static string JianKongDianZuoBiaoCanShu = string.Empty;
+
+        public const string KongSunGongLvResultTitle = "pow_rotor_blades";
 
         private static string GetWangGeHuaFenScript()
         {

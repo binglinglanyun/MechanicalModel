@@ -27,6 +27,11 @@ namespace MechanicalModel.Scripts
         public static string BianJieTiaoJianDingYi = string.Empty;
         public static string WuZhiDingYi = string.Empty;
 
+        public const string HengNiuJuGongLvResultTitle = "pow_rotor2_wall";
+        public const string KongZhiNiuJuResultTitle = "torq_rotor2_wall";
+        public const string QiXiaoShiJianRusultTitie = "time";
+        public const string WeiYiQuXianRusultTitle = "vD_1";
+
         private static string GetWangGeHuaFenScript()
         {
             StringBuilder sb = new StringBuilder();

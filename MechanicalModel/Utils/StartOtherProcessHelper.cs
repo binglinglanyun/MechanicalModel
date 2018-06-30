@@ -18,12 +18,12 @@ namespace MechanicalModel.Utils
         [DllImport("User32.dll")]
         private static extern bool ShowWindow(IntPtr handle, int nCmdShow);
 
-        private static void StartPumpLinx(string scriptPath)
+        public static void StartPumpLinx(string scriptPath)
         {
             //Open with PumpLink
             ProcessStartInfo info = new ProcessStartInfo();
             info.FileName = "PumpLinx.exe";
-            info.Arguments = scriptPath;
+            info.Arguments = File.Exists(scriptPath) ? scriptPath : null;
             info.WorkingDirectory = @"C:\Program Files\Simerics\";
             info.WindowStyle = ProcessWindowStyle.Minimized;
             info.CreateNoWindow = true;

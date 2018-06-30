@@ -21,18 +21,37 @@
                 <Style TargetType="TextBlock" BasedOn="{StaticResource PropertyNameStyle}"/>
                 <Style TargetType="TextBox" BasedOn="{StaticResource PropertyValueStyle}"/>
             </StackPanel.Resources>
-            <Label Content="计算结果数据输出" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <Label Content="数值计算结果数据导入" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
+                <TextBlock Text="已有数值计算结果导入:" VerticalAlignment="Center"/>
+                <ComboBox Text="{Binding LocationString}" HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="20,0,0,0"/>
+
+                <Button Name="buttonBrowse" Content="浏览..." Command="{Binding BrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+            </StackPanel>
+            <Button Content="确认导入" Margin="20,0,0,0" Command="{Binding ImportButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
+
+            <Border Style="{DynamicResource SplitBorderStyle}"/>
+            
+            <Label Content="数值计算结果数据输出" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="起效时间t0:" />
-                    <TextBox Text="0.35"/>
+                    <TextBox Text="{Binding QiXiaoShiJian}"/>
                     <TextBlock Text="s" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="控制扭矩Mk:" />
-                    <TextBox Text="10,300"/>
+                    <TextBox Text="{Binding KongZhiNiuJu}"/> 
                     <TextBlock Text="N.m" Margin="5,0,0,0"/>
                 </StackPanel>
+            </StackPanel>
+
+            <Border Style="{DynamicResource SplitBorderStyle}"/>
+
+            <Label Content="曲线和云图计算结果数据导入" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
+                <TextBlock Text="已有曲线或云图计算结果导入:" VerticalAlignment="Center"/>
+                <Button Content="导入" Command="{Binding QuXianAndYunTuImportButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
         </StackPanel>   
     </Grid>

@@ -108,7 +108,7 @@ namespace MechanicalModel.ViewModels
         #endregion
 
         #region Properties
-        private string _locationString = "D:\\380流场计算\\几何模型";
+        private string _locationString = "D:\\380流场计算\\空损几何模型";
         public string LocationString
         {
             get
