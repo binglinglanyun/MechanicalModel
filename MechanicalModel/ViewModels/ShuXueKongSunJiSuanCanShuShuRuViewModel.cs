@@ -135,7 +135,7 @@ namespace MechanicalModel.ViewModels
                     ScriptWrapperForKongSun.WuZhiDingYi = string.Format(ScriptTemplateForKongSun.WuZhiDingYi,
                          this.NianDuOfOil, this.NianDuOfAir, this.MiDuOfOil, value);
 
-                    MessageBox.Show("设置成功");
+                    MessageBox.Show("设置成功", "空损计算参数输入");
                 });
             }
         }

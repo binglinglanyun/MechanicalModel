@@ -128,7 +128,7 @@ namespace MechanicalModel.ViewModels
                     ScriptWrapperForKongSun.DongLunForWangGeHuaFen = string.Format(ScriptTemplateForKongSun.DongLunForWangGeHuaFen, 
                         this.DongLunZuiDaWangGeChiDu, this.DongLunZuiXiaoWangGeChiDu, this.DongLunZuiDaMianWangGeChiDu);
 
-                    MessageBox.Show("设置成功");
+                    MessageBox.Show("设置成功", "空损计算网格划分");
                 });
             }
         }

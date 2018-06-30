@@ -86,7 +86,7 @@ namespace MechanicalModel.ViewModels
                         using (StreamReader sr = new StreamReader(this.LocationString))
                         {
                             string[] resultTitles = sr.ReadLine().Split('\t');
-                            int index = resultTitles.ToList().IndexOf(ScriptWrapperForHengNiuJu.KongZhiNiuJuResultTitle);
+                            int index = resultTitles.ToList().IndexOf(ScriptWrapperForKongSun.KongSunGongLvResultTitle);
                             if (index != -1)
                             {
                                 string st = string.Empty;

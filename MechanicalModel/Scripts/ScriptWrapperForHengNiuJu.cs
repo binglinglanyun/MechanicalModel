@@ -11,10 +11,11 @@ namespace MechanicalModel.Scripts
 {
     public static class ScriptWrapperForHengNiuJu
     {
+        public const string ScriptName = "torque_hengniuju.spro";
+        public const string SgrdFileName = "torque_hengniuju.sgrd";
         public static string WorkDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "HengNiuJu");
-        public static string ScriptName = "torque_hengniuju.spro";
-        public static string SourceSgrdFilePath = @"C:\Users\xnl\OneDrive - Microsoft\MechanicsModel\Script\Final\torque_hengniuju_final.sgrd";
-        public static string DestSgrdFilePath = Path.Combine(WorkDirectory, "torque_hengniuju.sgrd");
+        public static string SourceSgrdFilePath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", SgrdFileName);
+        public static string DestSgrdFilePath = Path.Combine(WorkDirectory, SgrdFileName);
         public static string ScriptXMLHeader = ScriptTemplateForHengNiuJu.ScriptXMLHeader;
         public static string ScriptXMLTail = ScriptTemplateForHengNiuJu.ScriptXMLTail;
         public static string ImportScript = ScriptTemplateForHengNiuJu.ImportScript;

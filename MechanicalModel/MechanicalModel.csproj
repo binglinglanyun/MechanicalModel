@@ -224,6 +224,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Resource Include="Resources\Shortcut.ico" />
+    <Content Include="Scripts\torque_hengniuju.sgrd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\torque_kongsun.sgrd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="$(PngResources)">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -74,7 +74,7 @@ namespace MechanicalModel.ViewModels
                         this.LoadingVisibility = Visibility.Visible;
                         CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForKongSun.WorkDirectory);
                         this.LoadingVisibility = Visibility.Collapsed;
-                        MessageBox.Show("设置成功");
+                        MessageBox.Show("设置成功", "空损计算模型导入");
                     }
                     catch (Exception ex)
                     {
