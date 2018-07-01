@@ -26,8 +26,6 @@
                 <Button Name="buttonBrowse" Content="浏览..." Command="{Binding BrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
 
-            <Border Style="{DynamicResource SplitBorderStyle}"/>
-
             <Label Content="几何模型装配" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
                 <TextBlock Text="模型列表:" VerticalAlignment="Stretch" Margin="0,0,10,0"/>

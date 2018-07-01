@@ -95,7 +95,7 @@ namespace MechanicalModel.ViewModels
                                     st = sr.ReadLine();
                                 }
 
-                                this.KongSunGongLv = st.Split('\t')[index];
+                                this.KongSunGongLv = Math.Abs(double.Parse(st.Split('\t')[index])).ToString();
                             }
                             else
                             {

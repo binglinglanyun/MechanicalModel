@@ -119,7 +119,7 @@ namespace MechanicalModel.ViewModels
                                     catch { }
                                 }
 
-                                this.KongZhiNiuJu = st.Split('\t')[kongZhiNiuJuIndex];
+                                this.KongZhiNiuJu = Math.Abs(double.Parse(st.Split('\t')[kongZhiNiuJuIndex])).ToString();
                             }
                             else
                             {
