@@ -77,6 +77,18 @@ namespace MechanicalModel.Scripts
 
         /// <summary>
         /// ScriptXMLHeader + 
+        /// ScriptXMLTail
+        /// </summary>
+        public static string CreateFullScriptForTempScript()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(ScriptXMLHeader);
+            sb.AppendLine(ScriptXMLTail);
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// ScriptXMLHeader + 
         /// ImportScript + 
         /// ScriptXMLTail
         /// </summary>

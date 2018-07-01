@@ -117,7 +117,7 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    StartOtherProcessHelper.StartPumpLinx(null);
+                    StartOtherProcessHelper.StartPumpLinxForTempScript();
                 });
             }
         }

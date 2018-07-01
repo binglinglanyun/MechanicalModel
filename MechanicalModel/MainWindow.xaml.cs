@@ -24,7 +24,7 @@ namespace MechanicalModel
         public MainWindow()
         {
             InitializeComponent();
-
+            this.WindowState = System.Windows.WindowState.Maximized;
             MainWindowViewModel viewModel = new MainWindowViewModel();
             this.DataContext = viewModel;
         }

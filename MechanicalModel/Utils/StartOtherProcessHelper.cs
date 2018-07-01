@@ -18,12 +18,12 @@ namespace MechanicalModel.Utils
         [DllImport("User32.dll")]
         private static extern bool ShowWindow(IntPtr handle, int nCmdShow);
 
-        public static void StartPumpLinx(string scriptPath)
+        private static void StartPumpLinx(string scriptPath)
         {
             //Open with PumpLink
             ProcessStartInfo info = new ProcessStartInfo();
             info.FileName = "PumpLinx.exe";
-            info.Arguments = File.Exists(scriptPath) ? scriptPath : null;
+            info.Arguments = scriptPath;
             info.WorkingDirectory = @"C:\Program Files\Simerics\";
             info.WindowStyle = ProcessWindowStyle.Minimized;
             info.CreateNoWindow = true;
@@ -63,6 +63,20 @@ namespace MechanicalModel.Utils
                 File.Copy(ScriptWrapperForHengNiuJu.SourceSgrdFilePath, ScriptWrapperForHengNiuJu.DestSgrdFilePath);
             }
 
+            StartPumpLinx(scriptPath);
+        }
+
+        public static void StartPumpLinxForTempScript()
+        {
+            string folderPath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Temp");
+            string scriptPath = Path.Combine(folderPath, "temp.spro");
+            string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForTempScript();
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            File.WriteAllText(scriptPath, scriptContent);
             StartPumpLinx(scriptPath);
         }
     }
