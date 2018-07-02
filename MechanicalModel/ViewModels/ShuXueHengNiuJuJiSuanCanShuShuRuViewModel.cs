@@ -279,7 +279,7 @@ namespace MechanicalModel.ViewModels
                         this.BeiYaFaFaXinZhiLiang, this.BeiYaFaTanHuangGangDu, this.BeiYaFaTanHuangYuJinLi, 
                         this.HuaFaFaXinZhiLiang, this.HuaFaTanHuangGangDu, this.HuaFaTanHuangYuJinLi);
 
-                    MessageBox.Show("设置成功");
+                    MessageBox.Show("设置成功", "恒扭矩计算参数输入");
                 });
             }
         }

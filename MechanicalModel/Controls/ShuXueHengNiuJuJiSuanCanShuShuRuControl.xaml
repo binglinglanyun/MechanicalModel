@@ -157,7 +157,7 @@
                 <Border Style="{DynamicResource SplitBorderStyle}"/>
                 <Label Content="物理模型选择" Style="{DynamicResource LabelBoldTextStyle}"/>
                 <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
-                    <CheckBox Content="端流模型" IsChecked="True"/>
+                    <CheckBox Content="湍流模型" IsChecked="True"/>
                     <CheckBox Content="多相流模型" IsChecked="True"/>
                     <CheckBox Content="运动模型" IsChecked="True"/>
                 </StackPanel>

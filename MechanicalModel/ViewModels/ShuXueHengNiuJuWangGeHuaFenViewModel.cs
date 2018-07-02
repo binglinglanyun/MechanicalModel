@@ -127,7 +127,7 @@ namespace MechanicalModel.ViewModels
                     ScriptWrapperForHengNiuJu.DongLunForWangGeHuaFen = string.Format(ScriptTemplateForHengNiuJu.DongLunForWangGeHuaFen,
                         this.DongLunZuiDaWangGeChiDu, this.DongLunZuiXiaoWangGeChiDu, this.DongLunZuiDaMianWangGeChiDu);
 
-                    MessageBox.Show("设置成功");
+                    MessageBox.Show("设置成功", "恒扭矩计算网格划分");
                 });
             }
         }

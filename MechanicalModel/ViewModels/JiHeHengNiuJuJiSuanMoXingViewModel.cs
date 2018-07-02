@@ -66,7 +66,7 @@ namespace MechanicalModel.ViewModels
                         this.LoadingVisibility = Visibility.Visible;
                         CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForHengNiuJu.WorkDirectory);
                         this.LoadingVisibility = Visibility.Collapsed;
-                        MessageBox.Show("设置成功");
+                        MessageBox.Show("设置成功", "恒扭矩计算模型导入");
                     }
                     catch (Exception ex)
                     {
@@ -99,7 +99,7 @@ namespace MechanicalModel.ViewModels
         }
 
         #region Properties
-        private string _locationString = "D:\\380流场计算\\几何模型";
+        private string _locationString = "D:\\380流场计算\\恒扭矩几何模型";
         public string LocationString
         {
             get

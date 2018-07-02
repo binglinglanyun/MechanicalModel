@@ -65,5 +65,19 @@ namespace MechanicalModel.Utils
 
             StartPumpLinx(scriptPath);
         }
+
+        public static void StartPumpLinxForTempScript()
+        {
+            string folderPath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Temp");
+            string scriptPath = Path.Combine(folderPath, "temp.spro");
+            string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForTempScript();
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            File.WriteAllText(scriptPath, scriptContent);
+            StartPumpLinx(scriptPath);
+        }
     }
 }

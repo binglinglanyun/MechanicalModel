@@ -11,10 +11,11 @@ namespace MechanicalModel.Scripts
 {
     public static class ScriptWrapperForKongSun
     {
+        public const string ScriptName = "torque_kongsun.spro";
+        public const string SgrdFileName = "torque_kongsun.sgrd";
         public static string WorkDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "KongSun");
-        public static string ScriptName = "torque_kongsun.spro";
-        public static string SourceSgrdFilePath = @"C:\Users\xnl\OneDrive - Microsoft\MechanicsModel\Script\Final\torque_kongsun_final.sgrd";
-        public static string DestSgrdFilePath = Path.Combine(WorkDirectory, "torque_kongsun.sgrd");
+        public static string SourceSgrdFilePath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", SgrdFileName);
+        public static string DestSgrdFilePath = Path.Combine(WorkDirectory, SgrdFileName);
         public static string ScriptXMLHeader = ScriptTemplateForKongSun.ScriptXMLHeader;
         public static string ScriptXMLTail = ScriptTemplateForKongSun.ScriptXMLTail;
         public static string ImportScript = ScriptTemplateForKongSun.ImportScript;
@@ -25,6 +26,8 @@ namespace MechanicalModel.Scripts
         public static string WuZhiDingYi = string.Empty;
         public static string JiSuanKongZhiCanShu = string.Empty;
         public static string JianKongDianZuoBiaoCanShu = string.Empty;
+
+        public const string KongSunGongLvResultTitle = "pow_rotor_blades";
 
         private static string GetWangGeHuaFenScript()
         {
@@ -69,6 +72,18 @@ namespace MechanicalModel.Scripts
                 sb.AppendLine(JianKongDianZuoBiaoCanShu);
             }
 
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// ScriptXMLHeader + 
+        /// ScriptXMLTail
+        /// </summary>
+        public static string CreateFullScriptForTempScript()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(ScriptXMLHeader);
+            sb.AppendLine(ScriptXMLTail);
             return sb.ToString();
         }
 
