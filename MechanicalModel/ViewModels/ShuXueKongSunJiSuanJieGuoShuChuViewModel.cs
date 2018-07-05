@@ -117,7 +117,14 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    StartOtherProcessHelper.StartPumpLinxForTempScript();
+                    try
+                    {
+                        StartOtherProcessHelper.LoadResultsForKongSun();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(string.Format("Failed to load results, error: {0}", ex.ToString()));
+                    }
                 });
             }
         }

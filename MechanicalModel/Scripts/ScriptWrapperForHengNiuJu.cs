@@ -16,6 +16,14 @@ namespace MechanicalModel.Scripts
         public static string WorkDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "HengNiuJu");
         public static string SourceSgrdFilePath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", SgrdFileName);
         public static string DestSgrdFilePath = Path.Combine(WorkDirectory, SgrdFileName);
+
+        public const string LoadResultScriptName = "torque_hengniuju_loadresults.spro";
+        public const string LoadResultsSgrdFileName = "torque_hengniuju_loadresults.sgrd";
+        public static string SourceLoadResultScriptPath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", LoadResultScriptName);
+        public static string DestLoadResultScriptPath = Path.Combine(WorkDirectory, LoadResultScriptName);
+        public static string SourceLoadResultsSgrdFilePath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", LoadResultsSgrdFileName);
+        public static string DestLoadResultsSgrdFilePath = Path.Combine(WorkDirectory, LoadResultsSgrdFileName);
+
         public static string ScriptXMLHeader = ScriptTemplateForHengNiuJu.ScriptXMLHeader;
         public static string ScriptXMLTail = ScriptTemplateForHengNiuJu.ScriptXMLTail;
         public static string ImportScript = ScriptTemplateForHengNiuJu.ImportScript;

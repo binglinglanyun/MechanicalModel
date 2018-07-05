@@ -100,7 +100,7 @@ namespace MechanicalModel.ViewModels
                         {
                             string[] resultTitles = sr.ReadLine().Split('\t');
                             int kongZhiNiuJuIndex = resultTitles.ToList().IndexOf(ScriptWrapperForHengNiuJu.KongZhiNiuJuResultTitle);
-                            int qiXiaoShiJianIndex = resultTitles.ToList().IndexOf(ScriptWrapperForHengNiuJu.QiXiaoShiJianRusultTitie); 
+                            int qiXiaoShiJianIndex = resultTitles.ToList().IndexOf(ScriptWrapperForHengNiuJu.QiXiaoShiJianRusultTitie);
                             int weiYiQuXianIndex = resultTitles.ToList().IndexOf(ScriptWrapperForHengNiuJu.WeiYiQuXianRusultTitle);
                             if (kongZhiNiuJuIndex != -1 && weiYiQuXianIndex != -1)
                             {
@@ -142,7 +142,14 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    StartOtherProcessHelper.StartPumpLinxForTempScript();
+                    try
+                    {
+                        StartOtherProcessHelper.LoadResultsForHengNiuJu();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(string.Format("Failed to load results, error: {0}", ex.ToString()));
+                    }
                 });
             }
         }

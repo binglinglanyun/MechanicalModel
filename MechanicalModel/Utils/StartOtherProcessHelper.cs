@@ -18,7 +18,7 @@ namespace MechanicalModel.Utils
         [DllImport("User32.dll")]
         private static extern bool ShowWindow(IntPtr handle, int nCmdShow);
 
-        private static void StartPumpLinx(string scriptPath)
+        public static void StartPumpLinx(string scriptPath)
         {
             //Open with PumpLink
             ProcessStartInfo info = new ProcessStartInfo();
@@ -66,18 +66,31 @@ namespace MechanicalModel.Utils
             StartPumpLinx(scriptPath);
         }
 
-        public static void StartPumpLinxForTempScript()
+        public static void LoadResultsForKongSun()
         {
-            string folderPath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Temp");
-            string scriptPath = Path.Combine(folderPath, "temp.spro");
-            string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForTempScript();
-            if (!Directory.Exists(folderPath))
+            string destFolderPath = Path.GetDirectoryName(ScriptWrapperForKongSun.DestLoadResultScriptPath);
+            if (!Directory.Exists(destFolderPath))
             {
-                Directory.CreateDirectory(folderPath);
+                Directory.CreateDirectory(destFolderPath);
             }
 
-            File.WriteAllText(scriptPath, scriptContent);
-            StartPumpLinx(scriptPath);
+            File.Copy(ScriptWrapperForKongSun.SourceLoadResultsSgrdFilePath, ScriptWrapperForKongSun.DestLoadResultsSgrdFilePath, true);
+            File.Copy(ScriptWrapperForKongSun.SourceLoadResultScriptPath, ScriptWrapperForKongSun.DestLoadResultScriptPath, true);
+
+            StartPumpLinx(ScriptWrapperForKongSun.DestLoadResultScriptPath);
+        }
+
+        public static void LoadResultsForHengNiuJu()
+        {
+            string destFolderPath = Path.GetDirectoryName(ScriptWrapperForHengNiuJu.DestLoadResultScriptPath);
+            if (!Directory.Exists(destFolderPath))
+            {
+                Directory.CreateDirectory(destFolderPath);
+            }
+
+            File.Copy(ScriptWrapperForHengNiuJu.SourceLoadResultsSgrdFilePath, ScriptWrapperForHengNiuJu.DestLoadResultsSgrdFilePath, true);
+            File.Copy(ScriptWrapperForHengNiuJu.SourceLoadResultScriptPath, ScriptWrapperForHengNiuJu.DestLoadResultScriptPath, true);
+            StartPumpLinx(ScriptWrapperForHengNiuJu.DestLoadResultScriptPath);
         }
     }
 }
