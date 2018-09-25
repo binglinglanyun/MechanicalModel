@@ -48,6 +48,33 @@
                 <TextBlock Text="已有曲线或云图计算结果导入:" VerticalAlignment="Center"/>
                 <Button Content="导入" Command="{Binding QuXianAndYunTuImportButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
+
+            <Label Content="曲线和云图显示" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
+                <TextBlock Text="曲线或云图显示:" VerticalAlignment="Center"/>
+                <Button Content="显示" Command="{Binding QuXianAndYunTuXianShiButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+            </StackPanel>
+
+            <TabControl Margin="25,0,0,0">
+                <TabItem Header="图片1">
+                    <Image Source="{Binding SourceUri}" Margin="0,-20,0,0" Height="420" Width="450"/>
+                </TabItem>
+                <TabItem Header="图片2">
+                    <Image Source="{Binding SourceUri}" Margin="0,-20,0,0" Height="420" Width="450"/>
+                </TabItem>
+                <TabItem Header="图片3">
+                    <Image Source="{Binding SourceUri}" Margin="0,-20,0,0" Height="420" Width="450"/>
+                </TabItem>
+                <TabItem Header="图片4">
+                    <Image Source="{Binding SourceUri}" Margin="0,-20,0,0" Height="420" Width="450"/>
+                </TabItem>
+                <TabItem Header="图片5">
+                    <Image Source="{Binding SourceUri}" Margin="0,-20,0,0" Height="420" Width="450"/>
+                </TabItem>
+                <TabItem Header="图片6">
+                    <Image Source="{Binding SourceUri}" Margin="0,-20,0,0" Height="420" Width="450"/>
+                </TabItem>
+            </TabControl>
         </StackPanel>
     </Grid>
 </UserControl>

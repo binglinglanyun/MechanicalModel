@@ -13,7 +13,7 @@ namespace MechanicalModel.Scripts
     {
         public const string ScriptName = "torque_hengniuju.spro";
         public const string SgrdFileName = "torque_hengniuju.sgrd";
-        public static string WorkDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "HengNiuJu");
+        public static string WorkDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "Temp", "HengNiuJu");
         public static string SourceSgrdFilePath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", SgrdFileName);
         public static string DestSgrdFilePath = Path.Combine(WorkDirectory, SgrdFileName);
 
