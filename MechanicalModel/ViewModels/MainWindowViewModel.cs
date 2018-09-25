@@ -17,6 +17,7 @@ namespace MechanicalModel.ViewModels
         private ShuXueKongSunJiSuanCanShuShuRuViewModel _shuXueKongSunJiSuanCanShuShuRuViewModel = null;
         private ShuXueKongSunJiSuanViewModel _shuXueKongSunJiSuanViewModel = null;
         private ShuXueKongSunJiSuanJieGuoShuChuViewModel _shuXueKongSunJiSuanJieGuoShuChuViewModel = null;
+        private ShuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel _shuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel = null;
         private ShuXueHengNiuJuWangGeHuaFenViewModel _shuXueHengNiuJuWangGeHuaFenViewModel = null;
         private ShuXueHengNiuJuJiSuanCanShuShuRuViewModel _shuXueHengNiuJuJiSuanCanShuShuRuViewModel = null;
         private ShuXueHengNiuJuJiSuanViewModel _shuXueHengNiuJuJiSuanViewModel = null;
@@ -104,6 +105,10 @@ namespace MechanicalModel.ViewModels
                             case ViewType.ShuXueKongSunJiSuanJieGuoShuChu:
                                 _shuXueKongSunJiSuanJieGuoShuChuViewModel = _shuXueKongSunJiSuanJieGuoShuChuViewModel ?? new ShuXueKongSunJiSuanJieGuoShuChuViewModel();
                                 this.MechanicalModelViewHostViewModel = _shuXueKongSunJiSuanJieGuoShuChuViewModel;
+                                return;
+                            case ViewType.ShuXueZhiDongNiuJuPiPeiTeXingGuanXi:
+                                _shuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel = _shuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel ?? new ShuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel();
+                                this.MechanicalModelViewHostViewModel = _shuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel;
                                 return;
                             case ViewType.ShuXueHengNiuJuWangGeHuaFen:
                                 _shuXueHengNiuJuWangGeHuaFenViewModel = _shuXueHengNiuJuWangGeHuaFenViewModel ?? new ShuXueHengNiuJuWangGeHuaFenViewModel();
