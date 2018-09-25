@@ -94,27 +94,11 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public string BackgroundSourceUri
-        {
-            get
-            {
-                return Path.GetFullPath("Resources/background.jpg"); ;
-            }
-        }
-
-        public string KongSunJiSuanSourceUri
+        public string SourceUri
         {
             get
             {
                 return Path.GetFullPath("Resources/KongSunJiHeMoXing.png"); ;
-            }
-        }
-
-        public string HengNiuJuJiSuanSourceUri
-        {
-            get
-            {
-                return Path.GetFullPath("Resources/HengNiuJuJiHeMoXing.png"); ;
             }
         }
         #endregion

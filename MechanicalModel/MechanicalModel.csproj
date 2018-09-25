@@ -63,6 +63,9 @@
     <Compile Include="Controls\JiHeKongSunJiSuanMoXingControl.xaml.cs">
       <DependentUpon>JiHeKongSunJiSuanMoXingControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\NiuJuPiPeiTeXingFenXiXiTongMainWindow.xaml.cs">
+      <DependentUpon>NiuJuPiPeiTeXingFenXiXiTongMainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ShuXueHengNiuJuJiSuanCanShuShuRuControl.xaml.cs">
       <DependentUpon>ShuXueHengNiuJuJiSuanCanShuShuRuControl.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,7 @@
     <Compile Include="ViewModels\DataItem.cs" />
     <Compile Include="ViewModels\JiHeHengNiuJuJiSuanMoXingViewModel.cs" />
     <Compile Include="ViewModels\JiHeKongSunJiSuanMoXingViewModel.cs" />
+    <Compile Include="ViewModels\JiSuanType.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MechanicalModelListViewModel.cs" />
     <Compile Include="ViewModels\ShuXueHengNiuJuJiSuanCanShuShuRuViewModel.cs" />
@@ -123,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\JiHeKongSunJiSuanMoXingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NiuJuPiPeiTeXingFenXiXiTongMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -227,7 +235,8 @@
 	  Resources\HengNiuJuJiHeMoXing.png;
 	  Resources\HengNiuJuMoXingWangGe.png;
 	  Resources\KongSunJiHeMoXing.png;
-	  Resources\KongSunMoXingWangGe.png
+	  Resources\KongSunMoXingWangGe.png;
+	  Resources\Background.jpg;
 	</PngResources>
   </PropertyGroup>
   <ItemGroup>
