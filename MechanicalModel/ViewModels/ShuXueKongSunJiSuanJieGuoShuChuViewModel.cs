@@ -55,7 +55,44 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return Path.GetFullPath("Resources/KongSunJiHeMoXing.png"); ;
+                return Path.GetFullPath("Resources/KongSunJiHeMoXing.png");
+            }
+        }
+
+        public string DongLunJingYaFenBuUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/DongLunJingYaFenBu.png");
+            }
+        }
+
+        public string DingLunJingYaFenBuUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/DingLunJingYaFenBu.png");
+            }
+        }
+
+        public string JieMianSuDuShiLiangFenBuUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/JieMianSuDuShiLiangFenBu.png");
+            }
+        }
+
+        private Visibility _quXianAndYunTuVisibility = Visibility.Collapsed;
+        public Visibility QuXianAndYunTuVisibility
+        {
+            get
+            {
+                return _quXianAndYunTuVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _quXianAndYunTuVisibility);
             }
         }
 
@@ -133,6 +170,17 @@ namespace MechanicalModel.ViewModels
                     {
                         MessageBox.Show(string.Format("Failed to load results, error: {0}", ex.ToString()));
                     }
+                });
+            }
+        }
+
+        public ICommand QuXianAndYunTuXianShiButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    this.QuXianAndYunTuVisibility = Visibility.Visible;
                 });
             }
         }

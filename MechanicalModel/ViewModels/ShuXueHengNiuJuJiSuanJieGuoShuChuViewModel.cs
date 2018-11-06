@@ -64,6 +64,14 @@ namespace MechanicalModel.ViewModels
             }
         }
 
+        public string SourceUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/KongSunJiHeMoXing.png"); ;
+            }
+        }
+
         public ICommand BrowseButtonClick
         {
             get
