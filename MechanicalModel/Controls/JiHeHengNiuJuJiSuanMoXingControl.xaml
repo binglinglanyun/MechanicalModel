@@ -37,7 +37,7 @@
 
             <Label Content="几何模型显示" Style="{DynamicResource LabelBoldTextStyle}"/> 
             <Image Source="{Binding SourceUri}" Margin="0,-20,0,0" Height="400" Width="400"/>
-            <Button Content="导入及显示" Margin="20,0,0,0" Command="{Binding ImportAndShowButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
+            <Button Content="导入及显示" Margin="20,-60,0,0" Command="{Binding ImportAndShowButtonClick}" MaxHeight="20" MinWidth="50" HorizontalAlignment="Left"/>
         </StackPanel>
         <ProgressBar IsIndeterminate="True" Grid.Column="0" 
                      VerticalAlignment="Top" SnapsToDevicePixels="True" 
