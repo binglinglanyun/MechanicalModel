@@ -18,6 +18,7 @@ namespace MechanicalModel.Utils
         private ShuXueKongSunJiSuanCanShuShuRuControl _shuXueKongSunJiSuanCanShuShuRuControll = null;
         private ShuXueKongSunJiSuanControl _shuXueKongSunJiSuanControl = null;
         private ShuXueKongSunJiSuanJieGuoShuChuControl _shuXueKongSunJiSuanJieGuoShuChuControl = null;
+        private ShuXueZhiDongNiuJuPiPeiTeXingGuanXiControl _shuXueZhiDongNiuJuPiPeiTeXingGuanXiControl = null;
         private ShuXueHengNiuJuWangGeHuaFenControl _shuXueHengNiuJuWangGeHuaFenControl = null;
         private ShuXueHengNiuJuJiSuanCanShuShuRuControl _shuXueHengNiuJuJiSuanCanShuShuRuControl = null;
         private ShuXueHengNiuJuJiSuanControl _shuXueHengNiuJuJiSuanControl = null;
@@ -54,6 +55,10 @@ namespace MechanicalModel.Utils
                     case ViewType.ShuXueKongSunJiSuanJieGuoShuChu:
                         _shuXueKongSunJiSuanJieGuoShuChuControl = _shuXueKongSunJiSuanJieGuoShuChuControl ?? new ShuXueKongSunJiSuanJieGuoShuChuControl();
                         control = _shuXueKongSunJiSuanJieGuoShuChuControl;
+                        break;
+                    case ViewType.ShuXueZhiDongNiuJuPiPeiTeXingGuanXi:
+                        _shuXueZhiDongNiuJuPiPeiTeXingGuanXiControl = _shuXueZhiDongNiuJuPiPeiTeXingGuanXiControl ?? new ShuXueZhiDongNiuJuPiPeiTeXingGuanXiControl();
+                        control = _shuXueZhiDongNiuJuPiPeiTeXingGuanXiControl;
                         break;
                     case ViewType.ShuXueHengNiuJuWangGeHuaFen:
                         _shuXueHengNiuJuWangGeHuaFenControl = _shuXueHengNiuJuWangGeHuaFenControl ?? new ShuXueHengNiuJuWangGeHuaFenControl();

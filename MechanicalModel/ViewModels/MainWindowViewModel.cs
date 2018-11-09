@@ -1,6 +1,7 @@
 ﻿using MechanicalModel.Utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace MechanicalModel.ViewModels
         private ShuXueKongSunJiSuanCanShuShuRuViewModel _shuXueKongSunJiSuanCanShuShuRuViewModel = null;
         private ShuXueKongSunJiSuanViewModel _shuXueKongSunJiSuanViewModel = null;
         private ShuXueKongSunJiSuanJieGuoShuChuViewModel _shuXueKongSunJiSuanJieGuoShuChuViewModel = null;
+        private ShuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel _shuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel = null;
         private ShuXueHengNiuJuWangGeHuaFenViewModel _shuXueHengNiuJuWangGeHuaFenViewModel = null;
         private ShuXueHengNiuJuJiSuanCanShuShuRuViewModel _shuXueHengNiuJuJiSuanCanShuShuRuViewModel = null;
         private ShuXueHengNiuJuJiSuanViewModel _shuXueHengNiuJuJiSuanViewModel = null;
@@ -24,8 +26,6 @@ namespace MechanicalModel.ViewModels
 
         public MainWindowViewModel()
         {
-            this.MechanicalModelListViewModel = new MechanicalModelListViewModel();
-            this.MechanicalModelListViewModel.Click = OpenNewView;
         }
 
         #region Properties
@@ -67,6 +67,56 @@ namespace MechanicalModel.ViewModels
                 SetValueProperty(value, ref _mechanicalModelContentVisibility);
             }
         }
+
+        private Visibility _jiSuanButtonVisibility = Visibility.Visible;
+        public Visibility JiSuanButtonVisibility
+        {
+            get
+            {
+                return _jiSuanButtonVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _jiSuanButtonVisibility);
+            }
+        }
+
+        private Visibility _niuJuPiPeiTeXingFenXiXiTongMainWindowVisibility = Visibility.Collapsed;
+        public Visibility NiuJuPiPeiTeXingFenXiXiTongMainWindowVisibility
+        {
+            get
+            {
+                return _niuJuPiPeiTeXingFenXiXiTongMainWindowVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _niuJuPiPeiTeXingFenXiXiTongMainWindowVisibility);
+            }
+        }
+
+        public string BackgroundSourceUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/background.jpg"); ;
+            }
+        }
+
+        public string KongSunJiSuanSourceUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/KongSunJiHeMoXing.png"); ;
+            }
+        }
+
+        public string HengNiuJuJiSuanSourceUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/HengNiuJuJiHeMoXing.png"); ;
+            }
+        }
         #endregion
 
         public ICommand OpenNewView
@@ -105,6 +155,10 @@ namespace MechanicalModel.ViewModels
                                 _shuXueKongSunJiSuanJieGuoShuChuViewModel = _shuXueKongSunJiSuanJieGuoShuChuViewModel ?? new ShuXueKongSunJiSuanJieGuoShuChuViewModel();
                                 this.MechanicalModelViewHostViewModel = _shuXueKongSunJiSuanJieGuoShuChuViewModel;
                                 return;
+                            case ViewType.ShuXueZhiDongNiuJuPiPeiTeXingGuanXi:
+                                _shuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel = _shuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel ?? new ShuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel();
+                                this.MechanicalModelViewHostViewModel = _shuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel;
+                                return;
                             case ViewType.ShuXueHengNiuJuWangGeHuaFen:
                                 _shuXueHengNiuJuWangGeHuaFenViewModel = _shuXueHengNiuJuWangGeHuaFenViewModel ?? new ShuXueHengNiuJuWangGeHuaFenViewModel();
                                 this.MechanicalModelViewHostViewModel = _shuXueHengNiuJuWangGeHuaFenViewModel;
@@ -127,6 +181,34 @@ namespace MechanicalModel.ViewModels
                     }
 
                     MechanicalModelContentVisibility = Visibility.Collapsed;
+                });
+            }
+        }
+
+        public ICommand KongSunJiSuanClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    this.JiSuanButtonVisibility = Visibility.Collapsed;
+                    this.NiuJuPiPeiTeXingFenXiXiTongMainWindowVisibility = Visibility.Visible;
+                    this.MechanicalModelListViewModel = new MechanicalModelListViewModel(JiSuanType.KongSuanJiSuan);
+                    this.MechanicalModelListViewModel.Click = OpenNewView;
+                });
+            }
+        }
+
+        public ICommand HengNiuJuJiSuanClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    this.JiSuanButtonVisibility = Visibility.Collapsed;
+                    this.NiuJuPiPeiTeXingFenXiXiTongMainWindowVisibility = Visibility.Visible;
+                    this.MechanicalModelListViewModel = new MechanicalModelListViewModel(JiSuanType.HengNiuJuJiSuan);
+                    this.MechanicalModelListViewModel.Click = OpenNewView;
                 });
             }
         }

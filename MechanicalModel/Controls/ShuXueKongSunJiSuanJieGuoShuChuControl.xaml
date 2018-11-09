@@ -42,12 +42,30 @@
             </StackPanel>
 
             <Border Style="{DynamicResource SplitBorderStyle}"/>
-            
-            <Label Content="曲线和云图计算结果数据导入" Style="{DynamicResource LabelBoldTextStyle}"/>
-            <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
+
+            <Label Content="曲线和云图计算结果数据导入" Style="{DynamicResource LabelBoldTextStyle}" Visibility="Collapsed"/>
+            <StackPanel Orientation="Horizontal" Margin="20,0,0,20" Visibility="Collapsed">
                 <TextBlock Text="已有曲线或云图计算结果导入:" VerticalAlignment="Center"/>
                 <Button Content="导入" Command="{Binding QuXianAndYunTuImportButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
+
+            <Label Content="曲线和云图显示" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
+                <TextBlock Text="曲线或云图显示:" VerticalAlignment="Center"/>
+                <Button Content="显示" Command="{Binding QuXianAndYunTuXianShiButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+            </StackPanel>
+
+            <TabControl Margin="25,0,0,0" Visibility="{Binding QuXianAndYunTuVisibility}">
+                <TabItem Header="动轮静压分布">
+                    <Image Source="{Binding DongLunJingYaFenBuUri}" Margin="40,-20,0,-20" HorizontalAlignment="Left" Height="520" Width="550"/>
+                </TabItem>
+                <TabItem Header="定轮静压分布">
+                    <Image Source="{Binding DingLunJingYaFenBuUri}" Margin="40,-20,0,-20" HorizontalAlignment="Left"  Height="520" Width="550"/>
+                </TabItem>
+                <TabItem Header="截面速度矢量分布">
+                    <Image Source="{Binding JieMianSuDuShiLiangFenBuUri}" Margin="40,0,0,0" HorizontalAlignment="Left"  Height="470" Width="550"/>
+                </TabItem>
+            </TabControl>
         </StackPanel>
     </Grid>
 </UserControl>

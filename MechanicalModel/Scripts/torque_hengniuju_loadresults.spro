@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<simulation program="PumpLinx" version="4.0.3" customer="FaNGaWXS" date="Fri Jun 29 13:48:37 2018">
+
+  <expressions>
+    Vcen=rotate_1d.rpm
+  </expressions>
+
+  <include file="torque_hengniuju_loadresults.sgrd"/>
+
+  <mgi name="MGI01">
+    <patch name="valve2_outlet2_mgi_gap4"/>
+    <patch name="cylinder_12"/>
+  </mgi>
+
+  <mgi name="MGI02">
+    <patch name="valve2_bot_cylinder"/>
+    <patch name="cylinder_min_11"/>
+  </mgi>
+
+  <mgi name="MGI03" tolerance="0.0319699445582789">
+    <patch name="valve2_outlet1_mgi_gap3"/>
+    <patch name="cylinder_11"/>
+  </mgi>
+
+  <mgi name="MGI04">
+    <patch name="valve2_mid_cylinder_mgi"/>
+    <patch name="cylinder_13"/>
+    <patch name="cylinder_min_10"/>
+    <patch name="cylinder_min_8"/>
+    <patch name="cylinder_min_9"/>
+  </mgi>
+
+  <mgi name="MGI05">
+    <patch name="dir_max_9"/>
+    <patch name="dir_min_10"/>
+  </mgi>
+
+  <mgi name="MGI06">
+    <patch name="valve2_mid_mgi_up"/>
+    <patch name="dir_min_13"/>
+  </mgi>
+
+  <mgi name="MGI08">
+    <patch name="pipe_mgi_valve2"/>
+    <patch name="dir_max_13"/>
+  </mgi>
+
+  <mgi name="MGI09">
+    <patch name="pipe_mgi_valve1"/>
+    <patch name="dir_max_7"/>
+    <patch name="dir_max_8"/>
+  </mgi>
+
+  <mgi name="MGI10">
+    <patch name="valve1_outlet_mgi_mdi_up"/>
+    <patch name="valve1_mid_mgi"/>
+    <patch name="valve1_up_gap_cylinder_out"/>
+  </mgi>
+
+  <mgi name="MGI11">
+    <patch name="airout1_mgi_stator"/>
+    <patch name="stator_mgi_airoutlet1"/>
+  </mgi>
+
+  <mgi name="MGI12">
+    <patch name="airout2_mgi_stator"/>
+    <patch name="stator_mgi_airoutlet2"/>
+  </mgi>
+
+  <mgi name="MGI13">
+    <patch name="airout3_mgi_stator"/>
+    <patch name="stator_mgi_airoutlet3"/>
+  </mgi>
+
+  <mgi name="MGI14">
+    <patch name="rotor2_mgi_stator"/>
+    <patch name="stator_mgi_rotor2"/>
+  </mgi>
+
+  <mgi name="MGI15">
+    <patch name="inlet_mgi_rotor2"/>
+    <patch name="rotor2_mgi_inlet"/>
+    <patch name="dir_max_3"/>
+  </mgi>
+
+  <mgi name="MGI16" tolerance="0.0319691692590995">
+    <patch name="volute_side_mgi_rotor2"/>
+    <patch name="rotor2_mgi_volute_side2"/>
+  </mgi>
+
+  <mgi name="MGI17" tolerance="0.0319691692590995">
+    <patch name="rotor2_mgi_volute_top"/>
+    <patch name="volute_top_mgi_rotor2"/>
+  </mgi>
+
+  <mgi name="MGI18">
+    <patch name="volute_mgi_valve"/>
+    <patch name="valve1_up_end_mgi"/>
+  </mgi>
+
+  <mgi name="MGI19">
+    <patch name="valve1_chamber_mgi_bot"/>
+    <patch name="dir_min_7"/>
+  </mgi>
+
+  <mgi name="MGI20">
+    <patch name="valve1_up_gap_cylinder_in"/>
+    <patch name="valve1_up_cylinder"/>
+  </mgi>
+
+  <mgi name="MGI22">
+    <patch name="rotor2_mgi_gap"/>
+    <patch name="dir_min"/>
+    <patch name="dir_max_6"/>
+  </mgi>
+
+  <mgi name="MGI24">
+    <patch name="rotor2_mgi_volute_side1"/>
+    <patch name="volute_side_mgi_rotor1"/>
+  </mgi>
+
+  <mgi name="MGI25">
+    <patch name="volute_wall_mgi_gap"/>
+    <patch name="dir_max_4"/>
+  </mgi>
+
+  <mgi name="MGI28">
+    <patch name="dir_max"/>
+    <patch name="dir_max_1"/>
+  </mgi>
+
+  <mgi name="MGI29">
+    <patch name="cylinder_min_1"/>
+    <patch name="cylinder_2"/>
+  </mgi>
+
+  <mgi name="MGI30">
+    <patch name="dir_min_4"/>
+    <patch name="dir_min_5"/>
+  </mgi>
+
+  <mgi name="MGI31">
+    <patch name="cylinder_min_5"/>
+    <patch name="cylinder_6"/>
+  </mgi>
+
+  <probe_point name="Point 01" position="-0.05150000000000001 0.1272204863913362 0.2575085625244115"/>
+  <probe_point name="Point 02" position="-0.0515 0.1267599729704603 0.2562916443662048"/>
+  <probe_point name="Point 03" position="-0.051 0.1024932 0.267004"/>
+  <probe_point name="Point 04" position="-0.051 0.1024932 0.267004"/>
+  <probe_point
+    name="Point 05"
+    type="stationary"
+    position="-0.051 0.1363857359439135 0.3210142738372088">
+    <output module="flow" derived="on"/>
+  </probe_point>
+
+  <probe_point name="Point 06" position="-0.03980238649763423 0.09385995490348284 0.2433976844376425"/>
+
+  <module type="share" iteration="20" save_result_interval="10"/>
+  <module
+    type="flow"
+    state="active"
+    converge_criterion="0.1"
+    numeric_scheme="2ndorderupwind 2ndorderupwind"/>
+  <module type="turbulence" state="active"/>
+  <module
+    type="centrifugal"
+    state="active"
+    user_mode="advanced_mode"
+    method="moving_grid"
+    num_revolutions="100"
+    rotation_direction="counter_clockwise"
+    omega="Vcen rpm"
+    rotate_axis_direction="1 0 0"
+    n_time_steps_per_pocket_move="5000"
+    number_blades="20">
+    <bc patch="valve2_outlet1_outlet" type="outlet"/>
+    <bc patch="valve2_outlet2_outlet" type="inlet"/>
+    <bc patch="valve1_outlet_outlet2" type="outlet"/>
+    <bc patch="valve1_outlet_outlet1" type="outlet"/>
+    <bc patch="rotor2_wall" type="rotor"/>
+    <bc patch="inlet_inlet" type="inlet"/>
+    <bc patch="airout2_inlet" type="outlet"/>
+    <bc patch="airout1_inlet" type="outlet"/>
+    <bc patch="airout3_inlet" type="outlet"/>
+    <bc patch="dir_max_2" type="outlet"/>
+    <bc patch="cylinder_min_2" type="rotate wall"/>
+    <bc patch="sub-features_1" type="rotor"/>
+    <bc patch="cylinder" type="rotate wall"/>
+    <bc patch="cylinder_1" type="rotate wall"/>
+    <bc patch="dir_min_1" type="rotate wall"/>
+    <bc patch="cylinder_3" type="rotate wall"/>
+    <bc patch="dir_min_3" type="outlet"/>
+    <bc patch="cylinder_min_4" type="rotate wall"/>
+    <bc patch="cylinder_min_6" type="rotate wall"/>
+    <bc patch="dir_min_8" type="inlet"/>
+    <vc volume="general mesh" type="property" default="yes" pump_material="oil"/>
+    <vc volume="general mesh_1" type="property" default="yes" pump_material="oil"/>
+    <vc volume="general mesh_2" type="property" default="yes" pump_material="oil"/>
+    <vc volume="template mesh" type="property" default="yes" pump_material="oil"/>
+    <vc volume="template mesh_1" type="property" default="yes" pump_material="oil"/>
+    <vc volume="template mesh_2" type="property" default="yes" pump_material="oil"/>
+    <vc volume="general mesh_3" type="property" default="yes" pump_material="oil"/>
+    <vc volume="template mesh_3" type="property" default="yes" pump_material="oil"/>
+    <vc volume="general mesh_4" type="property" default="yes" pump_material="oil"/>
+    <vc volume="general mesh_5" type="property" default="yes" pump_material="oil"/>
+    <vc volume="template mesh_4" type="property" default="yes" pump_material="oil"/>
+    <vc volume="template mesh_5" type="property" default="yes" pump_material="oil"/>
+    <vc volume="template mesh_6" type="property" default="yes" pump_material="oil"/>
+    <vc volume="general mesh_6" type="property" default="yes" pump_material="oil"/>
+    <vc volume="template mesh_7" type="property" default="yes" pump_material="oil"/>
+    <vc volume="template mesh_8" type="property" default="yes" pump_material="oil"/>
+    <vc volume="general mesh_7" type="property" default="yes" pump_material="oil"/>
+    <vc volume="general mesh_8" type="property" default="yes" pump_material="oil"/>
+    <vc volume="general mesh_9" type="property" default="yes" pump_material="oil"/>
+    <vc volume="spool valve" type="property" default="yes" pump_material="oil"/>
+    <vc volume="spool valve_1" type="property" default="yes" pump_material="oil"/>
+    <vc volume="spool valve_2" type="property" default="yes" pump_material="oil"/>
+    <vc volume="template mesh_9" type="property" default="yes" pump_material="oil"/>
+    <vc volume="template mesh_10" type="property" default="yes" pump_material="oil"/>
+    <vc volume="template mesh_11" type="property" default="yes" pump_material="oil"/>
+    <vc volume="template mesh_12" type="property" default="yes" pump_material="oil"/>
+    <vc volume="general mesh_10" type="property" default="yes" pump_material="oil"/>
+    <vc volume="general mesh_11" type="property" default="yes" pump_material="oil"/>
+    <vc volume="general mesh_12" type="property" default="yes" pump_material="oil"/>
+    <vc volume="template mesh_13" type="property" default="yes" pump_material="oil"/>
+    <vc volume="general mesh_13" type="property" default="yes" pump_material="oil"/>
+  </module>
+
+  <module type="spool" state="active" dynamics="" minimum_gap="0.0001" maximum_displacement="0.1">
+    <bc patch="valve1_up_valve" type="valve_wall"/>
+    <bc patch="valve1_up_cylinder" type="cylinder_wall"/>
+    <bc patch="valve1_up_end" type="valve_end"/>
+    <bc patch="valve1_up_end_mgi" type="valve_end"/>
+  </module>
+
+  <module
+    type="spool"
+    spool="1"
+    state="active"
+    dynamics=""
+    minimum_gap="0.0001"
+    maximum_displacement="0.1">
+    <bc patch="valve1_up_gap_valve" type="valve_wall"/>
+    <bc patch="valve1_up_gap_cylinder_in" type="cylinder_wall"/>
+    <bc patch="valve1_up_gap_cylinder_out" type="cylinder_wall"/>
+    <bc patch="valve1_up_gap_end" type="valve_end"/>
+  </module>
+
+  <module
+    type="spool"
+    spool="2"
+    state="active"
+    dynamics=""
+    minimum_gap="0.0001"
+    maximum_displacement="0.1">
+    <bc patch="valve2_bot_valve" type="valve_wall"/>
+    <bc patch="valve2_bot_cylinder" type="cylinder_wall"/>
+    <bc patch="valve2_bot_end" type="valve_end"/>
+  </module>
+
+  <module
+    type="spool"
+    spool="3"
+    state="active"
+    dynamics="trans_1d 3"
+    user_mode="advanced_mode"
+    minimum_gap="0.0001"
+    maximum_displacement="0.1">
+    <bc patch="valve1_chamber_wall1" type="valve_wall"/>
+    <bc patch="valve1_chamber_wall2" type="valve_wall"/>
+    <bc patch="valve1_mid_wall" type="valve_wall"/>
+    <bc patch="valve1_up_cylinder" type="cylinder_wall"/>
+    <bc patch="valve1_up_end" type="valve_end"/>
+    <bc patch="valve1_up_valve" type="valve_wall"/>
+    <bc patch="valve1_up_gap_cylinder_in" type="cylinder_wall"/>
+    <bc patch="valve1_up_gap_cylinder_out" type="cylinder_wall"/>
+    <bc patch="valve1_up_gap_end" type="valve_end"/>
+    <bc patch="valve1_up_gap_valve" type="valve_wall"/>
+    <bc patch="valve2_outlet1_outlet" type="outlet"/>
+    <bc patch="valve1_outlet_outlet1" type="outlet"/>
+    <bc patch="valve1_outlet_outlet2" type="outlet"/>
+    <bc patch="valve2_outlet2_outlet" type="inlet"/>
+    <bc patch="inlet_inlet" type="inlet"/>
+    <bc patch="airout1_inlet" type="outlet"/>
+    <bc patch="airout3_inlet" type="outlet"/>
+    <bc patch="airout2_inlet" type="outlet"/>
+    <bc patch="dir_max_2" type="outlet"/>
+    <bc patch="sub-features_3" type="valve_wall"/>
+    <bc patch="valve1_up_end_mgi" type="valve_end"/>
+    <bc patch="sub-features_6" type="valve_wall"/>
+    <bc patch="dir_min_3" type="outlet"/>
+    <bc patch="dir_min_8" type="inlet"/>
+    <bc patch="sub-features_5" type="valve_wall"/>
+    <bc patch="dir_min_7" type="valve_wall"/>
+    <bc patch="dir_max_7" type="valve_end"/>
+    <bc patch="cylinder_min_7" type="cylinder_wall"/>
+    <bc patch="cylinder_7" type="cylinder_wall"/>
+  </module>
+
+  <module
+    type="spool"
+    spool="4"
+    state="active"
+    dynamics="trans_1d 4"
+    user_mode="advanced_mode"
+    minimum_gap="0.0001"
+    maximum_displacement="0.1">
+    <bc patch="valve2_bot_cylinder" type="cylinder_wall"/>
+    <bc patch="valve2_bot_end" type="valve_end"/>
+    <bc patch="valve2_bot_valve" type="valve_wall"/>
+    <bc patch="valve2_mid_valve" type="valve_wall"/>
+    <bc patch="valve2_outlet1_outlet" type="outlet"/>
+    <bc patch="valve1_outlet_outlet1" type="outlet"/>
+    <bc patch="valve1_outlet_outlet2" type="outlet"/>
+    <bc patch="valve2_outlet2_outlet" type="inlet"/>
+    <bc patch="inlet_inlet" type="inlet"/>
+    <bc patch="airout1_inlet" type="outlet"/>
+    <bc patch="airout3_inlet" type="outlet"/>
+    <bc patch="airout2_inlet" type="outlet"/>
+    <bc patch="dir_max_2" type="outlet"/>
+    <bc patch="sub-features_7" type="valve_wall"/>
+    <bc patch="dir_min_3" type="outlet"/>
+    <bc patch="dir_min_8" type="inlet"/>
+    <bc patch="dir_max_13" type="valve_end"/>
+    <bc patch="dir_min_13" type="valve_wall"/>
+    <bc patch="cylinder_13" type="cylinder_wall"/>
+  </module>
+
+  <module
+    type="trans_1d"
+    trans_1d="3"
+    state="active"
+    body_motion="coupled"
+    move_direction="0 0.0021502 0.0056014"
+    body_mass="0.55"
+    spring_constant="12800"
+    preload="156"/>
+  <module
+    type="trans_1d"
+    trans_1d="4"
+    state="active"
+    body_motion="coupled"
+    move_direction="0 -0.0056015 0.0021503"
+    body_mass="0.01"/>
+  <module
+    type="rotate_1d"
+    state="active"
+    rotate_direction="1 0 0"
+    rotation_direction="counter_clockwise"
+    initial_omega="376.99112"
+    moment_of_inertia="150">
+    <bc patch="rotor2_wall" type="dynamicsBC"/>
+  </module>
+
+  <module type="multiphase" state="active" components="oil air"/>
+  <module
+    type="multiflow"
+    numeric_scheme="2ndorderupwind upwind"
+    gravity="on"
+    g="0 9.800000000000001 0"
+    maximum_v_magnitude="2000">
+    <bc patch="valve1_outlet_outlet1" type="fix_pressure" value="101325"/>
+    <bc patch="valve1_outlet_outlet2" type="fix_pressure" value="101325"/>
+    <bc patch="valve2_outlet1_outlet" type="fix_pressure" value="201325"/>
+    <bc patch="valve1_mid_wall" type="wall" default="yes" print_average_total_pres="on"
+      print_mass_total_pressure="on" print_average_pres="on" output="user_select"/>
+
+    <bc patch="valve1_up_valve" type="wall" default="yes" print_average_total_pres="on"
+      print_mass_total_pressure="on" print_average_pres="on" output="user_select"/>
+
+    <bc patch="valve1_chamber_wall1" type="wall" default="yes" print_average_total_pres="on"
+      print_mass_total_pressure="on" print_average_pres="on" output="user_select"/>
+
+    <bc patch="valve1_chamber_wall2" type="wall" default="yes" print_average_total_pres="on"
+      print_mass_total_pressure="on" print_average_pres="on" output="user_select"/>
+
+    <bc patch="valve2_outlet2_outlet" type="fix_pressure_inlet" value="500000+101325 Pa"/>
+    <bc patch="inlet_inlet" type="fix_pressure_inlet" value="201325"/>
+    <bc patch="MGI18_valve1_up_end_mgi_volute_mgi_valve" type="default_interface" default="yes"
+      print_average_total_pres="on" print_mass_average_total_pres="on" print_average_pres="on" output="user_select"/>
+
+    <bc patch="MGI22_dir_max_6_rotor2_mgi_gap" type="default_interface" default="yes"
+      print_volumetric_flux="on" output="user_select"/>
+
+    <bc patch="MGI31_cylinder_6_cylinder_min_5" type="default_interface" default="yes"
+      print_volumetric_flux="on" output="user_select"/>
+
+    <bc patch="airout1_inlet" type="fix_pressure" value="101325"/>
+    <bc patch="airout3_inlet" type="fix_pressure" value="101325"/>
+    <bc patch="airout2_inlet" type="fix_pressure" value="101325"/>
+    <bc patch="dir_max_2" type="fix_pressure" value="101325"/>
+    <bc patch="dir_min_3" type="fix_pressure" value="101325"/>
+    <bc patch="dir_min_8" type="fix_pressure_inlet" value="2000000+101325 Pa"/>
+  </module>
+
+  <module type="flowphasecomp" flowphasecomp="oil">
+    <vc volume="general mesh" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="general mesh_1" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="general mesh_2" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="template mesh" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="template mesh_1" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="template mesh_2" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="general mesh_3" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="template mesh_3" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="general mesh_4" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="general mesh_5" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="template mesh_4" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="template mesh_5" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="template mesh_6" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="general mesh_6" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="template mesh_7" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="template mesh_8" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="general mesh_7" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="general mesh_8" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="general mesh_9" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="spool valve" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="spool valve_1" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="spool valve_2" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="template mesh_9" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="template mesh_10" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="template mesh_11" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="template mesh_12" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="general mesh_10" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="general mesh_11" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="general mesh_12" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="template mesh_13" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="general mesh_13" type="const_viscosity" default="yes" value="0.026"/>
+    <vc volume="general mesh" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="template mesh_9" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="template mesh_8" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="template mesh_7" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="template mesh_6" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="template mesh_5" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="template mesh_4" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="template mesh_3" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="template mesh_2" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="template mesh_13" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="template mesh_12" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="template mesh_11" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="template mesh_10" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="template mesh_1" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="template mesh" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="spool valve_2" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="spool valve_1" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="spool valve" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="general mesh_9" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="general mesh_8" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="general mesh_7" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="general mesh_6" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="general mesh_5" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="general mesh_4" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="general mesh_3" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="general mesh_2" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="general mesh_13" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="general mesh_12" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="general mesh_11" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="general mesh_10" type="surface_tension" surface_tension="0.0721"/>
+    <vc volume="general mesh_1" type="surface_tension" surface_tension="0.0721"/>
+  </module>
+
+  <module type="flowphasecomp" flowphasecomp="air">
+    <vc volume="general mesh" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="general mesh_1" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="general mesh_2" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="template mesh" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="template mesh_1" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="template mesh_2" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="general mesh_3" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="template mesh_3" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="general mesh_4" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="general mesh_5" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="template mesh_4" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="template mesh_5" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="template mesh_6" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="general mesh_6" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="template mesh_7" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="template mesh_8" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="general mesh_7" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="general mesh_8" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="general mesh_9" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="spool valve" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="spool valve_1" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="spool valve_2" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="template mesh_9" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="template mesh_10" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="template mesh_11" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="template mesh_12" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="general mesh_10" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="general mesh_11" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="general mesh_12" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="template mesh_13" type="const_viscosity" default="yes" value="1.852e-005"/>
+    <vc volume="general mesh_13" type="const_viscosity" default="yes" value="1.852e-005"/>
+  </module>
+
+  <module type="sharephasecomp" sharephasecomp="oil">
+    <vc volume="general mesh" type="const_density" value="860"/>
+    <vc volume="general mesh_1" type="const_density" value="860"/>
+    <vc volume="general mesh_2" type="const_density" value="860"/>
+    <vc volume="template mesh" type="const_density" value="860"/>
+    <vc volume="template mesh_1" type="const_density" value="860"/>
+    <vc volume="template mesh_2" type="const_density" value="860"/>
+    <vc volume="general mesh_3" type="const_density" value="860"/>
+    <vc volume="template mesh_3" type="const_density" value="860"/>
+    <vc volume="general mesh_4" type="const_density" value="860"/>
+    <vc volume="general mesh_5" type="const_density" value="860"/>
+    <vc volume="template mesh_4" type="const_density" value="860"/>
+    <vc volume="template mesh_5" type="const_density" value="860"/>
+    <vc volume="template mesh_6" type="const_density" value="860"/>
+    <vc volume="general mesh_6" type="const_density" value="860"/>
+    <vc volume="template mesh_7" type="const_density" value="860"/>
+    <vc volume="template mesh_8" type="const_density" value="860"/>
+    <vc volume="general mesh_7" type="const_density" value="860"/>
+    <vc volume="general mesh_8" type="const_density" value="860"/>
+    <vc volume="general mesh_9" type="const_density" value="860"/>
+    <vc volume="spool valve" type="const_density" value="860"/>
+    <vc volume="spool valve_1" type="const_density" value="860"/>
+    <vc volume="spool valve_2" type="const_density" value="860"/>
+    <vc volume="template mesh_9" type="const_density" value="860"/>
+    <vc volume="template mesh_10" type="const_density" value="860"/>
+    <vc volume="template mesh_11" type="const_density" value="860"/>
+    <vc volume="template mesh_12" type="const_density" value="860"/>
+    <vc volume="general mesh_10" type="const_density" value="860"/>
+    <vc volume="general mesh_11" type="const_density" value="860"/>
+    <vc volume="general mesh_12" type="const_density" value="860"/>
+    <vc volume="template mesh_13" type="const_density" value="860"/>
+    <vc volume="general mesh_13" type="const_density" value="860"/>
+  </module>
+
+  <module type="sharephasecomp" sharephasecomp="air">
+    <vc volume="general mesh" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="template mesh_9" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="template mesh_8" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="template mesh_7" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="template mesh_6" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="template mesh_5" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="template mesh_4" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="template mesh_3" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="template mesh_2" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="template mesh_13" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="template mesh_12" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="template mesh_11" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="template mesh_10" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="template mesh_1" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="template mesh" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="spool valve_2" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="spool valve_1" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="spool valve" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="general mesh_9" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="general mesh_8" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="general mesh_7" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="general mesh_6" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="general mesh_5" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="general mesh_4" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="general mesh_3" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="general mesh_2" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="general mesh_13" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="general mesh_12" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="general mesh_11" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="general mesh_10" type="ideal_gas_law" molecular_weight="28.99"/>
+    <vc volume="general mesh_1" type="ideal_gas_law" molecular_weight="28.99"/>
+  </module>
+
+  <module type="phasecomp" phasecomp="oil" blending_factor="0.1">
+    <bc patch="valve2_outlet1_outlet" type="outlet" value="1"/>
+    <bc patch="valve2_outlet2_outlet" type="fix_value" value="1"/>
+    <bc patch="valve1_outlet_outlet2" type="outlet" value="0"/>
+    <bc patch="valve1_outlet_outlet1" type="outlet" value="0"/>
+    <bc patch="inlet_inlet" type="fix_value" value="1" print_m_flux="on" print_v_flux="on"
+      output="user_select"/>
+
+    <bc patch="airout2_inlet" type="outlet" value="0"/>
+    <bc patch="airout1_inlet" type="outlet" value="0"/>
+    <bc patch="airout3_inlet" type="outlet" value="0"/>
+    <bc patch="dir_max_2" type="outlet" value="0" print_m_flux="on" print_v_flux="on"
+      output="user_select"/>
+
+    <bc patch="dir_min_3" type="outlet" value="0" print_m_flux="on" print_v_flux="on"
+      output="user_select"/>
+
+    <bc patch="dir_min_8" type="fix_value" value="1"/>
+    <vc volume="template mesh" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="template mesh_1" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="template mesh_2" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="general mesh_3" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="general mesh_5" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="template mesh_4" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="template mesh_5" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="template mesh_6" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="general mesh_6" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="general mesh_13" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <ic volume="general mesh" type="fix_value" default="yes" value="0"/>
+    <ic volume="general mesh_1" type="fix_value" default="yes" value="0"/>
+    <ic volume="general mesh_2" type="fix_value" default="yes" value="0"/>
+    <ic volume="template mesh" type="fix_value" default="yes" value="0" output="user_select"/>
+    <ic volume="template mesh_1" type="fix_value" default="yes" value="0" output="user_select"/>
+    <ic volume="template mesh_2" type="fix_value" default="yes" value="0" output="user_select"/>
+    <ic volume="general mesh_3" type="fix_value" default="yes" value="0" output="user_select"/>
+    <ic volume="template mesh_3" type="fix_value" default="yes" value="0"/>
+    <ic volume="general mesh_5" type="fix_value" default="yes" value="0" output="user_select"/>
+    <ic volume="template mesh_4" type="fix_value" default="yes" value="0" output="user_select"/>
+    <ic volume="template mesh_5" type="fix_value" default="yes" value="0" output="user_select"/>
+    <ic volume="template mesh_6" type="fix_value" default="yes" value="0" output="user_select"/>
+    <ic volume="general mesh_6" type="fix_value" default="yes" value="0" output="user_select"/>
+    <ic volume="general mesh_8" type="fix_value" default="yes" value="0"/>
+    <ic volume="general mesh_9" type="fix_value" default="yes" value="0"/>
+    <ic volume="spool valve" type="fix_value" default="yes" value="0"/>
+    <ic volume="spool valve_1" type="fix_value" default="yes" value="0"/>
+    <ic volume="general mesh_13" type="fix_value" default="yes" value="0" output="user_select"/>
+  </module>
+
+  <module type="phasecomp" phasecomp="air" blending_factor="0.1">
+    <bc patch="valve2_outlet1_outlet" type="outlet" value="0"/>
+    <bc patch="valve2_outlet2_outlet" type="fix_value" value="0"/>
+    <bc patch="valve1_outlet_outlet1" type="outlet" value="1"/>
+    <bc patch="valve1_outlet_outlet2" type="outlet" value="1"/>
+    <bc patch="inlet_inlet" type="fix_value" print_m_flux="on" print_v_flux="on" output="user_select"/>
+    <bc patch="airout2_inlet" type="outlet" value="1"/>
+    <bc patch="airout1_inlet" type="outlet" value="1"/>
+    <bc patch="airout3_inlet" type="outlet" value="1"/>
+    <bc patch="dir_max_2" type="outlet" value="1"/>
+    <bc patch="dir_min_3" type="outlet" value="1"/>
+    <bc patch="dir_min_8" type="fix_value" value="0"/>
+    <vc volume="template mesh" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="template mesh_1" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="template mesh_2" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="general mesh_3" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="general mesh_5" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="template mesh_4" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="template mesh_5" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="template mesh_6" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="general mesh_6" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <vc volume="general mesh_13" type="output_var" default="yes" print_mass_frac="on"
+      print_vol_frac="on" print_tot_mass="on" print_tot_vol="on"/>
+
+    <ic volume="general mesh" type="fix_value" default="yes" value="1"/>
+    <ic volume="general mesh_1" type="fix_value" default="yes" value="1"/>
+    <ic volume="general mesh_2" type="fix_value" default="yes" value="1"/>
+    <ic volume="template mesh" type="fix_value" default="yes" value="1"/>
+    <ic volume="template mesh_1" type="fix_value" default="yes" value="1"/>
+    <ic volume="template mesh_2" type="fix_value" default="yes" value="1"/>
+    <ic volume="general mesh_3" type="fix_value" default="yes" value="1"/>
+    <ic volume="template mesh_3" type="fix_value" default="yes" value="1"/>
+    <ic volume="general mesh_5" type="fix_value" default="yes" value="1"/>
+    <ic volume="template mesh_4" type="fix_value" default="yes" value="1"/>
+    <ic volume="template mesh_5" type="fix_value" default="yes" value="1"/>
+    <ic volume="template mesh_6" type="fix_value" default="yes" value="1"/>
+    <ic volume="general mesh_6" type="fix_value" default="yes" value="1"/>
+    <ic volume="general mesh_8" type="fix_value" default="yes" value="1"/>
+    <ic volume="general mesh_9" type="fix_value" default="yes" value="1"/>
+    <ic volume="spool valve" type="fix_value" default="yes" value="1"/>
+    <ic volume="spool valve_1" type="fix_value" default="yes" value="1"/>
+    <ic volume="general mesh_13" type="fix_value" default="yes" value="1"/>
+    <ic volume="general mesh_4" type="fix_value" default="yes" value="0"/>
+    <ic volume="template mesh_7" type="fix_value" default="yes" value="0"/>
+    <ic volume="template mesh_8" type="fix_value" default="yes" value="0"/>
+    <ic volume="general mesh_7" type="fix_value" default="yes" value="0"/>
+    <ic volume="spool valve_2" type="fix_value" default="yes" value="0"/>
+    <ic volume="template mesh_9" type="fix_value" default="yes" value="0"/>
+    <ic volume="template mesh_10" type="fix_value" default="yes" value="0"/>
+    <ic volume="template mesh_11" type="fix_value" default="yes" value="0"/>
+    <ic volume="template mesh_12" type="fix_value" default="yes" value="0"/>
+    <ic volume="general mesh_10" type="fix_value" default="yes" value="0"/>
+    <ic volume="general mesh_11" type="fix_value" default="yes" value="0"/>
+    <ic volume="general mesh_12" type="fix_value" default="yes" value="0"/>
+    <ic volume="template mesh_13" type="fix_value" default="yes" value="0"/>
+  </module>
+
+</simulation>

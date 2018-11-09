@@ -25,7 +25,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _kongSunGongLv = "11,700";
+        private string _kongSunGongLv = "0";
         public string KongSunGongLv
         {
             get
@@ -48,6 +48,51 @@ namespace MechanicalModel.ViewModels
             set
             {
                 SetValueProperty(value, ref _locationString);
+            }
+        }
+
+        public string SourceUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/KongSunJiHeMoXing.png");
+            }
+        }
+
+        public string DongLunJingYaFenBuUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/DongLunJingYaFenBu.png");
+            }
+        }
+
+        public string DingLunJingYaFenBuUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/DingLunJingYaFenBu.png");
+            }
+        }
+
+        public string JieMianSuDuShiLiangFenBuUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/JieMianSuDuShiLiangFenBu.png");
+            }
+        }
+
+        private Visibility _quXianAndYunTuVisibility = Visibility.Collapsed;
+        public Visibility QuXianAndYunTuVisibility
+        {
+            get
+            {
+                return _quXianAndYunTuVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _quXianAndYunTuVisibility);
             }
         }
 
@@ -96,6 +141,7 @@ namespace MechanicalModel.ViewModels
                                 }
 
                                 this.KongSunGongLv = Math.Abs(double.Parse(st.Split('\t')[index])).ToString();
+                                this._kongSunGongLv = "11,700";
                             }
                             else
                             {
@@ -117,7 +163,25 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    StartOtherProcessHelper.StartPumpLinxForTempScript();
+                    try
+                    {
+                        StartOtherProcessHelper.LoadResultsForKongSun();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(string.Format("Failed to load results, error: {0}", ex.ToString()));
+                    }
+                });
+            }
+        }
+
+        public ICommand QuXianAndYunTuXianShiButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    this.QuXianAndYunTuVisibility = Visibility.Visible;
                 });
             }
         }

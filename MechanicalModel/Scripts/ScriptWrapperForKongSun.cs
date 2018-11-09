@@ -13,9 +13,17 @@ namespace MechanicalModel.Scripts
     {
         public const string ScriptName = "torque_kongsun.spro";
         public const string SgrdFileName = "torque_kongsun.sgrd";
-        public static string WorkDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "KongSun");
+        public static string WorkDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "Temp", "KongSun");
         public static string SourceSgrdFilePath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", SgrdFileName);
         public static string DestSgrdFilePath = Path.Combine(WorkDirectory, SgrdFileName);
+
+        public const string LoadResultScriptName = "torque_kongsun_loadresults.spro";
+        public const string LoadResultsSgrdFileName = "torque_kongsun_loadresults.sgrd";
+        public static string SourceLoadResultScriptPath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", LoadResultScriptName);
+        public static string DestLoadResultScriptPath = Path.Combine(WorkDirectory, LoadResultScriptName);
+        public static string SourceLoadResultsSgrdFilePath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", LoadResultsSgrdFileName);
+        public static string DestLoadResultsSgrdFilePath = Path.Combine(WorkDirectory, LoadResultsSgrdFileName);
+        
         public static string ScriptXMLHeader = ScriptTemplateForKongSun.ScriptXMLHeader;
         public static string ScriptXMLTail = ScriptTemplateForKongSun.ScriptXMLTail;
         public static string ImportScript = ScriptTemplateForKongSun.ImportScript;

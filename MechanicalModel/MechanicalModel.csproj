@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MechanicalModel</RootNamespace>
-    <AssemblyName>扭矩匹配特性分析系统</AssemblyName>
+    <AssemblyName>液力缓速系统关键匹配特性分析系统</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -63,6 +63,9 @@
     <Compile Include="Controls\JiHeKongSunJiSuanMoXingControl.xaml.cs">
       <DependentUpon>JiHeKongSunJiSuanMoXingControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\NiuJuPiPeiTeXingFenXiXiTongMainWindow.xaml.cs">
+      <DependentUpon>NiuJuPiPeiTeXingFenXiXiTongMainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ShuXueHengNiuJuJiSuanCanShuShuRuControl.xaml.cs">
       <DependentUpon>ShuXueHengNiuJuJiSuanCanShuShuRuControl.xaml</DependentUpon>
     </Compile>
@@ -87,6 +90,9 @@
     <Compile Include="Controls\ShuXueHengNiuJuWangGeHuaFenControl.xaml.cs">
       <DependentUpon>ShuXueHengNiuJuWangGeHuaFenControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ShuXueZhiDongNiuJuPiPeiTeXingGuanXiControl.xaml.cs">
+      <DependentUpon>ShuXueZhiDongNiuJuPiPeiTeXingGuanXiControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Scripts\ScriptTemplateForHengNiuJu.cs" />
     <Compile Include="Scripts\ScriptWrapperForHengNiuJu.cs" />
     <Compile Include="Scripts\ScriptWrapperForKongSun.cs" />
@@ -94,11 +100,13 @@
     <Compile Include="Utils\CommonUtils.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Utils\MechanicalModelViewUIConverter.cs" />
+    <Compile Include="Utils\MultipleLine.cs" />
     <Compile Include="Utils\StartOtherProcessHelper.cs" />
     <Compile Include="Utils\TaskCommand.cs" />
     <Compile Include="ViewModels\DataItem.cs" />
     <Compile Include="ViewModels\JiHeHengNiuJuJiSuanMoXingViewModel.cs" />
     <Compile Include="ViewModels\JiHeKongSunJiSuanMoXingViewModel.cs" />
+    <Compile Include="ViewModels\JiSuanType.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MechanicalModelListViewModel.cs" />
     <Compile Include="ViewModels\ShuXueHengNiuJuJiSuanCanShuShuRuViewModel.cs" />
@@ -114,11 +122,16 @@
     <Compile Include="ViewModels\TreeViewNode.cs" />
     <Compile Include="ViewModels\PropertyChangedBaseCommonClass.cs" />
     <Compile Include="ViewModels\ViewType.cs" />
+    <Compile Include="ViewModels\ShuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel.cs" />
     <Page Include="Controls\JiHeHengNiuJuJiSuanMoXingControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\JiHeKongSunJiSuanMoXingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NiuJuPiPeiTeXingFenXiXiTongMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -151,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ShuXueHengNiuJuWangGeHuaFenControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ShuXueZhiDongNiuJuPiPeiTeXingGuanXiControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -219,15 +236,34 @@
 	  Resources\HengNiuJuJiHeMoXing.png;
 	  Resources\HengNiuJuMoXingWangGe.png;
 	  Resources\KongSunJiHeMoXing.png;
-	  Resources\KongSunMoXingWangGe.png
+	  Resources\KongSunMoXingWangGe.png;
+	  Resources\Background.jpg;
+	  Resources\ZhiDongNiuJu.png;
+	  Resources\DongLunJingYaFenBu.png;
+	  Resources\DingLunJingYaFenBu.png;
+	  Resources\JieMianSuDuShiLiangFenBu.png;
+	  Resources\NiuJuQuXian.jpg;
+	  Resources\ZhuanSuBianHua.jpg;
 	</PngResources>
   </PropertyGroup>
   <ItemGroup>
     <Resource Include="Resources\Shortcut.ico" />
+    <Content Include="Scripts\torque_hengniuju_loadresults.spro">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\torque_kongsun_loadresults.spro">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\torque_hengniuju.sgrd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\torque_kongsun.sgrd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\torque_hengniuju_loadresults.sgrd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\torque_kongsun_loadresults.sgrd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="$(PngResources)">
