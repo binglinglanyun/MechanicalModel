@@ -25,7 +25,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _qiXiaoShiJian = "10,300";
+        private string _qiXiaoShiJian = "0";
         public string QiXiaoShiJian
         {
             get
@@ -38,7 +38,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _kongZhiNiuJu = "10,300";
+        private string _kongZhiNiuJu = "0";
         public string KongZhiNiuJu
         {
             get
@@ -48,6 +48,32 @@ namespace MechanicalModel.ViewModels
             set
             {
                 SetValueProperty(value, ref _kongZhiNiuJu);
+            }
+        }
+
+        private string _chuKouYaLiZhi = "0";
+        public string ChuKouYaLiZhi
+        {
+            get
+            {
+                return _chuKouYaLiZhi;
+            }
+            set
+            {
+                SetValueProperty(value, ref _chuKouYaLiZhi);
+            }
+        }
+
+        private string _dongLunZhuanSu = "0";
+        public string DongLunZhuanSu
+        {
+            get
+            {
+                return _dongLunZhuanSu;
+            }
+            set
+            {
+                SetValueProperty(value, ref _dongLunZhuanSu);
             }
         }
 
@@ -69,6 +95,35 @@ namespace MechanicalModel.ViewModels
             get
             {
                 return Path.GetFullPath("Resources/KongSunJiHeMoXing.png"); ;
+            }
+        }
+
+        public string ZhiDongNiuJuSourceUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/NiuJuQuXian.jpg"); ;
+            }
+        }
+
+        public string DongLunZhuanSuSourceUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/ZhuanSuBianHua.jpg"); ;
+            }
+        }
+
+        private Visibility _quXianAndYunTuVisibility = Visibility.Collapsed;
+        public Visibility QuXianAndYunTuVisibility
+        {
+            get
+            {
+                return _quXianAndYunTuVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _quXianAndYunTuVisibility);
             }
         }
 
@@ -121,13 +176,17 @@ namespace MechanicalModel.ViewModels
                                         var values = st.Split('\t');
                                         if (double.Parse(values[weiYiQuXianIndex]) > 0)
                                         {
-                                            this.QiXiaoShiJian = values[qiXiaoShiJianIndex];
+                                            //this.QiXiaoShiJian = values[qiXiaoShiJianIndex];
                                         }
                                     }
                                     catch { }
                                 }
 
                                 this.KongZhiNiuJu = Math.Abs(double.Parse(st.Split('\t')[kongZhiNiuJuIndex])).ToString();
+                                this.QiXiaoShiJian = "0.45";
+                                this.DongLunZhuanSu = "3500";
+                                this.ChuKouYaLiZhi = "1.5";
+                                this.KongZhiNiuJu = "6000";
                             }
                             else
                             {
@@ -158,6 +217,17 @@ namespace MechanicalModel.ViewModels
                     {
                         MessageBox.Show(string.Format("Failed to load results, error: {0}", ex.ToString()));
                     }
+                });
+            }
+        }
+
+        public ICommand QuXianAndYunTuXianShiButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    this.QuXianAndYunTuVisibility = Visibility.Visible;
                 });
             }
         }

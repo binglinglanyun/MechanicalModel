@@ -100,6 +100,7 @@
     <Compile Include="Utils\CommonUtils.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Utils\MechanicalModelViewUIConverter.cs" />
+    <Compile Include="Utils\MultipleLine.cs" />
     <Compile Include="Utils\StartOtherProcessHelper.cs" />
     <Compile Include="Utils\TaskCommand.cs" />
     <Compile Include="ViewModels\DataItem.cs" />
@@ -241,6 +242,8 @@
 	  Resources\DongLunJingYaFenBu.png;
 	  Resources\DingLunJingYaFenBu.png;
 	  Resources\JieMianSuDuShiLiangFenBu.png;
+	  Resources\NiuJuQuXian.jpg;
+	  Resources\ZhuanSuBianHua.jpg;
 	</PngResources>
   </PropertyGroup>
   <ItemGroup>

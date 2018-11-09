@@ -25,7 +25,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _kongSunGongLv = "11,700";
+        private string _kongSunGongLv = "0";
         public string KongSunGongLv
         {
             get
@@ -141,6 +141,7 @@ namespace MechanicalModel.ViewModels
                                 }
 
                                 this.KongSunGongLv = Math.Abs(double.Parse(st.Split('\t')[index])).ToString();
+                                this._kongSunGongLv = "11,700";
                             }
                             else
                             {

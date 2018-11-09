@@ -34,6 +34,7 @@
                     <TextBox Text="{Binding ZhiLingYouYa}"/>
                     <TextBlock Text="MPa" Margin="5,0,0,0"/>
                 </StackPanel>
+                <Button Content="确认设置" Margin="10,20,0,0" Command="{Binding ConfirmButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
             </StackPanel>
         </StackPanel>
     </Grid>
