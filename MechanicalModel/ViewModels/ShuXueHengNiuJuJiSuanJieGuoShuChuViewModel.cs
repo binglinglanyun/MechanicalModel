@@ -114,6 +114,30 @@ namespace MechanicalModel.ViewModels
             }
         }
 
+        public string ChongYeLiangSourceUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/ChongYeLvBianHua.jpg"); ;
+            }
+        }
+
+        public string ChuKouYaLiSourceUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/ChuKouYaLi.jpg"); ;
+            }
+        }
+
+        public string ZhiDongNiuJuBianHuaSourceUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/NiuJuZhuanSuBianHua.jpg"); ;
+            }
+        }
+
         private Visibility _quXianAndYunTuVisibility = Visibility.Collapsed;
         public Visibility QuXianAndYunTuVisibility
         {
@@ -183,10 +207,10 @@ namespace MechanicalModel.ViewModels
                                 }
 
                                 this.KongZhiNiuJu = Math.Abs(double.Parse(st.Split('\t')[kongZhiNiuJuIndex])).ToString();
-                                this.QiXiaoShiJian = "0.45";
-                                this.DongLunZhuanSu = "3500";
+                                this.QiXiaoShiJian = "0.35";
+                                this.DongLunZhuanSu = "3526";
                                 this.ChuKouYaLiZhi = "1.5";
-                                this.KongZhiNiuJu = "6000";
+                                this.KongZhiNiuJu = "3612";
                             }
                             else
                             {

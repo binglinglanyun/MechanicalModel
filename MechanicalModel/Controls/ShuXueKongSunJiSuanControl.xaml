@@ -31,26 +31,42 @@
             <Label Content="计算过程监测" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Orientation="Vertical">
                 <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
-                    <TextBlock Text="监测点坐标参数：" Margin="0,5,0,5" />
+                    <TextBlock Text="监测点1坐标参数：" Margin="0,5,0,5" />
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,5">
-                        <TextBlock Text="X：" />
+                        <TextBlock Text="X1：" />
                         <TextBox Text="{Binding CanShuX}"/>
                         <TextBlock Text="m" Margin="5,0,0,0"/>
                     </StackPanel>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,5">
-                        <TextBlock Text="Y：" />
+                        <TextBlock Text="Y1：" />
                         <TextBox Text="{Binding CanShuY}"/>
                         <TextBlock Text="m" Margin="5,0,0,0"/>
                     </StackPanel>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,0">
-                        <TextBlock Text="Z：" />
+                        <TextBlock Text="Z1：" />
+                        <TextBox Text="{Binding CanShuZ}"/>
+                        <TextBlock Text="m" Margin="5,0,0,0"/>
+                    </StackPanel>
+
+                    <TextBlock Text="监测点2坐标参数：" Margin="0,15,0,5" />
+                    <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,5">
+                        <TextBlock Text="X2：" />
+                        <TextBox Text="{Binding CanShuX}"/>
+                        <TextBlock Text="m" Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,5">
+                        <TextBlock Text="Y2：" />
+                        <TextBox Text="{Binding CanShuY}"/>
+                        <TextBlock Text="m" Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,0">
+                        <TextBlock Text="Z2：" />
                         <TextBox Text="{Binding CanShuZ}"/>
                         <TextBlock Text="m" Margin="5,0,0,0"/>
                     </StackPanel>
                     <CheckBox Content="压力监测" IsChecked="True"/>
                     <CheckBox Content="气相体积分数监测" IsChecked="True"/>
                 </StackPanel>
-                <Button Content="增加监测点" Margin="20,10,0,20" MinWidth="50" HorizontalAlignment="Left"/>
 
                 <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                     <CheckBox Content="动轮扭矩监测" IsChecked="True"/>
