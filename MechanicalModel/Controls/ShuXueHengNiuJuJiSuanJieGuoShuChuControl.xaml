@@ -77,14 +77,14 @@
                 <TabItem Header="动轮转速随时间变化曲线">
                     <Image Source="{Binding DongLunZhuanSuSourceUri}" Margin="40,10,0,0" HorizontalAlignment="Left" Height="400" Width="650"/>
                 </TabItem>
-                <TabItem Header="工作腔内充液量随时间变化曲线" Visibility="Collapsed">
-                    <Image Source="{Binding SourceUri}" Margin="0,-20,0,0" Height="420" Width="450"/>
+                <TabItem Header="工作腔内充液量随时间变化曲线">
+                    <Image Source="{Binding ChongYeLiangSourceUri}" Margin="40,0,0,0" HorizontalAlignment="Left" Height="400" Width="650"/>
                 </TabItem>
-                <TabItem Header="缓速器出口压力随时间变化曲线" Visibility="Collapsed">
-                    <Image Source="{Binding SourceUri}" Margin="0,-20,0,0" Height="420" Width="450"/>
+                <TabItem Header="缓速器出口压力随时间变化曲线">
+                    <Image Source="{Binding ChuKouYaLiSourceUri}" Margin="40,0,0,0" HorizontalAlignment="Left" Height="400" Width="650"/>
                 </TabItem>
-                <TabItem Header="制动扭矩随动轮转速变化曲线" Visibility="Collapsed">
-                    <Image Source="{Binding SourceUri}" Margin="0,-20,0,0" Height="420" Width="450"/>
+                <TabItem Header="制动扭矩随动轮转速变化曲线">
+                    <Image Source="{Binding ZhiDongNiuJuBianHuaSourceUri}" Margin="40,10,0,0" HorizontalAlignment="Left" Height="400" Width="650"/>
                 </TabItem>
             </TabControl>
         </StackPanel>   

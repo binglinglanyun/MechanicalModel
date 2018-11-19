@@ -244,6 +244,9 @@
 	  Resources\JieMianSuDuShiLiangFenBu.png;
 	  Resources\NiuJuQuXian.jpg;
 	  Resources\ZhuanSuBianHua.jpg;
+	  Resources\NiuJuZhuanSuBianHua.jpg;
+	  Resources\ChongYeLvBianHua.jpg;
+	  Resources\ChuKouYaLi.jpg;
 	</PngResources>
   </PropertyGroup>
   <ItemGroup>
