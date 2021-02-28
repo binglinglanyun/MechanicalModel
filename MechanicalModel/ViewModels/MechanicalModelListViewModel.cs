@@ -35,7 +35,7 @@ namespace MechanicalModel.ViewModels
                     break;
                 case JiSuanType.HengNiuJuJiSuan:
                     // The second layer for "制动特性计算"
-                    TreeViewNode JiHeHengNiuJuJiSuanMoXing = new TreeViewNode("制动特性计算模型", ViewType.JiHeHengNiuJuJiSuanMoXing);
+                    TreeViewNode JiHeHengNiuJuJiSuanMoXing = new TreeViewNode("起效特性计算模型", ViewType.JiHeHengNiuJuJiSuanMoXing);
                     TreeViewNode ShuXueZhiDongNiuJuPiPeiTeXingGuanXi = new TreeViewNode("制动扭矩匹配特性关系", ViewType.ShuXueZhiDongNiuJuPiPeiTeXingGuanXi);
                     TreeViewNode ShuXueHengNiuJuWangGeHuaFen = new TreeViewNode("网格划分", ViewType.ShuXueHengNiuJuWangGeHuaFen);
                     TreeViewNode ShuXueHengNiuJuJiSuanCanShuShuRu = new TreeViewNode("计算参数输入", ViewType.ShuXueHengNiuJuJiSuanCanShuShuRu);
@@ -43,7 +43,7 @@ namespace MechanicalModel.ViewModels
                     TreeViewNode ShuXueHengNiuJuJiSuanJieGuoShuChu = new TreeViewNode("计算结果输出", ViewType.ShuXueHengNiuJuJiSuanJieGuoShuChu);
 
                     // The first layer for "制动特性计算"
-                    TreeViewNode HengNiuJuJiSuan = new TreeViewNode("制动特性计算", ViewType.Others);
+                    TreeViewNode HengNiuJuJiSuan = new TreeViewNode("起效特性计算", ViewType.Others);
                     HengNiuJuJiSuan.Nodes = new List<TreeViewNode>() { ShuXueZhiDongNiuJuPiPeiTeXingGuanXi, JiHeHengNiuJuJiSuanMoXing, ShuXueHengNiuJuWangGeHuaFen, ShuXueHengNiuJuJiSuanCanShuShuRu, ShuXueHengNiuJuJiSuan, ShuXueHengNiuJuJiSuanJieGuoShuChu };
 
                     treeViewNodeList.Add(HengNiuJuJiSuan);

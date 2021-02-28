@@ -65,8 +65,8 @@
                     <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="充油进口:" />
-                            <TextBox Text="{Binding ChongYouJinKou}"/>
-                            <TextBlock Text="MPa" Margin="5,0,0,0"/>
+                            <ComboBox Text="{Binding LocationString}" HorizontalAlignment="Stretch" Width="100" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0" Height="15"/>
+                            <Button Name="buttonBrowse" Content="导入..." Command="{Binding BrowseButtonClick}" Margin="5,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="50"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="通气孔:" />

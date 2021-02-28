@@ -251,6 +251,19 @@ namespace MechanicalModel.ViewModels
         }
         #endregion
 
+        private string _locationString = "D:\\入口压力条件.xlsx";
+        public string LocationString
+        {
+            get
+            {
+                return _locationString;
+            }
+            set
+            {
+                SetValueProperty(value, ref _locationString);
+            }
+        }
+
         public ICommand ConfirmButtonClick
         {
             get
@@ -280,6 +293,30 @@ namespace MechanicalModel.ViewModels
                         this.HuaFaFaXinZhiLiang, this.HuaFaTanHuangGangDu, this.HuaFaTanHuangYuJinLi);
 
                     MessageBox.Show("设置成功", "恒扭矩计算参数输入");
+                });
+            }
+        }
+
+        public ICommand BrowseButtonClick
+        {
+            get
+            {
+                return new DelegateCommand<object>((o) =>
+                {
+                    string localFolder;
+                    System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
+                    dialog.Description = "文件位置";
+                    System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+                    if (result == System.Windows.Forms.DialogResult.OK)
+                    {
+                        localFolder = dialog.SelectedPath;
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    this.LocationString = localFolder;
                 });
             }
         }
