@@ -12,9 +12,9 @@ using System.Windows.Input;
 
 namespace MechanicalModel.ViewModels
 {
-    public class JinQiBiKongSunWangGeHuaFenViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
+    public class JinYouTongDaoKongSunWangGeHuaFenViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
     {
-        public JinQiBiKongSunWangGeHuaFenViewModel()
+        public JinYouTongDaoKongSunWangGeHuaFenViewModel()
         {
         }
 
@@ -22,7 +22,7 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return ViewType.JinQiBiKongSunWangGeHuaFen;
+                return ViewType.JinYouTongDaoKongSunWangGeHuaFen;
             }
         }
 

@@ -1,21 +1,30 @@
-﻿using MechanicalModel.Scripts;
-using MechanicalModel.Utils;
+﻿using MechanicalModel.Utils;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
+using System.Windows;
+using System.IO;
+using MechanicalModel.Scripts;
+using System.Diagnostics;
 
 namespace MechanicalModel.ViewModels
 {
-    public class HengNiuJuJiSuanMoXingViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
+    public class JinYouTongDaoKongSunJiSuanMoXingViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
     {
-        public HengNiuJuJiSuanMoXingViewModel()
+        public JinYouTongDaoKongSunJiSuanMoXingViewModel()
         {
             InitializeItems();
+        }
+
+        public ViewType Type
+        {
+            get
+            {
+                return ViewType.JinYouTongDaoJiSuanJiHeMoXing;
+            }
         }
 
         private void InitializeItems()
@@ -24,13 +33,12 @@ namespace MechanicalModel.ViewModels
             items.Add(new DataItem("动轮", true));
             items.Add(new DataItem("定轮", true));
             items.Add(new DataItem("壳体", true));
-            items.Add(new DataItem("背压阀", true));
-            items.Add(new DataItem("滑阀", true));
             items.Add(new DataItem("其他", true));
 
             this.Items = items;
         }
 
+        #region Button Click
         public ICommand BrowseButtonClick
         {
             get
@@ -59,14 +67,14 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return new DelegateCommand<object>((o) =>
+                return new TaskCommand<object>((o) =>
                 {
                     try
                     {
                         this.LoadingVisibility = Visibility.Visible;
-                        CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForHengNiuJu.WorkDirectory);
+                        CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForKongSun.WorkDirectory);
                         this.LoadingVisibility = Visibility.Collapsed;
-                        MessageBox.Show("设置成功", "恒扭矩计算模型导入");
+                        MessageBox.Show("设置成功", "空损计算模型导入");
                     }
                     catch (Exception ex)
                     {
@@ -89,17 +97,18 @@ namespace MechanicalModel.ViewModels
                     }
 
                     // Create import script
-                    string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForImportMoXing();
+                    string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForImportMoXing();
                     if (scriptContent != null)
                     {
-                        StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
+                        StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);
                     }
                 });
             }
         }
+        #endregion
 
         #region Properties
-        private string _locationString = "D:\\380流场计算\\恒扭矩几何模型";
+        private string _locationString = "D:\\380流场计算\\空损几何模型";
         public string LocationString
         {
             get
@@ -125,19 +134,11 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public ViewType Type
-        {
-            get
-            {
-                return ViewType.HengNiuJuJiSuanMoXing;
-            }
-        }
-
         public string SourceUri
         {
             get
             {
-                return Path.GetFullPath("Resources/HengNiuJuJiHeMoXing.png"); ;
+                return Path.GetFullPath("Resources/KongSunJiHeMoXing.png"); ;
             }
         }
 

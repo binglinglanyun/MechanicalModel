@@ -86,6 +86,21 @@
     <Compile Include="Controls\JinQiBiKongSun\JinQiBiKongSunJiSuanMoXingControl.xaml.cs">
       <DependentUpon>JinQiBiKongSunJiSuanMoXingControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanCanShuShuRuControl.xaml.cs">
+      <DependentUpon>JinYouTongDaoKongSunJiSuanCanShuShuRuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanControl.xaml.cs">
+      <DependentUpon>JinYouTongDaoKongSunJiSuanControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanJieGuoShuChuControl.xaml.cs">
+      <DependentUpon>JinYouTongDaoKongSunJiSuanJieGuoShuChuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunWangGeHuaFenControl.xaml.cs">
+      <DependentUpon>JinYouTongDaoKongSunWangGeHuaFenControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoJiSuanJiHeMoXingControl.xaml.cs">
+      <DependentUpon>JinYouTongDaoJiSuanJiHeMoXingControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\HengNiuJu\HengNiuJuJiSuanMoXingControl.xaml.cs">
       <DependentUpon>HengNiuJuJiSuanMoXingControl.xaml</DependentUpon>
     </Compile>
@@ -120,6 +135,11 @@
     <Compile Include="ViewModels\JinQiBiKongSun\JinQiBiKongSunJiSuanJieGuoShuChuViewModel.cs" />
     <Compile Include="ViewModels\JinQiBiKongSun\JinQiBiKongSunJiSuanViewModel.cs" />
     <Compile Include="ViewModels\JinQiBiKongSun\JinQiBiKongSunWangGeHuaFenViewModel.cs" />
+    <Compile Include="ViewModels\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanMoXingViewModel.cs" />
+    <Compile Include="ViewModels\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanCanShuShuRuViewModel.cs" />
+    <Compile Include="ViewModels\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanJieGuoShuChuViewModel.cs" />
+    <Compile Include="ViewModels\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanViewModel.cs" />
+    <Compile Include="ViewModels\JinYouTongDaoKongSun\JinYouTongDaoKongSunWangGeHuaFenViewModel.cs" />
     <Compile Include="ViewModels\JiSuanType.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MechanicalModelListViewModel.cs" />
@@ -151,6 +171,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\JinQiBiKongSun\JinQiBiKongSunWangGeHuaFenControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoJiSuanJiHeMoXingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanCanShuShuRuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanJieGuoShuChuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunWangGeHuaFenControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

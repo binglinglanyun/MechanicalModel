@@ -21,7 +21,7 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return ViewType.ShuXueHengNiuJuWangGeHuaFen;
+                return ViewType.HengNiuJuWangGeHuaFen;
             }
         }
 

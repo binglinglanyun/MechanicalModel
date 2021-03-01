@@ -11,9 +11,9 @@ using System.Windows.Input;
 
 namespace MechanicalModel.ViewModels
 {
-    public class HengNiuJuJiSuanJieGuoShuChuViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
+    public class JinYouTongDaoKongSunJiSuanJieGuoShuChuViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
     {
-        public HengNiuJuJiSuanJieGuoShuChuViewModel()
+        public JinYouTongDaoKongSunJiSuanJieGuoShuChuViewModel()
         {
         }
 
@@ -21,63 +21,24 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return ViewType.HengNiuJuJiSuanJieGuoShuChu;
+                return ViewType.JinYouTongDaoKongSunJiSuanJieGuoShuChu;
             }
         }
 
-        private string _qiXiaoShiJian = "0";
-        public string QiXiaoShiJian
+        private string _kongSunGongLv = "0";
+        public string KongSunGongLv
         {
             get
             {
-                return _qiXiaoShiJian;
+                return _kongSunGongLv;
             }
             set
             {
-                SetValueProperty(value, ref _qiXiaoShiJian);
+                SetValueProperty(value, ref _kongSunGongLv);
             }
         }
 
-        private string _kongZhiNiuJu = "0";
-        public string KongZhiNiuJu
-        {
-            get
-            {
-                return _kongZhiNiuJu;
-            }
-            set
-            {
-                SetValueProperty(value, ref _kongZhiNiuJu);
-            }
-        }
-
-        private string _chuKouYaLiZhi = "0";
-        public string ChuKouYaLiZhi
-        {
-            get
-            {
-                return _chuKouYaLiZhi;
-            }
-            set
-            {
-                SetValueProperty(value, ref _chuKouYaLiZhi);
-            }
-        }
-
-        private string _dongLunZhuanSu = "0";
-        public string DongLunZhuanSu
-        {
-            get
-            {
-                return _dongLunZhuanSu;
-            }
-            set
-            {
-                SetValueProperty(value, ref _dongLunZhuanSu);
-            }
-        }
-
-        private string _locationString = "D:\\380流场计算\\空损几何模型\\hengniuju_integrals.txt";
+        private string _locationString = "D:\\380流场计算\\空损几何模型\\kongsun_integrals.txt";
         public string LocationString
         {
             get
@@ -94,47 +55,31 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return Path.GetFullPath("Resources/KongSunJiHeMoXing.png"); ;
+                return Path.GetFullPath("Resources/KongSunJiHeMoXing.png");
             }
         }
 
-        public string ZhiDongNiuJuSourceUri
+        public string DongLunJingYaFenBuUri
         {
             get
             {
-                return Path.GetFullPath("Resources/NiuJuQuXian.jpg"); ;
+                return Path.GetFullPath("Resources/DongLunJingYaFenBu.png");
             }
         }
 
-        public string DongLunZhuanSuSourceUri
+        public string DingLunJingYaFenBuUri
         {
             get
             {
-                return Path.GetFullPath("Resources/ZhuanSuBianHua.jpg"); ;
+                return Path.GetFullPath("Resources/DingLunJingYaFenBu.png");
             }
         }
 
-        public string ChongYeLiangSourceUri
+        public string JieMianSuDuShiLiangFenBuUri
         {
             get
             {
-                return Path.GetFullPath("Resources/ChongYeLvBianHua.jpg"); ;
-            }
-        }
-
-        public string ChuKouYaLiSourceUri
-        {
-            get
-            {
-                return Path.GetFullPath("Resources/ChuKouYaLi.jpg"); ;
-            }
-        }
-
-        public string ZhiDongNiuJuBianHuaSourceUri
-        {
-            get
-            {
-                return Path.GetFullPath("Resources/NiuJuZhuanSuBianHua.jpg"); ;
+                return Path.GetFullPath("Resources/JieMianSuDuShiLiangFenBu.png");
             }
         }
 
@@ -186,36 +131,21 @@ namespace MechanicalModel.ViewModels
                         using (StreamReader sr = new StreamReader(this.LocationString))
                         {
                             string[] resultTitles = sr.ReadLine().Split('\t');
-                            int kongZhiNiuJuIndex = resultTitles.ToList().IndexOf(ScriptWrapperForHengNiuJu.KongZhiNiuJuResultTitle);
-                            int qiXiaoShiJianIndex = resultTitles.ToList().IndexOf(ScriptWrapperForHengNiuJu.QiXiaoShiJianRusultTitie);
-                            int weiYiQuXianIndex = resultTitles.ToList().IndexOf(ScriptWrapperForHengNiuJu.WeiYiQuXianRusultTitle);
-                            if (kongZhiNiuJuIndex != -1 && weiYiQuXianIndex != -1)
+                            int index = resultTitles.ToList().IndexOf(ScriptWrapperForKongSun.KongSunGongLvResultTitle);
+                            if (index != -1)
                             {
                                 string st = string.Empty;
                                 while (!sr.EndOfStream)
                                 {
                                     st = sr.ReadLine();
-                                    try
-                                    {
-                                        var values = st.Split('\t');
-                                        if (double.Parse(values[weiYiQuXianIndex]) > 0)
-                                        {
-                                            //this.QiXiaoShiJian = values[qiXiaoShiJianIndex];
-                                        }
-                                    }
-                                    catch { }
                                 }
 
-                                this.KongZhiNiuJu = Math.Abs(double.Parse(st.Split('\t')[kongZhiNiuJuIndex])).ToString();
-                                this.QiXiaoShiJian = "0.35";
-                                this.DongLunZhuanSu = "3526";
-                                this.ChuKouYaLiZhi = "1.5";
-                                this.KongZhiNiuJu = "3612";
+                                this.KongSunGongLv = Math.Abs(double.Parse(st.Split('\t')[index])).ToString();
+                                this._kongSunGongLv = "11,700";
                             }
                             else
                             {
-                                MessageBox.Show(string.Format("结果文件内容格式不正确，找不到列名为{0}或者{1}的项",
-                                    ScriptWrapperForHengNiuJu.KongZhiNiuJuResultTitle, ScriptWrapperForHengNiuJu.WeiYiQuXianRusultTitle));
+                                MessageBox.Show(string.Format("结果文件内容格式不正确，找不到列名为{0}的项", ScriptWrapperForKongSun.KongSunGongLvResultTitle));
                             }
                         }
                     }
@@ -235,7 +165,7 @@ namespace MechanicalModel.ViewModels
                 {
                     try
                     {
-                        StartOtherProcessHelper.LoadResultsForHengNiuJu();
+                        StartOtherProcessHelper.LoadResultsForKongSun();
                     }
                     catch (Exception ex)
                     {

@@ -12,9 +12,9 @@ using System.Windows.Input;
 
 namespace MechanicalModel.ViewModels
 {
-    public class JinQiBiKongSunJiSuanViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
+    public class JinYouTongDaoKongSunJiSuanViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
     {
-        public JinQiBiKongSunJiSuanViewModel()
+        public JinYouTongDaoKongSunJiSuanViewModel()
         {
         }
 
@@ -22,20 +22,20 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return ViewType.JinQiBiKongSunJiSuan;
+                return ViewType.JinYouTongDaoKongSunJiSuan;
             }
         }
 
-        private string _shiJianBuChang = "200000";
-        public string ShiJianBuChang
+        private string _dieDaiBuShu = "200000";
+        public string DieDaiBuShu
         {
             get
             {
-                return _shiJianBuChang;
+                return _dieDaiBuShu;
             }
             set
             {
-                SetValueProperty(value, ref _shiJianBuChang);
+                SetValueProperty(value, ref _dieDaiBuShu);
             }
         }
 
@@ -85,7 +85,7 @@ namespace MechanicalModel.ViewModels
                 return new TaskCommand<object>((o) =>
                 {
                     ScriptWrapperForKongSun.JiSuanKongZhiCanShu = string.Format(ScriptTemplateForKongSun.JiSuanKongZhiCanShu,
-                        this.ShiJianBuChang);
+                        this.DieDaiBuShu);
 
                     ScriptWrapperForKongSun.JianKongDianZuoBiaoCanShu = string.Format(ScriptTemplateForKongSun.JianKongDianZuoBiaoCanShu,
                         this.CanShuX, this.CanShuY, this.CanShuZ);

@@ -21,20 +21,20 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return ViewType.ShuXueHengNiuJuJiSuan;
+                return ViewType.HengNiuJuJiSuan;
             }
         }
 
-        private string _shiJianBuChang = "200000";
+        private string _dieDaiBuShu = "200000";
         public string ShiJianBuChang
         {
             get
             {
-                return _shiJianBuChang;
+                return _dieDaiBuShu;
             }
             set
             {
-                SetValueProperty(value, ref _shiJianBuChang);
+                SetValueProperty(value, ref _dieDaiBuShu);
             }
         }
 
