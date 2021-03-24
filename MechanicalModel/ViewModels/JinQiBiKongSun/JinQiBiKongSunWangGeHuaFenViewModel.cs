@@ -122,10 +122,10 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    ScriptWrapperForKongSun.DingLunForWangGeHuaFen = string.Format(ScriptTemplateForKongSun.DingLunForWangGeHuaFen,
+                    ScriptWrapperForJinQiBiKongSun.DingLunForWangGeHuaFen = string.Format(ScriptTemplateForJinQiBiKongSun.DingLunForWangGeHuaFen,
                         this.DingLunZuiDaWangGeChiDu, this.DingLunZuiXiaoWangGeChiDu, this.DingLunZuiDaMianWangGeChiDu);
 
-                    ScriptWrapperForKongSun.DongLunForWangGeHuaFen = string.Format(ScriptTemplateForKongSun.DongLunForWangGeHuaFen, 
+                    ScriptWrapperForJinQiBiKongSun.DongLunForWangGeHuaFen = string.Format(ScriptTemplateForJinQiBiKongSun.DongLunForWangGeHuaFen, 
                         this.DongLunZuiDaWangGeChiDu, this.DongLunZuiXiaoWangGeChiDu, this.DongLunZuiDaMianWangGeChiDu);
 
                     MessageBox.Show("设置成功", "空损计算网格划分");
@@ -139,7 +139,7 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForWangGeHuaFen();
+                    string scriptContent = ScriptWrapperForJinQiBiKongSun.CreateFullScriptForWangGeHuaFen();
                     if (scriptContent != null)
                     {
                         StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);

@@ -6,7 +6,7 @@
   customer="Technology"
   date="Wed Jun 20 16:05:01 2018">
 
-  <include file="torque_kongsun_loadresults.sgrd"/>
+  <include file="torque_jinqibikongsun_loadresults.sgrd"/>
 
   <volume name="air_inlet1"/>
   <volume name="air_inlet2"/>

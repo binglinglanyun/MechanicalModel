@@ -9,25 +9,25 @@ using System.Windows;
 
 namespace MechanicalModel.Scripts
 {
-    public static class ScriptWrapperForKongSun
+    public static class ScriptWrapperForJinQiBiKongSun
     {
-        public const string ScriptName = "torque_kongsun.spro";
-        public const string SgrdFileName = "torque_kongsun.sgrd";
+        public const string ScriptName = "torque_jinqibikongsun.spro";
+        public const string SgrdFileName = "torque_jinqibikongsun.sgrd";
         public static string WorkDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "Temp", "KongSun");
         public static string SourceSgrdFilePath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", SgrdFileName);
         public static string DestSgrdFilePath = Path.Combine(WorkDirectory, SgrdFileName);
 
-        public const string LoadResultScriptName = "torque_kongsun_loadresults.spro";
-        public const string LoadResultsSgrdFileName = "torque_kongsun_loadresults.sgrd";
+        public const string LoadResultScriptName = "torque_jinqibikongsun_loadresults.spro";
+        public const string LoadResultsSgrdFileName = "torque_jinqibikongsun_loadresults.sgrd";
         public static string SourceLoadResultScriptPath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", LoadResultScriptName);
         public static string DestLoadResultScriptPath = Path.Combine(WorkDirectory, LoadResultScriptName);
         public static string SourceLoadResultsSgrdFilePath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", LoadResultsSgrdFileName);
         public static string DestLoadResultsSgrdFilePath = Path.Combine(WorkDirectory, LoadResultsSgrdFileName);
         
-        public static string ScriptXMLHeader = ScriptTemplateForKongSun.ScriptXMLHeader;
-        public static string ScriptXMLTail = ScriptTemplateForKongSun.ScriptXMLTail;
-        public static string ImportScript = ScriptTemplateForKongSun.ImportScript;
-        public static string WangGeHuafenConstScript = ScriptTemplateForKongSun.WangGeHuafenConstScript;
+        public static string ScriptXMLHeader = ScriptTemplateForJinQiBiKongSun.ScriptXMLHeader;
+        public static string ScriptXMLTail = ScriptTemplateForJinQiBiKongSun.ScriptXMLTail;
+        public static string ImportScript = ScriptTemplateForJinQiBiKongSun.ImportScript;
+        public static string WangGeHuafenConstScript = ScriptTemplateForJinQiBiKongSun.WangGeHuafenConstScript;
         public static string DongLunForWangGeHuaFen = string.Empty;
         public static string DingLunForWangGeHuaFen = string.Empty;
         public static string BianJieTiaoJianDingYi = string.Empty;

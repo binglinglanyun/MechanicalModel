@@ -84,13 +84,13 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    ScriptWrapperForKongSun.JiSuanKongZhiCanShu = string.Format(ScriptTemplateForKongSun.JiSuanKongZhiCanShu,
+                    ScriptWrapperForJinQiBiKongSun.JiSuanKongZhiCanShu = string.Format(ScriptTemplateForJinQiBiKongSun.JiSuanKongZhiCanShu,
                         this.DieDaiBuShu);
 
-                    ScriptWrapperForKongSun.JianKongDianZuoBiaoCanShu = string.Format(ScriptTemplateForKongSun.JianKongDianZuoBiaoCanShu,
+                    ScriptWrapperForJinQiBiKongSun.JianKongDianZuoBiaoCanShu = string.Format(ScriptTemplateForJinQiBiKongSun.JianKongDianZuoBiaoCanShu,
                         this.CanShuX, this.CanShuY, this.CanShuZ);
                     
-                    string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForJiSuan();
+                    string scriptContent = ScriptWrapperForJinQiBiKongSun.CreateFullScriptForJiSuan();
                     if (scriptContent != null)
                     {
                         StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);

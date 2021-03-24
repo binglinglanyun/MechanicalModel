@@ -42,9 +42,9 @@ namespace MechanicalModel.ViewModels
                     TreeViewNode BianJinYouTongDaoKongSunJiSuan = new TreeViewNode("变进油通道空损计算", ViewType.Others);
                     BianJinYouTongDaoKongSunJiSuan.Nodes = new List<TreeViewNode>() { JinYouTongDaoJiSuanJiHeMoXing, JinYouTongDaoKongSunWangGeHuaFen, JinYouTongDaoKongSunJiSuanCanShuShuRu, JinYouTongDaoKongSunJiSuan, JinYouTongDaoKongSunJiSuanJieGuoShuChu };
 
-                    // Add "变进气比空损计算" and "变进油通道空损计算" to the tree
-                    treeViewNodeList.Add(BianJinQiBiKongSunJiSuan);
+                    // Add "变进油通道空损计算" and "变进气比空损计算" to the tree
                     treeViewNodeList.Add(BianJinYouTongDaoKongSunJiSuan);
+                    treeViewNodeList.Add(BianJinQiBiKongSunJiSuan);
                     break;
                 case JiSuanType.HengNiuJuJiSuan:
                     // The second layer for "制动特性计算"

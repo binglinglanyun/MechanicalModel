@@ -82,7 +82,7 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    if (!Directory.Exists(LocationString) || !Directory.Exists(ScriptWrapperForKongSun.WorkDirectory))
+                    if (!Directory.Exists(LocationString) || !Directory.Exists(ScriptWrapperForJinQiBiKongSun.WorkDirectory))
                     {
                         MessageBox.Show("请设置模型导入路径并确认设置");
                         return;

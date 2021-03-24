@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MechanicalModel.Scripts
 {
-    public static class ScriptTemplateForKongSun
+    public static class ScriptTemplateForJinQiBiKongSun
     {
         public const string ScriptXMLHeader = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
 
@@ -48,7 +48,7 @@ namespace MechanicalModel.Scripts
   </import>";
 
         public const string WangGeHuafenConstScript = @"
-  <include file=""torque_kongsun.sgrd""/>
+  <include file=""torque_jinqibikongsun.sgrd""/>
 
   <volume name=""air_inlet1""/>
   <volume name=""air_inlet2""/>

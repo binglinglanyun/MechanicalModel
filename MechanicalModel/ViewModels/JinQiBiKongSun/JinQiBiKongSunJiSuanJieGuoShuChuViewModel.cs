@@ -131,7 +131,7 @@ namespace MechanicalModel.ViewModels
                         using (StreamReader sr = new StreamReader(this.LocationString))
                         {
                             string[] resultTitles = sr.ReadLine().Split('\t');
-                            int index = resultTitles.ToList().IndexOf(ScriptWrapperForKongSun.KongSunGongLvResultTitle);
+                            int index = resultTitles.ToList().IndexOf(ScriptWrapperForJinQiBiKongSun.KongSunGongLvResultTitle);
                             if (index != -1)
                             {
                                 string st = string.Empty;
@@ -145,7 +145,7 @@ namespace MechanicalModel.ViewModels
                             }
                             else
                             {
-                                MessageBox.Show(string.Format("结果文件内容格式不正确，找不到列名为{0}的项", ScriptWrapperForKongSun.KongSunGongLvResultTitle));
+                                MessageBox.Show(string.Format("结果文件内容格式不正确，找不到列名为{0}的项", ScriptWrapperForJinQiBiKongSun.KongSunGongLvResultTitle));
                             }
                         }
                     }

@@ -72,7 +72,7 @@ namespace MechanicalModel.ViewModels
                     try
                     {
                         this.LoadingVisibility = Visibility.Visible;
-                        CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForKongSun.WorkDirectory);
+                        CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForJinQiBiKongSun.WorkDirectory);
                         this.LoadingVisibility = Visibility.Collapsed;
                         MessageBox.Show("设置成功", "空损计算模型导入");
                     }
@@ -90,14 +90,14 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    if (!Directory.Exists(LocationString) || !Directory.Exists(ScriptWrapperForKongSun.WorkDirectory))
+                    if (!Directory.Exists(LocationString) || !Directory.Exists(ScriptWrapperForJinQiBiKongSun.WorkDirectory))
                     {
                         MessageBox.Show("请设置模型导入路径并确认设置");
                         return;
                     }
 
                     // Create import script
-                    string scriptContent = ScriptWrapperForKongSun.CreateFullScriptForImportMoXing();
+                    string scriptContent = ScriptWrapperForJinQiBiKongSun.CreateFullScriptForImportMoXing();
                     if (scriptContent != null)
                     {
                         StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);

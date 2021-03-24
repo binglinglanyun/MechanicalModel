@@ -121,8 +121,8 @@
     </Compile>
     <Compile Include="Scripts\ScriptTemplateForHengNiuJu.cs" />
     <Compile Include="Scripts\ScriptWrapperForHengNiuJu.cs" />
-    <Compile Include="Scripts\ScriptWrapperForKongSun.cs" />
-    <Compile Include="Scripts\ScriptTemplateForKongSun.cs" />
+    <Compile Include="Scripts\ScriptWrapperForJinQiBiKongSun.cs" />
+    <Compile Include="Scripts\ScriptTemplateForJinQiBiKongSun.cs" />
     <Compile Include="Utils\CommonUtils.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Utils\MechanicalModelViewUIConverter.cs" />
@@ -294,19 +294,19 @@
     <Content Include="Scripts\torque_hengniuju_loadresults.spro">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\torque_kongsun_loadresults.spro">
+    <Content Include="Scripts\torque_jinqibikongsun_loadresults.spro">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\torque_hengniuju.sgrd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\torque_kongsun.sgrd">
+    <Content Include="Scripts\torque_jinqibikongsun.sgrd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\torque_hengniuju_loadresults.sgrd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\torque_kongsun_loadresults.sgrd">
+    <Content Include="Scripts\torque_jinqibikongsun_loadresults.sgrd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="$(PngResources)">

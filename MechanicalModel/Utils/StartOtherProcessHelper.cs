@@ -42,12 +42,12 @@ namespace MechanicalModel.Utils
 
         public static void StartPumpLinxForKongSun(string scriptContent)
         {
-            string scriptPath = Path.Combine(ScriptWrapperForKongSun.WorkDirectory, ScriptWrapperForKongSun.ScriptName);
+            string scriptPath = Path.Combine(ScriptWrapperForJinQiBiKongSun.WorkDirectory, ScriptWrapperForJinQiBiKongSun.ScriptName);
             File.WriteAllText(scriptPath, scriptContent);
 
-            if (!File.Exists(ScriptWrapperForKongSun.DestSgrdFilePath))
+            if (!File.Exists(ScriptWrapperForJinQiBiKongSun.DestSgrdFilePath))
             {
-                File.Copy(ScriptWrapperForKongSun.SourceSgrdFilePath, ScriptWrapperForKongSun.DestSgrdFilePath);
+                File.Copy(ScriptWrapperForJinQiBiKongSun.SourceSgrdFilePath, ScriptWrapperForJinQiBiKongSun.DestSgrdFilePath);
             }
 
             StartPumpLinx(scriptPath);
@@ -68,16 +68,16 @@ namespace MechanicalModel.Utils
 
         public static void LoadResultsForKongSun()
         {
-            string destFolderPath = Path.GetDirectoryName(ScriptWrapperForKongSun.DestLoadResultScriptPath);
+            string destFolderPath = Path.GetDirectoryName(ScriptWrapperForJinQiBiKongSun.DestLoadResultScriptPath);
             if (!Directory.Exists(destFolderPath))
             {
                 Directory.CreateDirectory(destFolderPath);
             }
 
-            File.Copy(ScriptWrapperForKongSun.SourceLoadResultsSgrdFilePath, ScriptWrapperForKongSun.DestLoadResultsSgrdFilePath, true);
-            File.Copy(ScriptWrapperForKongSun.SourceLoadResultScriptPath, ScriptWrapperForKongSun.DestLoadResultScriptPath, true);
+            File.Copy(ScriptWrapperForJinQiBiKongSun.SourceLoadResultsSgrdFilePath, ScriptWrapperForJinQiBiKongSun.DestLoadResultsSgrdFilePath, true);
+            File.Copy(ScriptWrapperForJinQiBiKongSun.SourceLoadResultScriptPath, ScriptWrapperForJinQiBiKongSun.DestLoadResultScriptPath, true);
 
-            StartPumpLinx(ScriptWrapperForKongSun.DestLoadResultScriptPath);
+            StartPumpLinx(ScriptWrapperForJinQiBiKongSun.DestLoadResultScriptPath);
         }
 
         public static void LoadResultsForHengNiuJu()

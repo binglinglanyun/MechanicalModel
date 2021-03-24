@@ -181,12 +181,12 @@ namespace MechanicalModel.ViewModels
                     double paiQiKou = double.Parse(this.PaiQiKou) *  1000000;
                     double tongQiKong = double.Parse(this.TongQiKong) * 1000000;
                     // TODO: fix
-                    ScriptWrapperForKongSun.BianJieTiaoJianDingYi = string.Format(ScriptTemplateForKongSun.BianJieTiaoJianDingYi,
+                    ScriptWrapperForJinQiBiKongSun.BianJieTiaoJianDingYi = string.Format(ScriptTemplateForJinQiBiKongSun.BianJieTiaoJianDingYi,
                         dongLunZhuanSu, paiQiKou, tongQiKong, this.NianDuOfAir);
 
                     double value = 1 - double.Parse(this.NianDuOfAir);
                     //TODO: Fix
-                    ScriptWrapperForKongSun.WuZhiDingYi = string.Format(ScriptTemplateForKongSun.WuZhiDingYi,
+                    ScriptWrapperForJinQiBiKongSun.WuZhiDingYi = string.Format(ScriptTemplateForJinQiBiKongSun.WuZhiDingYi,
                          this.NianDuOfAir, this.NianDuOfAir, this.NianDuOfAir, value);
 
                     MessageBox.Show("设置成功", "空损计算参数输入");
