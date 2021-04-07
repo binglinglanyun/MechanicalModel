@@ -16,7 +16,7 @@ namespace MechanicalModel.ViewModels
     {
         public JinYouTongDaoKongSunJiSuanMoXingViewModel()
         {
-            InitializeItems();
+            // Empty here
         }
 
         public ViewType Type
@@ -25,17 +25,6 @@ namespace MechanicalModel.ViewModels
             {
                 return ViewType.JinYouTongDaoJiSuanJiHeMoXing;
             }
-        }
-
-        private void InitializeItems()
-        {
-            List<DataItem> items = new List<DataItem>();
-            items.Add(new DataItem("动轮", true));
-            items.Add(new DataItem("定轮", true));
-            items.Add(new DataItem("壳体", true));
-            items.Add(new DataItem("其他", true));
-
-            this.Items = items;
         }
 
         #region Button Click
@@ -63,44 +52,35 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public ICommand ConfirmButtonClick
-        {
-            get
-            {
-                return new TaskCommand<object>((o) =>
-                {
-                    try
-                    {
-                        this.LoadingVisibility = Visibility.Visible;
-                        CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForJinQiBiKongSun.WorkDirectory);
-                        this.LoadingVisibility = Visibility.Collapsed;
-                        MessageBox.Show("设置成功", "空损计算模型导入");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(string.Format("模型导入失败，错误信息：{0}", ex.Message));
-                    }
-                });
-            }
-        }
-
         public ICommand ImportAndShowButtonClick
         {
             get
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    if (!Directory.Exists(LocationString) || !Directory.Exists(ScriptWrapperForJinQiBiKongSun.WorkDirectory))
+                    if (!Directory.Exists(LocationString))
                     {
-                        MessageBox.Show("请设置模型导入路径并确认设置");
+                        MessageBox.Show("请设置模型导入路径");
+                        return;
+                    }
+
+                    try
+                    {
+                        this.LoadingVisibility = Visibility.Visible;
+                        CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForJinYouTongDaoKongSun.WorkDirectory);
+                        this.LoadingVisibility = Visibility.Collapsed;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(string.Format("模型导入失败，错误信息：{0}", ex.Message));
                         return;
                     }
 
                     // Create import script
-                    string scriptContent = ScriptWrapperForJinQiBiKongSun.CreateFullScriptForImportMoXing();
+                    string scriptContent = ScriptWrapperForJinYouTongDaoKongSun.CreateFullScriptForImportMoXing();
                     if (scriptContent != null)
                     {
-                        StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);
+                        StartOtherProcessHelper.StartPumpLinxForJinYouTongDaoKongSun(scriptContent);
                     }
                 });
             }
@@ -118,19 +98,6 @@ namespace MechanicalModel.ViewModels
             set
             {
                 SetValueProperty(value, ref _locationString);
-            }
-        }
-
-        private List<DataItem> _items = null;
-        public List<DataItem> Items
-        {
-            get
-            {
-                return _items;
-            }
-            set
-            {
-                SetClassProperty(value, ref _items);
             }
         }
 

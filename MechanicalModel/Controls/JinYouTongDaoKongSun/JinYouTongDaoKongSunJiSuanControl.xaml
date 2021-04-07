@@ -34,34 +34,34 @@
                     <TextBlock Text="监测点1坐标参数：" Margin="0,5,0,5" />
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,5">
                         <TextBlock Text="X1：" />
-                        <TextBox Text="{Binding CanShuX}"/>
+                        <TextBox Text="{Binding CanShuX1}"/>
                         <TextBlock Text="m" Margin="5,0,0,0"/>
                     </StackPanel>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,5">
                         <TextBlock Text="Y1：" />
-                        <TextBox Text="{Binding CanShuY}"/>
+                        <TextBox Text="{Binding CanShuY1}"/>
                         <TextBlock Text="m" Margin="5,0,0,0"/>
                     </StackPanel>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,0">
                         <TextBlock Text="Z1：" />
-                        <TextBox Text="{Binding CanShuZ}"/>
+                        <TextBox Text="{Binding CanShuZ1}"/>
                         <TextBlock Text="m" Margin="5,0,0,0"/>
                     </StackPanel>
 
                     <TextBlock Text="监测点2坐标参数：" Margin="0,15,0,5" />
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,5">
                         <TextBlock Text="X2：" />
-                        <TextBox Text="{Binding CanShuX}"/>
+                        <TextBox Text="{Binding CanShuX2}"/>
                         <TextBlock Text="m" Margin="5,0,0,0"/>
                     </StackPanel>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,5">
                         <TextBlock Text="Y2：" />
-                        <TextBox Text="{Binding CanShuY}"/>
+                        <TextBox Text="{Binding CanShuY2}"/>
                         <TextBlock Text="m" Margin="5,0,0,0"/>
                     </StackPanel>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,0">
                         <TextBlock Text="Z2：" />
-                        <TextBox Text="{Binding CanShuZ}"/>
+                        <TextBox Text="{Binding CanShuZ2}"/>
                         <TextBlock Text="m" Margin="5,0,0,0"/>
                     </StackPanel>
                     <CheckBox Content="压力监测" IsChecked="True"/>

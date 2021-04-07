@@ -100,7 +100,7 @@ namespace MechanicalModel.ViewModels
                     string scriptContent = ScriptWrapperForJinQiBiKongSun.CreateFullScriptForImportMoXing();
                     if (scriptContent != null)
                     {
-                        StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);
+                        StartOtherProcessHelper.StartPumpLinxForJinQiBiKongSun(scriptContent);
                     }
                 });
             }

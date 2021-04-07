@@ -40,19 +40,20 @@
                     </StackPanel>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
                         <TextBlock Text="热导率:" />
-                        <TextBox  Text="{Binding DaoReLvOfAir}"/>
+                        <TextBox  Text="{Binding ReDaoLvOfAir}"/>
                         <TextBlock Text="w/m/k" Margin="5,0,0,0"/>
                     </StackPanel>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
                         <TextBlock Text="比热容:" />
-                        <TextBox  Text="{Binding BiReRong}"/>
+                        <TextBox  Text="{Binding BiReRongOfAir}"/>
                         <TextBlock Text="J/kg/k" Margin="5,0,0,0"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel>
                     <CheckBox Content="油" IsChecked="True"/>
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
-                        <ComboBox Text="{Binding LocationString}" HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="20,0,0,0"/>
+                        <TextBlock Text="文件位置:" />
+                        <ComboBox Text="{Binding LocationString}" HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0"/>
 
                         <Button Name="buttonBrowse" Content="浏览..." Command="{Binding BrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
                     </StackPanel>

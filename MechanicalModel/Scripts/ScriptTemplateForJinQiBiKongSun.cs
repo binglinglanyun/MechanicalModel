@@ -48,7 +48,7 @@ namespace MechanicalModel.Scripts
   </import>";
 
         public const string WangGeHuafenConstScript = @"
-  <include file=""torque_jinqibikongsun.sgrd""/>
+  <include file=""torque_jinqibi_kongsun.sgrd""/>
 
   <volume name=""air_inlet1""/>
   <volume name=""air_inlet2""/>

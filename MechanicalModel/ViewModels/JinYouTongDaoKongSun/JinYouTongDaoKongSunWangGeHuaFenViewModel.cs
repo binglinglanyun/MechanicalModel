@@ -108,6 +108,88 @@ namespace MechanicalModel.ViewModels
         }
         #endregion
 
+        #region RuKou
+        private string _ruKouZuiDaWangGeChiDu = "0.006";
+        public string RuKouZuiDaWangGeChiDu
+        {
+            get
+            {
+                return _ruKouZuiDaWangGeChiDu;
+            }
+            set
+            {
+                SetValueProperty(value, ref _ruKouZuiDaWangGeChiDu);
+            }
+        }
+
+        private string _ruKouZuiXiaoWangGeChiDu = "0.001";
+        public string RuKouZuiXiaoWangGeChiDu
+        {
+            get
+            {
+                return _ruKouZuiXiaoWangGeChiDu;
+            }
+            set
+            {
+                SetValueProperty(value, ref _ruKouZuiXiaoWangGeChiDu);
+            }
+        }
+
+        private string _ruKouZuiDaMianWangGeChiDu = "0.008";
+        public string RuKouZuiDaMianWangGeChiDu
+        {
+            get
+            {
+                return _ruKouZuiDaMianWangGeChiDu;
+            }
+            set
+            {
+                SetValueProperty(value, ref _ruKouZuiDaMianWangGeChiDu);
+            }
+        }
+        #endregion
+
+        #region ChuKou
+        private string _chuKouZuiDaWangGeChiDu = "0.006";
+        public string ChuKouZuiDaWangGeChiDu
+        {
+            get
+            {
+                return _chuKouZuiDaWangGeChiDu;
+            }
+            set
+            {
+                SetValueProperty(value, ref _chuKouZuiDaWangGeChiDu);
+            }
+        }
+
+        private string _chuKouZuiXiaoWangGeChiDu = "0.001";
+        public string ChuKouZuiXiaoWangGeChiDu
+        {
+            get
+            {
+                return _chuKouZuiXiaoWangGeChiDu;
+            }
+            set
+            {
+                SetValueProperty(value, ref _chuKouZuiXiaoWangGeChiDu);
+            }
+        }
+
+        private string _chuKouZuiDaMianWangGeChiDu = "0.008";
+        public string ChuKouZuiDaMianWangGeChiDu
+        {
+            get
+            {
+                return _chuKouZuiDaMianWangGeChiDu;
+            }
+            set
+            {
+                SetValueProperty(value, ref _chuKouZuiDaMianWangGeChiDu);
+            }
+        }
+        #endregion
+
         public string SourceUri
         {
             get
@@ -122,11 +204,21 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    ScriptWrapperForJinQiBiKongSun.DingLunForWangGeHuaFen = string.Format(ScriptTemplateForJinQiBiKongSun.DingLunForWangGeHuaFen,
+                    // 动轮
+                    ScriptWrapperForJinYouTongDaoKongSun.DongLunForWangGeHuaFen = string.Format(ScriptTemplateForJinYouTongDaoKongSun.DongLunForWangGeHuaFen,
+                        this.DongLunZuiDaWangGeChiDu, this.DongLunZuiXiaoWangGeChiDu, this.DongLunZuiDaMianWangGeChiDu);
+
+                    // 定轮
+                    ScriptWrapperForJinYouTongDaoKongSun.DingLunForWangGeHuaFen = string.Format(ScriptTemplateForJinYouTongDaoKongSun.DingLunForWangGeHuaFen,
                         this.DingLunZuiDaWangGeChiDu, this.DingLunZuiXiaoWangGeChiDu, this.DingLunZuiDaMianWangGeChiDu);
 
-                    ScriptWrapperForJinQiBiKongSun.DongLunForWangGeHuaFen = string.Format(ScriptTemplateForJinQiBiKongSun.DongLunForWangGeHuaFen, 
-                        this.DongLunZuiDaWangGeChiDu, this.DongLunZuiXiaoWangGeChiDu, this.DongLunZuiDaMianWangGeChiDu);
+                    // 入口
+                    ScriptWrapperForJinYouTongDaoKongSun.RuKouForWangGeHuaFen = string.Format(ScriptTemplateForJinYouTongDaoKongSun.RuKouForWangGeHuaFen,
+                        this.RuKouZuiDaWangGeChiDu, this.RuKouZuiXiaoWangGeChiDu, this.RuKouZuiDaMianWangGeChiDu);
+
+                    // 出口
+                    ScriptWrapperForJinYouTongDaoKongSun.ChuKouForWangGeHuaFen = string.Format(ScriptTemplateForJinYouTongDaoKongSun.ChuKouForWangGeHuaFen,
+                        this.ChuKouZuiDaWangGeChiDu, this.ChuKouZuiXiaoWangGeChiDu, this.ChuKouZuiDaMianWangGeChiDu);
 
                     MessageBox.Show("设置成功", "空损计算网格划分");
                 });
@@ -139,10 +231,10 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    string scriptContent = ScriptWrapperForJinQiBiKongSun.CreateFullScriptForWangGeHuaFen();
+                    string scriptContent = ScriptWrapperForJinYouTongDaoKongSun.CreateFullScriptForWangGeHuaFen();
                     if (scriptContent != null)
                     {
-                        StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);
+                        StartOtherProcessHelper.StartPumpLinxForJinYouTongDaoKongSun(scriptContent);
                     }
                 });
             }

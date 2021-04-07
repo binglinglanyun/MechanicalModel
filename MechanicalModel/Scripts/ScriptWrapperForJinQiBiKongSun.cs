@@ -11,14 +11,14 @@ namespace MechanicalModel.Scripts
 {
     public static class ScriptWrapperForJinQiBiKongSun
     {
-        public const string ScriptName = "torque_jinqibikongsun.spro";
-        public const string SgrdFileName = "torque_jinqibikongsun.sgrd";
-        public static string WorkDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "Temp", "KongSun");
+        public const string ScriptName = "torque_jinqibi_kongsun.spro";
+        public const string SgrdFileName = "torque_jinqibi_kongsun.sgrd";
+        public static string WorkDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "Temp", "JinQiBiKongSun");
         public static string SourceSgrdFilePath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", SgrdFileName);
         public static string DestSgrdFilePath = Path.Combine(WorkDirectory, SgrdFileName);
 
-        public const string LoadResultScriptName = "torque_jinqibikongsun_loadresults.spro";
-        public const string LoadResultsSgrdFileName = "torque_jinqibikongsun_loadresults.sgrd";
+        public const string LoadResultScriptName = "torque_jinqibi_kongsun_loadresults.spro";
+        public const string LoadResultsSgrdFileName = "torque_jinqibi_kongsun_loadresults.sgrd";
         public static string SourceLoadResultScriptPath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", LoadResultScriptName);
         public static string DestLoadResultScriptPath = Path.Combine(WorkDirectory, LoadResultScriptName);
         public static string SourceLoadResultsSgrdFilePath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", LoadResultsSgrdFileName);

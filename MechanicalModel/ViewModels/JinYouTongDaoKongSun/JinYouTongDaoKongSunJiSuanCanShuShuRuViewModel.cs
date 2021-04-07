@@ -2,6 +2,7 @@
 using MechanicalModel.Utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,33 +24,7 @@ namespace MechanicalModel.ViewModels
                 return ViewType.JinYouTongDaoKongSunJiSuanCanShuShuRu;
             }
         }
-        /*
-        private string _miDuOfOil = "860";
-        public string MiDuOfOil
-        {
-            get
-            {
-                return _miDuOfOil;
-            }
-            set
-            {
-                SetValueProperty(value, ref _miDuOfOil);
-            }
-        }
 
-        private string _nianDuOfOil = "0.026";
-        public string NianDuOfOil
-        {
-            get
-            {
-                return _nianDuOfOil;
-            }
-            set
-            {
-                SetValueProperty(value, ref _nianDuOfOil);
-            }
-        }
-        */
         private string _nianDuOfAir = "1.853e-5";
         public string NianDuOfAir
         {
@@ -63,21 +38,21 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _daoReLvOfAir = "0.0264";
-        public string DaoReLvOfAir
+        private string _reDaoLvOfAir = "0.0264";
+        public string ReDaoLvOfAir
         {
             get
             {
-                return _daoReLvOfAir;
+                return _reDaoLvOfAir;
             }
             set
             {
-                SetValueProperty(value, ref _daoReLvOfAir);
+                SetValueProperty(value, ref _reDaoLvOfAir);
             }
         }
 
         private string _biReRongOfAir = "1005";
-        public string BiReRong
+        public string BiReRongOfAir
         {
             get
             {
@@ -167,9 +142,46 @@ namespace MechanicalModel.ViewModels
             }
         }
 
+        private string _locationString = "D:\\380流场计算\\油文件";
+        public string LocationString
+        {
+            get
+            {
+                return _locationString;
+            }
+            set
+            {
+                SetValueProperty(value, ref _locationString);
+            }
+        }
+
+        public ICommand BrowseButtonClick
+        {
+            get
+            {
+                return new DelegateCommand<object>((o) =>
+                {
+                    string localFolder;
+                    System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
+                    dialog.Description = "文件位置";
+                    System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+                    if (result == System.Windows.Forms.DialogResult.OK)
+                    {
+                        localFolder = dialog.SelectedPath;
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    this.LocationString = localFolder;
+                });
+            }
+        }
+
         /// <summary>
-        /// BianJieTiaoJianDingYi = DongLunZhuanSu + TongQiKong + PaiQiKong + YouYeTiJiFenShu
         /// WuZhiDingYi = NianDuOfOil + NianDuOfAir + MiDuOfOil
+        /// BianJieTiaoJianDingYi = DongLunZhuanSu + TongQiKong + PaiQiKong + YouYeTiJiFenShu
         /// </summary>
         public ICommand ConfirmButtonClick
         {
@@ -177,17 +189,34 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    double dongLunZhuanSu = Math.Round(double.Parse(this.DongLunZhuanSu) * Math.PI / 30, 5);
-                    double paiQiKou = double.Parse(this.PaiQiKou) *  1000000;
-                    double tongQiKong = double.Parse(this.TongQiKong) * 1000000;
-                    // TODO: fix
-                    ScriptWrapperForJinQiBiKongSun.BianJieTiaoJianDingYi = string.Format(ScriptTemplateForJinQiBiKongSun.BianJieTiaoJianDingYi,
-                        dongLunZhuanSu, paiQiKou, tongQiKong, this.NianDuOfAir);
+                    if (string.IsNullOrEmpty(this.LocationString))
+                    {
+                        MessageBox.Show("请设置油文件路径");
+                        return;
+                    }
+                    else if (!File.Exists(Path.Combine(LocationString, ScriptWrapperForJinYouTongDaoKongSun.DensityFileName)) ||
+                        !File.Exists(Path.Combine(LocationString, ScriptWrapperForJinYouTongDaoKongSun.ViscosityFileName)) ||
+                        !File.Exists(Path.Combine(LocationString, ScriptWrapperForJinYouTongDaoKongSun.HeatConductivityFileName)) ||
+                        !File.Exists(Path.Combine(LocationString, ScriptWrapperForJinYouTongDaoKongSun.HeatCapacityFileName)))
+                    {
+                        MessageBox.Show("关键油文件缺失");
+                        return;
+                    }
 
-                    double value = 1 - double.Parse(this.NianDuOfAir);
-                    //TODO: Fix
-                    ScriptWrapperForJinQiBiKongSun.WuZhiDingYi = string.Format(ScriptTemplateForJinQiBiKongSun.WuZhiDingYi,
-                         this.NianDuOfAir, this.NianDuOfAir, this.NianDuOfAir, value);
+                    CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForJinYouTongDaoKongSun.WorkDirectory);
+
+                    // {0} --空气粘度 {1} --空气比热容 {2} --空气热导率
+                    ScriptWrapperForJinYouTongDaoKongSun.WuZhiDingYi = string.Format(ScriptTemplateForJinYouTongDaoKongSun.WuZhiDingYi,
+                         this.NianDuOfAir, this.BiReRongOfAir, this.ReDaoLvOfAir);
+
+                    double dongLunZhuanSu = Math.Round(double.Parse(this.DongLunZhuanSu) * Math.PI / 30, 5);
+                    double paiQiKou = double.Parse(this.PaiQiKou) * 1000000;
+                    double tongQiKong = double.Parse(this.TongQiKong) * 1000000;
+
+                    // {0} -- 动轮转速  {1} -- 入口压力  {2} -- 通气口压力
+                    // {3} -- 排气口压力  {4} -- 入口温度
+                    ScriptWrapperForJinYouTongDaoKongSun.BianJieTiaoJianDingYi = string.Format(ScriptTemplateForJinYouTongDaoKongSun.BianJieTiaoJianDingYi,
+                        dongLunZhuanSu, this.RuKouYaLi, tongQiKong, paiQiKou, this.RuKouWenDu);
 
                     MessageBox.Show("设置成功", "空损计算参数输入");
                 });

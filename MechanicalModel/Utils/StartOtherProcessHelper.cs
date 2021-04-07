@@ -40,7 +40,7 @@ namespace MechanicalModel.Utils
             }
         }
 
-        public static void StartPumpLinxForKongSun(string scriptContent)
+        public static void StartPumpLinxForJinQiBiKongSun(string scriptContent)
         {
             string scriptPath = Path.Combine(ScriptWrapperForJinQiBiKongSun.WorkDirectory, ScriptWrapperForJinQiBiKongSun.ScriptName);
             File.WriteAllText(scriptPath, scriptContent);
@@ -48,6 +48,19 @@ namespace MechanicalModel.Utils
             if (!File.Exists(ScriptWrapperForJinQiBiKongSun.DestSgrdFilePath))
             {
                 File.Copy(ScriptWrapperForJinQiBiKongSun.SourceSgrdFilePath, ScriptWrapperForJinQiBiKongSun.DestSgrdFilePath);
+            }
+
+            StartPumpLinx(scriptPath);
+        }
+
+        public static void StartPumpLinxForJinYouTongDaoKongSun(string scriptContent)
+        {
+            string scriptPath = Path.Combine(ScriptWrapperForJinYouTongDaoKongSun.WorkDirectory, ScriptWrapperForJinYouTongDaoKongSun.ScriptName);
+            File.WriteAllText(scriptPath, scriptContent);
+
+            if (!File.Exists(ScriptWrapperForJinYouTongDaoKongSun.DestSgrdFilePath))
+            {
+                File.Copy(ScriptWrapperForJinYouTongDaoKongSun.SourceSgrdFilePath, ScriptWrapperForJinYouTongDaoKongSun.DestSgrdFilePath);
             }
 
             StartPumpLinx(scriptPath);

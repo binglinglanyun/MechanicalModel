@@ -93,7 +93,7 @@ namespace MechanicalModel.ViewModels
                     string scriptContent = ScriptWrapperForJinQiBiKongSun.CreateFullScriptForJiSuan();
                     if (scriptContent != null)
                     {
-                        StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);
+                        StartOtherProcessHelper.StartPumpLinxForJinQiBiKongSun(scriptContent);
                     }
                 });
             }

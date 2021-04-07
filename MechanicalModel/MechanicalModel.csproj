@@ -120,9 +120,11 @@
       <DependentUpon>ZhiDongNiuJuPiPeiTeXingGuanXiControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scripts\ScriptTemplateForHengNiuJu.cs" />
+    <Compile Include="Scripts\ScriptTemplateForJinYouTongDaoKongSun.cs" />
     <Compile Include="Scripts\ScriptWrapperForHengNiuJu.cs" />
     <Compile Include="Scripts\ScriptWrapperForJinQiBiKongSun.cs" />
     <Compile Include="Scripts\ScriptTemplateForJinQiBiKongSun.cs" />
+    <Compile Include="Scripts\ScriptWrapperForJinYouTongDaoKongSun.cs" />
     <Compile Include="Utils\CommonUtils.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Utils\MechanicalModelViewUIConverter.cs" />
@@ -294,19 +296,34 @@
     <Content Include="Scripts\torque_hengniuju_loadresults.spro">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\torque_jinqibikongsun_loadresults.spro">
+    <Content Include="Scripts\torque_jinqibi_kongsun_loadresults.spro">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\torque_hengniuju.sgrd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\torque_jinqibikongsun.sgrd">
+    <Content Include="Scripts\torque_jinqibi_kongsun.sgrd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\torque_hengniuju_loadresults.sgrd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\torque_jinqibikongsun_loadresults.sgrd">
+    <Content Include="Scripts\torque_jinqibi_kongsun_loadresults.sgrd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\torque_jinyoutongdao_kongsun.sgrd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\OilFiles\torque_jinyoutongdao_kongsun_density.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\OilFiles\torque_jinyoutongdao_kongsun_heat_capacity.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\OilFiles\torque_jinyoutongdao_kongsun_heat_conductivity.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\OilFiles\torque_jinyoutongdao_kongsun_viscosity.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="$(PngResources)">

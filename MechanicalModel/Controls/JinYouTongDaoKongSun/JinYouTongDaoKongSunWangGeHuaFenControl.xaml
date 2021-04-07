@@ -23,64 +23,39 @@
             </StackPanel.Resources>
 
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Vertical" Grid.Column="0">
+                <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
                     <Label Content="动轮网格控制" Style="{DynamicResource LabelBoldTextStyle}"/>
                     <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="最大网格尺度:" />
-                            <TextBox Text="{Binding DingLunZuiDaWangGeChiDu}"/>
+                            <TextBox Text="{Binding DongLunZuiDaWangGeChiDu}"/>
                             <TextBlock Text="m" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="最小网格尺度:" />
-                            <TextBox Text="{Binding DingLunZuiXiaoWangGeChiDu}"/>
+                            <TextBox Text="{Binding DongLunZuiXiaoWangGeChiDu}"/>
                             <TextBlock Text="m" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="最大面网格尺度:" />
-                            <TextBox Text="{Binding DingLunZuiDaMianWangGeChiDu}"/>
+                            <TextBox Text="{Binding DongLunZuiDaMianWangGeChiDu}"/>
                             <TextBlock Text="m" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Grid.Column="1">
+                <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
                     <Label Content="定轮网格控制" Style="{DynamicResource LabelBoldTextStyle}"/>
                     <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="最大网格尺度:" />
-                            <TextBox Text="{Binding DongLunZuiDaWangGeChiDu}"/>
-                            <TextBlock Text="m" Margin="5,0,0,0"/>
-                        </StackPanel>
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="最小网格尺度:" />
-                            <TextBox Text="{Binding DongLunZuiXiaoWangGeChiDu}"/>
-                            <TextBlock Text="m" Margin="5,0,0,0"/>
-                        </StackPanel>
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="最大面网格尺度:" />
-                            <TextBox Text="{Binding DongLunZuiDaMianWangGeChiDu}"/>
-                            <TextBlock Text="m" Margin="5,0,0,0"/>
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
-            </Grid>
-            <Button Content="确认设置" Margin="10,20,0,0" Command="{Binding ConfirmButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
-
-            <Border Style="{DynamicResource SplitBorderStyle}"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Vertical" Grid.Column="0">
-                    <Label Content="入口网格加密" Style="{DynamicResource LabelBoldTextStyle}"/>
-                    <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="最大网格尺度:" />
                             <TextBox Text="{Binding DingLunZuiDaWangGeChiDu}"/>
                             <TextBlock Text="m" Margin="5,0,0,0"/>
                         </StackPanel>
@@ -96,22 +71,42 @@
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Grid.Column="1">
-                    <Label Content="出口网格控制" Style="{DynamicResource LabelBoldTextStyle}"/>
+                <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+                    <Label Content="入口网格加密" Style="{DynamicResource LabelBoldTextStyle}"/>
                     <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="最大网格尺度:" />
-                            <TextBox Text="{Binding DongLunZuiDaWangGeChiDu}"/>
+                            <TextBox Text="{Binding RuKouZuiDaWangGeChiDu}"/>
                             <TextBlock Text="m" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="最小网格尺度:" />
-                            <TextBox Text="{Binding DongLunZuiXiaoWangGeChiDu}"/>
+                            <TextBox Text="{Binding RuKouZuiXiaoWangGeChiDu}"/>
                             <TextBlock Text="m" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="最大面网格尺度:" />
-                            <TextBox Text="{Binding DongLunZuiDaMianWangGeChiDu}"/>
+                            <TextBox Text="{Binding RuKouZuiDaMianWangGeChiDu}"/>
+                            <TextBlock Text="m" Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
+                    <Label Content="出口网格控制" Style="{DynamicResource LabelBoldTextStyle}"/>
+                    <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                            <TextBlock Text="最大网格尺度:" />
+                            <TextBox Text="{Binding ChuKouZuiDaWangGeChiDu}"/>
+                            <TextBlock Text="m" Margin="5,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                            <TextBlock Text="最小网格尺度:" />
+                            <TextBox Text="{Binding ChuKouZuiXiaoWangGeChiDu}"/>
+                            <TextBlock Text="m" Margin="5,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                            <TextBlock Text="最大面网格尺度:" />
+                            <TextBox Text="{Binding ChuKouZuiDaMianWangGeChiDu}"/>
                             <TextBlock Text="m" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>

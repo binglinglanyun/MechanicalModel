@@ -142,7 +142,7 @@ namespace MechanicalModel.ViewModels
                     string scriptContent = ScriptWrapperForJinQiBiKongSun.CreateFullScriptForWangGeHuaFen();
                     if (scriptContent != null)
                     {
-                        StartOtherProcessHelper.StartPumpLinxForKongSun(scriptContent);
+                        StartOtherProcessHelper.StartPumpLinxForJinQiBiKongSun(scriptContent);
                     }
                 });
             }
