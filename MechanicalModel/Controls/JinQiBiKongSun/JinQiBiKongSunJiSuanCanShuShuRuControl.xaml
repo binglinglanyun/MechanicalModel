@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="MechanicalModel.Controls.JinQiBiKongSunJiSuanCanShuShuRuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MechanicalModel.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_1">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Themes/PropertyItemStyle.xaml"/>
+                <ResourceDictionary Source="/Themes/UserControlStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Style="{StaticResource FrameStackPanel}">
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock" BasedOn="{StaticResource PropertyNameStyle}"/>
+                <Style TargetType="TextBox" BasedOn="{StaticResource PropertyValueStyle}"/>
+                <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxStyle}"/>
+                <Style TargetType="ComboBox" BasedOn="{StaticResource ComboBoxPropertyValueStyle}"/>
+            </StackPanel.Resources>
+            <Label Content="物质定义" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
+                <StackPanel>
+                    <CheckBox Content="空气" IsChecked="True"/>
+                    <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
+                        <TextBlock Text="密度:" />
+                        <ComboBox SelectedIndex="0">
+                            <ComboBoxItem>Ideal Gas Law</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock Text="kg/m3" Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
+                        <TextBlock Text="粘度:" />
+                        <TextBox  Text="{Binding NianDuOfAir}"/>
+                        <TextBlock Text="Pa.s" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel>
+                    <CheckBox Content="油" IsChecked="True"/>
+                    <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
+                        <TextBlock Text="密度:" />
+                        <TextBox Text="{Binding MiDuOfOil}"/>
+                        <TextBlock Text="kg/m3" Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
+                        <TextBlock Text="粘度:" />
+                        <TextBox Text="{Binding NianDuOfOil}"/>
+                        <TextBlock Text="Pa.s" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <Border Style="{DynamicResource SplitBorderStyle}"/>
+            <Label Content="边界条件定义" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="通气孔:" />
+                    <TextBox Text="{Binding TongQiKong}"/>
+                    <TextBlock Text="MPa" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="排气口:" />
+                    <TextBox Text="{Binding PaiQiKou}"/>
+                    <TextBlock Text="MPa" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="动轮转速:" />
+                    <TextBox Text="{Binding DongLunZhuanSu}"/>
+                    <TextBlock Text="rpm" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="油液体积分数:" />
+                    <TextBox Text="{Binding YouYeTiJiFenShu}"/>
+                    <TextBlock Text="%" Margin="5,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+
+            <Border Style="{DynamicResource SplitBorderStyle}"/>
+            <Label Content="物理模型选择" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
+                <CheckBox Content="湍流模型" IsChecked="True"/>
+                <CheckBox Content="多相流模型" IsChecked="True"/>
+                <CheckBox Content="运动模型" IsChecked="True"/>
+            </StackPanel>
+            <Button Content="确认设置" Margin="10,20,0,0" Command="{Binding ConfirmButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

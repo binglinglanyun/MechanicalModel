@@ -9,16 +9,23 @@ namespace MechanicalModel.ViewModels
     public enum ViewType
     {
         Others,
-        JiHeKongSunJiSuanMoXing,              // 数学模型 --> 空损计算 --> 空损计算模型
-        ShuXueKongSunWangGeHuaFen,            // 数学模型 --> 空损计算 --> 网格划分
-        ShuXueKongSunJiSuanCanShuShuRu,       // 数学模型 --> 空损计算 --> 计算参数输入
-        ShuXueKongSunJiSuan,                  // 数学模型 --> 空损计算 --> 计算
-        ShuXueKongSunJiSuanJieGuoShuChu,      // 数学模型 --> 空损计算 --> 计算参数输出
-        ShuXueZhiDongNiuJuPiPeiTeXingGuanXi,  // 数学模型 --> 制动特性计算模型 --> 制动扭矩匹配特性关系
-        JiHeHengNiuJuJiSuanMoXing,            // 数学模型 --> 制动特性计算模型 --> 制动特性计算模型模型
-        ShuXueHengNiuJuWangGeHuaFen,          // 数学模型 --> 制动特性计算模型 --> 网格划分
-        ShuXueHengNiuJuJiSuanCanShuShuRu,     // 数学模型 --> 制动特性计算模型 --> 计算参数输入
-        ShuXueHengNiuJuJiSuan,                // 数学模型 --> 制动特性计算模型 --> 计算
-        ShuXueHengNiuJuJiSuanJieGuoShuChu     // 数学模型 --> 制动特性计算模型 --> 计算参数输出
+        JinQiBiKongSunJiSuanMoXing,                // 进气比空损计算 --> 空损计算模型
+        JinQiBiKongSunWangGeHuaFen,                // 进气比空损计算 --> 网格划分
+        JinQiBiKongSunJiSuanCanShuShuRu,           // 进气比空损计算 --> 计算参数输入
+        JinQiBiKongSunJiSuan,                      // 进气比空损计算 --> 计算
+        JinQiBiKongSunJiSuanJieGuoShuChu,          // 进气比空损计算 --> 计算参数输出
+
+        JinYouTongDaoJiSuanJiHeMoXing,             // 进油通道空损计算 --> 计算几何模型
+        JinYouTongDaoKongSunWangGeHuaFen,          // 进油通道空损计算 --> 网格划分
+        JinYouTongDaoKongSunJiSuanCanShuShuRu,     // 进油通道空损计算 --> 计算参数输入
+        JinYouTongDaoKongSunJiSuan,                // 进油通道空损计算 --> 计算
+        JinYouTongDaoKongSunJiSuanJieGuoShuChu,    // 进油通道空损计算 --> 计算参数输出
+
+        ZhiDongNiuJuPiPeiTeXingGuanXi,             // 制动特性计算模型 --> 制动扭矩匹配特性关系
+        HengNiuJuJiSuanMoXing,                     // 制动特性计算模型 --> 制动特性计算模型模型
+        HengNiuJuWangGeHuaFen,                     // 制动特性计算模型 --> 网格划分
+        HengNiuJuJiSuanCanShuShuRu,                // 制动特性计算模型 --> 计算参数输入
+        HengNiuJuJiSuan,                           // 制动特性计算模型 --> 计算
+        HengNiuJuJiSuanJieGuoShuChu                // 制动特性计算模型 --> 计算参数输出
     }
 }

@@ -12,17 +12,27 @@ namespace MechanicalModel.ViewModels
 {
     public class MainWindowViewModel : PropertyChangedBaseCommonClass
     {
-        private JiHeKongSunJiSuanMoXingViewModel _jiHeKongSunJiSuanMoXingViewModel = null;
-        private JiHeHengNiuJuJiSuanMoXingViewModel _jiHeHengNiuJuJiSuanMoXingViewModel = null;
-        private ShuXueKongSunWangGeHuaFenViewModel _shuXueKongSunWangGeHuaFenViewModel = null;
-        private ShuXueKongSunJiSuanCanShuShuRuViewModel _shuXueKongSunJiSuanCanShuShuRuViewModel = null;
-        private ShuXueKongSunJiSuanViewModel _shuXueKongSunJiSuanViewModel = null;
-        private ShuXueKongSunJiSuanJieGuoShuChuViewModel _shuXueKongSunJiSuanJieGuoShuChuViewModel = null;
-        private ShuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel _shuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel = null;
-        private ShuXueHengNiuJuWangGeHuaFenViewModel _shuXueHengNiuJuWangGeHuaFenViewModel = null;
-        private ShuXueHengNiuJuJiSuanCanShuShuRuViewModel _shuXueHengNiuJuJiSuanCanShuShuRuViewModel = null;
-        private ShuXueHengNiuJuJiSuanViewModel _shuXueHengNiuJuJiSuanViewModel = null;
-        private ShuXueHengNiuJuJiSuanJieGuoShuChuViewModel _shuXueHengNiuJuJiSuanJieGuoShuChuViewModel = null;
+        // "进气比空损"
+        private JinQiBiKongSunJiSuanMoXingViewModel _jinQiBiKongSunJiSuanMoXingViewModel = null;
+        private JinQiBiKongSunWangGeHuaFenViewModel _jinQiBiKongSunWangGeHuaFenViewModel = null;
+        private JinQiBiKongSunJiSuanCanShuShuRuViewModel _jinQiBiKongSunJiSuanCanShuShuRuViewModel = null;
+        private JinQiBiKongSunJiSuanViewModel _jinQiBiKongSunJiSuanViewModel = null;
+        private JinQiBiKongSunJiSuanJieGuoShuChuViewModel _jinQiBiKongSunJiSuanJieGuoShuChuViewModel = null;
+
+        // "进油通道空损"
+        private JinYouTongDaoKongSunJiSuanMoXingViewModel _jinYouTongDaoJiSuanJiHeMoXingViewModel = null;
+        private JinYouTongDaoKongSunWangGeHuaFenViewModel _jinYouTongDaoKongSunWangGeHuaFenViewModel = null;
+        private JinYouTongDaoKongSunJiSuanCanShuShuRuViewModel _jinYouTongDaoKongSunJiSuanCanShuShuRuViewModel = null;
+        private JinYouTongDaoKongSunJiSuanViewModel _jinYouTongDaoKongSunJiSuanViewModel = null;
+        private JinYouTongDaoKongSunJiSuanJieGuoShuChuViewModel _jinYouTongDaoKongSunJiSuanJieGuoShuChuViewModel = null;
+
+        // "制动特性计算"
+        private ZhiDongNiuJuPiPeiTeXingGuanXiViewModel _zhiDongNiuJuPiPeiTeXingGuanXiViewModel = null;
+        private HengNiuJuJiSuanMoXingViewModel _hengNiuJuJiSuanMoXingViewModel = null;
+        private HengNiuJuWangGeHuaFenViewModel _hengNiuJuWangGeHuaFenViewModel = null;
+        private HengNiuJuJiSuanCanShuShuRuViewModel _hengNiuJuJiSuanCanShuShuRuViewModel = null;
+        private HengNiuJuJiSuanViewModel _hengNiuJuJiSuanViewModel = null;
+        private HengNiuJuJiSuanJieGuoShuChuViewModel _hengNiuJuJiSuanJieGuoShuChuViewModel = null;
 
         public MainWindowViewModel()
         {
@@ -131,49 +141,74 @@ namespace MechanicalModel.ViewModels
                         MechanicalModelContentVisibility = Visibility.Visible;
                         switch (node.ViewType)
                         {
-                            case ViewType.JiHeKongSunJiSuanMoXing:
-                                _jiHeKongSunJiSuanMoXingViewModel = _jiHeKongSunJiSuanMoXingViewModel ?? new JiHeKongSunJiSuanMoXingViewModel();
-                                this.MechanicalModelViewHostViewModel = _jiHeKongSunJiSuanMoXingViewModel;
+                            // "进油比空损"
+                            case ViewType.JinQiBiKongSunJiSuanMoXing:
+                                _jinQiBiKongSunJiSuanMoXingViewModel = _jinQiBiKongSunJiSuanMoXingViewModel ?? new JinQiBiKongSunJiSuanMoXingViewModel();
+                                this.MechanicalModelViewHostViewModel = _jinQiBiKongSunJiSuanMoXingViewModel;
                                 return;
-                            case ViewType.JiHeHengNiuJuJiSuanMoXing:
-                                _jiHeHengNiuJuJiSuanMoXingViewModel = _jiHeHengNiuJuJiSuanMoXingViewModel ?? new JiHeHengNiuJuJiSuanMoXingViewModel();
-                                this.MechanicalModelViewHostViewModel = _jiHeHengNiuJuJiSuanMoXingViewModel;
+                            case ViewType.JinQiBiKongSunWangGeHuaFen:
+                                _jinQiBiKongSunWangGeHuaFenViewModel = _jinQiBiKongSunWangGeHuaFenViewModel ?? new JinQiBiKongSunWangGeHuaFenViewModel();
+                                this.MechanicalModelViewHostViewModel = _jinQiBiKongSunWangGeHuaFenViewModel;
                                 return;
-                            case ViewType.ShuXueKongSunWangGeHuaFen:
-                                _shuXueKongSunWangGeHuaFenViewModel = _shuXueKongSunWangGeHuaFenViewModel ?? new ShuXueKongSunWangGeHuaFenViewModel();
-                                this.MechanicalModelViewHostViewModel = _shuXueKongSunWangGeHuaFenViewModel;
+                            case ViewType.JinQiBiKongSunJiSuanCanShuShuRu:
+                                _jinQiBiKongSunJiSuanCanShuShuRuViewModel = _jinQiBiKongSunJiSuanCanShuShuRuViewModel ?? new JinQiBiKongSunJiSuanCanShuShuRuViewModel();
+                                this.MechanicalModelViewHostViewModel = _jinQiBiKongSunJiSuanCanShuShuRuViewModel;
                                 return;
-                            case ViewType.ShuXueKongSunJiSuanCanShuShuRu:
-                                _shuXueKongSunJiSuanCanShuShuRuViewModel = _shuXueKongSunJiSuanCanShuShuRuViewModel ?? new ShuXueKongSunJiSuanCanShuShuRuViewModel();
-                                this.MechanicalModelViewHostViewModel = _shuXueKongSunJiSuanCanShuShuRuViewModel;
+                            case ViewType.JinQiBiKongSunJiSuan:
+                                _jinQiBiKongSunJiSuanViewModel = _jinQiBiKongSunJiSuanViewModel ?? new JinQiBiKongSunJiSuanViewModel();
+                                this.MechanicalModelViewHostViewModel = _jinQiBiKongSunJiSuanViewModel;
                                 return;
-                            case ViewType.ShuXueKongSunJiSuan:
-                                _shuXueKongSunJiSuanViewModel = _shuXueKongSunJiSuanViewModel ?? new ShuXueKongSunJiSuanViewModel();
-                                this.MechanicalModelViewHostViewModel = _shuXueKongSunJiSuanViewModel;
+                            case ViewType.JinQiBiKongSunJiSuanJieGuoShuChu:
+                                _jinQiBiKongSunJiSuanJieGuoShuChuViewModel = _jinQiBiKongSunJiSuanJieGuoShuChuViewModel ?? new JinQiBiKongSunJiSuanJieGuoShuChuViewModel();
+                                this.MechanicalModelViewHostViewModel = _jinQiBiKongSunJiSuanJieGuoShuChuViewModel;
                                 return;
-                            case ViewType.ShuXueKongSunJiSuanJieGuoShuChu:
-                                _shuXueKongSunJiSuanJieGuoShuChuViewModel = _shuXueKongSunJiSuanJieGuoShuChuViewModel ?? new ShuXueKongSunJiSuanJieGuoShuChuViewModel();
-                                this.MechanicalModelViewHostViewModel = _shuXueKongSunJiSuanJieGuoShuChuViewModel;
+
+                            // "进油通道空损"
+                            case ViewType.JinYouTongDaoJiSuanJiHeMoXing:
+                                _jinYouTongDaoJiSuanJiHeMoXingViewModel = _jinYouTongDaoJiSuanJiHeMoXingViewModel ?? new JinYouTongDaoKongSunJiSuanMoXingViewModel();
+                                this.MechanicalModelViewHostViewModel = _jinYouTongDaoJiSuanJiHeMoXingViewModel;
                                 return;
-                            case ViewType.ShuXueZhiDongNiuJuPiPeiTeXingGuanXi:
-                                _shuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel = _shuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel ?? new ShuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel();
-                                this.MechanicalModelViewHostViewModel = _shuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel;
+                            case ViewType.JinYouTongDaoKongSunWangGeHuaFen:
+                                _jinYouTongDaoKongSunWangGeHuaFenViewModel = _jinYouTongDaoKongSunWangGeHuaFenViewModel ?? new JinYouTongDaoKongSunWangGeHuaFenViewModel();
+                                this.MechanicalModelViewHostViewModel = _jinYouTongDaoKongSunWangGeHuaFenViewModel;
                                 return;
-                            case ViewType.ShuXueHengNiuJuWangGeHuaFen:
-                                _shuXueHengNiuJuWangGeHuaFenViewModel = _shuXueHengNiuJuWangGeHuaFenViewModel ?? new ShuXueHengNiuJuWangGeHuaFenViewModel();
-                                this.MechanicalModelViewHostViewModel = _shuXueHengNiuJuWangGeHuaFenViewModel;
+                            case ViewType.JinYouTongDaoKongSunJiSuanCanShuShuRu:
+                                _jinYouTongDaoKongSunJiSuanCanShuShuRuViewModel = _jinYouTongDaoKongSunJiSuanCanShuShuRuViewModel ?? new JinYouTongDaoKongSunJiSuanCanShuShuRuViewModel();
+                                this.MechanicalModelViewHostViewModel = _jinYouTongDaoKongSunJiSuanCanShuShuRuViewModel;
                                 return;
-                            case ViewType.ShuXueHengNiuJuJiSuanCanShuShuRu:
-                                _shuXueHengNiuJuJiSuanCanShuShuRuViewModel = _shuXueHengNiuJuJiSuanCanShuShuRuViewModel ?? new ShuXueHengNiuJuJiSuanCanShuShuRuViewModel();
-                                this.MechanicalModelViewHostViewModel = _shuXueHengNiuJuJiSuanCanShuShuRuViewModel;
+                            case ViewType.JinYouTongDaoKongSunJiSuan:
+                                _jinYouTongDaoKongSunJiSuanViewModel = _jinYouTongDaoKongSunJiSuanViewModel ?? new JinYouTongDaoKongSunJiSuanViewModel();
+                                this.MechanicalModelViewHostViewModel = _jinYouTongDaoKongSunJiSuanViewModel;
                                 return;
-                            case ViewType.ShuXueHengNiuJuJiSuan:
-                                _shuXueHengNiuJuJiSuanViewModel = _shuXueHengNiuJuJiSuanViewModel ?? new ShuXueHengNiuJuJiSuanViewModel();
-                                this.MechanicalModelViewHostViewModel = _shuXueHengNiuJuJiSuanViewModel;
+                            case ViewType.JinYouTongDaoKongSunJiSuanJieGuoShuChu:
+                                _jinYouTongDaoKongSunJiSuanJieGuoShuChuViewModel = _jinYouTongDaoKongSunJiSuanJieGuoShuChuViewModel ?? new JinYouTongDaoKongSunJiSuanJieGuoShuChuViewModel();
+                                this.MechanicalModelViewHostViewModel = _jinYouTongDaoKongSunJiSuanJieGuoShuChuViewModel;
                                 return;
-                            case ViewType.ShuXueHengNiuJuJiSuanJieGuoShuChu:
-                                _shuXueHengNiuJuJiSuanJieGuoShuChuViewModel = _shuXueHengNiuJuJiSuanJieGuoShuChuViewModel ?? new ShuXueHengNiuJuJiSuanJieGuoShuChuViewModel();
-                                this.MechanicalModelViewHostViewModel = _shuXueHengNiuJuJiSuanJieGuoShuChuViewModel;
+
+                            // "制动特性计算"
+                            case ViewType.ZhiDongNiuJuPiPeiTeXingGuanXi:
+                                _zhiDongNiuJuPiPeiTeXingGuanXiViewModel = _zhiDongNiuJuPiPeiTeXingGuanXiViewModel ?? new ZhiDongNiuJuPiPeiTeXingGuanXiViewModel();
+                                this.MechanicalModelViewHostViewModel = _zhiDongNiuJuPiPeiTeXingGuanXiViewModel;
+                                return;
+                            case ViewType.HengNiuJuJiSuanMoXing:
+                                _hengNiuJuJiSuanMoXingViewModel = _hengNiuJuJiSuanMoXingViewModel ?? new HengNiuJuJiSuanMoXingViewModel();
+                                this.MechanicalModelViewHostViewModel = _hengNiuJuJiSuanMoXingViewModel;
+                                return;
+                            case ViewType.HengNiuJuWangGeHuaFen:
+                                _hengNiuJuWangGeHuaFenViewModel = _hengNiuJuWangGeHuaFenViewModel ?? new HengNiuJuWangGeHuaFenViewModel();
+                                this.MechanicalModelViewHostViewModel = _hengNiuJuWangGeHuaFenViewModel;
+                                return;
+                            case ViewType.HengNiuJuJiSuanCanShuShuRu:
+                                _hengNiuJuJiSuanCanShuShuRuViewModel = _hengNiuJuJiSuanCanShuShuRuViewModel ?? new HengNiuJuJiSuanCanShuShuRuViewModel();
+                                this.MechanicalModelViewHostViewModel = _hengNiuJuJiSuanCanShuShuRuViewModel;
+                                return;
+                            case ViewType.HengNiuJuJiSuan:
+                                _hengNiuJuJiSuanViewModel = _hengNiuJuJiSuanViewModel ?? new HengNiuJuJiSuanViewModel();
+                                this.MechanicalModelViewHostViewModel = _hengNiuJuJiSuanViewModel;
+                                return;
+                            case ViewType.HengNiuJuJiSuanJieGuoShuChu:
+                                _hengNiuJuJiSuanJieGuoShuChuViewModel = _hengNiuJuJiSuanJieGuoShuChuViewModel ?? new HengNiuJuJiSuanJieGuoShuChuViewModel();
+                                this.MechanicalModelViewHostViewModel = _hengNiuJuJiSuanJieGuoShuChuViewModel;
                                 return;
                             case ViewType.Others:
                                 break;

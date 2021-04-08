@@ -57,124 +57,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controls\JiHeHengNiuJuJiSuanMoXingControl.xaml.cs">
-      <DependentUpon>JiHeHengNiuJuJiSuanMoXingControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\JiHeKongSunJiSuanMoXingControl.xaml.cs">
-      <DependentUpon>JiHeKongSunJiSuanMoXingControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\NiuJuPiPeiTeXingFenXiXiTongMainWindow.xaml.cs">
-      <DependentUpon>NiuJuPiPeiTeXingFenXiXiTongMainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ShuXueHengNiuJuJiSuanCanShuShuRuControl.xaml.cs">
-      <DependentUpon>ShuXueHengNiuJuJiSuanCanShuShuRuControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ShuXueHengNiuJuJiSuanControl.xaml.cs">
-      <DependentUpon>ShuXueHengNiuJuJiSuanControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ShuXueHengNiuJuJiSuanJieGuoShuChuControl.xaml.cs">
-      <DependentUpon>ShuXueHengNiuJuJiSuanJieGuoShuChuControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ShuXueKongSunJiSuanCanShuShuRuControl.xaml.cs">
-      <DependentUpon>ShuXueKongSunJiSuanCanShuShuRuControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ShuXueKongSunJiSuanControl.xaml.cs">
-      <DependentUpon>ShuXueKongSunJiSuanControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ShuXueKongSunJiSuanJieGuoShuChuControl.xaml.cs">
-      <DependentUpon>ShuXueKongSunJiSuanJieGuoShuChuControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ShuXueKongSunWangGeHuaFenControl.xaml.cs">
-      <DependentUpon>ShuXueKongSunWangGeHuaFenControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ShuXueHengNiuJuWangGeHuaFenControl.xaml.cs">
-      <DependentUpon>ShuXueHengNiuJuWangGeHuaFenControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ShuXueZhiDongNiuJuPiPeiTeXingGuanXiControl.xaml.cs">
-      <DependentUpon>ShuXueZhiDongNiuJuPiPeiTeXingGuanXiControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Scripts\ScriptTemplateForHengNiuJu.cs" />
-    <Compile Include="Scripts\ScriptWrapperForHengNiuJu.cs" />
-    <Compile Include="Scripts\ScriptWrapperForKongSun.cs" />
-    <Compile Include="Scripts\ScriptTemplateForKongSun.cs" />
-    <Compile Include="Utils\CommonUtils.cs" />
-    <Compile Include="Utils\DelegateCommand.cs" />
-    <Compile Include="Utils\MechanicalModelViewUIConverter.cs" />
-    <Compile Include="Utils\MultipleLine.cs" />
-    <Compile Include="Utils\StartOtherProcessHelper.cs" />
-    <Compile Include="Utils\TaskCommand.cs" />
-    <Compile Include="ViewModels\DataItem.cs" />
-    <Compile Include="ViewModels\JiHeHengNiuJuJiSuanMoXingViewModel.cs" />
-    <Compile Include="ViewModels\JiHeKongSunJiSuanMoXingViewModel.cs" />
-    <Compile Include="ViewModels\JiSuanType.cs" />
-    <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\MechanicalModelListViewModel.cs" />
-    <Compile Include="ViewModels\ShuXueHengNiuJuJiSuanCanShuShuRuViewModel.cs" />
-    <Compile Include="ViewModels\ShuXueHengNiuJuJiSuanJieGuoShuChuViewModel.cs" />
-    <Compile Include="ViewModels\ShuXueHengNiuJuJiSuanViewModel.cs" />
-    <Compile Include="ViewModels\ShuXueHengNiuJuWangGeHuaFenViewModel.cs" />
-    <Compile Include="ViewModels\ShuXueKongSunJiSuanCanShuShuRuViewModel.cs" />
-    <Compile Include="ViewModels\ShuXueKongSunJiSuanJieGuoShuChuViewModel.cs" />
-    <Compile Include="ViewModels\ShuXueKongSunJiSuanViewModel.cs" />
-    <Compile Include="ViewModels\ShuXueKongSunWangGeHuaFenViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelCategory.cs" />
-    <Compile Include="Utils\TreeViewMouseUpCommandBehavior.cs" />
-    <Compile Include="ViewModels\TreeViewNode.cs" />
-    <Compile Include="ViewModels\PropertyChangedBaseCommonClass.cs" />
-    <Compile Include="ViewModels\ViewType.cs" />
-    <Compile Include="ViewModels\ShuXueZhiDongNiuJuPiPeiTeXingGuanXiViewModel.cs" />
-    <Page Include="Controls\JiHeHengNiuJuJiSuanMoXingControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\JiHeKongSunJiSuanMoXingControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\NiuJuPiPeiTeXingFenXiXiTongMainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ShuXueHengNiuJuJiSuanCanShuShuRuControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ShuXueHengNiuJuJiSuanControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ShuXueHengNiuJuJiSuanJieGuoShuChuControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ShuXueKongSunJiSuanCanShuShuRuControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ShuXueKongSunJiSuanControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ShuXueKongSunJiSuanJieGuoShuChuControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ShuXueKongSunWangGeHuaFenControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ShuXueHengNiuJuWangGeHuaFenControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ShuXueZhiDongNiuJuPiPeiTeXingGuanXiControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -183,6 +65,169 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\MechanicalModelListControl.xaml.cs">
+      <DependentUpon>MechanicalModelListControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NiuJuPiPeiTeXingFenXiXiTongMainWindow.xaml.cs">
+      <DependentUpon>NiuJuPiPeiTeXingFenXiXiTongMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JinQiBiKongSun\JinQiBiKongSunJiSuanCanShuShuRuControl.xaml.cs">
+      <DependentUpon>JinQiBiKongSunJiSuanCanShuShuRuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JinQiBiKongSun\JinQiBiKongSunJiSuanControl.xaml.cs">
+      <DependentUpon>JinQiBiKongSunJiSuanControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JinQiBiKongSun\JinQiBiKongSunJiSuanJieGuoShuChuControl.xaml.cs">
+      <DependentUpon>JinQiBiKongSunJiSuanJieGuoShuChuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JinQiBiKongSun\JinQiBiKongSunWangGeHuaFenControl.xaml.cs">
+      <DependentUpon>JinQiBiKongSunWangGeHuaFenControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JinQiBiKongSun\JinQiBiKongSunJiSuanMoXingControl.xaml.cs">
+      <DependentUpon>JinQiBiKongSunJiSuanMoXingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanCanShuShuRuControl.xaml.cs">
+      <DependentUpon>JinYouTongDaoKongSunJiSuanCanShuShuRuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanControl.xaml.cs">
+      <DependentUpon>JinYouTongDaoKongSunJiSuanControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanJieGuoShuChuControl.xaml.cs">
+      <DependentUpon>JinYouTongDaoKongSunJiSuanJieGuoShuChuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunWangGeHuaFenControl.xaml.cs">
+      <DependentUpon>JinYouTongDaoKongSunWangGeHuaFenControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoJiSuanJiHeMoXingControl.xaml.cs">
+      <DependentUpon>JinYouTongDaoJiSuanJiHeMoXingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HengNiuJu\HengNiuJuJiSuanMoXingControl.xaml.cs">
+      <DependentUpon>HengNiuJuJiSuanMoXingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HengNiuJu\HengNiuJuJiSuanCanShuShuRuControl.xaml.cs">
+      <DependentUpon>HengNiuJuJiSuanCanShuShuRuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HengNiuJu\HengNiuJuJiSuanControl.xaml.cs">
+      <DependentUpon>HengNiuJuJiSuanControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HengNiuJu\HengNiuJuJiSuanJieGuoShuChuControl.xaml.cs">
+      <DependentUpon>HengNiuJuJiSuanJieGuoShuChuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HengNiuJu\HengNiuJuWangGeHuaFenControl.xaml.cs">
+      <DependentUpon>HengNiuJuWangGeHuaFenControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HengNiuJu\ZhiDongNiuJuPiPeiTeXingGuanXiControl.xaml.cs">
+      <DependentUpon>ZhiDongNiuJuPiPeiTeXingGuanXiControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scripts\ScriptTemplateForHengNiuJu.cs" />
+    <Compile Include="Scripts\ScriptTemplateForJinYouTongDaoKongSun.cs" />
+    <Compile Include="Scripts\ScriptWrapperForHengNiuJu.cs" />
+    <Compile Include="Scripts\ScriptWrapperForJinQiBiKongSun.cs" />
+    <Compile Include="Scripts\ScriptTemplateForJinQiBiKongSun.cs" />
+    <Compile Include="Scripts\ScriptWrapperForJinYouTongDaoKongSun.cs" />
+    <Compile Include="Utils\CommonUtils.cs" />
+    <Compile Include="Utils\DelegateCommand.cs" />
+    <Compile Include="Utils\MechanicalModelViewUIConverter.cs" />
+    <Compile Include="Utils\MultipleLine.cs" />
+    <Compile Include="Utils\StartOtherProcessHelper.cs" />
+    <Compile Include="Utils\TaskCommand.cs" />
+    <Compile Include="ViewModels\DataItem.cs" />
+    <Compile Include="ViewModels\JinQiBiKongSun\JinQiBiKongSunJiSuanMoXingViewModel.cs" />
+    <Compile Include="ViewModels\JinQiBiKongSun\JinQiBiKongSunJiSuanCanShuShuRuViewModel.cs" />
+    <Compile Include="ViewModels\JinQiBiKongSun\JinQiBiKongSunJiSuanJieGuoShuChuViewModel.cs" />
+    <Compile Include="ViewModels\JinQiBiKongSun\JinQiBiKongSunJiSuanViewModel.cs" />
+    <Compile Include="ViewModels\JinQiBiKongSun\JinQiBiKongSunWangGeHuaFenViewModel.cs" />
+    <Compile Include="ViewModels\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanMoXingViewModel.cs" />
+    <Compile Include="ViewModels\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanCanShuShuRuViewModel.cs" />
+    <Compile Include="ViewModels\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanJieGuoShuChuViewModel.cs" />
+    <Compile Include="ViewModels\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanViewModel.cs" />
+    <Compile Include="ViewModels\JinYouTongDaoKongSun\JinYouTongDaoKongSunWangGeHuaFenViewModel.cs" />
+    <Compile Include="ViewModels\JiSuanType.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\MechanicalModelListViewModel.cs" />
+    <Compile Include="ViewModels\HengNiuJu\HengNiuJuJiSuanMoXingViewModel.cs" />
+    <Compile Include="ViewModels\HengNiuJu\HengNiuJuJiSuanCanShuShuRuViewModel.cs" />
+    <Compile Include="ViewModels\HengNiuJu\HengNiuJuJiSuanJieGuoShuChuViewModel.cs" />
+    <Compile Include="ViewModels\HengNiuJu\HengNiuJuJiSuanViewModel.cs" />
+    <Compile Include="ViewModels\HengNiuJu\HengNiuJuWangGeHuaFenViewModel.cs" />
+    <Compile Include="ViewModels\HengNiuJu\ZhiDongNiuJuPiPeiTeXingGuanXiViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelCategory.cs" />
+    <Compile Include="Utils\TreeViewMouseUpCommandBehavior.cs" />
+    <Compile Include="ViewModels\TreeViewNode.cs" />
+    <Compile Include="ViewModels\PropertyChangedBaseCommonClass.cs" />
+    <Compile Include="ViewModels\ViewType.cs" />
+    <Page Include="Controls\JinQiBiKongSun\JinQiBiKongSunJiSuanMoXingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JinQiBiKongSun\JinQiBiKongSunJiSuanCanShuShuRuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JinQiBiKongSun\JinQiBiKongSunJiSuanControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JinQiBiKongSun\JinQiBiKongSunJiSuanJieGuoShuChuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JinQiBiKongSun\JinQiBiKongSunWangGeHuaFenControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoJiSuanJiHeMoXingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanCanShuShuRuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunJiSuanJieGuoShuChuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JinYouTongDaoKongSun\JinYouTongDaoKongSunWangGeHuaFenControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NiuJuPiPeiTeXingFenXiXiTongMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HengNiuJu\HengNiuJuJiSuanMoXingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HengNiuJu\HengNiuJuJiSuanCanShuShuRuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HengNiuJu\HengNiuJuJiSuanControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HengNiuJu\HengNiuJuJiSuanJieGuoShuChuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HengNiuJu\HengNiuJuWangGeHuaFenControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HengNiuJu\ZhiDongNiuJuPiPeiTeXingGuanXiControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\MechanicalModelListControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -205,9 +250,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\MechanicalModelListControl.xaml.cs">
-      <DependentUpon>MechanicalModelListControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -254,19 +296,34 @@
     <Content Include="Scripts\torque_hengniuju_loadresults.spro">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\torque_kongsun_loadresults.spro">
+    <Content Include="Scripts\torque_jinqibi_kongsun_loadresults.spro">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\torque_hengniuju.sgrd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\torque_kongsun.sgrd">
+    <Content Include="Scripts\torque_jinqibi_kongsun.sgrd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\torque_hengniuju_loadresults.sgrd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\torque_kongsun_loadresults.sgrd">
+    <Content Include="Scripts\torque_jinqibi_kongsun_loadresults.sgrd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\torque_jinyoutongdao_kongsun.sgrd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\OilFiles\torque_jinyoutongdao_kongsun_density.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\OilFiles\torque_jinyoutongdao_kongsun_heat_capacity.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\OilFiles\torque_jinyoutongdao_kongsun_heat_conductivity.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\OilFiles\torque_jinyoutongdao_kongsun_viscosity.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="$(PngResources)">
