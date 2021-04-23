@@ -26,13 +26,13 @@
                 <TextBlock Text="已有数值计算结果导入:" VerticalAlignment="Center"/>
                 <ComboBox Text="{Binding LocationString}" HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="20,0,0,0"/>
 
-                <Button Name="buttonBrowse" Content="浏览..." Command="{Binding BrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+                <Button Name="buttonBrowse1" Content="浏览..." Command="{Binding BrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
             <Button Content="确认导入" Margin="20,0,0,0" Command="{Binding ImportButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
 
             <Border Style="{DynamicResource SplitBorderStyle}"/>
 
-            <Label Content="数值计算结果数据输出" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <Label Content="计算结果显示" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="空损功率Pk:" />
@@ -40,6 +40,17 @@
                     <TextBlock Text="W" Margin="5,0,0,0"/>
                 </StackPanel>
             </StackPanel>
+
+            <Border Style="{DynamicResource SplitBorderStyle}"/>
+
+            <Label Content="计算结果输出" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
+                <TextBlock Text="结果位置:" VerticalAlignment="Center"/>
+                <ComboBox Text="{Binding JieGuoShuChuLocation}" HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0"/>
+
+                <Button Name="buttonBrowse2" Content="浏览..." Command="{Binding JieGuoBrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+            </StackPanel>
+            <Button Content="确认导出" Margin="20,0,0,0" Command="{Binding ExportButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
 
             <Border Style="{DynamicResource SplitBorderStyle}"/>
 
@@ -56,14 +67,20 @@
             </StackPanel>
 
             <TabControl Margin="25,0,0,0" Visibility="{Binding QuXianAndYunTuVisibility}">
-                <TabItem Header="动轮静压分布">
-                    <Image Source="{Binding DongLunJingYaFenBuUri}" Margin="40,-20,0,-20" HorizontalAlignment="Left" Height="520" Width="550"/>
+                <TabItem Header="转轮和定轮压力分布">
+                    <Image Source="{Binding ZhuanLunDingLunYaLiFenBuUri}" Margin="40,-20,0,-20" HorizontalAlignment="Left" Height="520" Width="550"/>
                 </TabItem>
-                <TabItem Header="定轮静压分布">
-                    <Image Source="{Binding DingLunJingYaFenBuUri}" Margin="40,-20,0,-20" HorizontalAlignment="Left"  Height="520" Width="550"/>
+                <TabItem Header="转轮和定轮速度分布">
+                    <Image Source="{Binding ZhuanLunDingLunSuDuFenBuUri}" Margin="40,-20,0,-20" HorizontalAlignment="Left"  Height="520" Width="550"/>
                 </TabItem>
-                <TabItem Header="截面速度矢量分布">
-                    <Image Source="{Binding JieMianSuDuShiLiangFenBuUri}" Margin="40,0,0,0" HorizontalAlignment="Left"  Height="470" Width="550"/>
+                <TabItem Header="转轮和定轮温度分布">
+                    <Image Source="{Binding ZhuanLunDingLunWenDuFenBuUri}" Margin="40,0,0,0" HorizontalAlignment="Left"  Height="470" Width="550"/>
+                </TabItem>
+                <TabItem Header="截面速度分布">
+                    <Image Source="{Binding JieMianSuDuFenBuUri}" Margin="40,0,0,0" HorizontalAlignment="Left"  Height="470" Width="550"/>
+                </TabItem>
+                <TabItem Header="截面温度分布">
+                    <Image Source="{Binding JieMianWenDuFenBuUri}" Margin="40,0,0,0" HorizontalAlignment="Left"  Height="470" Width="550"/>
                 </TabItem>
             </TabControl>
         </StackPanel>

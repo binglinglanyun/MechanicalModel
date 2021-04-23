@@ -28,10 +28,10 @@
                     <TextBox Text="{Binding DieDaiBuShu}"/>
                 </StackPanel>
             </StackPanel>
-            <Label Content="计算过程监测" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Orientation="Vertical">
+                <Label Content="计算点监测：" Style="{DynamicResource LabelBoldTextStyle}"/>
                 <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
-                    <TextBlock Text="监测点1坐标参数：" Margin="0,5,0,5" />
+                    <CheckBox Content="监测点1坐标参数：" Margin="0,5,0,5" IsChecked="True"/>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,5">
                         <TextBlock Text="X1：" />
                         <TextBox Text="{Binding CanShuX1}"/>
@@ -48,7 +48,7 @@
                         <TextBlock Text="m" Margin="5,0,0,0"/>
                     </StackPanel>
 
-                    <TextBlock Text="监测点2坐标参数：" Margin="0,15,0,5" />
+                    <CheckBox Content="监测点2坐标参数：" Margin="0,15,0,5" IsChecked="True"/>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,5">
                         <TextBlock Text="X2：" />
                         <TextBox Text="{Binding CanShuX2}"/>
@@ -68,6 +68,7 @@
                     <CheckBox Content="气相体积分数监测" IsChecked="True"/>
                 </StackPanel>
 
+                <Label Content="全局监测：" Style="{DynamicResource LabelBoldTextStyle}"/>
                 <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                     <CheckBox Content="动轮扭矩监测" IsChecked="True"/>
                     <CheckBox Content="进口流量监测" IsChecked="True"/>

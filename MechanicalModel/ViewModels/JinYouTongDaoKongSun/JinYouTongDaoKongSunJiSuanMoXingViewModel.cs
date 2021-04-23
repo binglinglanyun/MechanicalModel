@@ -28,46 +28,51 @@ namespace MechanicalModel.ViewModels
         }
 
         #region Button Click
-        public ICommand BrowseButtonClick
+        private string _moXingLocation = null;
+        public ICommand SetupButtonClick
         {
             get
             {
                 return new DelegateCommand<object>((o) =>
                 {
-                    string localFolder;
-                    System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
-                    dialog.Description = "模型位置";
-                    System.Windows.Forms.DialogResult result = dialog.ShowDialog();
-                    if (result == System.Windows.Forms.DialogResult.OK)
-                    {
-                        localFolder = dialog.SelectedPath;
-                    }
-                    else
-                    {
-                        return;
-                    }
-
-                    this.LocationString = localFolder;
+                    this._moXingLocation = Path.Combine(ScriptWrapperForJinYouTongDaoKongSun.SourceMoXingFolderPath, MoXingList[_selectedMoXingIndex]);
                 });
             }
         }
 
-        public ICommand ImportAndShowButtonClick
+        public ICommand PaoMianShowButtonClick
         {
             get
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    if (!Directory.Exists(LocationString))
+                    if (!Directory.Exists(this._moXingLocation))
                     {
-                        MessageBox.Show("请设置模型导入路径");
+                        MessageBox.Show("请设置模型");
+                        return;
+                    }
+
+                    this.PaoMianVisibility = Visibility.Visible;
+                });
+            }
+        }
+
+        public ICommand DongTaiShowButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    if (!Directory.Exists(this._moXingLocation))
+                    {
+                        MessageBox.Show("请设置模型");
                         return;
                     }
 
                     try
                     {
                         this.LoadingVisibility = Visibility.Visible;
-                        CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForJinYouTongDaoKongSun.WorkDirectory);
+                        CommonUtils.CopyFolder(this._moXingLocation, ScriptWrapperForJinYouTongDaoKongSun.WorkDirectory);
                         this.LoadingVisibility = Visibility.Collapsed;
                     }
                     catch (Exception ex)
@@ -88,16 +93,24 @@ namespace MechanicalModel.ViewModels
         #endregion
 
         #region Properties
-        private string _locationString = "D:\\380流场计算\\空损几何模型";
-        public string LocationString
+        public List<string> MoXingList
         {
             get
             {
-                return _locationString;
+                return new List<string>() { "003", "006", "008" };
+            }
+        }
+
+        private int _selectedMoXingIndex = 0;
+        public int SelectedMoXingIndex
+        {
+            get
+            {
+                return _selectedMoXingIndex;
             }
             set
             {
-                SetValueProperty(value, ref _locationString);
+                SetValueProperty(value, ref _selectedMoXingIndex);
             }
         }
 
@@ -105,7 +118,20 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return Path.GetFullPath("Resources/KongSunJiHeMoXing.png"); ;
+                return Path.GetFullPath("Resources/JinYouTongDaoJiHeMoXing.png");
+            }
+        }
+
+        private Visibility _paoMianVisibility = Visibility.Collapsed;
+        public Visibility PaoMianVisibility
+        {
+            get
+            {
+                return _paoMianVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _paoMianVisibility);
             }
         }
 

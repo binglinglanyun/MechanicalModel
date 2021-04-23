@@ -117,8 +117,15 @@
             <Border Style="{DynamicResource SplitBorderStyle}"/>
             <StackPanel Orientation="Vertical">
                 <Label Content="网格显示" Style="{DynamicResource LabelBoldTextStyle}"/>
-                <Image Source="{Binding}" Margin="0,-40,0,0" Height="400" Width="400"/>
-                <Button Content="网格划分及显示" Margin="20,0,0,0" Command="{Binding WangGeHuaFenAndShowButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
+                <StackPanel Orientation="Horizontal" Margin="20,0,0,20" >
+                    <TextBlock Text="剖面显示:" VerticalAlignment="Center"/>
+                    <Button Content="显示" Command="{Binding PaoMianShowButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
+                    <TextBlock Text="动态显示:" VerticalAlignment="Center"/>
+                    <Button Content="显示" Command="{Binding DongTaiShowButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+                </StackPanel>
+                <Image Source="{Binding SourceUri}" Visibility="{Binding PaoMianVisibility}" Margin="0,-20,0,0" Height="400" Width="700"/>
             </StackPanel>
         </StackPanel>
     </Grid>

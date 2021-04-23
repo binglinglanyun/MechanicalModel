@@ -142,43 +142,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _locationString = "D:\\380流场计算\\油文件";
-        public string LocationString
-        {
-            get
-            {
-                return _locationString;
-            }
-            set
-            {
-                SetValueProperty(value, ref _locationString);
-            }
-        }
-
-        public ICommand BrowseButtonClick
-        {
-            get
-            {
-                return new DelegateCommand<object>((o) =>
-                {
-                    string localFolder;
-                    System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
-                    dialog.Description = "文件位置";
-                    System.Windows.Forms.DialogResult result = dialog.ShowDialog();
-                    if (result == System.Windows.Forms.DialogResult.OK)
-                    {
-                        localFolder = dialog.SelectedPath;
-                    }
-                    else
-                    {
-                        return;
-                    }
-
-                    this.LocationString = localFolder;
-                });
-            }
-        }
-
+        private string _oilFilesLocation = null;
         /// <summary>
         /// WuZhiDingYi = NianDuOfOil + NianDuOfAir + MiDuOfOil
         /// BianJieTiaoJianDingYi = DongLunZhuanSu + TongQiKong + PaiQiKong + YouYeTiJiFenShu
@@ -189,21 +153,17 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    if (string.IsNullOrEmpty(this.LocationString))
-                    {
-                        MessageBox.Show("请设置油文件路径");
-                        return;
-                    }
-                    else if (!File.Exists(Path.Combine(LocationString, ScriptWrapperForJinYouTongDaoKongSun.DensityFileName)) ||
-                        !File.Exists(Path.Combine(LocationString, ScriptWrapperForJinYouTongDaoKongSun.ViscosityFileName)) ||
-                        !File.Exists(Path.Combine(LocationString, ScriptWrapperForJinYouTongDaoKongSun.HeatConductivityFileName)) ||
-                        !File.Exists(Path.Combine(LocationString, ScriptWrapperForJinYouTongDaoKongSun.HeatCapacityFileName)))
+                    this._oilFilesLocation = ScriptWrapperForJinYouTongDaoKongSun.SourceOilFilesFolderPath;
+                    if (!File.Exists(Path.Combine(this._oilFilesLocation, ScriptWrapperForJinYouTongDaoKongSun.DensityFileName)) ||
+                        !File.Exists(Path.Combine(this._oilFilesLocation, ScriptWrapperForJinYouTongDaoKongSun.ViscosityFileName)) ||
+                        !File.Exists(Path.Combine(this._oilFilesLocation, ScriptWrapperForJinYouTongDaoKongSun.HeatConductivityFileName)) ||
+                        !File.Exists(Path.Combine(this._oilFilesLocation, ScriptWrapperForJinYouTongDaoKongSun.HeatCapacityFileName)))
                     {
                         MessageBox.Show("关键油文件缺失");
                         return;
                     }
 
-                    CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForJinYouTongDaoKongSun.WorkDirectory);
+                    CommonUtils.CopyFolder(this._oilFilesLocation, ScriptWrapperForJinYouTongDaoKongSun.WorkDirectory);
 
                     // {0} --空气粘度 {1} --空气比热容 {2} --空气热导率
                     ScriptWrapperForJinYouTongDaoKongSun.WuZhiDingYi = string.Format(ScriptTemplateForJinYouTongDaoKongSun.WuZhiDingYi,

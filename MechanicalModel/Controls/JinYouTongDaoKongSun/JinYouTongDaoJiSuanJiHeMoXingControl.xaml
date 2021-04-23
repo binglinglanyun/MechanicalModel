@@ -20,17 +20,27 @@
         <StackPanel Style="{StaticResource FrameStackPanel}">
             <Label Content="几何模型导入" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
-                <TextBlock Text="模型位置:" VerticalAlignment="Center"/>
-                <ComboBox Text="{Binding LocationString}" HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="20,0,0,0"/>
-
-                <Button Name="buttonBrowse" Content="浏览..." Command="{Binding BrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+                <TextBlock Text="选择模型:" VerticalAlignment="Center"/>
+                <ComboBox SelectedIndex="{Binding Path=SelectedMoXingIndex}" HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="20,0,0,0">
+                    <ComboBoxItem Content="003"/>
+                    <ComboBoxItem Content="006"/>
+                    <ComboBoxItem Content="008"/>
+                </ComboBox>
             </StackPanel>
+            <Button Name="buttonBrowse" Content="确认设置" Command="{Binding SetupButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100"/>
 
             <Border Style="{DynamicResource SplitBorderStyle}"/>
 
             <Label Content="几何模型显示" Style="{DynamicResource LabelBoldTextStyle}"/>
-            <Image Source="{Binding}" Margin="0,-20,0,0" Height="400" Width="400"/>
-            <Button Content="导入及显示" Margin="20,0,0,0" Command="{Binding ImportAndShowButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal" Margin="20,0,0,20" >
+                <TextBlock Text="剖面显示:" VerticalAlignment="Center"/>
+                <Button Content="显示" Command="{Binding PaoMianShowButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="20,0,20,0">
+                <TextBlock Text="动态显示:" VerticalAlignment="Center"/>
+                <Button Content="显示" Command="{Binding DongTaiShowButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+            </StackPanel>
+            <Image Source="{Binding SourceUri}" Visibility="{Binding PaoMianVisibility}" Margin="0,0,0,0" Height="400" Width="700"/>
         </StackPanel>
         <ProgressBar IsIndeterminate="True" Grid.Column="0" 
                      VerticalAlignment="Top" SnapsToDevicePixels="True" 
