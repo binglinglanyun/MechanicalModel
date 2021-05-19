@@ -38,7 +38,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _locationString = "D:\\380流场计算\\空损几何模型\\kongsun_integrals.txt";
+        private string _locationString = "D:\\Script\\results\\kongsun_integrals.txt";
         public string LocationString
         {
             get
@@ -51,35 +51,57 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public string SourceUri
+        private string _jieGuoShuChuLocation = "D:\\temp\\output.txt";
+        public string JieGuoShuChuLocation
         {
             get
             {
-                return Path.GetFullPath("Resources/KongSunJiHeMoXing.png");
+                return _jieGuoShuChuLocation;
+            }
+            set
+            {
+                SetValueProperty(value, ref _jieGuoShuChuLocation);
             }
         }
 
-        public string DongLunJingYaFenBuUri
+
+        public string ZhuanLunDingLunYaLiFenBuUri
         {
             get
             {
-                return Path.GetFullPath("Resources/DongLunJingYaFenBu.png");
+                return Path.GetFullPath("Resources/JinYouTongDaoZhuanDingYaLi.png");
             }
         }
 
-        public string DingLunJingYaFenBuUri
+        public string ZhuanLunDingLunSuDuFenBuUri
         {
             get
             {
-                return Path.GetFullPath("Resources/DingLunJingYaFenBu.png");
+                return Path.GetFullPath("Resources/JinYouTongDaoZhuanDingSuDu.png");
             }
         }
 
-        public string JieMianSuDuShiLiangFenBuUri
+        public string ZhuanLunDingLunWenDuFenBuUri
         {
             get
             {
-                return Path.GetFullPath("Resources/JieMianSuDuShiLiangFenBu.png");
+                return Path.GetFullPath("Resources/JinYouTongDaoZhuanDingWenDu.png");
+            }
+        }
+
+        public string JieMianSuDuFenBuUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/JinYouTongDaoJieMianSuDu.png");
+            }
+        }
+
+        public string JieMianWenDuFenBuUri
+        {
+            get
+            {
+                return Path.GetFullPath("Resources/JinYouTongDaoJieMianWenDu.png");
             }
         }
 
@@ -120,6 +142,33 @@ namespace MechanicalModel.ViewModels
             }
         }
 
+        public ICommand JieGuoBrowseButtonClick
+        {
+            get
+            {
+                return new DelegateCommand<object>((o) =>
+                {
+                    string localFolder;
+                    System.Windows.Forms.SaveFileDialog dialog = new System.Windows.Forms.SaveFileDialog();
+                    dialog.Title = "结果另存为";
+                    dialog.DefaultExt = "txt";
+                    dialog.Filter = "All Files (*.*)|*.*";
+                    System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+                    if (result == System.Windows.Forms.DialogResult.OK)
+                    {
+                        localFolder = dialog.FileName;
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    this.JieGuoShuChuLocation = localFolder;
+                });
+            }
+        }
+
+        private Dictionary<string, string> _jieGuoDic = new Dictionary<string, string>();
         public ICommand ImportButtonClick
         {
             get
@@ -141,7 +190,16 @@ namespace MechanicalModel.ViewModels
                                 }
 
                                 this.KongSunGongLv = Math.Abs(double.Parse(st.Split('\t')[index])).ToString();
-                                this._kongSunGongLv = "11,700";
+
+                                var fileName = Path.GetFileNameWithoutExtension(this.LocationString);
+                                if (_jieGuoDic.ContainsKey(fileName))
+                                {
+                                    _jieGuoDic[fileName] = this.KongSunGongLv;
+                                }
+                                else
+                                {
+                                    _jieGuoDic.Add(fileName, this.KongSunGongLv);
+                                }
                             }
                             else
                             {
@@ -153,6 +211,30 @@ namespace MechanicalModel.ViewModels
                     {
                         MessageBox.Show("结果文件不存在");
                     }
+                });
+            }
+        }
+
+        public ICommand ExportButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    if (!Directory.Exists(Path.GetDirectoryName(this.JieGuoShuChuLocation)))
+                    {
+                        MessageBoxResult result = MessageBox.Show("目录不存在, 请选择正确的目录", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    if (_jieGuoDic.Count == 0)
+                    {
+                        MessageBox.Show("请先导入结果文件", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    File.WriteAllLines(this.JieGuoShuChuLocation, _jieGuoDic.Select(x => x.Key + " " + x.Value).ToArray());
+                    MessageBox.Show("结果文件导出成功", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 });
             }
         }

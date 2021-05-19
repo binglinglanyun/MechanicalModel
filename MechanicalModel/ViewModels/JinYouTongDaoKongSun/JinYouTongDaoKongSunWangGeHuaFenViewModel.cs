@@ -194,7 +194,20 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return Path.GetFullPath("Resources/KongSunMoXingWangGe.png"); ;
+                return Path.GetFullPath("Resources/JinYouTongDaoWangGe.png"); ;
+            }
+        }
+
+        private Visibility _paoMianVisibility = Visibility.Collapsed;
+        public Visibility PaoMianVisibility
+        {
+            get
+            {
+                return _paoMianVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _paoMianVisibility);
             }
         }
 
@@ -225,7 +238,18 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public ICommand WangGeHuaFenAndShowButtonClick
+        public ICommand PaoMianShowButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    this.PaoMianVisibility = Visibility.Visible;
+                });
+            }
+        }
+
+        public ICommand DongTaiShowButtonClick
         {
             get
             {
