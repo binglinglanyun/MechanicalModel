@@ -111,7 +111,7 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return Path.GetFullPath("Resources/HengNiuJuMoXingWangGe.png"); ;
+                return Path.GetFullPath("Resources/FakePicture.png"); ;
             }
         }
 

@@ -119,6 +119,15 @@
     <Compile Include="Controls\HengNiuJu\ZhiDongNiuJuPiPeiTeXingGuanXiControl.xaml.cs">
       <DependentUpon>ZhiDongNiuJuPiPeiTeXingGuanXiControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\YeYa\YeYaXiTongJieGouTuControl.xaml.cs">
+      <DependentUpon>YeYaXiTongJieGouTuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\YeYa\YeYaJiSuanTiaoJianSheZhiControl.xaml.cs">
+      <DependentUpon>YeYaJiSuanTiaoJianSheZhiControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\YeYa\YeYaJieGuoXianShiShuChuControl.xaml.cs">
+      <DependentUpon>YeYaJieGuoXianShiShuChuControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Scripts\ScriptTemplateForHengNiuJu.cs" />
     <Compile Include="Scripts\ScriptTemplateForJinYouTongDaoKongSun.cs" />
     <Compile Include="Scripts\ScriptWrapperForHengNiuJu.cs" />
@@ -151,6 +160,9 @@
     <Compile Include="ViewModels\HengNiuJu\HengNiuJuJiSuanViewModel.cs" />
     <Compile Include="ViewModels\HengNiuJu\HengNiuJuWangGeHuaFenViewModel.cs" />
     <Compile Include="ViewModels\HengNiuJu\ZhiDongNiuJuPiPeiTeXingGuanXiViewModel.cs" />
+    <Compile Include="ViewModels\YeYa\YeYaXiTongJieGouTuViewModel.cs" />
+    <Compile Include="ViewModels\YeYa\YeYaJiSuanTiaoJianSheZhiViewModel.cs" />
+    <Compile Include="ViewModels\YeYa\YeYaJieGuoXianShiShuChuViewModel.cs" />
     <Compile Include="ViewModels\ViewModelCategory.cs" />
     <Compile Include="Utils\TreeViewMouseUpCommandBehavior.cs" />
     <Compile Include="ViewModels\TreeViewNode.cs" />
@@ -221,6 +233,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\HengNiuJu\ZhiDongNiuJuPiPeiTeXingGuanXiControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\YeYa\YeYaXiTongJieGouTuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\YeYa\YeYaJiSuanTiaoJianSheZhiControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\YeYa\YeYaJieGuoXianShiShuChuControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -296,6 +320,11 @@
 	  Resources\NiuJuZhuanSuBianHua.jpg;
 	  Resources\ChongYeLvBianHua.jpg;
 	  Resources\ChuKouYaLi.jpg;
+	  Resources\YeYaP2P3.png;
+	  Resources\YeYaRuKouLiuLiangShiJian.png;
+	  Resources\YeYaRuKouLiuLiangYaLi.png;
+	  Resources\YeYaQiTiZhiLiangFenShu.png;
+	  Resources\YeYaXiTongJieGouTu.png;
 	</PngResources>
   </PropertyGroup>
   <ItemGroup>

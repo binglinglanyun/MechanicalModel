@@ -36,21 +36,27 @@
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
                             <TextBlock Text="粘度:" />
-                            <TextBox Text="{Binding NianDuOfAir}"/>
+                            <TextBox  Text="{Binding NianDuOfAir}"/>
                             <TextBlock Text="Pa.s" Margin="5,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
+                            <TextBlock Text="热导率:" />
+                            <TextBox  Text="{Binding ReDaoLvOfAir}"/>
+                            <TextBlock Text="w/m/k" Margin="5,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
+                            <TextBlock Text="比热容:" />
+                            <TextBox  Text="{Binding BiReRongOfAir}"/>
+                            <TextBlock Text="J/kg/k" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel>
                         <CheckBox Content="油" IsChecked="True"/>
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
-                            <TextBlock Text="密度:" />
-                            <TextBox Text="{Binding MiDuOfOil}"/>
-                            <TextBlock Text="kg/m3" Margin="5,0,0,0"/>
-                        </StackPanel>
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,0,0,5">
-                            <TextBlock Text="粘度:" />
-                            <TextBox Text="{Binding NianDuOfOil}"/>
-                            <TextBlock Text="Pa.s" Margin="5,0,0,0"/>
+                        <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
+                            <TextBlock Text="选择油文件:" />
+                            <ComboBox HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0" SelectedIndex="0">
+                                <ComboBoxItem Content="OilFiles"/>
+                            </ComboBox>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
@@ -108,7 +114,7 @@
                     </StackPanel>
                 </Grid>
 
-                <Border Style="{DynamicResource SplitBorderStyle}"/>
+                <!--<Border Style="{DynamicResource SplitBorderStyle}"/>
                 <Label Content="阀门参数" Style="{DynamicResource LabelBoldTextStyle}"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -151,8 +157,7 @@
                             <TextBlock Text="N" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
-                </Grid>
-                
+                </Grid>-->
 
                 <Border Style="{DynamicResource SplitBorderStyle}"/>
                 <Label Content="物理模型选择" Style="{DynamicResource LabelBoldTextStyle}"/>

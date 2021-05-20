@@ -26,7 +26,12 @@ namespace MechanicalModel.Utils
         private JinYouTongDaoKongSunJiSuanControl _jinYouTongDaoKongSunJiSuanControl = null;
         private JinYouTongDaoKongSunJiSuanJieGuoShuChuControl _jinYouTongDaoKongSunJiSuanJieGuoShuChuControl = null;
 
-        // "制动特性计算"
+        // "一维流体静力学液压计算"
+        private YeYaXiTongJieGouTuControl _yeYaXiTongJieGouTuControl = null;
+        private YeYaJiSuanTiaoJianSheZhiControl _yeYaJiSuanTiaoJianSheZhiControl = null;
+        private YeYaJieGuoXianShiShuChuControl _yeYaJieGuoXianShiShuChuControl = null;
+
+        // "三维流动液力计算"
         private ZhiDongNiuJuPiPeiTeXingGuanXiControl _zhiDongNiuJuPiPeiTeXingGuanXiControl = null;
         private HengNiuJuJiSuanMoXingControl _hengNiuJuJiSuanMoXingControl = null;
         private HengNiuJuWangGeHuaFenControl _hengNiuJuWangGeHuaFenControl = null;
@@ -86,7 +91,21 @@ namespace MechanicalModel.Utils
                         control = _jinYouTongDaoKongSunJiSuanJieGuoShuChuControl;
                         break;
 
-                    // "制动特性计算"
+                    // "一维流体静力学液压计算"
+                    case ViewType.YeYaXiTongJieGouTu:
+                        _yeYaXiTongJieGouTuControl = _yeYaXiTongJieGouTuControl ?? new YeYaXiTongJieGouTuControl();
+                        control = _yeYaXiTongJieGouTuControl;
+                        break;
+                    case ViewType.YeYaJiSuanTiaoJianSheZhi:
+                        _yeYaJiSuanTiaoJianSheZhiControl = _yeYaJiSuanTiaoJianSheZhiControl ?? new YeYaJiSuanTiaoJianSheZhiControl();
+                        control = _yeYaJiSuanTiaoJianSheZhiControl;
+                        break;
+                    case ViewType.YeYaJieGuoXianShiShuChu:
+                        _yeYaJieGuoXianShiShuChuControl = _yeYaJieGuoXianShiShuChuControl ?? new YeYaJieGuoXianShiShuChuControl();
+                        control = _yeYaJieGuoXianShiShuChuControl;
+                        break;
+
+                    // "三维流动液力计算"
                     case ViewType.ZhiDongNiuJuPiPeiTeXingGuanXi:
                         _zhiDongNiuJuPiPeiTeXingGuanXiControl = _zhiDongNiuJuPiPeiTeXingGuanXiControl ?? new ZhiDongNiuJuPiPeiTeXingGuanXiControl();
                         control = _zhiDongNiuJuPiPeiTeXingGuanXiControl;

@@ -26,7 +26,12 @@ namespace MechanicalModel.ViewModels
         private JinYouTongDaoKongSunJiSuanViewModel _jinYouTongDaoKongSunJiSuanViewModel = null;
         private JinYouTongDaoKongSunJiSuanJieGuoShuChuViewModel _jinYouTongDaoKongSunJiSuanJieGuoShuChuViewModel = null;
 
-        // "制动特性计算"
+        // "一维流体静力学液压计算"
+        private YeYaXiTongJieGouTuViewModel _yeYaXiTongJieGouTuViewModel = null;
+        private YeYaJiSuanTiaoJianSheZhiViewModel _yeYaJiSuanTiaoJianSheZhiViewModel = null;
+        private YeYaJieGuoXianShiShuChuViewModel _yeYaJieGuoXianShiShuChuViewModel = null;
+
+        // "三维流动液力计算"
         private ZhiDongNiuJuPiPeiTeXingGuanXiViewModel _zhiDongNiuJuPiPeiTeXingGuanXiViewModel = null;
         private HengNiuJuJiSuanMoXingViewModel _hengNiuJuJiSuanMoXingViewModel = null;
         private HengNiuJuWangGeHuaFenViewModel _hengNiuJuWangGeHuaFenViewModel = null;
@@ -185,7 +190,21 @@ namespace MechanicalModel.ViewModels
                                 this.MechanicalModelViewHostViewModel = _jinYouTongDaoKongSunJiSuanJieGuoShuChuViewModel;
                                 return;
 
-                            // "制动特性计算"
+                            // "一维流体静力学液压计算"
+                            case ViewType.YeYaXiTongJieGouTu:
+                                _yeYaXiTongJieGouTuViewModel = _yeYaXiTongJieGouTuViewModel ?? new YeYaXiTongJieGouTuViewModel();
+                                this.MechanicalModelViewHostViewModel = _yeYaXiTongJieGouTuViewModel;
+                                return;
+                            case ViewType.YeYaJiSuanTiaoJianSheZhi:
+                                _yeYaJiSuanTiaoJianSheZhiViewModel = _yeYaJiSuanTiaoJianSheZhiViewModel ?? new YeYaJiSuanTiaoJianSheZhiViewModel();
+                                this.MechanicalModelViewHostViewModel = _yeYaJiSuanTiaoJianSheZhiViewModel;
+                                return;
+                            case ViewType.YeYaJieGuoXianShiShuChu:
+                                _yeYaJieGuoXianShiShuChuViewModel = _yeYaJieGuoXianShiShuChuViewModel ?? new YeYaJieGuoXianShiShuChuViewModel();
+                                this.MechanicalModelViewHostViewModel = _yeYaJieGuoXianShiShuChuViewModel;
+                                return;
+
+                            // "三维流动液力计算"
                             case ViewType.ZhiDongNiuJuPiPeiTeXingGuanXi:
                                 _zhiDongNiuJuPiPeiTeXingGuanXiViewModel = _zhiDongNiuJuPiPeiTeXingGuanXiViewModel ?? new ZhiDongNiuJuPiPeiTeXingGuanXiViewModel();
                                 this.MechanicalModelViewHostViewModel = _zhiDongNiuJuPiPeiTeXingGuanXiViewModel;
@@ -234,7 +253,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public ICommand HengNiuJuJiSuanClick
+        public ICommand ZhiDongJiSuanClick
         {
             get
             {

@@ -47,18 +47,29 @@ namespace MechanicalModel.ViewModels
                     treeViewNodeList.Add(BianJinQiBiKongSunJiSuan);
                     break;
                 case JiSuanType.HengNiuJuJiSuan:
-                    // The second layer for "制动特性计算"
-                    TreeViewNode HengNiuJuJiSuanMoXing = new TreeViewNode("制动特性计算模型", ViewType.HengNiuJuJiSuanMoXing);
+                    // The second layer for "一维流体静力学液压计算"
+                    TreeViewNode YeYaXiTongJieGouTu = new TreeViewNode("系统结构图搭建", ViewType.YeYaXiTongJieGouTu);
+                    TreeViewNode YeYaJiSuanTiaoJianSheZhi = new TreeViewNode("计算条件设置", ViewType.YeYaJiSuanTiaoJianSheZhi);
+                    TreeViewNode YeYaJieGuoXianShiShuChu = new TreeViewNode("计算结果显示及输出", ViewType.YeYaJieGuoXianShiShuChu);
+
+                    // The first layer for "一维流体静力学液压计算"
+                    TreeViewNode YeYaJiSuan = new TreeViewNode("一维流体静力学液压计算", ViewType.Others);
+                    YeYaJiSuan.Nodes = new List<TreeViewNode>() { YeYaXiTongJieGouTu, YeYaJiSuanTiaoJianSheZhi, YeYaJieGuoXianShiShuChu };
+
+                    // The second layer for "三维流动液力计算"
+                    TreeViewNode HengNiuJuJiSuanMoXing = new TreeViewNode("三维计算几何模型", ViewType.HengNiuJuJiSuanMoXing);
                     TreeViewNode ZhiDongNiuJuPiPeiTeXingGuanXi = new TreeViewNode("制动扭矩匹配特性关系", ViewType.ZhiDongNiuJuPiPeiTeXingGuanXi);
                     TreeViewNode HengNiuJuWangGeHuaFen = new TreeViewNode("网格划分", ViewType.HengNiuJuWangGeHuaFen);
                     TreeViewNode HengNiuJuJiSuanCanShuShuRu = new TreeViewNode("计算参数输入", ViewType.HengNiuJuJiSuanCanShuShuRu);
                     TreeViewNode HengNiuJuJiSuan = new TreeViewNode("计算", ViewType.HengNiuJuJiSuan);
                     TreeViewNode HengNiuJuJiSuanJieGuoShuChu = new TreeViewNode("计算结果输出", ViewType.HengNiuJuJiSuanJieGuoShuChu);
 
-                    // The first layer for "制动特性计算"
-                    TreeViewNode ZhiDongTeXingJiSuan = new TreeViewNode("制动特性计算", ViewType.Others);
-                    ZhiDongTeXingJiSuan.Nodes = new List<TreeViewNode>() { ZhiDongNiuJuPiPeiTeXingGuanXi, HengNiuJuJiSuanMoXing, HengNiuJuWangGeHuaFen, HengNiuJuJiSuanCanShuShuRu, HengNiuJuJiSuan, HengNiuJuJiSuanJieGuoShuChu };
+                    // The first layer for "三维流动液力计算"
+                    TreeViewNode ZhiDongTeXingJiSuan = new TreeViewNode("三维流动液力计算", ViewType.Others);
+                    // Hide: ZhiDongNiuJuPiPeiTeXingGuanXi
+                    ZhiDongTeXingJiSuan.Nodes = new List<TreeViewNode>() { HengNiuJuJiSuanMoXing, HengNiuJuWangGeHuaFen, HengNiuJuJiSuanCanShuShuRu, HengNiuJuJiSuan, HengNiuJuJiSuanJieGuoShuChu };
 
+                    treeViewNodeList.Add(YeYaJiSuan);
                     treeViewNodeList.Add(ZhiDongTeXingJiSuan);
                     break;
             }

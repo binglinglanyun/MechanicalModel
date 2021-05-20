@@ -11,24 +11,23 @@ using System.Windows.Input;
 
 namespace MechanicalModel.ViewModels
 {
-    public class HengNiuJuJiSuanMoXingViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
+    public class YeYaXiTongJieGouTuViewModel : PropertyChangedBaseCommonClass, IViewModelCategory
     {
-        public HengNiuJuJiSuanMoXingViewModel()
+        public YeYaXiTongJieGouTuViewModel()
         {
             InitializeItems();
         }
 
         private void InitializeItems()
         {
-            List<DataItem> items = new List<DataItem>();
-            items.Add(new DataItem("动轮", true));
-            items.Add(new DataItem("定轮", true));
-            items.Add(new DataItem("壳体", true));
-            items.Add(new DataItem("背压阀", true));
-            items.Add(new DataItem("滑阀", true));
-            items.Add(new DataItem("其他", true));
+        }
 
-            this.Items = items;
+        public ViewType Type
+        {
+            get
+            {
+                return ViewType.YeYaXiTongJieGouTu;
+            }
         }
 
         public ICommand BrowseButtonClick
@@ -76,24 +75,13 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public ICommand ImportAndShowButtonClick
+        public ICommand ShowButtonClick
         {
             get
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    if (!Directory.Exists(LocationString) || !Directory.Exists(ScriptWrapperForJinQiBiKongSun.WorkDirectory))
-                    {
-                        MessageBox.Show("请设置模型导入路径并确认设置");
-                        return;
-                    }
-
-                    // Create import script
-                    string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForImportMoXing();
-                    if (scriptContent != null)
-                    {
-                        StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
-                    }
+                    this.XiTongJieGouTuVisibility = Visibility.Visible;
                 });
             }
         }
@@ -112,32 +100,24 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private List<DataItem> _items = null;
-        public List<DataItem> Items
-        {
-            get
-            {
-                return _items;
-            }
-            set
-            {
-                SetClassProperty(value, ref _items);
-            }
-        }
-
-        public ViewType Type
-        {
-            get
-            {
-                return ViewType.HengNiuJuJiSuanMoXing;
-            }
-        }
-
         public string SourceUri
         {
             get
             {
-                return Path.GetFullPath("Resources/FakePicture.png"); ;
+                return Path.GetFullPath("Resources/YeYaXiTongJieGouTu.png"); ;
+            }
+        }
+
+        private Visibility _xiTongJieGouTuVisibility = Visibility.Collapsed;
+        public Visibility XiTongJieGouTuVisibility
+        {
+            get
+            {
+                return _xiTongJieGouTuVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _xiTongJieGouTuVisibility);
             }
         }
 
