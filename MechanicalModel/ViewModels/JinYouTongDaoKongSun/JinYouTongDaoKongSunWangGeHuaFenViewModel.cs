@@ -211,6 +211,19 @@ namespace MechanicalModel.ViewModels
             }
         }
 
+        private string _paoMianXianShiButtonContent = "显示";
+        public string PaoMianXianShiButtonContent
+        {
+            get
+            {
+                return _paoMianXianShiButtonContent;
+            }
+            set
+            {
+                SetValueProperty(value, ref _paoMianXianShiButtonContent);
+            }
+        }
+
         public ICommand ConfirmButtonClick
         {
             get
@@ -244,7 +257,23 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    this.PaoMianVisibility = Visibility.Visible;
+                    if (string.IsNullOrEmpty(ScriptWrapperForJinYouTongDaoKongSun.DongLunForWangGeHuaFen) || string.IsNullOrEmpty(ScriptWrapperForJinYouTongDaoKongSun.DingLunForWangGeHuaFen) ||
+                        string.IsNullOrEmpty(ScriptWrapperForJinYouTongDaoKongSun.RuKouForWangGeHuaFen) || string.IsNullOrEmpty(ScriptWrapperForJinYouTongDaoKongSun.ChuKouForWangGeHuaFen))
+                    {
+                        MessageBox.Show("请设置模型");
+                        return;
+                    }
+
+                    if (this.PaoMianVisibility == Visibility.Visible)
+                    {
+                        this.PaoMianVisibility = Visibility.Collapsed;
+                        this.PaoMianXianShiButtonContent = "显示";
+                    }
+                    else
+                    {
+                        this.PaoMianVisibility = Visibility.Visible;
+                        this.PaoMianXianShiButtonContent = "隐藏";
+                    }
                 });
             }
         }

@@ -64,7 +64,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _hanQiLiang = "0.1%";
+        private string _hanQiLiang = "0.1";
         public string HanQiLiang
         {
             get

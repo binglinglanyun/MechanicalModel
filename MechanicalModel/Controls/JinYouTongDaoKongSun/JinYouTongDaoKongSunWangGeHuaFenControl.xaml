@@ -119,7 +119,7 @@
                 <Label Content="网格显示" Style="{DynamicResource LabelBoldTextStyle}"/>
                 <StackPanel Orientation="Horizontal" Margin="20,0,0,20" >
                     <TextBlock Text="剖面显示:" VerticalAlignment="Center"/>
-                    <Button Content="显示" Command="{Binding PaoMianShowButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+                    <Button Content="{Binding PaoMianXianShiButtonContent}" Command="{Binding PaoMianShowButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                     <TextBlock Text="动态显示:" VerticalAlignment="Center"/>

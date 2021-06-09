@@ -77,6 +77,19 @@ namespace MechanicalModel.ViewModels
             }
         }
 
+        private string _chuKouWenDuZhi = "0";
+        public string ChuKouWenDuZhi
+        {
+            get
+            {
+                return _chuKouWenDuZhi;
+            }
+            set
+            {
+                SetValueProperty(value, ref _chuKouWenDuZhi);
+            }
+        }
+
         private string _locationString = "D:\\380流场计算\\空损几何模型\\hengniuju_integrals.txt";
         public string LocationString
         {

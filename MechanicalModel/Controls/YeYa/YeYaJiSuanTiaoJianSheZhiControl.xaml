@@ -36,12 +36,15 @@
                     <TextBlock Text="MPa" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                    <TextBlock Text="液压油:" />
-                    <TextBox Text="{Binding YeYaYou}"/>
-                </StackPanel>
-                <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="含气量:" />
                     <TextBox Text="{Binding HanQiLiang}"/>
+                    <TextBlock Text="%" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="液压油:"/>
+                    <ComboBox HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0" SelectedIndex="0">
+                        <ComboBoxItem Content="OilFiles"/>
+                    </ComboBox>
                 </StackPanel>
             </StackPanel>
 

@@ -29,7 +29,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Vertical">
-                <Label Content="计算点监测：" Style="{DynamicResource LabelBoldTextStyle}"/>
+                <Label Content="计算点监测" Style="{DynamicResource LabelBoldTextStyle}"/>
                 <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                     <CheckBox Content="监测点1坐标参数：" Margin="0,5,0,5" IsChecked="True"/>
                     <StackPanel Style="{DynamicResource PropertyItemStyle}" Margin="20,5,0,5">
@@ -68,7 +68,7 @@
                     <CheckBox Content="气相体积分数监测" IsChecked="True"/>
                 </StackPanel>
 
-                <Label Content="全局监测：" Style="{DynamicResource LabelBoldTextStyle}"/>
+                <Label Content="全局监测" Style="{DynamicResource LabelBoldTextStyle}"/>
                 <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                     <CheckBox Content="动轮扭矩监测" IsChecked="True"/>
                     <CheckBox Content="进口流量监测" IsChecked="True"/>

@@ -36,6 +36,7 @@ namespace MechanicalModel.ViewModels
                 return new DelegateCommand<object>((o) =>
                 {
                     this._moXingLocation = Path.Combine(ScriptWrapperForJinYouTongDaoKongSun.SourceMoXingFolderPath, MoXingList[_selectedMoXingIndex]);
+                    MessageBox.Show("模型设置成功", "计算几何模型");
                 });
             }
         }
@@ -52,7 +53,16 @@ namespace MechanicalModel.ViewModels
                         return;
                     }
 
-                    this.PaoMianVisibility = Visibility.Visible;
+                    if (this.PaoMianVisibility == Visibility.Visible)
+                    {
+                        this.PaoMianVisibility = Visibility.Collapsed;
+                        this.PaoMianXianShiButtonContent = "显示";
+                    }
+                    else
+                    {
+                        this.PaoMianVisibility = Visibility.Visible;
+                        this.PaoMianXianShiButtonContent = "隐藏";
+                    }
                 });
             }
         }
@@ -119,6 +129,19 @@ namespace MechanicalModel.ViewModels
             get
             {
                 return Path.GetFullPath("Resources/JinYouTongDaoJiHeMoXing.png");
+            }
+        }
+
+        private string _paoMianXianShiButtonContent = "显示";
+        public string PaoMianXianShiButtonContent
+        {
+            get
+            {
+                return _paoMianXianShiButtonContent;
+            }
+            set
+            {
+                SetValueProperty(value, ref _paoMianXianShiButtonContent);
             }
         }
 

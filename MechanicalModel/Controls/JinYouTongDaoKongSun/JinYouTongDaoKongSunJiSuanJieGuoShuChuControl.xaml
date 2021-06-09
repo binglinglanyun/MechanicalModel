@@ -63,7 +63,7 @@
             <Label Content="曲线和云图显示" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
                 <TextBlock Text="曲线或云图显示:" VerticalAlignment="Center"/>
-                <Button Content="显示" Command="{Binding QuXianAndYunTuXianShiButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+                <Button Content="{Binding QuXianAndYunTuXianShiButtonContent}" Command="{Binding QuXianAndYunTuXianShiButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
 
             <TabControl Margin="25,0,0,0" Visibility="{Binding QuXianAndYunTuVisibility}">

@@ -118,6 +118,19 @@ namespace MechanicalModel.ViewModels
             }
         }
 
+        private string _quXianAndYunTuXianShiButtonContent = "显示";
+        public string QuXianAndYunTuXianShiButtonContent
+        {
+            get
+            {
+                return _quXianAndYunTuXianShiButtonContent;
+            }
+            set
+            {
+                SetValueProperty(value, ref _quXianAndYunTuXianShiButtonContent);
+            }
+        }
+
         public ICommand BrowseButtonClick
         {
             get
@@ -263,7 +276,16 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    this.QuXianAndYunTuVisibility = Visibility.Visible;
+                    if (this.QuXianAndYunTuVisibility == Visibility.Visible)
+                    {
+                        this.QuXianAndYunTuVisibility = Visibility.Collapsed;
+                        this.QuXianAndYunTuXianShiButtonContent = "显示";
+                    }
+                    else
+                    {
+                        this.QuXianAndYunTuVisibility = Visibility.Visible;
+                        this.QuXianAndYunTuXianShiButtonContent = "隐藏";
+                    }
                 });
             }
         }

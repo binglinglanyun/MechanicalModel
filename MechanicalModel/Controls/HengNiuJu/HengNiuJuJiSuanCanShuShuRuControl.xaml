@@ -70,13 +70,13 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="充油进口:" />
-                            <TextBox Text="{Binding ChongYouJinKou}"/>
+                            <TextBlock Text="进口压力:" />
+                            <TextBox Text="{Binding JinKouYaLi}"/>
                             <TextBlock Text="MPa" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="通气孔:" />
-                            <TextBox Text="{Binding TongQiKong}"/>
+                            <TextBlock Text="通气孔压力:" />
+                            <TextBox Text="{Binding TongQiKongYaLi}"/>
                             <TextBlock Text="MPa" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
@@ -92,72 +92,18 @@
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Grid.Column="1">
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="背压阀出口:" />
-                            <TextBox Text="{Binding BeiYaFaChuKou}"/>
-                            <TextBlock Text="MPa" Margin="5,0,0,0"/>
+                            <TextBlock Text="进口温度:" />
+                            <TextBox Text="{Binding JinKouWenDu}"/>
+                            <TextBlock Text="℃" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="反馈压力入口:" />
-                            <TextBox Text="{Binding FanKuiYaLiRuKou}"/>
-                            <TextBlock Text="MPa" Margin="5,0,0,0"/>
-                        </StackPanel>
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="指令油入口:" />
-                            <TextBox Text="{Binding ZhiLingYouRuKou}"/>
-                            <TextBlock Text="MPa" Margin="5,0,0,0"/>
-                        </StackPanel>
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="滑阀回油出口:" />
-                            <TextBox Text="{Binding HuaFaHuiYouChuKou}"/>
-                            <TextBlock Text="MPa" Margin="5,0,0,0"/>
+                            <TextBlock Text="出口边界条件:" />
+                            <ComboBox HorizontalAlignment="Stretch" Width="100" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0" SelectedIndex="0">
+                                <ComboBoxItem Content="File"/>
+                            </ComboBox>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
-
-                <!--<Border Style="{DynamicResource SplitBorderStyle}"/>
-                <Label Content="阀门参数" Style="{DynamicResource LabelBoldTextStyle}"/>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Orientation="Vertical">
-                        <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
-                            <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                                <TextBlock Text="背压阀阀芯质量:" />
-                                <TextBox Text="{Binding BeiYaFaFaXinZhiLiang}"/>
-                                <TextBlock Text="kg" Margin="5,0,0,0"/>
-                            </StackPanel>
-                            <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                                <TextBlock Text="背压阀弹簧刚度:" />
-                                <TextBox Text="{Binding BeiYaFaTanHuangGangDu}"/>
-                                <TextBlock Text="N/m" Margin="5,0,0,0"/>
-                            </StackPanel>
-                            <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                                <TextBlock Text="背压阀弹簧预紧力:" />
-                                <TextBox Text="{Binding BeiYaFaTanHuangYuJinLi}"/>
-                                <TextBlock Text="N" Margin="5,0,0,0"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Grid.Column="1">
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="滑阀阀芯质量:" />
-                            <TextBox Text="{Binding HuaFaFaXinZhiLiang}"/>
-                            <TextBlock Text="kg" Margin="5,0,0,0"/>
-                        </StackPanel>
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="滑阀弹簧刚度:" />
-                            <TextBox Text="{Binding HuaFaTanHuangGangDu}"/>
-                            <TextBlock Text="N/m" Margin="5,0,0,0"/>
-                        </StackPanel>
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="滑阀弹簧预紧力:" />
-                            <TextBox Text="{Binding HuaFaTanHuangYuJinLi}"/>
-                            <TextBlock Text="N" Margin="5,0,0,0"/>
-                        </StackPanel>
-                    </StackPanel>
-                </Grid>-->
 
                 <Border Style="{DynamicResource SplitBorderStyle}"/>
                 <Label Content="物理模型选择" Style="{DynamicResource LabelBoldTextStyle}"/>
@@ -165,6 +111,7 @@
                     <CheckBox Content="湍流模型" IsChecked="True"/>
                     <CheckBox Content="多相流模型" IsChecked="True"/>
                     <CheckBox Content="运动模型" IsChecked="True"/>
+                    <CheckBox Content="换热模型" IsChecked="True"/>
                 </StackPanel>
                 <Button Content="确认设置" Margin="10,20,0,0" Command="{Binding ConfirmButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
             </StackPanel>

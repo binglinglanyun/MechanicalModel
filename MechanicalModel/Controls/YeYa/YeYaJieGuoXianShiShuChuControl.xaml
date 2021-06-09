@@ -61,7 +61,7 @@
             </StackPanel>
 
             <Border Style="{DynamicResource SplitBorderStyle}"/>
-            <Label Content="数值计算结导出" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <Label Content="三维流动液力计算边界条件结果导出" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
                 <TextBlock Text="结果位置:" VerticalAlignment="Center"/>
                 <ComboBox Text="{Binding JieGuoShuChuLocation}" HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0"/>

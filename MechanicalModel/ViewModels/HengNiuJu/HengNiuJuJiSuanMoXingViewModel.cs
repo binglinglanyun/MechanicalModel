@@ -20,15 +20,6 @@ namespace MechanicalModel.ViewModels
 
         private void InitializeItems()
         {
-            List<DataItem> items = new List<DataItem>();
-            items.Add(new DataItem("动轮", true));
-            items.Add(new DataItem("定轮", true));
-            items.Add(new DataItem("壳体", true));
-            items.Add(new DataItem("背压阀", true));
-            items.Add(new DataItem("滑阀", true));
-            items.Add(new DataItem("其他", true));
-
-            this.Items = items;
         }
 
         public ICommand BrowseButtonClick
@@ -51,27 +42,6 @@ namespace MechanicalModel.ViewModels
                     }
 
                     this.LocationString = localFolder;
-                });
-            }
-        }
-
-        public ICommand ConfirmButtonClick
-        {
-            get
-            {
-                return new DelegateCommand<object>((o) =>
-                {
-                    try
-                    {
-                        this.LoadingVisibility = Visibility.Visible;
-                        CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForHengNiuJu.WorkDirectory);
-                        this.LoadingVisibility = Visibility.Collapsed;
-                        MessageBox.Show("设置成功", "恒扭矩计算模型导入");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(string.Format("模型导入失败，错误信息：{0}", ex.Message));
-                    }
                 });
             }
         }
@@ -109,19 +79,6 @@ namespace MechanicalModel.ViewModels
             set
             {
                 SetValueProperty(value, ref _locationString);
-            }
-        }
-
-        private List<DataItem> _items = null;
-        public List<DataItem> Items
-        {
-            get
-            {
-                return _items;
-            }
-            set
-            {
-                SetClassProperty(value, ref _items);
             }
         }
 

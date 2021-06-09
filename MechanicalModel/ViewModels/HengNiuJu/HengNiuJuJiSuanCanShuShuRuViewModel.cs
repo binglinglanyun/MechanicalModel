@@ -67,7 +67,7 @@ namespace MechanicalModel.ViewModels
 
         #region BianJieTiaoJianDingYi
         private string _chongYouJinKou = "0.2";
-        public string ChongYouJinKou
+        public string JinKouYaLi
         {
             get
             {
@@ -79,16 +79,16 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _tongQiKong = "0.1";
-        public string TongQiKong
+        private string _tongQiKongYaLi = "0.1";
+        public string TongQiKongYaLi
         {
             get
             {
-                return _tongQiKong;
+                return _tongQiKongYaLi;
             }
             set
             {
-                SetValueProperty(value, ref _tongQiKong);
+                SetValueProperty(value, ref _tongQiKongYaLi);
             }
         }
 
@@ -118,135 +118,16 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _beiYaFaChuKou = "0.1";
-        public string BeiYaFaChuKou
+        private string _jinKouWenDu = "45";
+        public string JinKouWenDu
         {
             get
             {
-                return _beiYaFaChuKou;
+                return _jinKouWenDu;
             }
             set
             {
-                SetValueProperty(value, ref _beiYaFaChuKou);
-            }
-        }
-
-        private string _fanKuiYaLiRuKou = "2.1";
-        public string FanKuiYaLiRuKou
-        {
-            get
-            {
-                return _fanKuiYaLiRuKou;
-            }
-            set
-            {
-                SetValueProperty(value, ref _fanKuiYaLiRuKou);
-            }
-        }
-
-        private string _zhiLingYouRuKou = "0.6";
-        public string ZhiLingYouRuKou
-        {
-            get
-            {
-                return _zhiLingYouRuKou;
-            }
-            set
-            {
-                SetValueProperty(value, ref _zhiLingYouRuKou);
-            }
-        }
-
-        private string _huaFaHuiYouChuKou = "0.2";
-        public string HuaFaHuiYouChuKou
-        {
-            get
-            {
-                return _huaFaHuiYouChuKou;
-            }
-            set
-            {
-                SetValueProperty(value, ref _huaFaHuiYouChuKou);
-            }
-        }
-        #endregion
-
-        #region FaMenCanShu
-        private string _beiYaFaFaXinZhiLiang = "0.55";
-        public string BeiYaFaFaXinZhiLiang
-        {
-            get
-            {
-                return _beiYaFaFaXinZhiLiang;
-            }
-            set
-            {
-                SetValueProperty(value, ref _beiYaFaFaXinZhiLiang);
-            }
-        }
-
-        private string _beiYaFaTanHuangGangDu = "12800";
-        public string BeiYaFaTanHuangGangDu
-        {
-            get
-            {
-                return _beiYaFaTanHuangGangDu;
-            }
-            set
-            {
-                SetValueProperty(value, ref _beiYaFaTanHuangGangDu);
-            }
-        }
-
-        private string _beiYaFaTanHuangYuJinLi = "156";
-        public string BeiYaFaTanHuangYuJinLi
-        {
-            get
-            {
-                return _beiYaFaTanHuangYuJinLi;
-            }
-            set
-            {
-                SetValueProperty(value, ref _beiYaFaTanHuangYuJinLi);
-            }
-        }
-
-        private string _huaFaFaXinZhiLiang = "0.01";
-        public string HuaFaFaXinZhiLiang
-        {
-            get
-            {
-                return _huaFaFaXinZhiLiang;
-            }
-            set
-            {
-                SetValueProperty(value, ref _huaFaFaXinZhiLiang);
-            }
-        }
-
-        private string _huaFaTanHuangGangDu = "0";
-        public string HuaFaTanHuangGangDu
-        {
-            get
-            {
-                return _huaFaTanHuangGangDu;
-            }
-            set
-            {
-                SetValueProperty(value, ref _huaFaTanHuangGangDu);
-            }
-        }
-
-        private string _huaFaTanHuangYuJinLi = "0";
-        public string HuaFaTanHuangYuJinLi
-        {
-            get
-            {
-                return _huaFaTanHuangYuJinLi;
-            }
-            set
-            {
-                SetValueProperty(value, ref _huaFaTanHuangYuJinLi);
+                SetValueProperty(value, ref _jinKouWenDu);
             }
         }
         #endregion
@@ -263,21 +144,20 @@ namespace MechanicalModel.ViewModels
                     // {0} - 动轮初始转速(rad/s)  {1} - 动轮转动惯量 {2} - 背压阀出口  {3} - 滑阀回油出口
                     // {4} - 指令油入口   {5} - 充油进口   {6} - 通气孔   {7} - 反馈压力入口
                     double dongLunChuShiZhuanSu = Math.Round(double.Parse(this.DongLunChuShiZhuanSu) * Math.PI / 30, 5);
-                    double beiYaFaChuKou = double.Parse(this.BeiYaFaChuKou) * 1000000;
-                    double huaFaHuiYouChuKou = double.Parse(this.HuaFaHuiYouChuKou) * 1000000;
-                    double zhiLingYouRuKou = double.Parse(this.ZhiLingYouRuKou) * 1000000;
-                    double chongYouJinKou = double.Parse(this.ChongYouJinKou) * 1000000;
-                    double tongQiKong = double.Parse(this.TongQiKong) * 1000000;
-                    double fanKuiYaLiRuKou = double.Parse(this.FanKuiYaLiRuKou) * 1000000;
+                    double beiYaFaChuKou = double.Parse(this.JinKouWenDu) * 1000000;
+                    double chongYouJinKou = double.Parse(this.JinKouYaLi) * 1000000;
+                    double tongQiKong = double.Parse(this.TongQiKongYaLi) * 1000000;
+                    // TODO: fix the fake values.
                     ScriptWrapperForHengNiuJu.BianJieTiaoJianDingYi = string.Format(ScriptTemplateForHengNiuJu.BianJieTiaoJianDingYi,
-                        dongLunChuShiZhuanSu, this.DongLunZhuanDongGuanLiang, beiYaFaChuKou, huaFaHuiYouChuKou,
-                        zhiLingYouRuKou, chongYouJinKou, tongQiKong, fanKuiYaLiRuKou);
+                        dongLunChuShiZhuanSu, this.DongLunZhuanDongGuanLiang, beiYaFaChuKou, tongQiKong,
+                        tongQiKong, chongYouJinKou, tongQiKong, tongQiKong);
 
                     // {0} - 背压阀阀芯质量 {1} - 背压阀弹簧刚度 {2} - 背压阀弹簧预紧力
                     // {3} - 滑阀阀芯质量  {4} - 滑阀弹簧刚度 {5} - 滑阀弹簧预紧力
+                    // TODO: fix the fake values.
                     ScriptWrapperForHengNiuJu.FaMenCanShu = string.Format(ScriptTemplateForHengNiuJu.FaMenCanShu, 
-                        this.BeiYaFaFaXinZhiLiang, this.BeiYaFaTanHuangGangDu, this.BeiYaFaTanHuangYuJinLi, 
-                        this.HuaFaFaXinZhiLiang, this.HuaFaTanHuangGangDu, this.HuaFaTanHuangYuJinLi);
+                        this.DongLunZhuanDongGuanLiang, this.DongLunZhuanDongGuanLiang, this.DongLunZhuanDongGuanLiang, 
+                        this.DongLunZhuanDongGuanLiang, this.DongLunZhuanDongGuanLiang, this.DongLunZhuanDongGuanLiang);
 
                     MessageBox.Show("设置成功", "恒扭矩计算参数输入");
                 });

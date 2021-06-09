@@ -36,23 +36,28 @@
             <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="起效时间t0:" />
-                    <TextBox Text="{Binding QiXiaoShiJian}"/>
+                    <TextBox Text="{Binding QiXiaoShiJian}"  Margin="60,0,0,0"/>
                     <TextBlock Text="s" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="起效时刻缓速器出口压力值:" />
-                    <TextBox Text="{Binding ChuKouYaLiZhi}"/>
+                    <TextBox Text="{Binding ChuKouYaLiZhi}" Margin="23,0,0,0"/>
                     <TextBlock Text="MPa" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="起效时刻动轮转速:" />
-                    <TextBox Text="{Binding DongLunZhuanSu}"/>
+                    <TextBox Text="{Binding DongLunZhuanSu}"  Margin="60,0,0,0"/>
                     <TextBlock Text="rpm" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="控制扭矩Mk:" />
-                    <TextBox Text="{Binding KongZhiNiuJu}"/> 
+                    <TextBox Text="{Binding KongZhiNiuJu}"  Margin="60,0,0,0"/> 
                     <TextBlock Text="N.m" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="起效时刻缓速器出口温度值:" />
+                    <TextBox Text="{Binding ChuKouWenDuZhi}" Margin="23,0,0,0"/>
+                    <TextBlock Text="℃" Margin="5,0,0,0"/>
                 </StackPanel>
             </StackPanel>
 
