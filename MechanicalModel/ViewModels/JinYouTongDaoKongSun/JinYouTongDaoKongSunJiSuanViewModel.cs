@@ -26,7 +26,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _dieDaiBuShu = "2260";
+        private string _dieDaiBuShu = "3000";
         public string DieDaiBuShu
         {
             get

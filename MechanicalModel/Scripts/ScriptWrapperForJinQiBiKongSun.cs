@@ -36,6 +36,9 @@ namespace MechanicalModel.Scripts
         public static string JianKongDianZuoBiaoCanShu = string.Empty;
 
         public const string KongSunGongLvResultTitle = "pow_rotor_blades";
+        public const string KongSunNiuJuResultTitle = "torq_rotor_blades";
+        public const string ChuKouWenDuResultTitle = "T_outlet_air_in";
+        public const string RuKouLiuLiangResultTitle = "v_flux_oil_inlet_inlet";
 
         private static string GetWangGeHuaFenScript()
         {

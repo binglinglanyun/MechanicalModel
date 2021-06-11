@@ -38,7 +38,47 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _locationString = "D:\\Script\\results\\kongsun_integrals.txt";
+        private string _kongSunNiuJu = "0";
+        public string KongSunNiuJu
+        {
+            get
+            {
+                return _kongSunNiuJu;
+            }
+            set
+            {
+                SetValueProperty(value, ref _kongSunNiuJu);
+            }
+        }
+
+        private string _chuKouWenDu = "0";
+        public string ChuKouWenDu
+        {
+            get
+            {
+                return _chuKouWenDu;
+            }
+            set
+            {
+                SetValueProperty(value, ref _chuKouWenDu);
+            }
+        }
+
+        private string _ruKouLiuLiang = "0";
+        public string RuKouLiuLiang
+        {
+            get
+            {
+                return _ruKouLiuLiang;
+            }
+            set
+            {
+                SetValueProperty(value, ref _ruKouLiuLiang);
+            }
+        }
+
+        private const string _defaultLocationString = "D:\\Script\\results\\kongsun_integrals.txt";
+        private string _locationString = _defaultLocationString;
         public string LocationString
         {
             get
@@ -48,6 +88,7 @@ namespace MechanicalModel.ViewModels
             set
             {
                 SetValueProperty(value, ref _locationString);
+                this._inputJieGuoFilePaths = new List<string>() { _locationString };
             }
         }
 
@@ -131,31 +172,31 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public ICommand BrowseButtonClick
+        private List<string> _inputJieGuoFilePaths = new List<string>() { _defaultLocationString };
+        public ICommand InputJieGuoBrowseButtonClick
         {
             get
             {
                 return new DelegateCommand<object>((o) =>
                 {
-                    string localFolder;
                     System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
                     dialog.Title = "计算结果位置";
+                    dialog.Multiselect = true;
                     System.Windows.Forms.DialogResult result = dialog.ShowDialog();
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {
-                        localFolder = dialog.FileName;
+                        this.LocationString = dialog.FileNames[0];
+                        this._inputJieGuoFilePaths = new List<string>(dialog.FileNames);
                     }
                     else
                     {
                         return;
                     }
-
-                    this.LocationString = localFolder;
                 });
             }
         }
 
-        public ICommand JieGuoBrowseButtonClick
+        public ICommand OutputJieGuoBrowseButtonClick
         {
             get
             {
@@ -181,37 +222,62 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private Dictionary<string, string> _jieGuoDic = new Dictionary<string, string>();
+        // Parse the _dieDaiBuShu-th results of the specific column.
+        private const int _dieDaiBuShu = 2260;
+        private const int _ruKouLiuLiangBuShu = 500; // RuKouLiuLiang is a average value.
+        private Dictionary<string, string[]> _jieGuoDic = new Dictionary<string, string[]>();
         public ICommand ImportButtonClick
         {
             get
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    if (File.Exists(this.LocationString))
+                    foreach (var filePath in this._inputJieGuoFilePaths)
                     {
-                        using (StreamReader sr = new StreamReader(this.LocationString))
+                        if (!File.Exists(filePath))
                         {
+                            MessageBox.Show("结果文件不存在: " + filePath);
+                        }
+
+                        using (StreamReader sr = new StreamReader(filePath))
+                        {
+                            int dieDaiBuShu = _dieDaiBuShu;
                             string[] resultTitles = sr.ReadLine().Split('\t');
-                            int index = resultTitles.ToList().IndexOf(ScriptWrapperForJinQiBiKongSun.KongSunGongLvResultTitle);
-                            if (index != -1)
+                            int gongLvIndex = resultTitles.ToList().IndexOf(ScriptWrapperForJinQiBiKongSun.KongSunGongLvResultTitle);
+                            int niuJuIndex = resultTitles.ToList().IndexOf(ScriptWrapperForJinQiBiKongSun.KongSunNiuJuResultTitle);
+                            int wenDuIndex = resultTitles.ToList().IndexOf(ScriptWrapperForJinQiBiKongSun.ChuKouWenDuResultTitle);
+                            int liuLiangIndex = resultTitles.ToList().IndexOf(ScriptWrapperForJinQiBiKongSun.RuKouLiuLiangResultTitle);
+
+                            if (gongLvIndex != -1 && niuJuIndex != -1 && wenDuIndex != -1 && liuLiangIndex != -1)
                             {
                                 string st = string.Empty;
-                                while (!sr.EndOfStream)
+                                double sumRuKouLiuLiang = 0;
+                                while (!sr.EndOfStream && --dieDaiBuShu >= 0)
                                 {
                                     st = sr.ReadLine();
+                                    // Sum of the last _ruKouLiuLiangBuShu right before _dieDaiBuShu.
+                                    if (dieDaiBuShu < _ruKouLiuLiangBuShu)
+                                    {
+                                        sumRuKouLiuLiang += double.Parse(st.Split('\t')[liuLiangIndex]);
+                                    }
                                 }
 
-                                this.KongSunGongLv = Math.Abs(double.Parse(st.Split('\t')[index])).ToString();
+                                // st is the dieDaiBuShu-th line.
+                                this.KongSunGongLv = Math.Abs(double.Parse(st.Split('\t')[gongLvIndex])).ToString();
+                                this.KongSunNiuJu = Math.Abs(double.Parse(st.Split('\t')[niuJuIndex])).ToString();
+                                // - 273.15: K -> ℃
+                                this.ChuKouWenDu = (Math.Abs(double.Parse(st.Split('\t')[wenDuIndex])) - 273.15).ToString();
+                                // * 60000:  m3/s -> L/min
+                                this.RuKouLiuLiang = Math.Abs(Math.Round(sumRuKouLiuLiang / _ruKouLiuLiangBuShu * 60000, 4)).ToString();
 
-                                var fileName = Path.GetFileNameWithoutExtension(this.LocationString);
+                                var fileName = Path.GetFileNameWithoutExtension(filePath).Replace("torque_kongsun_", "");
                                 if (_jieGuoDic.ContainsKey(fileName))
                                 {
-                                    _jieGuoDic[fileName] = this.KongSunGongLv;
+                                    _jieGuoDic[fileName] = new string[] { this.KongSunGongLv, this.KongSunNiuJu, this.ChuKouWenDu, this.RuKouLiuLiang };
                                 }
                                 else
                                 {
-                                    _jieGuoDic.Add(fileName, this.KongSunGongLv);
+                                    _jieGuoDic.Add(fileName, new string[] { this.KongSunGongLv, this.KongSunNiuJu, this.ChuKouWenDu, this.RuKouLiuLiang });
                                 }
                             }
                             else
@@ -219,10 +285,6 @@ namespace MechanicalModel.ViewModels
                                 MessageBox.Show(string.Format("结果文件内容格式不正确，找不到列名为{0}的项", ScriptWrapperForJinQiBiKongSun.KongSunGongLvResultTitle));
                             }
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("结果文件不存在");
                     }
                 });
             }
@@ -246,7 +308,7 @@ namespace MechanicalModel.ViewModels
                         return;
                     }
 
-                    File.WriteAllLines(this.JieGuoShuChuLocation, _jieGuoDic.Select(x => x.Key + " " + x.Value).ToArray());
+                    File.WriteAllLines(this.JieGuoShuChuLocation, _jieGuoDic.Select(x => string.Join(" ", x.Key.Split('_')) + " " + string.Join(" ", x.Value)).ToArray());
                     MessageBox.Show("结果文件导出成功", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 });
             }

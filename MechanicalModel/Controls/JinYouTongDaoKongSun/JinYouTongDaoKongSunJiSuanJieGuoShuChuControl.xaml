@@ -26,7 +26,7 @@
                 <TextBlock Text="已有数值计算结果导入:" VerticalAlignment="Center"/>
                 <ComboBox Text="{Binding LocationString}" HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="20,0,0,0"/>
 
-                <Button Name="buttonBrowse1" Content="浏览..." Command="{Binding BrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+                <Button Name="buttonBrowse1" Content="浏览..." Command="{Binding InputJieGuoBrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
             <Button Content="确认导入" Margin="20,0,0,0" Command="{Binding ImportButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
 
@@ -39,6 +39,21 @@
                     <TextBox Text="{Binding KongSunGongLv}"/>
                     <TextBlock Text="W" Margin="5,0,0,0"/>
                 </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="空损扭矩:" />
+                    <TextBox Text="{Binding KongSunNiuJu}"/>
+                    <TextBlock Text="N.M" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="出口温度:" />
+                    <TextBox Text="{Binding ChuKouWenDu}"/>
+                    <TextBlock Text="℃" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                    <TextBlock Text="入口流量:" />
+                    <TextBox Text="{Binding RuKouLiuLiang}"/>
+                    <TextBlock Text="L/min" Margin="5,0,0,0"/>
+                </StackPanel>
             </StackPanel>
 
             <Border Style="{DynamicResource SplitBorderStyle}"/>
@@ -48,7 +63,7 @@
                 <TextBlock Text="结果位置:" VerticalAlignment="Center"/>
                 <ComboBox Text="{Binding JieGuoShuChuLocation}" HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0"/>
 
-                <Button Name="buttonBrowse2" Content="浏览..." Command="{Binding JieGuoBrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+                <Button Name="buttonBrowse2" Content="浏览..." Command="{Binding OutputJieGuoBrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
             <Button Content="确认导出" Margin="20,0,0,0" Command="{Binding ExportButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
 
