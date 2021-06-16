@@ -52,9 +52,9 @@
                     </StackPanel>
                     <StackPanel>
                         <CheckBox Content="油" IsChecked="True"/>
-                        <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
+                        <StackPanel Orientation="Horizontal" Margin="20,0,0,10">
                             <TextBlock Text="选择油文件:" />
-                            <ComboBox HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0" SelectedIndex="0">
+                            <ComboBox HorizontalAlignment="Stretch" Width="100" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0" SelectedIndex="0">
                                 <ComboBoxItem Content="OilFiles"/>
                             </ComboBox>
                         </StackPanel>
@@ -84,11 +84,6 @@
                             <TextBox Text="{Binding DongLunChuShiZhuanSu}"/>
                             <TextBlock Text="rpm" Margin="5,0,0,0"/>
                         </StackPanel>
-                        <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="动轮转动惯量:" />
-                            <TextBox Text="{Binding DongLunZhuanDongGuanLiang}"/>
-                            <TextBlock Text="kg.m2" Margin="5,0,0,0"/>
-                        </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Grid.Column="1">
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
@@ -97,13 +92,24 @@
                             <TextBlock Text="℃" Margin="5,0,0,0"/>
                         </StackPanel>
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                            <TextBlock Text="出口边界条件:" />
-                            <ComboBox HorizontalAlignment="Stretch" Width="100" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0" SelectedIndex="0">
-                                <ComboBoxItem Content="File"/>
-                            </ComboBox>
+                            <TextBlock Text="动轮转动惯量:" />
+                            <TextBox Text="{Binding DongLunZhuanDongGuanLiang}"/>
+                            <TextBlock Text="kg.m2" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
+
+                <Border Style="{DynamicResource SplitBorderStyle}"/>
+                <Label Content="出口边界条件" Style="{DynamicResource LabelBoldTextStyle}"/>
+                
+                <StackPanel Style="{DynamicResource SectionStackPanelStyle}">
+                    <StackPanel Style="{DynamicResource PropertyItemStyle}">
+                        <TextBlock Text="文件位置:" />
+                        <ComboBox Text="{Binding BianJieTiaoJianFileLocation}" HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0"/>
+
+                        <Button Name="buttonBrowse2" Content="浏览..." Command="{Binding BianJieTiaoJianBrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+                    </StackPanel>
+                </StackPanel>
 
                 <Border Style="{DynamicResource SplitBorderStyle}"/>
                 <Label Content="物理模型选择" Style="{DynamicResource LabelBoldTextStyle}"/>

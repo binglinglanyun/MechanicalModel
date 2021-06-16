@@ -36,19 +36,14 @@
                     <TextBlock Text="MPa" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                    <TextBlock Text="含气量:" />
-                    <TextBox Text="{Binding HanQiLiang}"/>
-                    <TextBlock Text="%" Margin="5,0,0,0"/>
-                </StackPanel>
-                <StackPanel Style="{DynamicResource PropertyItemStyle}">
                     <TextBlock Text="液压油:"/>
-                    <ComboBox HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0" SelectedIndex="0">
-                        <ComboBoxItem Content="OilFiles"/>
+                    <ComboBox HorizontalAlignment="Stretch" Width="100" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0" SelectedIndex="0">
+                        <ComboBoxItem Content="15W40"/>
                     </ComboBox>
                 </StackPanel>
             </StackPanel>
 
-            <Button Content="设置并计算" Margin="10,20,0,0" Command="{Binding ConfirmButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
+            <Button Content="设置并计算" Margin="10,20,0,0" Command="{Binding SetAndComputeButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
         </StackPanel>
     </Grid>
 </UserControl>

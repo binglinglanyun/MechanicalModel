@@ -38,7 +38,8 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _locationString = "D:\\380流场计算\\空损几何模型\\kongsun_integrals.txt";
+        private string _locationString = "E:\\TorqueAnalysisSystem-NoLoadLoss\\Scripts\\results\\torque_jinqibi_kongsun_results.txt";
+        
         public string LocationString
         {
             get
@@ -118,6 +119,7 @@ namespace MechanicalModel.ViewModels
                     string localFolder;
                     System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
                     dialog.Title = "计算结果位置";
+                    dialog.InitialDirectory = Path.GetDirectoryName(this.LocationString);
                     System.Windows.Forms.DialogResult result = dialog.ShowDialog();
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {

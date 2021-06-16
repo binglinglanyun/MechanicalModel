@@ -77,7 +77,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private const string _defaultLocationString = "D:\\Script\\results\\kongsun_integrals.txt";
+        private const string _defaultLocationString = "E:\\TorqueAnalysisSystem-NoLoadLoss\\Scripts\\results\\torque_jinyoutongdao_kongsun\\case1\\torque_kongsun_003_1500_0.2_95.txt";
         private string _locationString = _defaultLocationString;
         public string LocationString
         {
@@ -92,7 +92,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _jieGuoShuChuLocation = "D:\\temp\\output.txt";
+        private string _jieGuoShuChuLocation = "E:\\TorqueAnalysisSystem-NoLoadLoss\\Temp\\output.txt";
         public string JieGuoShuChuLocation
         {
             get
@@ -182,6 +182,7 @@ namespace MechanicalModel.ViewModels
                     System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
                     dialog.Title = "计算结果位置";
                     dialog.Multiselect = true;
+                    dialog.InitialDirectory = Path.GetDirectoryName(this.LocationString);
                     System.Windows.Forms.DialogResult result = dialog.ShowDialog();
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {
@@ -207,6 +208,7 @@ namespace MechanicalModel.ViewModels
                     dialog.Title = "结果另存为";
                     dialog.DefaultExt = "txt";
                     dialog.Filter = "All Files (*.*)|*.*";
+                    dialog.InitialDirectory = Path.GetDirectoryName(this.JieGuoShuChuLocation);
                     System.Windows.Forms.DialogResult result = dialog.ShowDialog();
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {

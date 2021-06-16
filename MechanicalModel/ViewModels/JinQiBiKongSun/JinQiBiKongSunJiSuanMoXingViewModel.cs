@@ -48,6 +48,7 @@ namespace MechanicalModel.ViewModels
                     string localFolder;
                     System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
                     dialog.Description = "模型位置";
+                    dialog.SelectedPath = this.LocationString;
                     System.Windows.Forms.DialogResult result = dialog.ShowDialog();
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {
@@ -108,7 +109,7 @@ namespace MechanicalModel.ViewModels
         #endregion
 
         #region Properties
-        private string _locationString = "D:\\380流场计算\\空损几何模型";
+        private string _locationString = "E:\\TorqueAnalysisSystem-NoLoadLoss\\Scripts\\Surface\\JinQiBiKongSun";
         public string LocationString
         {
             get

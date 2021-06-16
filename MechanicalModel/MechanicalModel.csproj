@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MechanicalModel</RootNamespace>
-    <AssemblyName>液力缓速系统关键匹配特性分析系统</AssemblyName>
+    <AssemblyName>变充液率制动过程瞬态充放油模型及分析系统</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -134,6 +134,7 @@
     <Compile Include="Scripts\ScriptWrapperForJinQiBiKongSun.cs" />
     <Compile Include="Scripts\ScriptTemplateForJinQiBiKongSun.cs" />
     <Compile Include="Scripts\ScriptWrapperForJinYouTongDaoKongSun.cs" />
+    <Compile Include="Scripts\ScriptWrapperForYeYa.cs" />
     <Compile Include="Utils\CommonUtils.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Utils\MechanicalModelViewUIConverter.cs" />
@@ -360,6 +361,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\OilFiles\torque_jinyoutongdao_kongsun_viscosity.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\HydrSys_retarder.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="$(PngResources)">

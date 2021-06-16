@@ -25,32 +25,6 @@ namespace MechanicalModel.ViewModels
         }
 
         #region WuZhiDingYi
-        private string _miDuOfOil = "860";
-        public string MiDuOfOil
-        {
-            get
-            {
-                return _miDuOfOil;
-            }
-            set
-            {
-                SetValueProperty(value, ref _miDuOfOil);
-            }
-        }
-
-        private string _nianDuOfOil = "0.026";
-        public string NianDuOfOil
-        {
-            get
-            {
-                return _nianDuOfOil;
-            }
-            set
-            {
-                SetValueProperty(value, ref _nianDuOfOil);
-            }
-        }
-
         private string _nianDuOfAir = "1.853e-005";
         public string NianDuOfAir
         {
@@ -61,6 +35,32 @@ namespace MechanicalModel.ViewModels
             set
             {
                 SetValueProperty(value, ref _nianDuOfAir);
+            }
+        }
+
+        private string _reDaoLvOfAir = "0.0264";
+        public string ReDaoLvOfAir
+        {
+            get
+            {
+                return _reDaoLvOfAir;
+            }
+            set
+            {
+                SetValueProperty(value, ref _reDaoLvOfAir);
+            }
+        }
+
+        private string _biReRongOfAir = "1005";
+        public string BiReRongOfAir
+        {
+            get
+            {
+                return _biReRongOfAir;
+            }
+            set
+            {
+                SetValueProperty(value, ref _biReRongOfAir);
             }
         }
         #endregion
@@ -130,6 +130,19 @@ namespace MechanicalModel.ViewModels
                 SetValueProperty(value, ref _jinKouWenDu);
             }
         }
+
+        private string _bianJieTiaoJianFileLocation = "E:\\TorqueAnalysisSystem-BrakingProcess\\Temp\\YeYa\\bianjie_result.txt";
+        public string BianJieTiaoJianFileLocation
+        {
+            get
+            {
+                return _bianJieTiaoJianFileLocation;
+            }
+            set
+            {
+                SetValueProperty(value, ref _bianJieTiaoJianFileLocation);
+            }
+        }
         #endregion
 
         public ICommand ConfirmButtonClick
@@ -138,8 +151,9 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
+                    // TODO: fix
                     ScriptWrapperForHengNiuJu.WuZhiDingYi = string.Format(ScriptTemplateForHengNiuJu.WuZhiDingYi,
-                         this.NianDuOfOil, this.NianDuOfAir, this.MiDuOfOil);
+                         this.NianDuOfAir, this.NianDuOfAir, this.NianDuOfAir);
 
                     // {0} - 动轮初始转速(rad/s)  {1} - 动轮转动惯量 {2} - 背压阀出口  {3} - 滑阀回油出口
                     // {4} - 指令油入口   {5} - 充油进口   {6} - 通气孔   {7} - 反馈压力入口

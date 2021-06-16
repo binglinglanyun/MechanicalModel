@@ -51,42 +51,81 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _canShuX = "-0.05";
-        public string CanShuX
+        private string _canShuX1 = "-0.05";
+        public string CanShuX1
         {
             get
             {
-                return _canShuX;
+                return _canShuX1;
             }
             set
             {
-                SetValueProperty(value, ref _canShuX);
+                SetValueProperty(value, ref _canShuX1);
             }
         }
 
-        private string _canShuY = "0.083";
-        public string CanShuY
+        private string _canShuY1 = "0.083";
+        public string CanShuY1
         {
             get
             {
-                return _canShuY;
+                return _canShuY1;
             }
             set
             {
-                SetValueProperty(value, ref _canShuY);
+                SetValueProperty(value, ref _canShuY1);
             }
         }
 
-        private string _canShuZ = "0.224";
-        public string CanShuZ
+        private string _canShuZ1 = "0.224";
+        public string CanShuZ1
         {
             get
             {
-                return _canShuZ;
+                return _canShuZ1;
             }
             set
             {
-                SetValueProperty(value, ref _canShuZ);
+                SetValueProperty(value, ref _canShuZ1);
+            }
+        }
+
+        private string _canShuX2 = "-0.05";
+        public string CanShuX2
+        {
+            get
+            {
+                return _canShuX2;
+            }
+            set
+            {
+                SetValueProperty(value, ref _canShuX2);
+            }
+        }
+
+        private string _canShuY2 = "0.083";
+        public string CanShuY2
+        {
+            get
+            {
+                return _canShuY2;
+            }
+            set
+            {
+                SetValueProperty(value, ref _canShuY2);
+            }
+        }
+
+        private string _canShuZ2 = "0.224";
+        public string CanShuZ2
+        {
+            get
+            {
+                return _canShuZ2;
+            }
+            set
+            {
+                SetValueProperty(value, ref _canShuZ2);
             }
         }
 
@@ -99,8 +138,9 @@ namespace MechanicalModel.ViewModels
                     ScriptWrapperForHengNiuJu.JiSuanKongZhiCanShu = string.Format(ScriptTemplateForHengNiuJu.JiSuanKongZhiCanShu,
                         this.ShiJianBuChang, this.BaoCunPinLv);
 
+                    // TODO: fix
                     ScriptWrapperForHengNiuJu.JianKongDianZuoBiaoCanShu = string.Format(ScriptTemplateForHengNiuJu.JianKongDianZuoBiaoCanShu, 
-                        this.CanShuX, this.CanShuY, this.CanShuZ);
+                        this.CanShuX1, this.CanShuY1, this.CanShuZ1);
 
                     string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForJiSuan();
                     if (scriptContent != null)

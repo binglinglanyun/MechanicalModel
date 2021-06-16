@@ -51,7 +51,7 @@ namespace MechanicalModel.ViewModels
             get
             {
                 return new TaskCommand<object>((o) =>
-                {
+                {/*
                     if (!Directory.Exists(LocationString) || !Directory.Exists(ScriptWrapperForJinQiBiKongSun.WorkDirectory))
                     {
                         MessageBox.Show("请设置模型导入路径并确认设置");
@@ -62,14 +62,17 @@ namespace MechanicalModel.ViewModels
                     string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForImportMoXing();
                     if (scriptContent != null)
                     {
-                        StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
+                        //StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
                     }
+                    */
+
+                    this.MoXingVisibility = Visibility.Visible;
                 });
             }
         }
 
         #region Properties
-        private string _locationString = "D:\\380流场计算\\恒扭矩几何模型";
+        private string _locationString = "E:\\TorqueAnalysisSystem-BrakingProcess\\Scripts\\Surface\\HengNiuJu";
         public string LocationString
         {
             get
@@ -94,7 +97,7 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return Path.GetFullPath("Resources/FakePicture.png"); ;
+                return Path.GetFullPath("Resources/HengNiuJuJiHeMoXing.png"); ;
             }
         }
 
@@ -108,6 +111,19 @@ namespace MechanicalModel.ViewModels
             set
             {
                 SetValueProperty(value, ref _loadingVisibility);
+            }
+        }
+
+        private Visibility _moXingVisibility = Visibility.Hidden;
+        public Visibility MoXingVisibility
+        {
+            get
+            {
+                return _moXingVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _moXingVisibility);
             }
         }
         #endregion

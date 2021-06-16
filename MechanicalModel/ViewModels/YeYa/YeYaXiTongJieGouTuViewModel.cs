@@ -15,11 +15,6 @@ namespace MechanicalModel.ViewModels
     {
         public YeYaXiTongJieGouTuViewModel()
         {
-            InitializeItems();
-        }
-
-        private void InitializeItems()
-        {
         }
 
         public ViewType Type
@@ -37,12 +32,13 @@ namespace MechanicalModel.ViewModels
                 return new DelegateCommand<object>((o) =>
                 {
                     string localFolder;
-                    System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
-                    dialog.Description = "模型位置";
+                    System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
+                    dialog.Title = "模型位置";
+                    dialog.InitialDirectory = Path.GetDirectoryName(this.LocationString);
                     System.Windows.Forms.DialogResult result = dialog.ShowDialog();
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {
-                        localFolder = dialog.SelectedPath;
+                        localFolder = dialog.FileName;
                     }
                     else
                     {
@@ -62,10 +58,22 @@ namespace MechanicalModel.ViewModels
                 {
                     try
                     {
+                        if (!File.Exists(this.LocationString))
+                        {
+                            MessageBox.Show(string.Format("系统结构模型不存在： {0}", this.LocationString),
+                                "系统结构图搭建", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            return;
+                        }
+
                         this.LoadingVisibility = Visibility.Visible;
-                        CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForHengNiuJu.WorkDirectory);
+                        if (!Directory.Exists(ScriptWrapperForYeYa.WorkDirectory))
+                        {
+                            Directory.CreateDirectory(ScriptWrapperForYeYa.WorkDirectory);
+                        }
+
+                        File.Copy(this.LocationString, ScriptWrapperForYeYa.DestModulePath, true);
                         this.LoadingVisibility = Visibility.Collapsed;
-                        MessageBox.Show("设置成功", "恒扭矩计算模型导入");
+                        MessageBox.Show("设置成功", "系统结构模型导入");
                     }
                     catch (Exception ex)
                     {
@@ -75,19 +83,52 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public ICommand ShowButtonClick
+        public ICommand JingTaiShowButtonClick
         {
             get
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    this.XiTongJieGouTuVisibility = Visibility.Visible;
+                    if (this.XiTongJieGouTuVisibility == Visibility.Visible)
+                    {
+                        this.XiTongJieGouTuVisibility = Visibility.Collapsed;
+                        this.JingTaiShowButtonContent = "显示";
+                    }
+                    else
+                    {
+                        this.XiTongJieGouTuVisibility = Visibility.Visible;
+                        this.JingTaiShowButtonContent = "隐藏";
+                    }
+                });
+            }
+        }
+
+        public ICommand DongTaiShowButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    if (!File.Exists(this.LocationString))
+                    {
+                        MessageBox.Show(string.Format("系统结构模型不存在： {0}, 请选择模型文件并确认设置", this.LocationString),
+                            "系统结构图搭建", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    if (!File.Exists(ScriptWrapperForYeYa.DestModulePath))
+                    {
+                        MessageBox.Show("请确认设置模型文件", "系统结构图搭建", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    StartOtherProcessHelper.StartAMESim();
                 });
             }
         }
 
         #region Properties
-        private string _locationString = "D:\\380流场计算\\恒扭矩几何模型";
+        private string _locationString = "E:\\TorqueAnalysisSystem-BrakingProcess\\Scripts\\Surface\\YeYa\\HydrSys_retarder.ame";
         public string LocationString
         {
             get
@@ -105,6 +146,19 @@ namespace MechanicalModel.ViewModels
             get
             {
                 return Path.GetFullPath("Resources/YeYaXiTongJieGouTu.png"); ;
+            }
+        }
+
+        private string _jingTaiShowButtonContent = "显示";
+        public string JingTaiShowButtonContent
+        {
+            get
+            {
+                return _jingTaiShowButtonContent;
+            }
+            set
+            {
+                SetValueProperty(value, ref _jingTaiShowButtonContent);
             }
         }
 

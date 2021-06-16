@@ -2,6 +2,7 @@
 using MechanicalModel.Utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +39,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _ev2KongZhiYaLi = "2.5";
+        private string _ev2KongZhiYaLi = "5";
         public string EV2KongZhiYaLi
         {
             get
@@ -50,41 +51,23 @@ namespace MechanicalModel.ViewModels
                 SetValueProperty(value, ref _ev2KongZhiYaLi);
             }
         }
-
-        private string _yeYaYou = "15W40";
-        public string YeYaYou
-        {
-            get
-            {
-                return _yeYaYou;
-            }
-            set
-            {
-                SetValueProperty(value, ref _yeYaYou);
-            }
-        }
-
-        private string _hanQiLiang = "0.1";
-        public string HanQiLiang
-        {
-            get
-            {
-                return _hanQiLiang;
-            }
-            set
-            {
-                SetValueProperty(value, ref _hanQiLiang);
-            }
-        }
         #endregion
 
-        public ICommand ConfirmButtonClick
+        public ICommand SetAndComputeButtonClick
         {
             get
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    MessageBox.Show("设置成功", "参数输入");
+                    /*
+                    if (!File.Exists(ScriptWrapperForYeYa.DestModulePath))
+                    {
+                        MessageBox.Show("系统结构模型不存在, 请选择模型文件并确认设置");
+                        return;
+                    }
+
+                    StartOtherProcessHelper.StartAMESimByPython(string.Format("{0} {1}", this.YouYuanYaLi, this.EV2KongZhiYaLi));
+                    */
                 });
             }
         }

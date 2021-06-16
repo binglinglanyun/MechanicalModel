@@ -27,7 +27,6 @@ namespace MechanicalModel.Utils
             info.WorkingDirectory = @"C:\Program Files\Simerics\";
             info.WindowStyle = ProcessWindowStyle.Minimized;
             info.CreateNoWindow = true;
-            //info.UseShellExecute = false;
             
             try
             {
@@ -104,6 +103,51 @@ namespace MechanicalModel.Utils
             File.Copy(ScriptWrapperForHengNiuJu.SourceLoadResultsSgrdFilePath, ScriptWrapperForHengNiuJu.DestLoadResultsSgrdFilePath, true);
             File.Copy(ScriptWrapperForHengNiuJu.SourceLoadResultScriptPath, ScriptWrapperForHengNiuJu.DestLoadResultScriptPath, true);
             StartPumpLinx(ScriptWrapperForHengNiuJu.DestLoadResultScriptPath);
+        }
+
+        public static void StartAMESim()
+        {
+            // Open with AMESim
+            ProcessStartInfo info = new ProcessStartInfo();
+            info.FileName = "AMESim.exe";
+            info.Arguments = ScriptWrapperForYeYa.DestModulePath;
+            info.WorkingDirectory = @"D:\Program Files\Simcenter\2019.1\Amesim\win64";
+            info.WindowStyle = ProcessWindowStyle.Normal;
+            info.CreateNoWindow = true;
+
+            try
+            {
+                Process proc = System.Diagnostics.Process.Start(info);
+            }
+            catch (System.ComponentModel.Win32Exception ex)
+            {
+                Console.WriteLine(string.Format("系统找不到指定的程序文件。\r{0}", ex.ToString()));
+                return;
+            }
+        }
+
+        public static void StartAMESimByPython(string args)
+        {
+            if (!File.Exists(ScriptWrapperForYeYa.DestScriptPath))
+            {
+                File.Copy(ScriptWrapperForYeYa.SourceScriptPath, ScriptWrapperForYeYa.DestScriptPath);
+            }
+
+            ProcessStartInfo info = new ProcessStartInfo();
+            info.FileName = "AMEPython";
+            info.WorkingDirectory = ScriptWrapperForYeYa.WorkDirectory;
+            info.Arguments = string.Format("{0} {1}", ScriptWrapperForYeYa.DestScriptPath, args);
+            info.UseShellExecute = true;
+
+            try
+            {
+                Process proc = System.Diagnostics.Process.Start(info);
+            }
+            catch (System.ComponentModel.Win32Exception ex)
+            {
+                Console.WriteLine(string.Format("系统找不到指定的程序文件。\r{0}", ex.ToString()));
+                return;
+            }
         }
     }
 }

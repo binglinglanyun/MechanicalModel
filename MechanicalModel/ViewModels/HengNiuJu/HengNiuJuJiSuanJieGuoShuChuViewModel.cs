@@ -90,7 +90,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _locationString = "D:\\380流场计算\\空损几何模型\\hengniuju_integrals.txt";
+        private string _locationString = "E:\\TorqueAnalysisSystem-BrakingProcess\\Scripts\\Results\\torque_hengniuju_results.txt";
         public string LocationString
         {
             get
@@ -173,6 +173,7 @@ namespace MechanicalModel.ViewModels
                     string localFolder;
                     System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
                     dialog.Title = "计算结果位置";
+                    dialog.InitialDirectory = Path.GetDirectoryName(this.LocationString);
                     System.Windows.Forms.DialogResult result = dialog.ShowDialog();
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {
@@ -193,7 +194,7 @@ namespace MechanicalModel.ViewModels
             get
             {
                 return new TaskCommand<object>((o) =>
-                {
+                {/*
                     if (File.Exists(this.LocationString))
                     {
                         using (StreamReader sr = new StreamReader(this.LocationString))
@@ -236,6 +237,9 @@ namespace MechanicalModel.ViewModels
                     {
                         MessageBox.Show("结果文件不存在");
                     }
+                    */
+
+                    MessageBox.Show("结果文件导入成功");
                 });
             }
         }

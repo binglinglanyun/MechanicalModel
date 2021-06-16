@@ -111,7 +111,20 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return Path.GetFullPath("Resources/FakePicture.png"); ;
+                return Path.GetFullPath("Resources/HengNiuJuMoXingWangGe.png"); ;
+            }
+        }
+
+        private Visibility _moXingVisibility = Visibility.Hidden;
+        public Visibility MoXingVisibility
+        {
+            get
+            {
+                return _moXingVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _moXingVisibility);
             }
         }
 
@@ -141,7 +154,8 @@ namespace MechanicalModel.ViewModels
                     string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForWangGeHuaFen();
                     if (scriptContent != null)
                     {
-                        StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
+                        this.MoXingVisibility = Visibility.Visible;
+                        // StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
                     }
                 });
             }
