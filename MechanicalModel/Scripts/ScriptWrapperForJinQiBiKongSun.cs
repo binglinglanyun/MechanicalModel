@@ -13,6 +13,9 @@ namespace MechanicalModel.Scripts
     {
         public const string ScriptName = "torque_jinqibi_kongsun.spro";
         public const string SgrdFileName = "torque_jinqibi_kongsun.sgrd";
+
+        public static string ResultsDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "Results");
+        public static string SurfaceDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", "Surface", "JinQiBiKongSun");
         public static string WorkDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "Temp", "JinQiBiKongSun");
         public static string SourceSgrdFilePath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", SgrdFileName);
         public static string DestSgrdFilePath = Path.Combine(WorkDirectory, SgrdFileName);

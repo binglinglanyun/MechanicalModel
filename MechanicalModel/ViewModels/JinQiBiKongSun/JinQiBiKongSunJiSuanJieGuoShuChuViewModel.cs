@@ -38,8 +38,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _locationString = "E:\\TorqueAnalysisSystem-NoLoadLoss\\Scripts\\results\\torque_jinqibi_kongsun_results.txt";
-        
+        private string _locationString = Path.Combine(ScriptWrapperForJinQiBiKongSun.ResultsDirectory, "torque_jinqibi_kongsun_results.txt");
         public string LocationString
         {
             get

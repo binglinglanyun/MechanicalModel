@@ -115,16 +115,29 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private Visibility _moXingVisibility = Visibility.Hidden;
-        public Visibility MoXingVisibility
+        private string _paoMianXianShiButtonContent = "显示";
+        public string PaoMianXianShiButtonContent
         {
             get
             {
-                return _moXingVisibility;
+                return _paoMianXianShiButtonContent;
             }
             set
             {
-                SetValueProperty(value, ref _moXingVisibility);
+                SetValueProperty(value, ref _paoMianXianShiButtonContent);
+            }
+        }
+
+        private Visibility _paoMianVisibility = Visibility.Hidden;
+        public Visibility PaoMianVisibility
+        {
+            get
+            {
+                return _paoMianVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _paoMianVisibility);
             }
         }
 
@@ -145,7 +158,33 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public ICommand WangGeHuaFenAndShowButtonClick
+        public ICommand PaoMianShowButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    if (string.IsNullOrEmpty(ScriptWrapperForHengNiuJu.DingLunForWangGeHuaFen) || string.IsNullOrEmpty(ScriptWrapperForHengNiuJu.DongLunForWangGeHuaFen))
+                    {
+                        MessageBox.Show("请设置模型");
+                        return;
+                    }
+
+                    if (this.PaoMianVisibility == Visibility.Visible)
+                    {
+                        this.PaoMianVisibility = Visibility.Collapsed;
+                        this.PaoMianXianShiButtonContent = "显示";
+                    }
+                    else
+                    {
+                        this.PaoMianVisibility = Visibility.Visible;
+                        this.PaoMianXianShiButtonContent = "隐藏";
+                    }
+                });
+            }
+        }
+
+        public ICommand DongTaiShowButtonClick
         {
             get
             {
@@ -154,8 +193,7 @@ namespace MechanicalModel.ViewModels
                     string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForWangGeHuaFen();
                     if (scriptContent != null)
                     {
-                        this.MoXingVisibility = Visibility.Visible;
-                        // StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
+                        StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
                     }
                 });
             }

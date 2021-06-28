@@ -33,7 +33,7 @@
                 <TextBlock Text="系统结构图静态显示:" VerticalAlignment="Center"/>
                 <Button Content="{Binding JingTaiShowButtonContent}" Command="{Binding JingTaiShowButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="20,0,0,20" Visibility="Collapsed">
+            <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
                 <TextBlock Text="系统结构图动态显示:" VerticalAlignment="Center"/>
                 <Button Content="显示" Command="{Binding DongTaiShowButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>

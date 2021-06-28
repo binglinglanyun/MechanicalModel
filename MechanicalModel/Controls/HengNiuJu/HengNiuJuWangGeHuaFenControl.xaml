@@ -79,11 +79,16 @@
             <Button Content="确认设置" Command="{Binding ConfirmButtonClick}" Margin="10,20,0,0" MinWidth="50" HorizontalAlignment="Left"/>
 
             <Border Style="{DynamicResource SplitBorderStyle}"/>
-            <StackPanel Orientation="Vertical">
-                <Label Content="网格显示" Style="{DynamicResource LabelBoldTextStyle}"/>
-                <Image Source="{Binding SourceUri}" Visibility="{Binding MoXingVisibility}" Margin="0,-20,0,0" Height="400" Width="600"/>
-                <Button Content="网格划分及显示" Margin="20,-20,0,0" Command="{Binding WangGeHuaFenAndShowButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
+            <Label Content="网格显示" Style="{DynamicResource LabelBoldTextStyle}"/>
+            <StackPanel Orientation="Horizontal" Margin="20,0,0,20" >
+                <TextBlock Text="剖面显示:" VerticalAlignment="Center"/>
+                <Button Content="{Binding PaoMianXianShiButtonContent}" Command="{Binding PaoMianShowButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="20,0,20,0">
+                <TextBlock Text="动态显示:" VerticalAlignment="Center"/>
+                <Button Content="显示" Command="{Binding DongTaiShowButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+            </StackPanel>
+            <Image Source="{Binding SourceUri}" Visibility="{Binding PaoMianVisibility}" Margin="0,-40,0,0" Height="400" Width="700"/>
         </StackPanel>
     </Grid>
 </UserControl>

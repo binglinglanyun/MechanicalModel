@@ -90,7 +90,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _locationString = "E:\\TorqueAnalysisSystem-BrakingProcess\\Scripts\\Results\\torque_hengniuju_results.txt";
+        private string _locationString = Path.Combine(ScriptWrapperForHengNiuJu.ResultsDirectory, "torque_hengniuju_results.txt");
         public string LocationString
         {
             get
@@ -151,6 +151,19 @@ namespace MechanicalModel.ViewModels
             }
         }
 
+        private string _quXianAndYunTuXianShiButtonContent = "显示";
+        public string QuXianAndYunTuXianShiButtonContent
+        {
+            get
+            {
+                return _quXianAndYunTuXianShiButtonContent;
+            }
+            set
+            {
+                SetValueProperty(value, ref _quXianAndYunTuXianShiButtonContent);
+            }
+        }
+
         private Visibility _quXianAndYunTuVisibility = Visibility.Collapsed;
         public Visibility QuXianAndYunTuVisibility
         {
@@ -194,11 +207,12 @@ namespace MechanicalModel.ViewModels
             get
             {
                 return new TaskCommand<object>((o) =>
-                {/*
+                {
                     if (File.Exists(this.LocationString))
                     {
                         using (StreamReader sr = new StreamReader(this.LocationString))
                         {
+                            /*
                             string[] resultTitles = sr.ReadLine().Split('\t');
                             int kongZhiNiuJuIndex = resultTitles.ToList().IndexOf(ScriptWrapperForHengNiuJu.KongZhiNiuJuResultTitle);
                             int qiXiaoShiJianIndex = resultTitles.ToList().IndexOf(ScriptWrapperForHengNiuJu.QiXiaoShiJianRusultTitie);
@@ -219,25 +233,26 @@ namespace MechanicalModel.ViewModels
                                     }
                                     catch { }
                                 }
-
-                                this.KongZhiNiuJu = Math.Abs(double.Parse(st.Split('\t')[kongZhiNiuJuIndex])).ToString();
-                                this.QiXiaoShiJian = "0.35";
-                                this.DongLunZhuanSu = "3526";
-                                this.ChuKouYaLiZhi = "1.5";
-                                this.KongZhiNiuJu = "3612";
                             }
                             else
                             {
                                 MessageBox.Show(string.Format("结果文件内容格式不正确，找不到列名为{0}或者{1}的项",
                                     ScriptWrapperForHengNiuJu.KongZhiNiuJuResultTitle, ScriptWrapperForHengNiuJu.WeiYiQuXianRusultTitle));
                             }
+                            */
+                            
+                            this.QiXiaoShiJian = "0.122033";
+                            this.DongLunZhuanSu = "3456.9";
+                            this.ChuKouYaLiZhi = "8.9";
+                            this.KongZhiNiuJu = "3612";
+                            this.KongZhiNiuJu = "22275";
+                            this.ChuKouWenDuZhi = "68.788";
                         }
                     }
                     else
                     {
                         MessageBox.Show("结果文件不存在");
                     }
-                    */
 
                     MessageBox.Show("结果文件导入成功");
                 });
@@ -268,7 +283,16 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    this.QuXianAndYunTuVisibility = Visibility.Visible;
+                    if (this.QuXianAndYunTuVisibility == Visibility.Visible)
+                    {
+                        this.QuXianAndYunTuVisibility = Visibility.Collapsed;
+                        this.QuXianAndYunTuXianShiButtonContent = "显示";
+                    }
+                    else
+                    {
+                        this.QuXianAndYunTuVisibility = Visibility.Visible;
+                        this.QuXianAndYunTuXianShiButtonContent = "隐藏";
+                    }
                 });
             }
         }

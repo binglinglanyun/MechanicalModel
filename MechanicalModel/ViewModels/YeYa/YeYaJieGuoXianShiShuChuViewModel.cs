@@ -57,7 +57,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _shuZhiFileLocation = "E:\\TorqueAnalysisSystem-BrakingProcess\\Scripts\\results\\shuzhi.txt";
+        private string _shuZhiFileLocation = Path.Combine(ScriptWrapperForYeYa.DefaultResultDirectory, "shuzhi_results.txt");
         public string ShuZhiFileLocation
         {
             get
@@ -70,16 +70,16 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _jieGuoFileLocation = "E:\\TorqueAnalysisSystem-BrakingProcess\\Temp\\yeya\\bianjie_result.txt";
-        public string JieGuoFileLocation
+        private string _bianJie3DInputFileLocation = Path.Combine(ScriptWrapperForYeYa.WorkDirectory, "bianjie_3d_input.txt");
+        public string BianJie3DInputFileLocation
         {
             get
             {
-                return _jieGuoFileLocation;
+                return _bianJie3DInputFileLocation;
             }
             set
             {
-                SetValueProperty(value, ref _jieGuoFileLocation);
+                SetValueProperty(value, ref _bianJie3DInputFileLocation);
             }
         }
 
@@ -118,30 +118,7 @@ namespace MechanicalModel.ViewModels
                     string localFolder;
                     System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
                     dialog.Title = "数值计算结果位置";
-                    System.Windows.Forms.DialogResult result = dialog.ShowDialog();
-                    if (result == System.Windows.Forms.DialogResult.OK)
-                    {
-                        localFolder = dialog.FileName;
-                    }
-                    else
-                    {
-                        return;
-                    }
-
-                    this.JieGuoFileLocation = localFolder;
-                });
-            }
-        }
-
-        public ICommand JieGuoFileBrowseButtonClick
-        {
-            get
-            {
-                return new DelegateCommand<object>((o) =>
-                {
-                    string localFolder;
-                    System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
-                    dialog.Title = "计算边界条件结果位置";
+                    dialog.InitialDirectory = Path.GetDirectoryName(this.ShuZhiFileLocation);
                     System.Windows.Forms.DialogResult result = dialog.ShowDialog();
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {
@@ -157,6 +134,32 @@ namespace MechanicalModel.ViewModels
             }
         }
 
+        public ICommand BianJie3DInputFileBrowseButtonClick
+        {
+            get
+            {
+                return new DelegateCommand<object>((o) =>
+                {
+                    string localFolder;
+                    System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
+                    dialog.Title = "计算边界条件结果位置";
+                    dialog.InitialDirectory = Path.GetDirectoryName(this.BianJie3DInputFileLocation);
+                    System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+                    if (result == System.Windows.Forms.DialogResult.OK)
+                    {
+                        localFolder = dialog.FileName;
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    this.BianJie3DInputFileLocation = localFolder;
+                });
+            }
+        }
+
+        private List<string> _3dInputLines = new List<string>();
         public ICommand ImportButtonClick
         {
             get
@@ -169,8 +172,36 @@ namespace MechanicalModel.ViewModels
                         return;
                     }
 
-                    // Do nothing currently
-                    // Should parse the input file to see if the formats are correct.
+                    string[] lines = File.ReadAllLines(this.ShuZhiFileLocation);
+                    _3dInputLines.Clear();
+                    _3dInputLines.Add(@"<?xml version=""1.0"" encoding=""ISO-8859-1""?>");
+                    int count = 0;
+                    foreach (var line in lines)
+                    {
+                        if (line.StartsWith("#"))
+                        {
+                            continue;
+                        }
+
+                        count++;
+                        string[] values = System.Text.RegularExpressions.Regex.Split(line.Trim(), @"\s{1,}");
+                        try
+                        {
+                            double value1 = Math.Round(decimal.ToDouble(decimal.Parse(values[0].Trim(), System.Globalization.NumberStyles.Float)) * 101325, 1);
+                            decimal value2 = Math.Round(decimal.Parse(values[1].Trim(), System.Globalization.NumberStyles.Float), 5);
+                            _3dInputLines.Add(string.Format("{0}\t{1}", value1, value2));
+                        }
+                        catch
+                        {
+                            MessageBox.Show("数值文件格式不正确： " + line);
+                            _3dInputLines.Clear();
+                            return;
+                        }
+                    }
+                    _3dInputLines.Insert(1, $@"<table size=""{count}"" outside=""extrapolation"">");
+                    _3dInputLines.Add(@"</table>");
+
+                    MessageBox.Show("数值计算结果文件导入成功");
                 });
             }
         }
@@ -187,13 +218,20 @@ namespace MechanicalModel.ViewModels
                         return;
                     }
 
-                    if (!Directory.Exists(Path.GetDirectoryName(this.JieGuoFileLocation)))
+                    if (!Directory.Exists(Path.GetDirectoryName(this.BianJie3DInputFileLocation)))
                     {
                         MessageBoxResult result = MessageBox.Show("目录不存在, 请选择正确的目录", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
 
-                    File.Copy(this.ShuZhiFileLocation, this.JieGuoFileLocation, true);
+                    if (!this._3dInputLines.Any())
+                    {
+                        MessageBox.Show("请先导入数值结果文件");
+                        return;
+                    }
+
+                    File.WriteAllLines(this.BianJie3DInputFileLocation, _3dInputLines.ToArray());
+                    MessageBox.Show("三维流动液力计算边界条件结果文件导出成功");
                 });
             }
         }

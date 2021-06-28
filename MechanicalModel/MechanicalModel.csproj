@@ -300,52 +300,40 @@
   </ItemGroup>
   <PropertyGroup>
     <PngResources>
-	  Resources\HengNiuJuJiHeMoXing.png;
-	  Resources\HengNiuJuMoXingWangGe.png;
-	  Resources\KongSunJiHeMoXing.png;
-	  Resources\KongSunMoXingWangGe.png;
-	  Resources\Background.jpg;
-	  Resources\ZhiDongNiuJu.png;
-	  Resources\DongLunJingYaFenBu.png;
-	  Resources\DingLunJingYaFenBu.png;
-	  Resources\JieMianSuDuShiLiangFenBu.png;
+      Resources\HengNiuJuJiHeMoXing.png;
+      Resources\HengNiuJuMoXingWangGe.png;
+      Resources\KongSunJiHeMoXing.png;
+      Resources\KongSunMoXingWangGe.png;
+      Resources\Background.jpg;
+      Resources\ZhiDongNiuJu.png;
+      Resources\DongLunJingYaFenBu.png;
+      Resources\DingLunJingYaFenBu.png;
+      Resources\JieMianSuDuShiLiangFenBu.png;
       Resources\JinYouTongDaoJiHeMoXing.png;
-	  Resources\JinYouTongDaoWangGe.png;
-	  Resources\JinYouTongDaoZhuanDingSuDu.png;
-	  Resources\JinYouTongDaoZhuanDingWenDu.png;
+      Resources\JinYouTongDaoWangGe.png;
+      Resources\JinYouTongDaoZhuanDingSuDu.png;
+      Resources\JinYouTongDaoZhuanDingWenDu.png;
       Resources\JinYouTongDaoZhuanDingYaLi.png;
-	  Resources\JinYouTongDaoJieMianSuDu.png;
+      Resources\JinYouTongDaoJieMianSuDu.png;
       Resources\JinYouTongDaoJieMianWenDu.png;
-	  Resources\NiuJuQuXian.jpg;
-	  Resources\ZhuanSuBianHua.jpg;
-	  Resources\NiuJuZhuanSuBianHua.jpg;
-	  Resources\ChongYeLvBianHua.jpg;
-	  Resources\ChuKouYaLi.jpg;
-	  Resources\YeYaP2P3.png;
-	  Resources\YeYaRuKouLiuLiangShiJian.png;
-	  Resources\YeYaRuKouLiuLiangYaLi.png;
-	  Resources\YeYaQiTiZhiLiangFenShu.png;
-	  Resources\YeYaXiTongJieGouTu.png;
-	</PngResources>
+      Resources\NiuJuQuXian.jpg;
+      Resources\ZhuanSuBianHua.jpg;
+      Resources\NiuJuZhuanSuBianHua.jpg;
+      Resources\ChongYeLvBianHua.jpg;
+      Resources\ChuKouYaLi.jpg;
+      Resources\YeYaP2P3.png;
+      Resources\YeYaRuKouLiuLiangShiJian.png;
+      Resources\YeYaRuKouLiuLiangYaLi.png;
+      Resources\YeYaQiTiZhiLiangFenShu.png;
+      Resources\YeYaXiTongJieGouTu.png;
+    </PngResources>
   </PropertyGroup>
   <ItemGroup>
     <Resource Include="Resources\Shortcut.ico" />
-    <Content Include="Scripts\torque_hengniuju_loadresults.spro">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\torque_jinqibi_kongsun_loadresults.spro">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Scripts\torque_hengniuju.sgrd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\torque_jinqibi_kongsun.sgrd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\torque_hengniuju_loadresults.sgrd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\torque_jinqibi_kongsun_loadresults.sgrd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\torque_jinyoutongdao_kongsun.sgrd">
@@ -363,7 +351,22 @@
     <Content Include="Scripts\OilFiles\torque_jinyoutongdao_kongsun_viscosity.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\HydrSys_retarder.py">
+    <Content Include="Scripts\OilFiles\torque_hengniuju_density.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\OilFiles\torque_hengniuju_heat_capacity.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\OilFiles\torque_hengniuju_heat_conductivity.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\OilFiles\torque_hengniuju_viscosity.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Module\HydrSys_retarder.ame">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Module\HydrSys_retarder.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="$(PngResources)">

@@ -2,6 +2,7 @@
 using MechanicalModel.Utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -131,7 +132,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _bianJieTiaoJianFileLocation = "E:\\TorqueAnalysisSystem-BrakingProcess\\Temp\\YeYa\\bianjie_result.txt";
+        private string _bianJieTiaoJianFileLocation = Path.Combine(ScriptWrapperForHengNiuJu.ResultsDirectory, "bianjie_3d_input.txt");
         public string BianJieTiaoJianFileLocation
         {
             get
@@ -145,33 +146,70 @@ namespace MechanicalModel.ViewModels
         }
         #endregion
 
+        public ICommand BianJieTiaoJianFileBrowseButtonClick
+        {
+            get
+            {
+                return new DelegateCommand<object>((o) =>
+                {
+                    string localFolder;
+                    System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
+                    dialog.Title = "出口边界条件结果位置";
+                    dialog.InitialDirectory = Path.GetDirectoryName(this.BianJieTiaoJianFileLocation);
+                    System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+                    if (result == System.Windows.Forms.DialogResult.OK)
+                    {
+                        localFolder = dialog.FileName;
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    this.BianJieTiaoJianFileLocation = localFolder;
+                });
+            }
+        }
+
+        private string _oilFilesLocation = null;
         public ICommand ConfirmButtonClick
         {
             get
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    // TODO: fix
-                    ScriptWrapperForHengNiuJu.WuZhiDingYi = string.Format(ScriptTemplateForHengNiuJu.WuZhiDingYi,
-                         this.NianDuOfAir, this.NianDuOfAir, this.NianDuOfAir);
+                    this._oilFilesLocation = ScriptWrapperForHengNiuJu.SourceOilFilesFolderPath;
+                    if (!File.Exists(Path.Combine(this._oilFilesLocation, ScriptWrapperForHengNiuJu.DensityFileName)) ||
+                        !File.Exists(Path.Combine(this._oilFilesLocation, ScriptWrapperForHengNiuJu.ViscosityFileName)) ||
+                        !File.Exists(Path.Combine(this._oilFilesLocation, ScriptWrapperForHengNiuJu.HeatConductivityFileName)) ||
+                        !File.Exists(Path.Combine(this._oilFilesLocation, ScriptWrapperForHengNiuJu.HeatCapacityFileName)))
+                    {
+                        MessageBox.Show("关键油文件缺失");
+                        return;
+                    }
 
-                    // {0} - 动轮初始转速(rad/s)  {1} - 动轮转动惯量 {2} - 背压阀出口  {3} - 滑阀回油出口
-                    // {4} - 指令油入口   {5} - 充油进口   {6} - 通气孔   {7} - 反馈压力入口
+                    CommonUtils.CopyFolder(this._oilFilesLocation, ScriptWrapperForHengNiuJu.WorkDirectory);
+
+                    if (!File.Exists(this.BianJieTiaoJianFileLocation))
+                    {
+                        MessageBox.Show("出口边界条件文件不存在");
+                        return;
+                    }
+
+                    ScriptWrapperForHengNiuJu.OneDimThreeDimFileName = Path.GetFileName(this.BianJieTiaoJianFileLocation);
+                    File.Copy(this.BianJieTiaoJianFileLocation, Path.Combine(ScriptWrapperForHengNiuJu.WorkDirectory, ScriptWrapperForHengNiuJu.OneDimThreeDimFileName), true);
+                    ScriptWrapperForHengNiuJu.ImportedOilFiles = string.Format(ScriptTemplateForHengNiuJu.ImportedOilFiles, ScriptWrapperForHengNiuJu.OneDimThreeDimFileName);
+
+                    // {0} -- 空气粘度 {1} -- 空气比热容 {2} -- 空气热导率
+                    ScriptWrapperForHengNiuJu.WuZhiDingYi = string.Format(ScriptTemplateForHengNiuJu.WuZhiDingYi, this.NianDuOfAir, this.BiReRongOfAir, this.ReDaoLvOfAir);
+
                     double dongLunChuShiZhuanSu = Math.Round(double.Parse(this.DongLunChuShiZhuanSu) * Math.PI / 30, 5);
-                    double beiYaFaChuKou = double.Parse(this.JinKouWenDu) * 1000000;
                     double chongYouJinKou = double.Parse(this.JinKouYaLi) * 1000000;
                     double tongQiKong = double.Parse(this.TongQiKongYaLi) * 1000000;
-                    // TODO: fix the fake values.
-                    ScriptWrapperForHengNiuJu.BianJieTiaoJianDingYi = string.Format(ScriptTemplateForHengNiuJu.BianJieTiaoJianDingYi,
-                        dongLunChuShiZhuanSu, this.DongLunZhuanDongGuanLiang, beiYaFaChuKou, tongQiKong,
-                        tongQiKong, chongYouJinKou, tongQiKong, tongQiKong);
 
-                    // {0} - 背压阀阀芯质量 {1} - 背压阀弹簧刚度 {2} - 背压阀弹簧预紧力
-                    // {3} - 滑阀阀芯质量  {4} - 滑阀弹簧刚度 {5} - 滑阀弹簧预紧力
-                    // TODO: fix the fake values.
-                    ScriptWrapperForHengNiuJu.FaMenCanShu = string.Format(ScriptTemplateForHengNiuJu.FaMenCanShu, 
-                        this.DongLunZhuanDongGuanLiang, this.DongLunZhuanDongGuanLiang, this.DongLunZhuanDongGuanLiang, 
-                        this.DongLunZhuanDongGuanLiang, this.DongLunZhuanDongGuanLiang, this.DongLunZhuanDongGuanLiang);
+                    // {0} -- 动轮转速 {1} -- 动轮转动惯量 {2} -- 进口压力 {3} -- 进口温度 
+                    ScriptWrapperForHengNiuJu.BianJieTiaoJianDingYi = string.Format(ScriptTemplateForHengNiuJu.BianJieTiaoJianDingYi, this.DongLunChuShiZhuanSu, this.DongLunZhuanDongGuanLiang,
+                        this.JinKouYaLi, this.JinKouWenDu);
 
                     MessageBox.Show("设置成功", "恒扭矩计算参数输入");
                 });

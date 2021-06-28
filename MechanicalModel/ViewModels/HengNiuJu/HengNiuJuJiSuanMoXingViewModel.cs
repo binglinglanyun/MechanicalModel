@@ -31,6 +31,7 @@ namespace MechanicalModel.ViewModels
                     string localFolder;
                     System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
                     dialog.Description = "模型位置";
+                    dialog.SelectedPath = this.LocationString;
                     System.Windows.Forms.DialogResult result = dialog.ShowDialog();
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {
@@ -46,13 +47,61 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public ICommand ImportAndShowButtonClick
+        public ICommand ConfirmButtonClick
         {
             get
             {
                 return new TaskCommand<object>((o) =>
-                {/*
-                    if (!Directory.Exists(LocationString) || !Directory.Exists(ScriptWrapperForJinQiBiKongSun.WorkDirectory))
+                {
+                    try
+                    {
+                        this.LoadingVisibility = Visibility.Visible;
+                        CommonUtils.CopyFolder(this.LocationString, ScriptWrapperForHengNiuJu.WorkDirectory);
+                        this.LoadingVisibility = Visibility.Collapsed;
+                        MessageBox.Show("设置成功", "三维计算几何模型导入");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(string.Format("模型导入失败，错误信息：{0}", ex.Message));
+                        this.LoadingVisibility = Visibility.Collapsed;
+                    }
+                });
+            }
+        }
+
+        public ICommand PaoMianShowButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    if (!Directory.Exists(this._locationString))
+                    {
+                        MessageBox.Show("请设置模型");
+                        return;
+                    }
+
+                    if (this.PaoMianVisibility == Visibility.Visible)
+                    {
+                        this.PaoMianVisibility = Visibility.Collapsed;
+                        this.PaoMianXianShiButtonContent = "显示";
+                    }
+                    else
+                    {
+                        this.PaoMianVisibility = Visibility.Visible;
+                        this.PaoMianXianShiButtonContent = "隐藏";
+                    }
+                });
+            }
+        }
+
+        public ICommand DongTaiShowButtonClick
+        {
+            get
+            {
+                return new TaskCommand<object>((o) =>
+                {
+                    if (!Directory.Exists(LocationString) || !Directory.Exists(ScriptWrapperForHengNiuJu.WorkDirectory))
                     {
                         MessageBox.Show("请设置模型导入路径并确认设置");
                         return;
@@ -62,17 +111,14 @@ namespace MechanicalModel.ViewModels
                     string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForImportMoXing();
                     if (scriptContent != null)
                     {
-                        //StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
+                        StartOtherProcessHelper.StartPumpLinxForHengNiuJu(scriptContent);
                     }
-                    */
-
-                    this.MoXingVisibility = Visibility.Visible;
                 });
             }
         }
 
         #region Properties
-        private string _locationString = "E:\\TorqueAnalysisSystem-BrakingProcess\\Scripts\\Surface\\HengNiuJu";
+        private string _locationString = ScriptWrapperForHengNiuJu.SurfaceDirectory;
         public string LocationString
         {
             get
@@ -114,16 +160,29 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private Visibility _moXingVisibility = Visibility.Hidden;
-        public Visibility MoXingVisibility
+        private string _paoMianXianShiButtonContent = "显示";
+        public string PaoMianXianShiButtonContent
         {
             get
             {
-                return _moXingVisibility;
+                return _paoMianXianShiButtonContent;
             }
             set
             {
-                SetValueProperty(value, ref _moXingVisibility);
+                SetValueProperty(value, ref _paoMianXianShiButtonContent);
+            }
+        }
+
+        private Visibility _paoMianVisibility = Visibility.Hidden;
+        public Visibility PaoMianVisibility
+        {
+            get
+            {
+                return _paoMianVisibility;
+            }
+            set
+            {
+                SetValueProperty(value, ref _paoMianVisibility);
             }
         }
         #endregion

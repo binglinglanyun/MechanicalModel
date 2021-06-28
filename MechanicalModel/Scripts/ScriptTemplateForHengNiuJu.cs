@@ -10,1368 +10,1216 @@ namespace MechanicalModel.Scripts
     {
         public const string ScriptXMLHeader = @"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
 
-<simulation program=""PumpLinx"" version=""4.0.3"" customer=""Customer"" date=""Tue Jun 12 13:48:04 2018"">
-  <expressions>
-    Vcen=rotate_1d.rpm
-  </expressions>";
+<simulation
+  program=""PumpLinx""
+  version=""4.6.0""
+  customer=""SolidSQUAD""
+  date=""Mon Jun 14 21:01:21 2021"">";
 
         public const string ScriptXMLTail = @"</simulation>";
 
-        // {0} script file name
-        public const string ImportScript = @" 
+        // 模型导入
+        public const string ImportMoXing = @" 
   <import vendor=""Simerics"">
-	<surface name=""airout1_wall"" file=""airout1_wall.stl"" scale=""1""/>
-	<surface name=""airout1_mgi_stator"" file=""airout1_mgi_stator.stl"" scale=""1""/>
-	<surface name=""airout1_inlet"" file=""airout1_inlet.stl"" scale=""1""/>
-	<surface name=""airout2_mgi_stator"" file=""airout2_mgi_stator.stl"" scale=""1""/>
-	<surface name=""airout2_wall"" file=""airout2_wall.stl"" scale=""1""/>
-	<surface name=""airout2_inlet"" file=""airout2_inlet.stl"" scale=""1""/>
-	<surface name=""airout3_wall"" file=""airout3_wall.stl"" scale=""1""/>
-	<surface name=""airout3_mgi_stator"" file=""airout3_mgi_stator.stl"" scale=""1""/>
-	<surface name=""airout3_inlet"" file=""airout3_inlet.stl"" scale=""1""/>
-	<surface name=""pipe_mgi_valve1"" file=""pipe_mgi_valve1.stl"" scale=""1""/>
-	<surface name=""pipe_wall"" file=""pipe_wall.stl"" scale=""1""/>
-	<surface name=""pipe_mgi_valve2"" file=""pipe_mgi_valve2.stl"" scale=""1""/>
-	<surface name=""inlet_wall"" file=""inlet_wall.stl"" scale=""1""/>
-	<surface name=""inlet_mgi_rotor2"" file=""inlet_mgi_rotor2.stl"" scale=""1""/>
-	<surface name=""inlet_inlet"" file=""inlet_inlet.stl"" scale=""1""/>
-	<surface name=""rotor2_mgi_volute_top"" file=""rotor2_mgi_volute_top.stl"" scale=""1""/>
-	<surface name=""rotor2_mgi_volute_side2"" file=""rotor2_mgi_volute_side2.stl"" scale=""1""/>
-	<surface name=""rotor2_wall"" file=""rotor2_wall.stl"" scale=""1""/>
-	<surface name=""rotor2_mgi_volute_side1"" file=""rotor2_mgi_volute_side1.stl"" scale=""1""/>
-	<surface name=""rotor2_mgi_gap"" file=""rotor2_mgi_gap.stl"" scale=""1""/>
-	<surface name=""rotor2_mgi_stator"" file=""rotor2_mgi_stator.stl"" scale=""1""/>
-	<surface name=""rotor2_mgi_inlet"" file=""rotor2_mgi_inlet.stl"" scale=""1""/>
-	<surface name=""stator_wall"" file=""stator_wall.stl"" scale=""1""/>
-	<surface name=""stator_mgi_rotor2"" file=""stator_mgi_rotor2.stl"" scale=""1""/>
-	<surface name=""stator_mgi_airoutlet1"" file=""stator_mgi_airoutlet1.stl"" scale=""1""/>
-	<surface name=""stator_mgi_airoutlet2"" file=""stator_mgi_airoutlet2.stl"" scale=""1""/>
-    <surface name=""stator_mgi_airoutlet3"" file=""stator_mgi_airoutlet3.stl"" scale=""1""/>
-	<surface name=""valve1_mid_wall"" file=""valve1_mid_wall.stl"" scale=""1""/>
-	<surface name=""valve1_mid_mgi"" file=""valve1_mid_mgi.stl"" scale=""1""/>
-	<surface name=""valve1_outlet_outlet1"" file=""valve1_outlet_outlet1.stl"" scale=""1""/>
-	<surface name=""valve1_outlet_wall"" file=""valve1_outlet_wall.stl"" scale=""1""/>
-	<surface name=""valve1_outlet_mgi_mdi_up"" file=""valve1_outlet_mgi_mdi_up.stl"" scale=""1""/>
-	<surface name=""valve1_outlet_outlet2"" file=""valve1_outlet_outlet2.stl"" scale=""1""/>
-	<surface name=""valve1_chamber_wall1"" file=""valve1_chamber_wall1.stl"" scale=""1""/>
-	<surface name=""valve1_chamber_mgi_bot"" file=""valve1_chamber_mgi_bot.stl"" scale=""1""/>
-	<surface name=""valve1_chamber_wall2"" file=""valve1_chamber_wall2.stl"" scale=""1""/>
-	<surface name=""valve1_up_gap_valve"" file=""valve1_up_gap_valve.stl"" scale=""1""/>
-	<surface name=""valve1_up_gap_cylinder_out"" file=""valve1_up_gap_cylinder_out.stl"" scale=""1""/>
-	<surface name=""valve1_up_gap_cylinder_in"" file=""valve1_up_gap_cylinder_in.stl"" scale=""1""/>
-	<surface name=""valve1_up_gap_end"" file=""valve1_up_gap_end.stl"" scale=""1""/>
-	<surface name=""valve1_up_cylinder"" file=""valve1_up_cylinder.stl"" scale=""1""/>
-	<surface name=""valve1_up_valve"" file=""valve1_up_valve.stl"" scale=""1""/>
-	<surface name=""valve1_up_end"" file=""valve1_up_end.stl"" scale=""1""/>
-	<surface name=""valve1_up_end_mgi"" file=""valve1_up_end_mgi.stl"" scale=""1""/>
-	<surface name=""valve2_bot_end"" file=""valve2_bot_end.stl"" scale=""1""/>
-	<surface name=""valve2_bot_cylinder"" file=""valve2_bot_cylinder.stl"" scale=""1""/>
-	<surface name=""valve2_bot_valve"" file=""valve2_bot_valve.stl"" scale=""1""/>
-	<surface name=""valve2_mid_cylinder_mgi"" file=""valve2_mid_cylinder_mgi.stl"" scale=""1""/>
-	<surface name=""valve2_mid_mgi_up"" file=""valve2_mid_mgi_up.stl"" scale=""1""/>
-	<surface name=""valve2_mid_valve"" file=""valve2_mid_valve.stl"" scale=""1""/>
-	<surface name=""valve2_outlet1_wall"" file=""valve2_outlet1_wall.stl"" scale=""1""/>
-	<surface name=""valve2_outlet1_mgi_gap3"" file=""valve2_outlet1_mgi_gap3.stl"" scale=""1""/>
-	<surface name=""valve2_outlet1_outlet"" file=""valve2_outlet1_outlet.stl"" scale=""1""/>
-	<surface name=""valve2_outlet2_wall"" file=""valve2_outlet2_wall.stl"" scale=""1""/>
-	<surface name=""valve2_outlet2_mgi_gap4"" file=""valve2_outlet2_mgi_gap4.stl"" scale=""1""/>
-	<surface name=""valve2_outlet2_outlet"" file=""valve2_outlet2_outlet.stl"" scale=""1""/>
-	<surface name=""valve2_gap4_wall"" file=""valve2_gap4_wall.stl"" scale=""1""/>
-	<surface name=""valve2_gap4_mgi_bot"" file=""valve2_gap4_mgi_bot.stl"" scale=""1""/>
-	<surface name=""valve2_gap4_mgi_outlet2"" file=""valve2_gap4_mgi_outlet2.stl"" scale=""1""/>
-	<surface name=""valve2_gap3_mgi_mid"" file=""valve2_gap3_mgi_mid.stl"" scale=""1""/>
-	<surface name=""valve2_gap3_wall"" file=""valve2_gap3_wall.stl"" scale=""1""/>
-	<surface name=""valve2_gap3_mgi_outlet1"" file=""valve2_gap3_mgi_outlet1.stl"" scale=""1""/>
-	<surface name=""valve2_gap2_mgi_mid"" file=""valve2_gap2_mgi_mid.stl"" scale=""1""/>
-	<surface name=""valve2_gap2_mgi_gap1"" file=""valve2_gap2_mgi_gap1.stl"" scale=""1""/>
-	<surface name=""valve2_gap2_wall"" file=""valve2_gap2_wall.stl"" scale=""1""/>
-	<surface name=""valve2_gap1_mgi_up"" file=""valve2_gap1_mgi_up.stl"" scale=""1""/>
-	<surface name=""valve2_gap1_mgi_gap2"" file=""valve2_gap1_mgi_gap2.stl"" scale=""1""/>
-	<surface name=""valve2_gap1_wall"" file=""valve2_gap1_wall.stl"" scale=""1""/>
-	<surface name=""volute_wall"" file=""volute_wall.stl"" scale=""1""/>
-	<surface name=""volute_side_mgi_rotor2"" file=""volute_side_mgi_rotor2.stl"" scale=""1""/>
-	<surface name=""volute_top_mgi_rotor2"" file=""volute_top_mgi_rotor2.stl"" scale=""1""/>
-	<surface name=""volute_wall_mgi_gap"" file=""volute_wall_mgi_gap.stl"" scale=""1""/>
-	<surface name=""volute_side_mgi_rotor1"" file=""volute_side_mgi_rotor1.stl"" scale=""1""/>
-	<surface name=""volute_kongsun_inlet"" file=""volute_kongsun_inlet.stl"" scale=""1""/>
-	<surface name=""volute_mgi_valve"" file=""volute_mgi_valve.stl"" scale=""1""/>
+	 <surface name=""inlet_inlet"" file=""inlet_inlet.stl"" scale=""1""/>
+     <surface name=""inlet_mgi_rotor"" file=""inlet_mgi_rotor.stl"" scale=""1""/>
+     <surface name=""inlet_wall"" file=""inlet_wall.stl"" scale=""1""/>
+     <surface name=""outlet_air_in"" file=""outlet_air_in.stl"" scale=""1""/>
+     <surface name=""outlet_mgi_gap9"" file=""outlet_mgi_gap9.stl"" scale=""1""/>
+     <surface name=""outlet_mgi_rotor_cylinder"" file=""outlet_mgi_rotor_cylinder.stl"" scale=""1""/>
+     <surface name=""outlet_mgi_rotor_side"" file=""outlet_mgi_rotor_side.stl"" scale=""1""/>
+     <surface name=""outlet_mgi_rotor_top"" file=""outlet_mgi_rotor_top.stl"" scale=""1""/>
+     <surface name=""outlet_outlet"" file=""outlet_outlet.stl"" scale=""1""/>
+     <surface name=""outlet_wall"" file=""outlet_wall.stl"" scale=""1""/>
+     <surface name=""rotor_blades"" file=""rotor_blades.stl"" scale=""1""/>
+     <surface name=""rotor_cylinder_mgi_outlet"" file=""rotor_cylinder_mgi_outlet.stl"" scale=""1""/>
+     <surface name=""rotor_mgi_gap1"" file=""rotor_mgi_gap1.stl"" scale=""1""/>
+     <surface name=""rotor_mgi_gap3"" file=""rotor_mgi_gap3.stl"" scale=""1""/>
+     <surface name=""rotor_mgi_gap32"" file=""rotor_mgi_gap32.stl"" scale=""1""/>
+     <surface name=""rotor_mgi_gap5"" file=""rotor_mgi_gap5.stl"" scale=""1""/>
+     <surface name=""rotor_mgi_inlet"" file=""rotor_mgi_inlet.stl"" scale=""1""/>
+     <surface name=""rotor_mgi_side"" file=""rotor_mgi_side.stl"" scale=""1""/>
+     <surface name=""rotor_mgi_stator"" file=""rotor_mgi_stator.stl"" scale=""1""/>
+     <surface name=""rotor_mgi_top"" file=""rotor_mgi_top.stl"" scale=""1""/>
+     <surface name=""stator_mgi_gap1"" file=""stator_mgi_gap1.stl"" scale=""1""/>
+     <surface name=""stator_mgi_outlet1"" file=""stator_mgi_outlet1.stl"" scale=""1""/>
+     <surface name=""stator_mgi_outlet2"" file=""stator_mgi_outlet2.stl"" scale=""1""/>
+     <surface name=""stator_mgi_outlet3"" file=""stator_mgi_outlet3.stl"" scale=""1""/>
+     <surface name=""stator_mgi_outlet4"" file=""stator_mgi_outlet4.stl"" scale=""1""/>
+     <surface name=""stator_mgi_rotor"" file=""stator_mgi_rotor.stl"" scale=""1""/>
+     <surface name=""stator_wall"" file=""stator_wall.stl"" scale=""1""/>
   </import>";
 
-        public static string WangGeHuafenConstScript = @"<include file=""torque_hengniuju.sgrd""/>
-
-  <volume name=""valve2_up""/>
-  <volume name=""valve2_bot""/>
-  <volume name=""valve1_bot""/>
-  <volume name=""valve2_mid""/>
-  <volume name=""valve1_mid""/>
-  <volume name=""pipe""/>
-  <volume name=""inlet""/>
-  <volume name=""rotor2""/>
-  <volume name=""airout1""/>
-  <volume name=""airout2""/>
-  <volume name=""airout3""/>
-  <volume name=""valve1_bot_pipe""/>
-  <volume name=""valve1_up""/>
-  <volume name=""valve1_outlet""/>
-  <volume name=""valve2_outlet1""/>
-  <volume name=""valve2_outlet2""/>
-  <volume name=""volute""/>
-  <volume name=""valve2_gap4""/>
-  <volume name=""valve2_gap3""/>
-  <volume name=""valve2_gap2""/>
-  <volume name=""valve2_gap1""/>
-  <volume name=""valve1_chamber""/>
-  <volume name=""valve1_up_gap""/>
+        public static string WangGeHuafenConstScript = @"
+  <include file=""torque_hengniuju.sgrd""/>
+  <volume name=""gap5""/>
+  <volume name=""gap1""/>
+  <volume name=""gap12""/>
+  <volume name=""gap2""/>
+  <volume name=""gap91""/>
+  <volume name=""gap92""/>
+  <volume name=""gap93""/>
+  <volume name=""gap94""/>
+  <volume name=""gap95""/>
+  <volume name=""gap6""/>
+  <volume name=""gap9""/>
+  <volume name=""gap3""/>
+  <volume name=""gap31""/>
+  <volume name=""gap32""/>
+  <volume name=""air_outlet2""/>
+  <volume name=""air_outlet1""/>
+  <volume name=""air_outlet3""/>
+  <volume name=""air_outlet4""/>
+  <volume name=""rotor""/>
   <volume name=""stator""/>
-  <volume name=""hub_gap1""/>
-  <volume name=""hub_gap2""/>
-  <volume name=""hub_gap3""/>
-  <volume name=""inlet_gap""/>
-  <volume name=""rotor_gap1""/>
-  <volume name=""rotor_gap2""/>
-  <volume name=""rotor_gap3""/>
+  <volume name=""outlet""/>
+  <volume name=""inlet""/>
 
-  <patch name=""valve2_up_valve"" volume=""valve2_up""/>
-  <patch name=""valve2_up_end"" volume=""valve2_up""/>
-  <patch name=""valve2_up_cylinder"" volume=""valve2_up""/>
-  <patch name=""valve2_bot_end"" volume=""valve2_bot""/>
-  <patch name=""valve2_bot_cylinder"" volume=""valve2_bot""/>
-  <patch name=""valve2_bot_valve"" volume=""valve2_bot""/>
-  <patch name=""valve1_bot_valve"" volume=""valve1_bot""/>
-  <patch name=""valve1_bot_cylinder_min"" volume=""valve1_bot""/>
-  <patch name=""valve1_bot_end"" volume=""valve1_bot""/>
-  <patch name=""valve1_bot_cylinder"" volume=""valve1_bot""/>
-  <patch name=""valve2_mid_cylinder_mgi"" volume=""valve2_mid""/>
-  <patch name=""valve2_mid_mgi_up"" volume=""valve2_mid""/>
-  <patch name=""valve2_mid_valve"" volume=""valve2_mid""/>
-  <patch name=""valve1_mid_wall"" volume=""valve1_mid""/>
-  <patch name=""valve1_mid_mgi"" volume=""valve1_mid""/>
-  <patch name=""pipe_mgi_valve1"" volume=""pipe""/>
-  <patch name=""pipe_wall"" volume=""pipe""/>
-  <patch name=""pipe_mgi_valve2"" volume=""pipe""/>
-  <patch name=""inlet_wall"" volume=""inlet""/>
-  <patch name=""inlet_mgi_rotor2"" volume=""inlet""/>
-  <patch name=""inlet_inlet"" volume=""inlet""/>
-  <patch name=""rotor2_mgi_volute_top"" volume=""rotor2""/>
-  <patch name=""rotor2_mgi_volute_side2"" volume=""rotor2""/>
-  <patch name=""rotor2_wall"" volume=""rotor2""/>
-  <patch name=""rotor2_mgi_volute_side1"" volume=""rotor2""/>
-  <patch name=""rotor2_mgi_gap"" volume=""rotor2""/>
-  <patch name=""rotor2_mgi_stator"" volume=""rotor2""/>
-  <patch name=""rotor2_mgi_inlet"" volume=""rotor2""/>
-  <patch name=""airout1_wall"" volume=""airout1""/>
-  <patch name=""airout1_mgi_stator"" volume=""airout1""/>
-  <patch name=""airout1_outlet"" volume=""airout1""/>
-  <patch name=""airout2_mgi_stator"" volume=""airout2""/>
-  <patch name=""airout2_wall"" volume=""airout2""/>
-  <patch name=""airout2_outlet"" volume=""airout2""/>
-  <patch name=""airout3_wall"" volume=""airout3""/>
-  <patch name=""airout3_mgi_stator"" volume=""airout3""/>
-  <patch name=""airout3_outlet"" volume=""airout3""/>
-  <patch name=""valve1_bot_pipe_outlet"" volume=""valve1_bot_pipe""/>
-  <patch name=""valve1_bot_pipe_mgi_valve1_bot"" volume=""valve1_bot_pipe""/>
-  <patch name=""valve1_bot_pipe_cylinder"" volume=""valve1_bot_pipe""/>
-  <patch name=""valve1_up_cylinder"" volume=""valve1_up""/>
-  <patch name=""valve1_up_valve"" volume=""valve1_up""/>
-  <patch name=""valve1_up_end"" volume=""valve1_up""/>
-  <patch name=""valve1_up_end_mgi_volute"" volume=""valve1_up""/>
-  <patch name=""valve1_outlet_outlet1"" volume=""valve1_outlet""/>
-  <patch name=""valve1_outlet_wall"" volume=""valve1_outlet""/>
-  <patch name=""valve1_outlet_mgi_mdi_up"" volume=""valve1_outlet""/>
-  <patch name=""valve1_outlet_outlet2"" volume=""valve1_outlet""/>
-  <patch name=""valve2_outlet1_wall"" volume=""valve2_outlet1""/>
-  <patch name=""valve2_outlet1_mgi_gap3"" volume=""valve2_outlet1""/>
-  <patch name=""valve2_outlet1_outlet"" volume=""valve2_outlet1""/>
-  <patch name=""valve2_outlet2_wall"" volume=""valve2_outlet2""/>
-  <patch name=""valve2_outlet2_mgi_gap4"" volume=""valve2_outlet2""/>
-  <patch name=""valve2_outlet2_outlet"" volume=""valve2_outlet2""/>
-  <patch name=""volute_wall"" volume=""volute""/>
-  <patch name=""volute_side_mgi_rotor2"" volume=""volute""/>
-  <patch name=""volute_top_mgi_rotor2"" volume=""volute""/>
-  <patch name=""volute_wall_mgi_gap"" volume=""volute""/>
-  <patch name=""volute_side_mgi_rotor1"" volume=""volute""/>
-  <patch name=""volute_kongsun_inlet"" volume=""volute""/>
-  <patch name=""volute_mgi_valve"" volume=""volute""/>
-  <patch name=""valve2_gap4_wall1"" volume=""valve2_gap4""/>
-  <patch name=""valve2_gap4_mgi_bot"" volume=""valve2_gap4""/>
-  <patch name=""valve2_gap4_wall2"" volume=""valve2_gap4""/>
-  <patch name=""valve2_gap4_mgi_outlet2"" volume=""valve2_gap4""/>
-  <patch name=""valve2_gap3_wall1"" volume=""valve2_gap3""/>
-  <patch name=""valve2_gap3_mgi_mid"" volume=""valve2_gap3""/>
-  <patch name=""valve2_gap3_wall2"" volume=""valve2_gap3""/>
-  <patch name=""valve2_gap3_mgi_outlet1"" volume=""valve2_gap3""/>
-  <patch name=""valve2_gap2_mgi_gap1"" volume=""valve2_gap2""/>
-  <patch name=""valve2_gap2_mgi_mid"" volume=""valve2_gap2""/>
-  <patch name=""valve2_gap2_wall"" volume=""valve2_gap2""/>
-  <patch name=""valve2_gap2_cylinder_wall"" volume=""valve2_gap2""/>
-  <patch name=""valve2_gap1_wall1"" volume=""valve2_gap1""/>
-  <patch name=""valve2_gap1_mgi_up"" volume=""valve2_gap1""/>
-  <patch name=""valve2_gap1_mgi_gap2"" volume=""valve2_gap1""/>
-  <patch name=""valve2_gap1_cylinder_wall"" volume=""valve2_gap1""/>
-  <patch name=""valve1_chamber_wall1"" volume=""valve1_chamber""/>
-  <patch name=""valve1_chamber_mgi_bot"" volume=""valve1_chamber""/>
-  <patch name=""valve1_chamber_wall2"" volume=""valve1_chamber""/>
-  <patch name=""valve1_up_gap_valve"" volume=""valve1_up_gap""/>
-  <patch name=""valve1_up_gap_cylinder_out"" volume=""valve1_up_gap""/>
-  <patch name=""valve1_up_gap_cylinder_in"" volume=""valve1_up_gap""/>
-  <patch name=""valve1_up_gap_end"" volume=""valve1_up_gap""/>
+  <patch name=""dir_min"" volume=""gap5""/>
+  <patch name=""cylinder_min"" volume=""gap5""/>
+  <patch name=""dir_max"" volume=""gap5""/>
+  <patch name=""cylinder"" volume=""gap5""/>
+  <patch name=""dir_min_1"" volume=""gap1""/>
+  <patch name=""cylinder_min_1"" volume=""gap1""/>
+  <patch name=""dir_max_1"" volume=""gap1""/>
+  <patch name=""cylinder_1"" volume=""gap1""/>
+  <patch name=""dir_min_2"" volume=""gap12""/>
+  <patch name=""cylinder_min_2"" volume=""gap12""/>
+  <patch name=""dir_max_2"" volume=""gap12""/>
+  <patch name=""cylinder_2"" volume=""gap12""/>
+  <patch name=""dir_min_3"" volume=""gap2""/>
+  <patch name=""cylinder_min_3"" volume=""gap2""/>
+  <patch name=""dir_max_3"" volume=""gap2""/>
+  <patch name=""cylinder_3"" volume=""gap2""/>
+  <patch name=""dir_min_4"" volume=""gap91""/>
+  <patch name=""cylinder_min_4"" volume=""gap91""/>
+  <patch name=""dir_max_4"" volume=""gap91""/>
+  <patch name=""cylinder_4"" volume=""gap91""/>
+  <patch name=""dir_min_5"" volume=""gap92""/>
+  <patch name=""cylinder_min_5"" volume=""gap92""/>
+  <patch name=""dir_max_5"" volume=""gap92""/>
+  <patch name=""cylinder_5"" volume=""gap92""/>
+  <patch name=""dir_min_6"" volume=""gap93""/>
+  <patch name=""cylinder_min_6"" volume=""gap93""/>
+  <patch name=""dir_max_6"" volume=""gap93""/>
+  <patch name=""cylinder_6"" volume=""gap93""/>
+  <patch name=""dir_min_7"" volume=""gap94""/>
+  <patch name=""cylinder_min_7"" volume=""gap94""/>
+  <patch name=""dir_max_7"" volume=""gap94""/>
+  <patch name=""cylinder_7"" volume=""gap94""/>
+  <patch name=""dir_min_8"" volume=""gap95""/>
+  <patch name=""cylinder_min_8"" volume=""gap95""/>
+  <patch name=""dir_max_8"" volume=""gap95""/>
+  <patch name=""cylinder_8"" volume=""gap95""/>
+  <patch name=""dir_min_9"" volume=""gap6""/>
+  <patch name=""cylinder_min_9"" volume=""gap6""/>
+  <patch name=""dir_max_9"" volume=""gap6""/>
+  <patch name=""cylinder_9"" volume=""gap6""/>
+  <patch name=""dir_min_10"" volume=""gap9""/>
+  <patch name=""cylinder_min_10"" volume=""gap9""/>
+  <patch name=""dir_max_10"" volume=""gap9""/>
+  <patch name=""cylinder_10"" volume=""gap9""/>
+  <patch name=""dir_min_11"" volume=""gap3""/>
+  <patch name=""cylinder_min_11"" volume=""gap3""/>
+  <patch name=""dir_max_11"" volume=""gap3""/>
+  <patch name=""cylinder_11"" volume=""gap3""/>
+  <patch name=""dir_min_12"" volume=""gap31""/>
+  <patch name=""cylinder_min_12"" volume=""gap31""/>
+  <patch name=""dir_max_12"" volume=""gap31""/>
+  <patch name=""cylinder_12"" volume=""gap31""/>
+  <patch name=""dir_min_13"" volume=""gap32""/>
+  <patch name=""cylinder_min_13"" volume=""gap32""/>
+  <patch name=""dir_max_13"" volume=""gap32""/>
+  <patch name=""cylinder_13"" volume=""gap32""/>
+  <patch name=""dir_min_14"" volume=""air_outlet2""/>
+  <patch name=""dir_max_14"" volume=""air_outlet2""/>
+  <patch name=""cylinder_14"" volume=""air_outlet2""/>
+  <patch name=""dir_min_15"" volume=""air_outlet1""/>
+  <patch name=""dir_max_15"" volume=""air_outlet1""/>
+  <patch name=""cylinder_15"" volume=""air_outlet1""/>
+  <patch name=""dir_min_16"" volume=""air_outlet3""/>
+  <patch name=""dir_max_16"" volume=""air_outlet3""/>
+  <patch name=""cylinder_16"" volume=""air_outlet3""/>
+  <patch name=""dir_min_17"" volume=""air_outlet4""/>
+  <patch name=""dir_max_17"" volume=""air_outlet4""/>
+  <patch name=""cylinder_17"" volume=""air_outlet4""/>
+  <patch name=""rotor_mgi_stator"" volume=""rotor""/>
+  <patch name=""rotor_mgi_gap3"" volume=""rotor""/>
+  <patch name=""rotor_blades"" volume=""rotor""/>
+  <patch name=""rotor_mgi_gap32"" volume=""rotor""/>
+  <patch name=""rotor_cylinder_mgi_outlet"" volume=""rotor""/>
+  <patch name=""rotor_mgi_side"" volume=""rotor""/>
+  <patch name=""rotor_mgi_top"" volume=""rotor""/>
+  <patch name=""rotor_mgi_gap1"" volume=""rotor""/>
+  <patch name=""rotor_mgi_inlet"" volume=""rotor""/>
+  <patch name=""rotor_mgi_gap5"" volume=""rotor""/>
   <patch name=""stator_wall"" volume=""stator""/>
-  <patch name=""stator_wall_1"" left_volume=""stator"" right_volume=""stator""/>
-  <patch name=""stator_mgi_rotor2"" volume=""stator""/>
-  <patch name=""stator_mgi_airoutlet1"" volume=""stator""/>
-  <patch name=""stator_mgi_airoutlet2"" volume=""stator""/>
-  <patch name=""stator_mgi_airoutlet3"" volume=""stator""/>
-  <patch name=""stator_mgi_airoutlet3_1"" left_volume=""stator"" right_volume=""stator""/>
-  <patch name=""hub_gap1_up"" volume=""hub_gap1""/>
-  <patch name=""hub_gap1_cylinder_min"" volume=""hub_gap1""/>
-  <patch name=""hub_gap1_bot"" volume=""hub_gap1""/>
-  <patch name=""hub_gap1_cylinder_out"" volume=""hub_gap1""/>
-  <patch name=""hub_gap2_bot"" volume=""hub_gap2""/>
-  <patch name=""hub_gap2_cylinder_min"" volume=""hub_gap2""/>
-  <patch name=""hub_gap2_up"" volume=""hub_gap2""/>
-  <patch name=""hub_gap2_cylinder_out"" volume=""hub_gap2""/>
-  <patch name=""hub_gap3_bot"" volume=""hub_gap3""/>
-  <patch name=""hub_gap3_cylinder_min"" volume=""hub_gap3""/>
-  <patch name=""hub_gap3_up"" volume=""hub_gap3""/>
-  <patch name=""hub_gap3_cylinder_out"" volume=""hub_gap3""/>
-  <patch name=""inlet_gap_up"" volume=""inlet_gap""/>
-  <patch name=""inlet_gap_cylinder_min"" volume=""inlet_gap""/>
-  <patch name=""inlet_gap_bot"" volume=""inlet_gap""/>
-  <patch name=""inlet_gap_cylinder_out"" volume=""inlet_gap""/>
-  <patch name=""rotor_gap1_top"" volume=""rotor_gap1""/>
-  <patch name=""rotor_gap1_cylinder_min"" volume=""rotor_gap1""/>
-  <patch name=""rotor_gap1_bot"" volume=""rotor_gap1""/>
-  <patch name=""rotor_gap1_cylinder_out"" volume=""rotor_gap1""/>
-  <patch name=""rotor_gap2_bot"" volume=""rotor_gap2""/>
-  <patch name=""rotor_gap2_cylinder_min"" volume=""rotor_gap2""/>
-  <patch name=""rotor_gap2_top"" volume=""rotor_gap2""/>
-  <patch name=""rotor_gap2_cylinder_out"" volume=""rotor_gap2""/>
-  <patch name=""rotor_gap3_top"" volume=""rotor_gap3""/>
-  <patch name=""rotor_gap3_cylinder_min"" volume=""rotor_gap3""/>
-  <patch name=""rotor_gap3_bot"" volume=""rotor_gap3""/>
-  <patch name=""rotor_gap3_cylinder_out"" volume=""rotor_gap3""/>
-  <patch name=""sub-features"" volume=""volute""/>
-  <patch
-    name=""MGI01_valve2_gap4_mgi_outlet2_valve2_outlet2_mgi_gap4""
-    left_volume=""valve2_gap4""
-    right_volume=""valve2_outlet2""/>
-  <patch
-    name=""MGI02_valve2_bot_cylinder_valve2_gap4_mgi_bot""
-    left_volume=""valve2_bot""
-    right_volume=""valve2_gap4""/>
-  <patch
-    name=""MGI03_valve2_gap3_mgi_outlet1_valve2_outlet1_mgi_gap3""
-    left_volume=""valve2_gap3""
-    right_volume=""valve2_outlet1""/>
-  <patch
-    name=""MGI04_valve2_gap3_mgi_mid_valve2_mid_cylinder_mgi""
-    left_volume=""valve2_mid""
-    right_volume=""valve2_gap3""/>
-  <patch
-    name=""MGI04_valve2_gap2_mgi_mid_valve2_mid_cylinder_mgi""
-    left_volume=""valve2_mid""
-    right_volume=""valve2_gap2""/>
-  <patch
-    name=""MGI05_valve2_gap1_mgi_gap2_valve2_gap2_mgi_gap1""
-    left_volume=""valve2_gap2""
-    right_volume=""valve2_gap1""/>
-  <patch
-    name=""MGI06_valve2_mid_mgi_up_valve2_up_valve""
-    left_volume=""valve2_mid""
-    right_volume=""valve2_up""/>
-  <patch
-    name=""MGI07_valve2_gap1_mgi_up_valve2_up_cylinder""
-    left_volume=""valve2_up""
-    right_volume=""valve2_gap1""/>
-  <patch name=""MGI08_pipe_mgi_valve2_valve2_up_end"" left_volume=""valve2_up"" right_volume=""pipe""/>
-  <patch
-    name=""MGI09_valve1_bot_end_valve1_bot_pipe_mgi_valve1_bot""
-    left_volume=""valve1_bot""
-    right_volume=""valve1_bot_pipe""/>
-  <patch name=""MGI09_pipe_mgi_valve1_valve1_bot_end"" left_volume=""valve1_bot"" right_volume=""pipe""/>
-  <patch
-    name=""MGI10_valve1_mid_mgi_valve1_outlet_mgi_mdi_up""
-    left_volume=""valve1_mid""
-    right_volume=""valve1_outlet""/>
-  <patch
-    name=""MGI10_valve1_outlet_mgi_mdi_up_valve1_up_gap_cylinder_out""
-    left_volume=""valve1_up_gap""
-    right_volume=""valve1_outlet""/>
-  <patch
-    name=""MGI11_airout1_mgi_stator_stator_mgi_airoutlet1""
-    left_volume=""airout1""
-    right_volume=""stator""/>
-  <patch
-    name=""MGI12_airout2_mgi_stator_stator_mgi_airoutlet2""
-    left_volume=""airout2""
-    right_volume=""stator""/>
-  <patch
-    name=""MGI13_airout3_mgi_stator_stator_mgi_airoutlet3""
-    left_volume=""airout3""
-    right_volume=""stator""/>
-  <patch name=""MGI14_rotor2_mgi_stator_stator_mgi_rotor2"" left_volume=""rotor2"" right_volume=""stator""/>
-  <patch name=""MGI15_inlet_mgi_rotor2_rotor2_mgi_inlet"" left_volume=""inlet"" right_volume=""rotor2""/>
-  <patch name=""MGI15_inlet_gap_bot_inlet_mgi_rotor2"" left_volume=""inlet"" right_volume=""inlet_gap""/>
-  <patch
-    name=""MGI16_rotor2_mgi_volute_side2_volute_side_mgi_rotor2""
-    left_volume=""rotor2""
-    right_volume=""volute""/>
-  <patch
-    name=""MGI17_rotor2_mgi_volute_top_volute_top_mgi_rotor2""
-    left_volume=""rotor2""
-    right_volume=""volute""/>
-  <patch
-    name=""MGI18_valve1_up_end_mgi_volute_volute_mgi_valve""
-    left_volume=""valve1_up""
-    right_volume=""volute""/>
-  <patch
-    name=""MGI19_valve1_bot_valve_valve1_chamber_mgi_bot""
-    left_volume=""valve1_chamber""
-    right_volume=""valve1_bot""/>
-  <patch
-    name=""MGI20_valve1_up_cylinder_valve1_up_gap_cylinder_in""
-    left_volume=""valve1_up""
-    right_volume=""valve1_up_gap""/>
-  <patch name=""MGI21_hub_gap1_bot_hub_gap2_up"" left_volume=""hub_gap1"" right_volume=""hub_gap2""/>
-  <patch name=""MGI22_hub_gap1_up_rotor2_mgi_gap"" left_volume=""rotor2"" right_volume=""hub_gap1""/>
-  <patch
-    name=""MGI23_hub_gap2_cylinder_min_hub_gap3_cylinder_out""
-    left_volume=""hub_gap3""
-    right_volume=""hub_gap2""/>
-  <patch
-    name=""MGI24_rotor2_mgi_volute_side1_volute_side_mgi_rotor1""
-    left_volume=""rotor2""
-    right_volume=""volute""/>
-  <patch
-    name=""MGI25_rotor_gap1_bot_volute_wall_mgi_gap""
-    left_volume=""rotor_gap1""
-    right_volume=""volute""/>
-  <patch
-    name=""MGI26_rotor_gap1_top_rotor_gap2_bot""
-    left_volume=""rotor_gap1""
-    right_volume=""rotor_gap2""/>
-  <patch
-    name=""MGI27_rotor_gap2_cylinder_min_rotor_gap3_cylinder_out""
-    left_volume=""rotor_gap3""
-    right_volume=""rotor_gap2""/>
+  <patch name=""stator_mgi_rotor"" volume=""stator""/>
+  <patch name=""stator_mgi_outlet2"" volume=""stator""/>
+  <patch name=""stator_mgi_gap1"" volume=""stator""/>
+  <patch name=""stator_mgi_outlet3"" volume=""stator""/>
+  <patch name=""stator_mgi_outlet1"" volume=""stator""/>
+  <patch name=""stator_mgi_outlet4"" volume=""stator""/>
+  <patch name=""outlet_wall"" volume=""outlet""/>
+  <patch name=""outlet_mgi_rotor_cylinder"" volume=""outlet""/>
+  <patch name=""outlet_mgi_rotor_side"" volume=""outlet""/>
+  <patch name=""outlet_mgi_gap9"" volume=""outlet""/>
+  <patch name=""outlet_mgi_rotor_top"" volume=""outlet""/>
+  <patch name=""outlet_air_in"" volume=""outlet""/>
+  <patch name=""outlet_outlet"" volume=""outlet""/>
+  <patch name=""inlet_wall"" volume=""inlet""/>
+  <patch name=""inlet_mgi_rotor"" volume=""inlet""/>
+  <patch name=""inlet_inlet"" volume=""inlet""/>
 
- <mgi name=""MGI01"">
-    <patch name=""valve2_outlet2_mgi_gap4""/>
-    <patch name=""cylinder_12""/>
+  <mgi name=""MGI01"">
+    <patch name=""dir_min_15""/>
+    <patch name=""stator_mgi_outlet1""/>
   </mgi>
 
   <mgi name=""MGI02"">
-    <patch name=""valve2_bot_cylinder""/>
-    <patch name=""cylinder_min_11""/>
+    <patch name=""dir_min_14""/>
+    <patch name=""stator_mgi_outlet2""/>
   </mgi>
 
-  <mgi name=""MGI03"" tolerance=""0.0319699445582789"">
-    <patch name=""valve2_outlet1_mgi_gap3""/>
-    <patch name=""cylinder_11""/>
+  <mgi name=""MGI03"">
+    <patch name=""dir_min_16""/>
+    <patch name=""stator_mgi_outlet3""/>
   </mgi>
 
   <mgi name=""MGI04"">
-    <patch name=""valve2_mid_cylinder_mgi""/>
-    <patch name=""cylinder_13""/>
-    <patch name=""cylinder_min_10""/>
-    <patch name=""cylinder_min_8""/>
-    <patch name=""cylinder_min_9""/>
+    <patch name=""dir_min_17""/>
+    <patch name=""stator_mgi_outlet4""/>
   </mgi>
 
   <mgi name=""MGI05"">
-    <patch name=""dir_max_9""/>
-    <patch name=""dir_min_10""/>
+    <patch name=""cylinder_1""/>
+    <patch name=""cylinder_min_2""/>
   </mgi>
 
   <mgi name=""MGI06"">
-    <patch name=""valve2_mid_mgi_up""/>
-    <patch name=""dir_min_13""/>
+    <patch name=""cylinder_2""/>
+    <patch name=""cylinder_min_3""/>
+  </mgi>
+
+  <mgi name=""MGI07"">
+    <patch name=""cylinder_3""/>
+    <patch name=""rotor_mgi_gap1""/>
+    <patch name=""stator_mgi_gap1""/>
   </mgi>
 
   <mgi name=""MGI08"">
-    <patch name=""pipe_mgi_valve2""/>
-    <patch name=""dir_max_13""/>
+    <patch name=""rotor_mgi_gap3""/>
+    <patch name=""dir_min_11""/>
   </mgi>
 
   <mgi name=""MGI09"">
-    <patch name=""pipe_mgi_valve1""/>
-    <patch name=""dir_max_7""/>
-    <patch name=""dir_max_8""/>
+    <patch name=""cylinder_min_10""/>
+    <patch name=""cylinder_8""/>
   </mgi>
 
   <mgi name=""MGI10"">
-    <patch name=""valve1_outlet_mgi_mdi_up""/>
-    <patch name=""valve1_mid_mgi""/>
-    <patch name=""valve1_up_gap_cylinder_out""/>
+    <patch name=""cylinder_12""/>
+    <patch name=""cylinder_min_13""/>
   </mgi>
 
   <mgi name=""MGI11"">
-    <patch name=""airout1_mgi_stator""/>
-    <patch name=""stator_mgi_airoutlet1""/>
+    <patch name=""dir_max_13""/>
+    <patch name=""rotor_mgi_gap32""/>
   </mgi>
 
   <mgi name=""MGI12"">
-    <patch name=""airout2_mgi_stator""/>
-    <patch name=""stator_mgi_airoutlet2""/>
+    <patch name=""cylinder""/>
+    <patch name=""rotor_mgi_gap5""/>
   </mgi>
 
   <mgi name=""MGI13"">
-    <patch name=""airout3_mgi_stator""/>
-    <patch name=""stator_mgi_airoutlet3""/>
+    <patch name=""rotor_mgi_inlet""/>
+    <patch name=""inlet_mgi_rotor""/>
+    <patch name=""dir_max_9""/>
   </mgi>
 
   <mgi name=""MGI14"">
-    <patch name=""rotor2_mgi_stator""/>
-    <patch name=""stator_mgi_rotor2""/>
+    <patch name=""outlet_mgi_gap9""/>
+    <patch name=""dir_max_10""/>
   </mgi>
 
   <mgi name=""MGI15"">
-    <patch name=""inlet_mgi_rotor2""/>
-    <patch name=""rotor2_mgi_inlet""/>
-    <patch name=""dir_max_3""/>
+    <patch name=""cylinder_min_4""/>
+    <patch name=""cylinder_9""/>
   </mgi>
 
-  <mgi name=""MGI16"" tolerance=""0.0319691692590995"">
-    <patch name=""volute_side_mgi_rotor2""/>
-    <patch name=""rotor2_mgi_volute_side2""/>
+  <mgi name=""MGI16"">
+    <patch name=""cylinder_4""/>
+    <patch name=""cylinder_min_5""/>
   </mgi>
 
-  <mgi name=""MGI17"" tolerance=""0.0319691692590995"">
-    <patch name=""rotor2_mgi_volute_top""/>
-    <patch name=""volute_top_mgi_rotor2""/>
+  <mgi name=""MGI17"">
+    <patch name=""cylinder_min_8""/>
+    <patch name=""cylinder_7""/>
   </mgi>
 
   <mgi name=""MGI18"">
-    <patch name=""volute_mgi_valve""/>
-    <patch name=""valve1_up_end_mgi""/>
-  </mgi>
-
-  <mgi name=""MGI19"">
-    <patch name=""valve1_chamber_mgi_bot""/>
-    <patch name=""dir_min_7""/>
-  </mgi>
-
-  <mgi name=""MGI20"">
-    <patch name=""valve1_up_gap_cylinder_in""/>
-    <patch name=""valve1_up_cylinder""/>
-  </mgi>
-
-  <mgi name=""MGI22"">
-    <patch name=""rotor2_mgi_gap""/>
-    <patch name=""dir_min""/>
-    <patch name=""dir_max_6""/>
-  </mgi>
-
-  <mgi name=""MGI24"">
-    <patch name=""rotor2_mgi_volute_side1""/>
-    <patch name=""volute_side_mgi_rotor1""/>
-  </mgi>
-
-  <mgi name=""MGI25"">
-    <patch name=""volute_wall_mgi_gap""/>
-    <patch name=""dir_max_4""/>
-  </mgi>
-
-  <mgi name=""MGI28"">
-    <patch name=""dir_max""/>
-    <patch name=""dir_max_1""/>
-  </mgi>
-
-  <mgi name=""MGI29"">
-    <patch name=""cylinder_min_1""/>
-    <patch name=""cylinder_2""/>
-  </mgi>
-
-  <mgi name=""MGI30"">
-    <patch name=""dir_min_4""/>
-    <patch name=""dir_min_5""/>
-  </mgi>
-
-  <mgi name=""MGI31"">
-    <patch name=""cylinder_min_5""/>
+    <patch name=""cylinder_min_7""/>
     <patch name=""cylinder_6""/>
   </mgi>
 
-  <build
-    operation=""general mesh""
-    name=""airout1""
-    new_mesh_name=""airout1""
-    surfaces=""airout1_inlet airout1_mgi_stator airout1_wall"" 
-    maximum_size=""0.04""
-    minimum_size=""0.001""
-    maximum_at_surface=""0.02""
-    volume_by_surfs_prefix=""off""
-    names_by_size=""off""/>
-  <build
-    operation=""general mesh""
-    name=""airout2""
-    new_mesh_name=""airout2""
-    surfaces=""airout2_inlet airout2_mgi_stator airout2_wall""
-    maximum_size=""0.04""
-    minimum_size=""0.001""
-    maximum_at_surface=""0.02""
-    volume_by_surfs_prefix=""off""
-    names_by_size=""off""/>
-  <build
-    operation=""general mesh""
-    name=""airout3""
-    new_mesh_name=""airout3""
-    surfaces=""airout3_inlet airout3_mgi_stator airout3_wall""  
-    maximum_size=""0.04""
-    minimum_size=""0.001""
-    maximum_at_surface=""0.02""
-    volume_by_surfs_prefix=""off""
-    names_by_size=""off""/>
+  <mgi name=""MGI19"">
+    <patch name=""cylinder_min_6""/>
+    <patch name=""cylinder_5""/>
+  </mgi>
+
+  <mgi name=""MGI20"">
+    <patch name=""cylinder_min_12""/>
+    <patch name=""cylinder_11""/>
+  </mgi>
+
+  <mgi name=""MGI21"">
+    <patch name=""outlet_mgi_rotor_cylinder""/>
+    <patch name=""rotor_cylinder_mgi_outlet""/>
+  </mgi>
+
+  <mgi name=""MGI22"" tolerance=""0.02213742090729019"">
+    <patch name=""rotor_mgi_side""/>
+    <patch name=""outlet_mgi_rotor_side""/>
+  </mgi>
+
+  <mgi name=""MGI23"">
+    <patch name=""outlet_mgi_rotor_top""/>
+    <patch name=""rotor_mgi_top""/>
+  </mgi>
+
+  <mgi name=""MGI24"">
+    <patch name=""stator_mgi_rotor""/>
+    <patch name=""rotor_mgi_stator""/>
+  </mgi>
 
   <build
     operation=""template mesh""
-    name=""hub_gap1""
-    new_mesh_name=""hub_gap1""
+    name=""gap5""
+    new_mesh_name=""gap5""
+    autorun=""on""
     grid_type=""annulus""
-    reference_point=""-0.002 0 0""
-    first_point=""-0.0107 0 0""
+    first_point=""-0.0143 0 0""
     pie_angle=""360""
-    annulus_inner_radius=""0.0987""
-    annulus_outer_radius=""0.099""
-    number_cell_i=""6""
-    number_cell_j=""3""
-    number_cell_k=""90""/>
+    annulus_inner_radius=""0.07779999999999999""
+    annulus_outer_radius=""0.078""
+    number_cell_i=""20""
+    number_cell_j=""5""
+    number_cell_k=""120""/>
   <build
     operation=""template mesh""
-    name=""hub_gap2""
-    new_mesh_name=""hub_gap2""
+    name=""gap1""
+    new_mesh_name=""gap1""
+    autorun=""on""
     grid_type=""annulus""
-    reference_point=""-0.017 0 0""
-    first_point=""-0.0107 0 0""
+    reference_point=""-0.0514 0 0""
+    first_point=""-0.04 0 0""
     pie_angle=""360""
     annulus_inner_radius=""0.0563""
-    annulus_outer_radius=""0.099""
-    number_cell_i=""6""
-    number_cell_j=""40""/>
+    annulus_outer_radius=""0.0565""
+    number_cell_i=""20""
+    number_cell_j=""5""
+    number_cell_k=""120""/>
   <build
     operation=""template mesh""
-    name=""hub_gap3""
-    new_mesh_name=""hub_gap3""
+    name=""gap12""
+    new_mesh_name=""gap12""
+    autorun=""on""
     grid_type=""annulus""
-    reference_point=""-0.017 0 0""
-    first_point=""-0.0012 0 0""
+    reference_point=""-0.0422 0 0""
+    first_point=""-0.04 0 0""
     pie_angle=""360""
-    annulus_inner_radius=""0.0563""
-    annulus_outer_radius=""0.0566""
-    number_cell_i=""6""
-    number_cell_j=""3""/>
+    annulus_inner_radius=""0.0565""
+    annulus_outer_radius=""0.0988""
+    number_cell_i=""5""
+    number_cell_j=""30""
+    number_cell_k=""120""/>
+  <build
+    operation=""template mesh""
+    name=""gap2""
+    new_mesh_name=""gap2""
+    autorun=""on""
+    grid_type=""annulus""
+    reference_point=""-0.057 0 0""
+    first_point=""-0.04 0 0""
+    pie_angle=""360""
+    annulus_inner_radius=""0.0988""
+    annulus_outer_radius=""0.099""
+    number_cell_i=""20""
+    number_cell_j=""5""
+    number_cell_k=""120""/>
+  <build
+    operation=""template mesh""
+    name=""gap91""
+    new_mesh_name=""gap91""
+    autorun=""on""
+    grid_type=""annulus""
+    reference_point=""0.012 0 0""
+    first_point=""0.0104 0 0""
+    pie_angle=""360""
+    annulus_inner_radius=""0.1085""
+    annulus_outer_radius=""0.1158""
+    number_cell_i=""5""
+    number_cell_j=""20""
+    number_cell_k=""120""/>
+  <build
+    operation=""template mesh""
+    name=""gap92""
+    new_mesh_name=""gap92""
+    autorun=""on""
+    grid_type=""annulus""
+    reference_point=""0.012 0 0""
+    first_point=""-0.0016 0 0""
+    pie_angle=""360""
+    annulus_inner_radius=""0.1158""
+    annulus_outer_radius=""0.116""
+    number_cell_i=""20""
+    number_cell_j=""5""
+    number_cell_k=""120""/>
+  <build
+    operation=""template mesh""
+    name=""gap93""
+    new_mesh_name=""gap93""
+    autorun=""on""
+    grid_type=""annulus""
+    reference_point=""0 0 0""
+    first_point=""-0.0016 0 0""
+    pie_angle=""360""
+    annulus_inner_radius=""0.116""
+    annulus_outer_radius=""0.1225""
+    number_cell_i=""5""
+    number_cell_j=""20""
+    number_cell_k=""120""/>
+  <build
+    operation=""template mesh""
+    name=""gap94""
+    new_mesh_name=""gap94""
+    autorun=""on""
+    grid_type=""annulus""
+    reference_point=""0.012 0 0""
+    first_point=""-0.0016 0 0""
+    pie_angle=""360""
+    annulus_inner_radius=""0.1225""
+    annulus_outer_radius=""0.1227""
+    number_cell_i=""20""
+    number_cell_j=""5""
+    number_cell_k=""120""/>
+  <build
+    operation=""template mesh""
+    name=""gap95""
+    new_mesh_name=""gap95""
+    autorun=""on""
+    grid_type=""annulus""
+    reference_point=""0.012 0 0""
+    first_point=""0.0104 0 0""
+    pie_angle=""360""
+    annulus_inner_radius=""0.1227""
+    annulus_outer_radius=""0.1298""
+    number_cell_i=""5""
+    number_cell_j=""20""
+    number_cell_k=""120""/>
+  <build
+    operation=""template mesh""
+    name=""gap6""
+    new_mesh_name=""gap6""
+    autorun=""on""
+    grid_type=""annulus""
+    reference_point=""0.012 0 0""
+    first_point=""0 0 0""
+    pie_angle=""360""
+    annulus_inner_radius=""0.1083""
+    annulus_outer_radius=""0.1085""
+    number_cell_i=""20""
+    number_cell_j=""5""
+    number_cell_k=""120""/>
+  <build
+    operation=""template mesh""
+    name=""gap9""
+    new_mesh_name=""gap9""
+    autorun=""on""
+    grid_type=""annulus""
+    reference_point=""0.012 0 0""
+    first_point=""0 0 0""
+    pie_angle=""360""
+    annulus_inner_radius=""0.1298""
+    annulus_outer_radius=""0.13""
+    number_cell_i=""10""
+    number_cell_j=""5""
+    number_cell_k=""120""/>
+  <build
+    operation=""template mesh""
+    name=""gap3""
+    new_mesh_name=""gap3""
+    autorun=""on""
+    grid_type=""annulus""
+    reference_point=""-0.055 0 0""
+    first_point=""-0.044 0 0""
+    pie_angle=""360""
+    annulus_inner_radius=""0.19175""
+    annulus_outer_radius=""0.19225""
+    number_cell_i=""30""
+    number_cell_j=""5""
+    number_cell_k=""120""/>
+  <build
+    operation=""template mesh""
+    name=""gap31""
+    new_mesh_name=""gap31""
+    autorun=""on""
+    grid_type=""annulus""
+    reference_point=""-0.046 0 0""
+    first_point=""-0.044 0 0""
+    pie_angle=""360""
+    annulus_inner_radius=""0.19225""
+    annulus_outer_radius=""0.1935""
+    number_cell_i=""5""
+    number_cell_j=""10""
+    number_cell_k=""120""/>
+  <build
+    operation=""template mesh""
+    name=""gap32""
+    new_mesh_name=""gap32""
+    autorun=""on""
+    grid_type=""annulus""
+    reference_point=""-0.046 0 0""
+    first_point=""-0.042 0 0""
+    pie_angle=""360""
+    annulus_inner_radius=""0.1935""
+    annulus_outer_radius=""0.194""
+    number_cell_i=""20""
+    number_cell_j=""5""
+    number_cell_k=""120""/>
+  <build
+    operation=""template mesh""
+    name=""air_outlet2""
+    new_mesh_name=""air_outlet2""
+    autorun=""on""
+    grid_type=""cylinder""
+    reference_point=""-0.06310696 -0.1477558 -0.0493733""
+    first_point=""-0.1 -0.1400235 -0.07823078""
+    radius=""0.003""
+    number_cell_i=""10""
+    number_cell_j=""5""
+    number_cell_k=""12""/>
+  <build
+    operation=""template mesh""
+    name=""air_outlet1""
+    new_mesh_name=""air_outlet1""
+    autorun=""on""
+    grid_type=""cylinder""
+    reference_point=""-0.06310696 0.049373375 -0.1477558""
+    first_point=""-0.1 0.07823078 -0.1400235""
+    radius=""0.003""
+    number_cell_i=""10""
+    number_cell_j=""5""
+    number_cell_k=""12""/>
+  <build
+    operation=""template mesh""
+    name=""air_outlet3""
+    new_mesh_name=""air_outlet3""
+    autorun=""on""
+    grid_type=""cylinder""
+    reference_point=""-0.06310696 -0.0493733 0.14775589""
+    first_point=""-0.1 -0.07823078 0.1400235""
+    radius=""0.003""
+    number_cell_i=""10""
+    number_cell_j=""5""
+    number_cell_k=""12""/>
+  <build
+    operation=""template mesh""
+    name=""air_outlet4""
+    new_mesh_name=""air_outlet4""
+    autorun=""on""
+    grid_type=""cylinder""
+    reference_point=""-0.06310696 0.14775589 0.049373375""
+    first_point=""-0.1 0.1400235 0.07823078""
+    radius=""0.003""
+    number_cell_i=""10""
+    number_cell_j=""5""
+    number_cell_k=""12""/>
+  <build
+    operation=""general mesh""
+    name=""outlet""
+    new_mesh_name=""outlet""
+    autorun=""on""
+    cell_size_definitions=""local size""
+    maximum_size=""0.005""
+    minimum_size=""0.0008"">
+    <attribute surfaces=""outlet_air_in outlet_mgi_gap9 outlet_mgi_rotor_cylinder outlet_mgi_rotor_side outlet_mgi_rotor_top outlet_outlet outlet_wall""/>
+    <refine type=""cylinder_refinement"" refinements_cell_size=""0.0005"" bottom_center=""-0.003 0 0"" radius=""0.133""/>
+  </build>
   <build
     operation=""general mesh""
     name=""inlet""
     new_mesh_name=""inlet""
-    surfaces=""inlet_inlet inlet_mgi_rotor2 inlet_wall""
+    autorun=""on""
+    surfaces=""inlet_inlet inlet_mgi_rotor inlet_wall""
+    cell_size_definitions=""local size""
     maximum_size=""0.006""
-    minimum_size=""0.001""
-    maximum_at_surface=""0.006""
-    volume_by_surfs_prefix=""off""
-    names_by_size=""off""/>
-  <build
-    operation=""template mesh""
-    name=""inlet_gap""
-    new_mesh_name=""inlet_gap""
-    grid_type=""annulus""
-    reference_point=""-0.0447 0 0""
-    first_point=""-0.0572 0 0""
-    pie_angle=""360""
-    annulus_inner_radius=""0.07779999999999999""
-    annulus_outer_radius=""0.0781""
-    number_cell_i=""6""
-    number_cell_j=""3""/>
-  <build
-    operation=""general mesh""
-    name=""pipe""
-    new_mesh_name=""pipe""
-    surfaces=""pipe_mgi_valve1 pipe_mgi_valve2 pipe_wall""  
-    maximum_size=""0.006""
-    minimum_size=""0.001""
-    volume_by_surfs_prefix=""off""
-    names_by_size=""off""/>
-  
-  <build
-    operation=""template mesh""
-    name=""rotor_gap1""
-    new_mesh_name=""rotor_gap1""
-    grid_type=""annulus""
-    reference_point=""-0.0132 0 0""
-    first_point=""-0.015 0 0""
-    pie_angle=""360""
-    annulus_inner_radius=""0.1935""
-    annulus_outer_radius=""0.194""
-    number_cell_i=""6""
-    number_cell_j=""5""/>
-  <build
-    operation=""template mesh""
-    name=""rotor_gap2""
-    new_mesh_name=""rotor_gap2""
-    grid_type=""annulus""
-    reference_point=""-0.0132 0 0""
-    first_point=""-0.011 0 0""
-    pie_angle=""360""
-    annulus_inner_radius=""0.19225""
-    annulus_outer_radius=""0.194""
-    number_cell_i=""8""
-    number_cell_j=""10""/>
-  <build
-    operation=""template mesh""
-    name=""rotor_gap3""
-    new_mesh_name=""rotor_gap3""
-    grid_type=""annulus""
-    reference_point=""-0.0132 0 0""
-    first_point=""-0.002 0 0""
-    pie_angle=""360""
-    annulus_inner_radius=""0.19175""
-    annulus_outer_radius=""0.19225""
-    number_cell_i=""8""
-    number_cell_j=""5""/>
-  <build
-    operation=""template mesh""
-    name=""valve1_bot""
-    new_mesh_name=""valve1_bot""
-    grid_type=""annulus""
-    reference_point=""-0.0515 0.1235473 0.3218518""
-    first_point=""-0.0515 0.1254287 0.3267531""
-    pie_angle=""360""
-    annulus_inner_radius=""0.0095""
-    annulus_outer_radius=""0.0275""
-    number_cell_i=""10""
-    number_cell_j=""15""/>
-  <build
-    operation=""template mesh""
-    name=""valve1_bot_pipe""
-    new_mesh_name=""valve1_bot_pipe""
-    grid_type=""cylinder""
-    reference_point=""-0.0315 0.149283 0.3540152""
-    first_point=""-0.0315 0.1370985 0.3222735""
-    radius=""0.0015""
-    number_cell_j=""3""
-    number_cell_k=""12""/>
-  <build
-    operation=""general mesh""
-    name=""valve1_chamber""
-    new_mesh_name=""valve1_chamber""
-    surfaces=""valve1_chamber_mgi_bot valve1_chamber_wall1 valve1_chamber_wall2""
-    maximum_size=""0.02""
-    volume_by_surfs_prefix=""off""
-    names_by_size=""off""/>
-  <build
-    operation=""general mesh""
-    name=""valve1_mid""
-    new_mesh_name=""valve1_mid""
-    surfaces=""valve1_mid_mgi valve1_mid_wall""
-    maximum_size=""0.02""
-    minimum_size=""0.001""
-    volume_by_surfs_prefix=""off""
-    names_by_size=""off""/>
-  <build
-    operation=""general mesh""
-    name=""valve1_outlet""
-    new_mesh_name=""valve1_outlet""
-    maximum_size=""0.008""
-    minimum_size=""0.001""
-    volume_by_surfs_prefix=""off""
-    names_by_size=""off"">
-    <attribute surfaces=""valve1_outlet_mgi_mdi_up valve1_outlet_outlet1 valve1_outlet_outlet2 valve1_outlet_wall""/>
-  </build>
-  <build
-    operation=""build valve""
-    name=""valve1_up""
-    new_mesh_name=""valve1_up""
-    spool_valve_surfaces=""valve1_up_valve""
-    spool_cylinder_surfaces=""valve1_up_cylinder""
-    spool_end_surfaces=""valve1_up_end valve1_up_end_mgi""
-    spool_move_direction=""0 -0.0021502 -0.0056014""
-    spool_minimum_gap=""0.0001""
-    spool_maximum_displacement=""0.1""
-    spool_maximum_cell_size=""0.02""
-    spool_maximum_boundary_cell=""0.02""
-    spool_layers_valve_to_seat=""10""/>
- <build
-    operation=""build valve""
-    name=""valve1_up_gap""
-    new_mesh_name=""valve1_up_gap""
-    spool_valve_surfaces=""valve1_up_gap_valve""
-    spool_cylinder_surfaces=""valve1_up_gap_cylinder_in valve1_up_gap_cylinder_out""
-    spool_end_surfaces=""valve1_up_gap_end""
-    spool_move_direction=""0 -0.0021502 -0.0056014""
-    spool_minimum_gap=""0.0001""
-    spool_maximum_displacement=""0.1""
-    spool_maximum_cell_size=""0.02""
-    spool_maximum_boundary_cell=""0.02""
-    spool_layers_valve_to_seat=""10""/>
- 
-  <build
-    operation=""build valve""
-    name=""valve2_bot""
-    new_mesh_name=""valve2_bot""
-    spool_valve_surfaces=""valve2_bot_valve""
-    spool_cylinder_surfaces=""valve2_bot_cylinder""
-    spool_end_surfaces=""valve2_bot_end""
-    spool_move_direction=""0 -0.0056015 0.0021503""
-    spool_minimum_gap=""0.0001""
-    spool_maximum_displacement=""0.1""
-    spool_maximum_cell_size=""0.02""
-    spool_maximum_boundary_cell=""0.02""/>
-  <build
-    operation=""template mesh""
-    name=""valve2_gap1""
-    new_mesh_name=""valve2_gap1""
-    grid_type=""annulus""
-    reference_point=""-0.0355 0.2240368 0.3869108""
-    first_point=""-0.0355 0.2380405 0.3815352""
-    pie_angle=""360""
-    annulus_inner_radius=""0.006""
-    annulus_outer_radius=""0.008""
-    number_cell_i=""15""/>
-  <build
-    operation=""template mesh""
-    name=""valve2_gap2""
-    new_mesh_name=""valve2_gap2""
-    grid_type=""annulus""
-    reference_point=""-0.0355 0.2380405 0.3815352""
-    first_point=""-0.0355 0.2455092 0.3786683""
-    pie_angle=""360""
-    annulus_inner_radius=""0.006""
-    annulus_outer_radius=""0.008""/>
-  <build
-    operation=""template mesh""
-    name=""valve2_gap3""
-    new_mesh_name=""valve2_gap3""
-    grid_type=""annulus""
-    reference_point=""-0.0355 0.2483099 0.3775932""
-    first_point=""-0.0355 0.2557786 0.3747263""
-    pie_angle=""360""
-    annulus_inner_radius=""0.006""
-    annulus_outer_radius=""0.008""/>
-  <build
-    operation=""template mesh""
-    name=""valve2_gap4""
-    new_mesh_name=""valve2_gap4""
-    grid_type=""annulus""
-    reference_point=""-0.0355 0.2921882 0.3607499""
-    first_point=""-0.0355 0.2987233 0.3582413""
-    pie_angle=""360""
-    annulus_inner_radius=""0.006""
-    annulus_outer_radius=""0.007""/>  
-  <build
-    operation=""general mesh""
-    name=""valve2_mid""
-    new_mesh_name=""valve2_mid""
-    surfaces=""valve2_mid_cylinder_mgi valve2_mid_mgi_up valve2_mid_valve""
-    maximum_size=""0.02""
-    minimum_size=""0.001""
-    volume_by_surfs_prefix=""off""
-    names_by_size=""off""/> 
-  <build
-    operation=""general mesh""
-    name=""valve2_outlet1""
-    new_mesh_name=""valve2_outlet1""
-    surfaces=""valve2_outlet1_mgi_gap3 valve2_outlet1_outlet valve2_outlet1_wall""
-    maximum_size=""0.04""
-    minimum_size=""0.001""
-    maximum_at_surface=""0.02""
-    volume_by_surfs_prefix=""off""
-    names_by_size=""off""/>
-  <build
-    operation=""general mesh""
-    name=""valve2_outlet2""
-    new_mesh_name=""valve2_outlet2""
-    surfaces=""valve2_outlet2_mgi_gap4 valve2_outlet2_outlet valve2_outlet2_wall"" 
-    maximum_size=""0.02""
-    minimum_size=""0.001""
-    volume_by_surfs_prefix=""off""
-    names_by_size=""off""/> 
-  <build
-    operation=""template mesh""
-    name=""valve2_up""
-    new_mesh_name=""valve2_up""
-    grid_type=""cylinder""
-    reference_point=""-0.0355 0.2380405 0.3815352""
-    first_point=""-0.0355 0.232439 0.3836855""
-    radius=""0.006""
-    number_cell_i=""20""
-    number_cell_j=""15""/>
-  <build
-    operation=""general mesh""
-    name=""volute""
-    new_mesh_name=""volute""
-    maximum_size=""0.006""
-    minimum_size=""0.001"">
-    <attribute surfaces=""volute_kongsun_inlet volute_mgi_valve volute_side_mgi_rotor1 volute_side_mgi_rotor2 volute_top_mgi_rotor2 volute_wall volute_wall_mgi_gap""/>
-
-    <surface name=""volute_side_mgi_rotor1"" bc_cell_size_opt=""default_size"" cell_size=""0.002""/>
-  </build>";
+    minimum_size=""0.0005""/>";
 
         // 动轮 {0} - 最大网格尺度 {1} - 最小网格尺度 {2} - 最大面网格尺度
         public static string DongLunForWangGeHuaFen = @"  <build
     operation=""general mesh""
-    name=""rotor2""
-    new_mesh_name=""rotor2""
-    user_mode=""advanced_mode"" 
-    maximum_size=""{0}""
-    minimum_size=""{1}""
-    maximum_at_surface=""{2}""
-    volume_by_surfs_prefix=""off"" 
-    names_by_size=""off"">
-    <attribute surfaces=""rotor2_mgi_gap rotor2_mgi_inlet rotor2_mgi_stator rotor2_mgi_volute_side1 rotor2_mgi_volute_side2 rotor2_mgi_volute_top rotor2_wall""/>
-  </build>";
-
-        // 定轮 {0} - 最大网格尺度 {1} - 最小网格尺度 {2} - 最大面网格尺度
-        public static string DingLunForWangGeHuaFen = @"<build
-    operation=""general mesh""
-    name=""stator""
-    new_mesh_name=""stator""  
+    name=""rotor""
+    new_mesh_name=""rotor""
+    autorun=""on""
+    cell_size_definitions=""local size""
     maximum_size=""{0}""
     minimum_size=""{1}""
     maximum_at_surface=""{2}"">
-    <attribute surfaces=""stator_mgi_airoutlet1 stator_mgi_airoutlet2 stator_mgi_airoutlet3 stator_mgi_rotor2 stator_wall""/>
+    <attribute surfaces=""rotor_blades rotor_cylinder_mgi_outlet rotor_mgi_gap1 rotor_mgi_gap3 rotor_mgi_gap32 rotor_mgi_gap5 rotor_mgi_inlet rotor_mgi_side rotor_mgi_stator rotor_mgi_top""/>
 
-    <surface name=""stator_mgi_airoutlet1"" bc_cell_size_opt=""default_size"" cell_size=""0.002""/>
-    <surface name=""stator_mgi_airoutlet2"" bc_cell_size_opt=""default_size"" cell_size=""0.002""/>
-    <surface name=""stator_mgi_airoutlet3"" bc_cell_size_opt=""default_size"" cell_size=""0.002""/>
+    <surface name=""rotor_mgi_gap1"" bc_cell_size_opt=""custom_size"" cell_size=""0.001""/>
+    <surface name=""rotor_mgi_gap32"" bc_cell_size_opt=""custom_size"" cell_size=""0.001""/>
+    <surface name=""rotor_mgi_gap5"" bc_cell_size_opt=""custom_size"" cell_size=""0.001""/>
   </build>";
 
-        // {0} -- X {1} -- Y {2} -- Z  TODO: Add more probe point
-        public static string JianKongDianZuoBiaoCanShu = @"  <probe_point name=""Point 01"" position=""{0} {1} {2}""/>
-  <probe_point name=""Point 02"" position=""-0.0515 0.1267599729704603 0.2562916443662048""/>
-  <probe_point name=""Point 03"" position=""-0.051 0.1024932 0.267004""/>
-  <probe_point name=""Point 04"" position=""-0.051 0.1024932 0.267004""/>
-  <probe_point
-    name=""Point 05""
-    type=""stationary""
-    position=""-0.051 0.1363857359439135 0.3210142738372088"">
-    <output module=""flow"" derived=""on""/>
-  </probe_point>
-  <probe_point name=""Point 06"" position=""-0.03980238649763423 0.09385995490348284 0.2433976844376425""/>";
+        // 定轮 {0} - 最大网格尺度 {1} - 最小网格尺度 {2} - 最大面网格尺度
+        public static string DingLunForWangGeHuaFen = @"  <build
+    operation=""general mesh""
+    name=""stator""
+    new_mesh_name=""stator""
+    autorun=""on""
+    user_mode=""normal_mode""
+    cell_size_definitions=""local size""
+    maximum_size=""{0}""
+    minimum_size=""{1}""
+    maximum_at_surface=""{2}"">
+    <attribute surfaces=""stator_mgi_gap1 stator_mgi_outlet1 stator_mgi_outlet2 stator_mgi_outlet3 stator_mgi_outlet4 stator_mgi_rotor stator_wall""/>
 
-        // {0} -- 迭代步数 {1} -- 保存频率
-        public static string JiSuanKongZhiCanShu = @"  <module type=""share"" iteration=""{0}"" save_result_interval=""{1}""/>";
+    <surface name=""stator_mgi_gap1"" bc_cell_size_opt=""custom_size"" cell_size=""0.001""/>
+    <surface name=""stator_mgi_outlet1"" bc_cell_size_opt=""custom_size"" cell_size=""0.001""/>
+    <surface name=""stator_mgi_outlet2"" bc_cell_size_opt=""custom_size"" cell_size=""0.001""/>
+    <surface name=""stator_mgi_outlet3"" bc_cell_size_opt=""custom_size"" cell_size=""0.001""/>
+    <surface name=""stator_mgi_outlet4"" bc_cell_size_opt=""custom_size"" cell_size=""0.001""/>
+  </build>";
 
-        // {0} - 背压阀阀芯质量 {1} - 背压阀弹簧刚度 {2} - 背压阀弹簧预紧力
-        // {3} - 滑阀阀芯质量  {4} - 滑阀弹簧刚度 {5} - 滑阀弹簧预紧力
-        public static string FaMenCanShu = @"  <module
-    type=""flow""
-    state=""active""
-    converge_criterion=""0.1""
-    numeric_scheme=""2ndorderupwind 2ndorderupwind""/>
-  <module type=""turbulence"" state=""active""/>
+        // {0} -- 1d3d边界结果文件
+        public static string ImportedOilFiles = $@"  
+  <expressions>
+    Vcen=rotate_1d.rpm
+    temp=heat.T
+    den=table(""{ScriptWrapperForHengNiuJu.DensityFileName}"",temp)
+    vis=table(""{ScriptWrapperForHengNiuJu.ViscosityFileName}"",temp)
+    cond=table(""{ScriptWrapperForHengNiuJu.HeatConductivityFileName}"",temp)
+    capa=table(""{ScriptWrapperForHengNiuJu.HeatCapacityFileName}"",temp)
+    Vall=0.00747456
+    Qflux=(-1)*flow.pow@rotor_blades/Vall
+    Vf_oil=(time&lt;0.001)?0:1
+    Vf_air=1-Vf_oil
+    P1=flow.pressure@outlet_outlet
+    Qoutlet=table({{0}},P1)
+    Qvoutlet=Qoutlet/825
+  </expressions>";
+
+        // 物质定义
+        // {0} -- 空气粘度 {1} -- 空气比热容 {2} -- 空气热导率
+        // 油：比热容"capa", 热导率"cond", 密度"den"来自自定义文件。
+        public static string WuZhiDingYi = @"  
+  <module type=""flowphasecomp"" flowphasecomp=""oil"">
+    <bc patch=""outlet_outlet"" type=""flow_comp_wall"" default=""yes"" output=""user_select""/>
+    <vc volume=""gap5"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""gap1"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""gap12"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""gap2"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""gap91"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""gap92"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""gap93"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""gap94"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""gap95"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""gap6"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""gap9"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""gap3"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""gap31"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""gap32"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""air_outlet2"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""air_outlet1"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""air_outlet3"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""air_outlet4"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""stator"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""outlet"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""inlet"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""air_outlet1"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""stator"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""outlet"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""inlet"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""gap95"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""gap94"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""gap93"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""gap92"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""gap91"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""gap9"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""gap6"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""gap5"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""gap32"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""gap31"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""gap3"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""gap2"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""gap12"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""gap1"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""air_outlet4"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""air_outlet3"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""air_outlet2"" type=""surface_tension"" surface_tension=""0.04""/>
+    <vc volume=""rotor"" type=""const_viscosity"" default=""yes"" value=""vis""/>
+    <vc volume=""rotor"" type=""surface_tension"" surface_tension=""0.04""/>
+  </module>
+
+  <module type=""flowphasecomp"" flowphasecomp=""air"">
+    <bc patch=""outlet_outlet"" type=""flow_comp_wall"" default=""yes"" output=""user_select""/>
+    <vc volume=""gap5"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""gap1"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""gap12"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""gap2"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""gap91"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""gap92"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""gap93"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""gap94"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""gap95"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""gap6"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""gap9"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""gap3"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""gap31"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""gap32"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""air_outlet2"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""air_outlet1"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""air_outlet3"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""air_outlet4"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""rotor"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""stator"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""outlet"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+    <vc volume=""inlet"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
+  </module>
+
+  <module type=""heatphasecomp"" heatphasecomp=""oil"">
+    <vc volume=""air_outlet1"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""stator"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""rotor"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""outlet"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""inlet"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""gap95"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""gap94"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""gap93"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""gap92"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""gap91"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""gap9"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""gap6"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""gap5"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""gap32"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""gap31"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""gap3"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""gap2"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""gap12"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""gap1"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""air_outlet4"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""air_outlet3"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""air_outlet2"" type=""const_conductivity"" conductivity=""cond""/>
+    <vc volume=""air_outlet1"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""stator"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""rotor"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""outlet"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""inlet"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""gap95"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""gap94"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""gap93"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""gap92"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""gap91"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""gap9"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""gap6"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""gap5"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""gap32"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""gap31"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""gap3"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""gap2"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""gap12"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""gap1"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""air_outlet4"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""air_outlet3"" type=""const_capacity"" value=""capa""/>
+    <vc volume=""air_outlet2"" type=""const_capacity"" value=""capa""/>
+  </module>
+
+  <module type=""heatphasecomp"" heatphasecomp=""air"">
+    <vc volume=""gap5"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""gap1"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""gap12"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""gap2"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""gap91"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""gap92"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""gap93"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""gap94"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""gap95"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""gap6"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""gap9"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""gap3"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""gap31"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""gap32"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""air_outlet2"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""air_outlet1"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""air_outlet3"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""air_outlet4"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""rotor"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""stator"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""outlet"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""inlet"" type=""const_capacity"" default=""yes"" value=""{1}""/>
+    <vc volume=""air_outlet1"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""stator"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""rotor"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""outlet"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""inlet"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""gap95"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""gap94"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""gap93"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""gap92"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""gap91"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""gap9"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""gap6"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""gap5"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""gap32"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""gap31"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""gap3"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""gap2"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""gap12"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""gap1"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""air_outlet4"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""air_outlet3"" type=""const_conductivity"" conductivity=""{2}""/>
+    <vc volume=""air_outlet2"" type=""const_conductivity"" conductivity=""{2}""/>
+  </module>
+
+  <module type=""sharephasecomp"" sharephasecomp=""oil"">
+    <vc volume=""gap5"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""gap1"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""gap12"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""gap2"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""gap91"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""gap92"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""gap93"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""gap94"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""gap95"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""gap6"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""gap9"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""gap3"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""gap31"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""gap32"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""air_outlet2"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""air_outlet1"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""air_outlet3"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""air_outlet4"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""stator"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""outlet"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""inlet"" type=""const_density"" default=""yes"" value=""den""/>
+    <vc volume=""rotor"" type=""const_density"" default=""yes"" value=""den""/>
+  </module>
+
+  <module type=""sharephasecomp"" sharephasecomp=""air"">
+    <vc volume=""air_outlet1"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""stator"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""rotor"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""outlet"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""inlet"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""gap95"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""gap94"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""gap93"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""gap92"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""gap91"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""gap9"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""gap6"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""gap5"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""gap32"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""gap31"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""gap3"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""gap2"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""gap12"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""gap1"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""air_outlet4"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""air_outlet3"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+    <vc volume=""air_outlet2"" type=""ideal_gas_law"" molecular_weight=""28.97""/>
+  </module>";
+
+        // 边界条件定义 + 物理模型选择 + 各种监测
+        // {0} -- 动轮转速 {1} -- 动轮转动惯量 {2} -- 进口压力 {3} -- 进口温度 
+        // TODO: 通气孔压力
+        public static string BianJieTiaoJianDingYi = @"
+  <module type=""flow"" state=""active"" numeric_scheme=""2ndorderupwind upwind""/>
+  <module type=""heat"" state=""active""/>
+  <module type=""turbulence"" state=""active"" relaxation=""0.3 0.3"">
+    <bc patch=""rotor_blades"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""stator_wall"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""outlet_wall"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""inlet_wall"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""cylinder_min"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""cylinder"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""dir_min_2"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""dir_max_2"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""cylinder_min_3"" type=""wall"" default=""yes"" wall_roughness=""rough""
+      roughness_height=""0.0005""/>
+
+    <bc patch=""cylinder_3"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""dir_min_5"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""dir_max_5"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""cylinder_min_6"" type=""wall"" default=""yes"" wall_roughness=""rough""
+      roughness_height=""0.0005""/>
+
+    <bc patch=""cylinder_6"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""dir_min_7"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""dir_max_7"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""cylinder_min_8"" type=""wall"" default=""yes"" wall_roughness=""rough""
+      roughness_height=""0.0005""/>
+
+    <bc patch=""cylinder_8"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""dir_min_9"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""dir_max_9"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""cylinder_min_11"" type=""wall"" default=""yes"" wall_roughness=""rough""
+      roughness_height=""0.0005""/>
+
+    <bc patch=""cylinder_11"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""cylinder_min_4"" type=""wall"" default=""yes"" wall_roughness=""rough""
+      roughness_height=""0.0005""/>
+
+    <bc patch=""cylinder_4"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""cylinder_min_10"" type=""wall"" default=""yes"" wall_roughness=""rough""
+      roughness_height=""0.0005""/>
+
+    <bc patch=""cylinder_10"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""cylinder_min_13"" type=""wall"" default=""yes"" wall_roughness=""rough""
+      roughness_height=""0.0005""/>
+
+    <bc patch=""cylinder_13"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""cylinder_15"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""cylinder_16"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""cylinder_14"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+    <bc patch=""cylinder_17"" type=""wall"" default=""yes"" wall_roughness=""rough"" roughness_height=""0.0005""/>
+  </module>
+
   <module
     type=""centrifugal""
     state=""active""
-    user_mode=""advanced_mode""
     method=""moving_grid""
     num_revolutions=""100""
     rotation_direction=""counter_clockwise""
-    omega=""Vcen rpm""
+    omega=""{0}""
     rotate_axis_direction=""1 0 0""
-    n_time_steps_per_pocket_move=""5000""
+    n_time_steps_per_pocket_move=""20""
     number_blades=""20"">
-    <bc patch=""valve2_outlet1_outlet"" type=""outlet""/>
-    <bc patch=""valve2_outlet2_outlet"" type=""inlet""/>
-    <bc patch=""valve1_outlet_outlet2"" type=""outlet""/>
-    <bc patch=""valve1_outlet_outlet1"" type=""outlet""/>
-    <bc patch=""rotor2_wall"" type=""rotor""/>
     <bc patch=""inlet_inlet"" type=""inlet""/>
-    <bc patch=""airout2_inlet"" type=""outlet""/>
-    <bc patch=""airout1_inlet"" type=""outlet""/>
-    <bc patch=""airout3_inlet"" type=""outlet""/>
-    <bc patch=""dir_max_2"" type=""outlet""/>
-    <bc patch=""cylinder_min_2"" type=""rotate wall""/>
-    <bc patch=""sub-features_1"" type=""rotor""/>
-    <bc patch=""cylinder"" type=""rotate wall""/>
-    <bc patch=""cylinder_1"" type=""rotate wall""/>
-    <bc patch=""dir_min_1"" type=""rotate wall""/>
+    <bc patch=""dir_max_17"" type=""outlet""/>
+    <bc patch=""dir_max_16"" type=""outlet""/>
+    <bc patch=""dir_max_15"" type=""outlet""/>
+    <bc patch=""dir_max_14"" type=""outlet""/>
+    <bc patch=""dir_min_1"" type=""outlet""/>
+    <bc patch=""dir_max"" type=""outlet""/>
+    <bc patch=""rotor_blades"" type=""rotor""/>
+    <bc patch=""cylinder_min_1"" type=""rotate wall""/>
+    <bc patch=""dir_max_2"" type=""rotate wall""/>
     <bc patch=""cylinder_3"" type=""rotate wall""/>
-    <bc patch=""dir_min_3"" type=""outlet""/>
+    <bc patch=""cylinder_min_10"" type=""rotate wall""/>
+    <bc patch=""cylinder_min_13"" type=""rotate wall""/>
+    <bc patch=""cylinder"" type=""rotate wall""/>
+    <bc patch=""cylinder_11"" type=""rotate wall""/>
     <bc patch=""cylinder_min_4"" type=""rotate wall""/>
+    <bc patch=""dir_max_5"" type=""rotate wall""/>
     <bc patch=""cylinder_min_6"" type=""rotate wall""/>
-    <bc patch=""dir_min_8"" type=""inlet""/>
-    <vc volume=""general mesh"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""general mesh_1"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""general mesh_2"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""template mesh"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""template mesh_1"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""template mesh_2"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""general mesh_3"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""template mesh_3"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""general mesh_4"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""general mesh_5"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""template mesh_4"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""template mesh_5"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""template mesh_6"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""general mesh_6"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""template mesh_7"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""template mesh_8"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""general mesh_7"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""general mesh_8"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""general mesh_9"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""spool valve"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""spool valve_1"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""spool valve_2"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""template mesh_9"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""template mesh_10"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""template mesh_11"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""template mesh_12"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""general mesh_10"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""general mesh_11"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""general mesh_12"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""template mesh_13"" type=""property"" default=""yes"" pump_material=""oil""/>
-    <vc volume=""general mesh_13"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <bc patch=""dir_max_7"" type=""rotate wall""/>
+    <bc patch=""cylinder_min_8"" type=""rotate wall""/>
+    <bc patch=""dir_max_9"" type=""rotate wall""/>
+    <bc patch=""outlet_outlet"" type=""outlet"" output=""user_select""/>
+    <vc volume=""gap5"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""gap1"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""gap12"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""gap2"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""gap91"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""gap92"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""gap93"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""gap94"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""gap95"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""gap6"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""gap9"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""gap3"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""gap31"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""gap32"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""air_outlet2"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""air_outlet1"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""air_outlet3"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""air_outlet4"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""rotor"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""stator"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""outlet"" type=""property"" default=""yes"" pump_material=""oil""/>
+    <vc volume=""inlet"" type=""property"" default=""yes"" pump_material=""oil""/>
   </module>
 
   <module
-    type=""spool""
-    spool=""3""
-    state=""active""
-    dynamics=""trans_1d 3""
-    user_mode=""advanced_mode""
-    minimum_gap=""0.0001""
-    maximum_displacement=""0.1"">
-    <bc patch=""valve1_chamber_wall1"" type=""valve_wall""/>
-    <bc patch=""valve1_chamber_wall2"" type=""valve_wall""/>
-    <bc patch=""valve1_mid_wall"" type=""valve_wall""/>
-    <bc patch=""valve1_up_cylinder"" type=""cylinder_wall""/>
-    <bc patch=""valve1_up_end"" type=""valve_end""/>
-    <bc patch=""valve1_up_valve"" type=""valve_wall""/>
-    <bc patch=""valve1_up_gap_cylinder_in"" type=""cylinder_wall""/>
-    <bc patch=""valve1_up_gap_cylinder_out"" type=""cylinder_wall""/>
-    <bc patch=""valve1_up_gap_end"" type=""valve_end""/>
-    <bc patch=""valve1_up_gap_valve"" type=""valve_wall""/>
-    <bc patch=""valve2_outlet1_outlet"" type=""outlet""/>
-    <bc patch=""valve1_outlet_outlet1"" type=""outlet""/>
-    <bc patch=""valve1_outlet_outlet2"" type=""outlet""/>
-    <bc patch=""valve2_outlet2_outlet"" type=""inlet""/>
-    <bc patch=""inlet_inlet"" type=""inlet""/>
-    <bc patch=""airout1_inlet"" type=""outlet""/>
-    <bc patch=""airout3_inlet"" type=""outlet""/>
-    <bc patch=""airout2_inlet"" type=""outlet""/>
-    <bc patch=""dir_max_2"" type=""outlet""/>
-    <bc patch=""sub-features_3"" type=""valve_wall""/>
-    <bc patch=""valve1_up_end_mgi"" type=""valve_end""/>
-    <bc patch=""sub-features_6"" type=""valve_wall""/>
-    <bc patch=""dir_min_3"" type=""outlet""/>
-    <bc patch=""dir_min_8"" type=""inlet""/>
-    <bc patch=""sub-features_5"" type=""valve_wall""/>
-    <bc patch=""dir_min_7"" type=""valve_wall""/>
-    <bc patch=""dir_max_7"" type=""valve_end""/>
-    <bc patch=""cylinder_min_7"" type=""cylinder_wall""/>
-    <bc patch=""cylinder_7"" type=""cylinder_wall""/>
-  </module>
-
-  <module
-    type=""spool""
-    spool=""4""
-    state=""active""
-    dynamics=""trans_1d 4""
-    user_mode=""advanced_mode""
-    minimum_gap=""0.0001""
-    maximum_displacement=""0.1"">
-    <bc patch=""valve2_bot_cylinder"" type=""cylinder_wall""/>
-    <bc patch=""valve2_bot_end"" type=""valve_end""/>
-    <bc patch=""valve2_bot_valve"" type=""valve_wall""/>
-    <bc patch=""valve2_mid_valve"" type=""valve_wall""/>
-    <bc patch=""valve2_outlet1_outlet"" type=""outlet""/>
-    <bc patch=""valve1_outlet_outlet1"" type=""outlet""/>
-    <bc patch=""valve1_outlet_outlet2"" type=""outlet""/>
-    <bc patch=""valve2_outlet2_outlet"" type=""inlet""/>
-    <bc patch=""inlet_inlet"" type=""inlet""/>
-    <bc patch=""airout1_inlet"" type=""outlet""/>
-    <bc patch=""airout3_inlet"" type=""outlet""/>
-    <bc patch=""airout2_inlet"" type=""outlet""/>
-    <bc patch=""dir_max_2"" type=""outlet""/>
-    <bc patch=""sub-features_7"" type=""valve_wall""/>
-    <bc patch=""dir_min_3"" type=""outlet""/>
-    <bc patch=""dir_min_8"" type=""inlet""/>
-    <bc patch=""dir_max_13"" type=""valve_end""/>
-    <bc patch=""dir_min_13"" type=""valve_wall""/>
-    <bc patch=""cylinder_13"" type=""cylinder_wall""/>
-  </module>
-
-  <module
-    type=""trans_1d""
-    trans_1d=""3""
-    state=""active""
-    body_motion=""coupled""
-    move_direction=""0 0.0021502 0.0056014""
-    body_mass=""{0}""
-    spring_constant=""{1}""
-    preload=""{2}""/>
-  <module
-    type=""trans_1d""
-    trans_1d=""4""
-    state=""active""
-    body_motion=""coupled""
-    move_direction=""0 -0.0056015 0.0021503""
-    body_mass=""{3}""
-    spring_constant=""{4}""
-    preload=""{5}""/>";
-
-        // {0} - 动轮初始转速(rad/s)  {1} - 动轮转动惯量 {2} - 背压阀出口  {3} - 滑阀回油出口
-        // {4} - 指令油入口   {5} - 充油进口   {6} - 通气孔   {7} - 反馈压力入口
-        public static string BianJieTiaoJianDingYi = @"  <module
     type=""rotate_1d""
     state=""active""
     rotate_direction=""1 0 0""
     rotation_direction=""counter_clockwise""
-    initial_omega=""{0}""
+    initial_omega=""366.5191429188092""
+    initial_omega_udsp=""rpm""
     moment_of_inertia=""{1}"">
-    <bc patch=""rotor2_wall"" type=""dynamicsBC""/>
+    <bc patch=""rotor_blades"" type=""dynamicsBC""/>
   </module>
 
-  <module type=""multiphase"" state=""active"" components=""oil air""/>
+  <module
+    type=""multiphase""
+    state=""active""
+    components=""oil air""
+    solve_option=""solve_one_less_eqs""
+    max_courant_number=""30""/>
   <module
     type=""multiflow""
     numeric_scheme=""2ndorderupwind upwind""
     gravity=""on""
-    g=""0 9.800000000000001 0""
+    g=""-9.81 0 0""
     maximum_v_magnitude=""2000"">
-    <bc patch=""valve1_outlet_outlet1"" type=""fix_pressure"" value=""{2}""/>
-    <bc patch=""valve1_outlet_outlet2"" type=""fix_pressure"" value=""{2}""/>
-    <bc patch=""valve2_outlet1_outlet"" type=""fix_pressure"" value=""{3}""/>
-    <bc patch=""valve1_mid_wall"" type=""wall"" default=""yes"" print_average_total_pres=""on""
-      print_mass_total_pressure=""on"" print_average_pres=""on"" output=""user_select""/>
+    <bc patch=""dir_min_1"" type=""fix_pressure"" output=""user_select""/>
+    <bc patch=""inlet_inlet"" type=""fix_pressure_inlet"" value=""{2}""/>
+    <bc patch=""dir_max_16"" type=""fix_pressure""/>
+    <bc patch=""dir_max_17"" type=""fix_pressure""/>
+    <bc patch=""dir_max_14"" type=""fix_pressure""/>
+    <bc patch=""dir_max_15"" type=""fix_pressure""/>
+    <bc patch=""dir_max"" type=""fix_pressure""/>
+    <bc patch=""outlet_outlet"" type=""fix_volflux"" default=""yes"" print_average_pres=""on""
+      value=""Qvoutlet"" output=""user_select""/>
+  </module>
 
-    <bc patch=""valve1_up_valve"" type=""wall"" default=""yes"" print_average_total_pres=""on""
-      print_mass_total_pressure=""on"" print_average_pres=""on"" output=""user_select""/>
+  <module type=""multiheat"" viscous_work=""on"" temperature_max=""1000"">
+    <bc patch=""inlet_inlet"" type=""fix_t"" value=""{3}""/>
+    <bc patch=""dir_max"" type=""outlet""/>
+    <bc patch=""dir_max_14"" type=""outlet""/>
+    <bc patch=""dir_max_15"" type=""outlet""/>
+    <bc patch=""dir_max_17"" type=""outlet""/>
+    <bc patch=""dir_max_16"" type=""outlet""/>
+    <bc patch=""dir_min_1"" type=""outlet""/>
+    <bc patch=""outlet_outlet"" type=""outlet"" default=""yes"" output=""user_select""/>
+    <vc volume=""air_outlet1"" type=""output_var"" default=""yes"" print_vol_avg_t=""on""
+      print_mass_tot_e=""on"" print_vol_avg_et=""on""/>
 
-    <bc patch=""valve1_chamber_wall1"" type=""wall"" default=""yes"" print_average_total_pres=""on""
-      print_mass_total_pressure=""on"" print_average_pres=""on"" output=""user_select""/>
+    <vc volume=""stator"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
 
-    <bc patch=""valve1_chamber_wall2"" type=""wall"" default=""yes"" print_average_total_pres=""on""
-      print_mass_total_pressure=""on"" print_average_pres=""on"" output=""user_select""/>
+    <vc volume=""rotor"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
 
-    <bc patch=""valve2_outlet2_outlet"" type=""fix_pressure_inlet"" value=""{4} Pa""/>
-    <bc patch=""inlet_inlet"" type=""fix_pressure_inlet"" value=""{5}""/>
-    <bc patch=""MGI18_valve1_up_end_mgi_volute_mgi_valve"" type=""default_interface"" default=""yes""
-      print_average_total_pres=""on"" print_mass_average_total_pres=""on"" print_average_pres=""on"" output=""user_select""/>
+    <vc volume=""outlet"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
 
-    <bc patch=""MGI22_dir_max_6_rotor2_mgi_gap"" type=""default_interface"" default=""yes""
-      print_volumetric_flux=""on"" output=""user_select""/>
+    <vc volume=""inlet"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
 
-    <bc patch=""MGI31_cylinder_6_cylinder_min_5"" type=""default_interface"" default=""yes""
-      print_volumetric_flux=""on"" output=""user_select""/>
+    <vc volume=""gap95"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
 
-    <bc patch=""airout1_inlet"" type=""fix_pressure"" value=""{6}""/>
-    <bc patch=""airout3_inlet"" type=""fix_pressure"" value=""{6}""/>
-    <bc patch=""airout2_inlet"" type=""fix_pressure"" value=""{6}""/>
-    <bc patch=""dir_max_2"" type=""fix_pressure"" value=""101325""/>
-    <bc patch=""dir_min_3"" type=""fix_pressure"" value=""101325""/>
-    <bc patch=""dir_min_8"" type=""fix_totalp"" default=""yes"" totalp=""{7} Pa""/>
+    <vc volume=""gap94"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
+
+    <vc volume=""gap93"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
+
+    <vc volume=""gap92"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
+
+    <vc volume=""gap91"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
+
+    <vc volume=""gap9"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
+
+    <vc volume=""gap6"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
+
+    <vc volume=""gap5"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
+
+    <vc volume=""gap32"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
+
+    <vc volume=""gap31"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
+
+    <vc volume=""gap3"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
+
+    <vc volume=""gap2"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
+
+    <vc volume=""gap12"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
+
+    <vc volume=""gap1"" type=""output_var"" default=""yes"" print_vol_avg_t=""on"" print_mass_tot_e=""on""
+      print_vol_avg_et=""on""/>
+
+    <vc volume=""air_outlet4"" type=""output_var"" default=""yes"" print_vol_avg_t=""on""
+      print_mass_tot_e=""on"" print_vol_avg_et=""on""/>
+
+    <vc volume=""air_outlet3"" type=""output_var"" default=""yes"" print_vol_avg_t=""on""
+      print_mass_tot_e=""on"" print_vol_avg_et=""on""/>
+
+    <vc volume=""air_outlet2"" type=""output_var"" default=""yes"" print_vol_avg_t=""on""
+      print_mass_tot_e=""on"" print_vol_avg_et=""on""/>
+
+    <vc volume=""air_outlet1"" type=""fix_heat_source""/>
+    <vc volume=""stator"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""rotor"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""outlet"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""inlet"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""gap95"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""gap94"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""gap93"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""gap92"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""gap91"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""gap9"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""gap6"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""gap5"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""gap32"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""gap31"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""gap3"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""gap2"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""gap12"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""gap1"" type=""fix_heat_source"" value=""Qflux""/>
+    <vc volume=""air_outlet4"" type=""fix_heat_source""/>
+    <vc volume=""air_outlet3"" type=""fix_heat_source""/>
+    <vc volume=""air_outlet2"" type=""fix_heat_source""/>
+  </module>
+
+  <module type=""phasecomp"" phasecomp=""oil"" time_accuracy=""firstorder"">
+    <bc patch=""inlet_inlet"" type=""fix_value"" value=""Vf_oil"" print_m_flux=""on"" print_v_flux=""on"" output=""user_select""/>
+    <bc patch=""dir_max_17"" type=""outlet"" value=""0"" print_m_flux=""on"" print_v_flux=""on"" output=""user_select""/>
+    <bc patch=""dir_max_16"" type=""outlet"" value=""0"" print_m_flux=""on"" print_v_flux=""on"" output=""user_select""/>
+    <bc patch=""dir_max_15"" type=""outlet"" value=""0"" print_m_flux=""on"" print_v_flux=""on"" output=""user_select""/>
+    <bc patch=""dir_max_14"" type=""outlet"" value=""0"" print_m_flux=""on"" print_v_flux=""on"" output=""user_select""/>
+    <bc patch=""dir_min_1"" type=""outlet"" value=""0"" print_m_flux=""on"" print_v_flux=""on"" output=""user_select""/>
+    <bc patch=""dir_max"" type=""outlet"" value=""0"" print_m_flux=""on"" print_v_flux=""on"" output=""user_select""/>
+    <bc patch=""outlet_outlet"" type=""outlet"" output=""user_select""/>
+    <vc volume=""rotor"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""stator"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""outlet"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""inlet"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""gap5"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""gap1"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""gap12"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""gap2"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""gap91"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""gap92"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""gap93"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""gap94"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""gap95"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""gap6"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""gap9"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""gap3"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""gap31"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""gap32"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""air_outlet2"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""air_outlet1"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""air_outlet3"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <vc volume=""air_outlet4"" type=""output_var"" default=""yes"" print_tot_vol=""on""/>
+    <ic volume=""gap5"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""gap1"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""gap12"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""gap2"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""gap91"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""gap92"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""gap93"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""gap94"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""gap95"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""gap6"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""gap9"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""gap3"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""gap31"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""gap32"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""air_outlet2"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""air_outlet1"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""air_outlet3"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""air_outlet4"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""rotor"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""stator"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""outlet"" type=""fix_value"" default=""yes"" value=""0""/>
+    <ic volume=""inlet"" type=""fix_value"" default=""yes"" value=""0""/>
+  </module>
+
+  <module type=""phasecomp"" phasecomp=""air"" time_accuracy=""firstorder"">
+    <bc patch=""dir_max_17"" type=""outlet"" value=""1""/>
+    <bc patch=""dir_max_16"" type=""outlet"" value=""1""/>
+    <bc patch=""dir_max_15"" type=""outlet"" value=""1""/>
+    <bc patch=""dir_max_14"" type=""outlet"" value=""1""/>
+    <bc patch=""dir_min_1"" type=""outlet"" value=""1""/>
+    <bc patch=""dir_max"" type=""outlet"" value=""1"" print_m_flux=""on"" print_v_flux=""on""
+      output=""user_select""/>
+
+    <bc patch=""inlet_inlet"" type=""fix_value"" value=""Vf_air""/>
+    <bc patch=""outlet_outlet"" type=""outlet"" print_m_flux=""on"" print_v_flux=""on"" output=""user_select""/>
+    <vc volume=""gap5"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""gap1"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""gap12"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""gap2"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""gap91"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""gap92"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""gap93"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""gap94"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""gap95"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""gap6"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""gap9"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""gap3"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""gap31"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""gap32"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""air_outlet2"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""air_outlet1"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""air_outlet3"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""air_outlet4"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""rotor"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""stator"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""outlet"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <vc volume=""inlet"" type=""output_var"" default=""yes"" print_vol_frac=""on""/>
+    <ic volume=""gap5"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""gap1"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""gap12"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""gap2"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""gap91"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""gap92"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""gap93"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""gap94"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""gap95"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""gap6"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""gap9"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""gap3"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""gap31"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""gap32"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""air_outlet2"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""air_outlet1"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""air_outlet3"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""air_outlet4"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""rotor"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""stator"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""outlet"" type=""fix_value"" default=""yes"" value=""1""/>
+    <ic volume=""inlet"" type=""fix_value"" default=""yes"" value=""1""/>
   </module>";
 
-        // {0} - 油粘度 {1} - 空气粘度 {2} - 油密度
-        public static string WuZhiDingYi = @"  <module type=""flowphasecomp"" flowphasecomp=""oil"">
-    <vc volume=""general mesh"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""general mesh_1"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""general mesh_2"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""template mesh"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""template mesh_1"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""template mesh_2"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""general mesh_3"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""template mesh_3"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""general mesh_4"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""general mesh_5"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""template mesh_4"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""template mesh_5"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""template mesh_6"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""general mesh_6"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""template mesh_7"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""template mesh_8"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""general mesh_7"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""general mesh_8"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""general mesh_9"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""spool valve"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""spool valve_1"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""spool valve_2"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""template mesh_9"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""template mesh_10"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""template mesh_11"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""template mesh_12"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""general mesh_10"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""general mesh_11"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""general mesh_12"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""template mesh_13"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""general mesh_13"" type=""const_viscosity"" default=""yes"" value=""{0}""/>
-    <vc volume=""general mesh"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""template mesh_9"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""template mesh_8"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""template mesh_7"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""template mesh_6"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""template mesh_5"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""template mesh_4"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""template mesh_3"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""template mesh_2"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""template mesh_13"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""template mesh_12"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""template mesh_11"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""template mesh_10"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""template mesh_1"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""template mesh"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""spool valve_2"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""spool valve_1"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""spool valve"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""general mesh_9"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""general mesh_8"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""general mesh_7"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""general mesh_6"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""general mesh_5"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""general mesh_4"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""general mesh_3"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""general mesh_2"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""general mesh_13"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""general mesh_12"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""general mesh_11"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""general mesh_10"" type=""surface_tension"" surface_tension=""0.0721""/>
-    <vc volume=""general mesh_1"" type=""surface_tension"" surface_tension=""0.0721""/>
-  </module>
-
-  <module type=""flowphasecomp"" flowphasecomp=""air"">
-    <vc volume=""general mesh"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""general mesh_1"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""general mesh_2"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""template mesh"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""template mesh_1"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""template mesh_2"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""general mesh_3"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""template mesh_3"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""general mesh_4"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""general mesh_5"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""template mesh_4"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""template mesh_5"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""template mesh_6"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""general mesh_6"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""template mesh_7"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""template mesh_8"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""general mesh_7"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""general mesh_8"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""general mesh_9"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""spool valve"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""spool valve_1"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""spool valve_2"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""template mesh_9"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""template mesh_10"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""template mesh_11"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""template mesh_12"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""general mesh_10"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""general mesh_11"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""general mesh_12"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""template mesh_13"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-    <vc volume=""general mesh_13"" type=""const_viscosity"" default=""yes"" value=""{1}""/>
-  </module>
-
-  <module type=""sharephasecomp"" sharephasecomp=""oil"">
-    <vc volume=""general mesh"" type=""const_density"" value=""{2}""/>
-    <vc volume=""general mesh_1"" type=""const_density"" value=""{2}""/>
-    <vc volume=""general mesh_2"" type=""const_density"" value=""{2}""/>
-    <vc volume=""template mesh"" type=""const_density"" value=""{2}""/>
-    <vc volume=""template mesh_1"" type=""const_density"" value=""{2}""/>
-    <vc volume=""template mesh_2"" type=""const_density"" value=""{2}""/>
-    <vc volume=""general mesh_3"" type=""const_density"" value=""{2}""/>
-    <vc volume=""template mesh_3"" type=""const_density"" value=""{2}""/>
-    <vc volume=""general mesh_4"" type=""const_density"" value=""{2}""/>
-    <vc volume=""general mesh_5"" type=""const_density"" value=""{2}""/>
-    <vc volume=""template mesh_4"" type=""const_density"" value=""{2}""/>
-    <vc volume=""template mesh_5"" type=""const_density"" value=""{2}""/>
-    <vc volume=""template mesh_6"" type=""const_density"" value=""{2}""/>
-    <vc volume=""general mesh_6"" type=""const_density"" value=""{2}""/>
-    <vc volume=""template mesh_7"" type=""const_density"" value=""{2}""/>
-    <vc volume=""template mesh_8"" type=""const_density"" value=""{2}""/>
-    <vc volume=""general mesh_7"" type=""const_density"" value=""{2}""/>
-    <vc volume=""general mesh_8"" type=""const_density"" value=""{2}""/>
-    <vc volume=""general mesh_9"" type=""const_density"" value=""{2}""/>
-    <vc volume=""spool valve"" type=""const_density"" value=""{2}""/>
-    <vc volume=""spool valve_1"" type=""const_density"" value=""{2}""/>
-    <vc volume=""spool valve_2"" type=""const_density"" value=""{2}""/>
-    <vc volume=""template mesh_9"" type=""const_density"" value=""{2}""/>
-    <vc volume=""template mesh_10"" type=""const_density"" value=""{2}""/>
-    <vc volume=""template mesh_11"" type=""const_density"" value=""{2}""/>
-    <vc volume=""template mesh_12"" type=""const_density"" value=""{2}""/>
-    <vc volume=""general mesh_10"" type=""const_density"" value=""{2}""/>
-    <vc volume=""general mesh_11"" type=""const_density"" value=""{2}""/>
-    <vc volume=""general mesh_12"" type=""const_density"" value=""{2}""/>
-    <vc volume=""template mesh_13"" type=""const_density"" value=""{2}""/>
-    <vc volume=""general mesh_13"" type=""const_density"" value=""{2}""/>
-  </module>
-
-  <module type=""sharephasecomp"" sharephasecomp=""air"">
-    <vc volume=""general mesh"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""template mesh_9"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""template mesh_8"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""template mesh_7"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""template mesh_6"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""template mesh_5"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""template mesh_4"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""template mesh_3"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""template mesh_2"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""template mesh_13"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""template mesh_12"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""template mesh_11"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""template mesh_10"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""template mesh_1"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""template mesh"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""spool valve_2"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""spool valve_1"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""spool valve"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""general mesh_9"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""general mesh_8"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""general mesh_7"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""general mesh_6"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""general mesh_5"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""general mesh_4"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""general mesh_3"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""general mesh_2"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""general mesh_13"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""general mesh_12"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""general mesh_11"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""general mesh_10"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-    <vc volume=""general mesh_1"" type=""ideal_gas_law"" molecular_weight=""28.99""/>
-  </module>
-
-  <module type=""phasecomp"" phasecomp=""oil"" blending_factor=""0.1"">
-       <bc patch=""valve2_outlet1_outlet"" type=""outlet"" value=""1""/>
-    <bc patch=""valve2_outlet2_outlet"" type=""fix_value"" value=""1""/>
-    <bc patch=""valve1_outlet_outlet2"" type=""outlet"" value=""0""/>
-    <bc patch=""valve1_outlet_outlet1"" type=""outlet"" value=""0""/>
-    <bc patch=""inlet_inlet"" type=""fix_value"" value=""1"" print_m_flux=""on"" print_v_flux=""on""
-      output=""user_select""/>
-
-    <bc patch=""airout2_inlet"" type=""outlet"" value=""0""/>
-    <bc patch=""airout1_inlet"" type=""outlet"" value=""0""/>
-    <bc patch=""airout3_inlet"" type=""outlet"" value=""0""/>
-    <bc patch=""dir_max_2"" type=""outlet"" value=""0"" print_m_flux=""on"" print_v_flux=""on""
-      output=""user_select""/>
-
-    <bc patch=""dir_min_3"" type=""outlet"" value=""0"" print_m_flux=""on"" print_v_flux=""on""
-      output=""user_select""/>
-
-    <vc volume=""template mesh"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""template mesh_1"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""template mesh_2"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""general mesh_3"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""general mesh_5"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""template mesh_4"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""template mesh_5"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""template mesh_6"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""general mesh_6"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""general mesh_13"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <ic volume=""general mesh"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""general mesh_1"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""general mesh_2"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""template mesh"" type=""fix_value"" default=""yes"" value=""0"" output=""user_select""/>
-    <ic volume=""template mesh_1"" type=""fix_value"" default=""yes"" value=""0"" output=""user_select""/>
-    <ic volume=""template mesh_2"" type=""fix_value"" default=""yes"" value=""0"" output=""user_select""/>
-    <ic volume=""general mesh_3"" type=""fix_value"" default=""yes"" value=""0"" output=""user_select""/>
-    <ic volume=""template mesh_3"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""general mesh_5"" type=""fix_value"" default=""yes"" value=""0"" output=""user_select""/>
-    <ic volume=""template mesh_4"" type=""fix_value"" default=""yes"" value=""0"" output=""user_select""/>
-    <ic volume=""template mesh_5"" type=""fix_value"" default=""yes"" value=""0"" output=""user_select""/>
-    <ic volume=""template mesh_6"" type=""fix_value"" default=""yes"" value=""0"" output=""user_select""/>
-    <ic volume=""general mesh_6"" type=""fix_value"" default=""yes"" value=""0"" output=""user_select""/>
-    <ic volume=""general mesh_8"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""general mesh_9"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""spool valve"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""spool valve_1"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""general mesh_13"" type=""fix_value"" default=""yes"" value=""0"" output=""user_select""/>
-  </module>
-
-  <module type=""phasecomp"" phasecomp=""air"" blending_factor=""0.1"">
-    <bc patch=""valve2_outlet1_outlet"" type=""outlet"" value=""0""/>
-    <bc patch=""valve2_outlet2_outlet"" type=""fix_value"" value=""0""/>
-    <bc patch=""valve1_outlet_outlet1"" type=""outlet"" value=""1""/>
-    <bc patch=""valve1_outlet_outlet2"" type=""outlet"" value=""1""/>
-    <bc patch=""inlet_inlet"" type=""fix_value"" print_m_flux=""on"" print_v_flux=""on"" output=""user_select""/>
-    <bc patch=""airout2_inlet"" type=""outlet"" value=""1""/>
-    <bc patch=""airout1_inlet"" type=""outlet"" value=""1""/>
-    <bc patch=""airout3_inlet"" type=""outlet"" value=""1""/>
-    <bc patch=""dir_max_2"" type=""outlet"" value=""1""/>
-    <bc patch=""dir_min_3"" type=""outlet"" value=""1""/>
-    <bc patch=""dir_min_8"" type=""fix_value"" value=""0""/>
-
-    <vc volume=""template mesh"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""template mesh_1"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""template mesh_2"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""general mesh_3"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""general mesh_5"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""template mesh_4"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""template mesh_5"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""template mesh_6"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""general mesh_6"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <vc volume=""general mesh_13"" type=""output_var"" default=""yes"" print_mass_frac=""on""
-      print_vol_frac=""on"" print_tot_mass=""on"" print_tot_vol=""on""/>
-
-    <ic volume=""general mesh"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""general mesh_1"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""general mesh_2"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""template mesh"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""template mesh_1"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""template mesh_2"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""general mesh_3"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""template mesh_3"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""general mesh_5"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""template mesh_4"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""template mesh_5"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""template mesh_6"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""general mesh_6"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""general mesh_8"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""general mesh_9"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""spool valve"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""spool valve_1"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""general mesh_13"" type=""fix_value"" default=""yes"" value=""1""/>
-    <ic volume=""general mesh_4"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""template mesh_7"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""template mesh_8"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""general mesh_7"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""spool valve_2"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""template mesh_9"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""template mesh_10"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""template mesh_11"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""template mesh_12"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""general mesh_10"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""general mesh_11"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""general mesh_12"" type=""fix_value"" default=""yes"" value=""0""/>
-    <ic volume=""template mesh_13"" type=""fix_value"" default=""yes"" value=""0""/>
+        // {0} -- 迭代步数 {1} -- 保存频率
+        public static string JiSuanKongZhiCanShu = @"
+  <module type=""share"" iteration=""{0}"" save_result_interval=""{1}"" template_mode=""advanced_mode"">
+    <vc volume=""rotor"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""stator"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""outlet"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""inlet"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""gap5"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""gap1"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""gap12"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""gap2"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""gap91"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""gap92"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""gap93"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""gap94"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""gap95"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""gap6"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""gap9"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""gap3"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""gap31"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""gap32"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""air_outlet2"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""air_outlet1"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""air_outlet3"" type=""output_var"" default=""yes"" print_volume=""on""/>
+    <vc volume=""air_outlet4"" type=""output_var"" default=""yes"" print_volume=""on""/>
   </module>";
+
+        // {0} -- X1 {1} -- Y1 {2} -- Z1
+        // {3} -- X2 {4} -- Y2 {5} -- Z2
+        public const string JianKongDianZuoBiaoCanShu = @"  <probe_point name=""Point 01"" position=""{0} {1} {2}""/>
+  <probe_point name=""Point 02"" position=""{3} {4} {5}""/>";
     }
 }

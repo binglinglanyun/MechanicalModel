@@ -33,9 +33,21 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return new DelegateCommand<object>((o) =>
+                return new TaskCommand<object>((o) =>
                 {
                     this._moXingLocation = Path.Combine(ScriptWrapperForJinYouTongDaoKongSun.SourceMoXingFolderPath, MoXingList[_selectedMoXingIndex]);
+                    try
+                    {
+                        this.LoadingVisibility = Visibility.Visible;
+                        CommonUtils.CopyFolder(this._moXingLocation, ScriptWrapperForJinYouTongDaoKongSun.WorkDirectory);
+                        this.LoadingVisibility = Visibility.Collapsed;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(string.Format("模型导入失败，错误信息：{0}", ex.Message));
+                        return;
+                    }
+
                     MessageBox.Show("模型设置成功", "计算几何模型");
                 });
             }
@@ -76,18 +88,6 @@ namespace MechanicalModel.ViewModels
                     if (!Directory.Exists(this._moXingLocation))
                     {
                         MessageBox.Show("请设置模型");
-                        return;
-                    }
-
-                    try
-                    {
-                        this.LoadingVisibility = Visibility.Visible;
-                        CommonUtils.CopyFolder(this._moXingLocation, ScriptWrapperForJinYouTongDaoKongSun.WorkDirectory);
-                        this.LoadingVisibility = Visibility.Collapsed;
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(string.Format("模型导入失败，错误信息：{0}", ex.Message));
                         return;
                     }
 

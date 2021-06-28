@@ -59,7 +59,6 @@ namespace MechanicalModel.ViewModels
             {
                 return new TaskCommand<object>((o) =>
                 {
-                    /*
                     if (!File.Exists(ScriptWrapperForYeYa.DestModulePath))
                     {
                         MessageBox.Show("系统结构模型不存在, 请选择模型文件并确认设置");
@@ -67,7 +66,6 @@ namespace MechanicalModel.ViewModels
                     }
 
                     StartOtherProcessHelper.StartAMESimByPython(string.Format("{0} {1}", this.YouYuanYaLi, this.EV2KongZhiYaLi));
-                    */
                 });
             }
         }

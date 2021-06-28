@@ -111,7 +111,9 @@ namespace MechanicalModel.Utils
             ProcessStartInfo info = new ProcessStartInfo();
             info.FileName = "AMESim.exe";
             info.Arguments = ScriptWrapperForYeYa.DestModulePath;
-            info.WorkingDirectory = @"D:\Program Files\Simcenter\2019.1\Amesim\win64";
+            info.WorkingDirectory = Directory.Exists(@"C:\Program Files\Simcenter\2019.1\Amesim\win64") 
+                ? @"C:\Program Files\Simcenter\2019.1\Amesim\win64"
+                : @"D:\Program Files\Simcenter\2019.1\Amesim\win64";
             info.WindowStyle = ProcessWindowStyle.Normal;
             info.CreateNoWindow = true;
 
@@ -128,10 +130,7 @@ namespace MechanicalModel.Utils
 
         public static void StartAMESimByPython(string args)
         {
-            if (!File.Exists(ScriptWrapperForYeYa.DestScriptPath))
-            {
-                File.Copy(ScriptWrapperForYeYa.SourceScriptPath, ScriptWrapperForYeYa.DestScriptPath);
-            }
+            File.Copy(ScriptWrapperForYeYa.SourceScriptPath, ScriptWrapperForYeYa.DestScriptPath, true);
 
             ProcessStartInfo info = new ProcessStartInfo();
             info.FileName = "AMEPython";

@@ -29,7 +29,7 @@
                 <Button Name="buttonBrowse" Content="浏览..." Command="{Binding BrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
             <Button Content="确认导入" Margin="20,0,0,0" Command="{Binding ImportButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
-<!--
+
             <Border Style="{DynamicResource SplitBorderStyle}"/>
             
             <Label Content="数值计算结果数据输出" Style="{DynamicResource LabelBoldTextStyle}"/>
@@ -60,7 +60,7 @@
                     <TextBlock Text="℃" Margin="5,0,0,0"/>
                 </StackPanel>
             </StackPanel>
--->
+
             <Border Style="{DynamicResource SplitBorderStyle}"/>
 
             <Label Content="曲线和云图计算结果数据导入" Style="{DynamicResource LabelBoldTextStyle}" Visibility="Collapsed"/>
@@ -72,7 +72,7 @@
             <Label Content="曲线和云图显示" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
                 <TextBlock Text="曲线或云图显示:" VerticalAlignment="Center"/>
-                <Button Content="显示" Command="{Binding QuXianAndYunTuXianShiButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+                <Button Content="{Binding QuXianAndYunTuXianShiButtonContent}" Command="{Binding QuXianAndYunTuXianShiButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
 
             <TabControl Margin="25,0,0,0" Visibility="{Binding QuXianAndYunTuVisibility}" SelectedIndex="1">

@@ -140,7 +140,7 @@ namespace MechanicalModel.ViewModels
 
                     // TODO: fix
                     ScriptWrapperForHengNiuJu.JianKongDianZuoBiaoCanShu = string.Format(ScriptTemplateForHengNiuJu.JianKongDianZuoBiaoCanShu, 
-                        this.CanShuX1, this.CanShuY1, this.CanShuZ1);
+                        this.CanShuX1, this.CanShuY1, this.CanShuZ1, this.CanShuX2, this.CanShuY2, this.CanShuZ2);
 
                     string scriptContent = ScriptWrapperForHengNiuJu.CreateFullScriptForJiSuan();
                     if (scriptContent != null)

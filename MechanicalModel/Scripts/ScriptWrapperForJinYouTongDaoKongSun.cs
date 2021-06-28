@@ -18,6 +18,7 @@ namespace MechanicalModel.Scripts
         public const string HeatConductivityFileName = "torque_jinyoutongdao_kongsun_heat_conductivity.txt";
         public const string HeatCapacityFileName = "torque_jinyoutongdao_kongsun_heat_capacity.txt";
 
+        public static string ResultsDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "Results");
         public static string WorkDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "Temp", "JinYouTongDaoKongSun");
         public static string SourceSgrdFilePath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", SgrdFileName);
         public static string DestSgrdFilePath = Path.Combine(WorkDirectory, SgrdFileName);

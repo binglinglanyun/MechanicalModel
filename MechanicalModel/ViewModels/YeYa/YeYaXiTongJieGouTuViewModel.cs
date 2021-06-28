@@ -128,7 +128,7 @@ namespace MechanicalModel.ViewModels
         }
 
         #region Properties
-        private string _locationString = "E:\\TorqueAnalysisSystem-BrakingProcess\\Scripts\\Surface\\YeYa\\HydrSys_retarder.ame";
+        private string _locationString = ScriptWrapperForYeYa.DefaultSourceModulePath;
         public string LocationString
         {
             get

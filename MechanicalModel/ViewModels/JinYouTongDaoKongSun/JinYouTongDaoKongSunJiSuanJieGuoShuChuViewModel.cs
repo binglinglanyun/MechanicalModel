@@ -77,7 +77,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private const string _defaultLocationString = "E:\\TorqueAnalysisSystem-NoLoadLoss\\Scripts\\results\\torque_jinyoutongdao_kongsun\\case1\\torque_kongsun_003_1500_0.2_95.txt";
+        private static string _defaultLocationString = Path.Combine(ScriptWrapperForJinYouTongDaoKongSun.ResultsDirectory, "torque_jinyoutongdao_kongsun", "case1", "torque_kongsun_003_1500_0.2_95.txt");
         private string _locationString = _defaultLocationString;
         public string LocationString
         {
@@ -92,7 +92,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _jieGuoShuChuLocation = "E:\\TorqueAnalysisSystem-NoLoadLoss\\Temp\\output.txt";
+        private string _jieGuoShuChuLocation = Path.Combine(ScriptWrapperForJinYouTongDaoKongSun.WorkDirectory, "output.txt");
         public string JieGuoShuChuLocation
         {
             get

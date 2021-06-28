@@ -107,7 +107,7 @@
                         <TextBlock Text="文件位置:" />
                         <ComboBox Text="{Binding BianJieTiaoJianFileLocation}" HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0"/>
 
-                        <Button Name="buttonBrowse2" Content="浏览..." Command="{Binding BianJieTiaoJianBrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+                        <Button Name="buttonBrowse2" Content="浏览..." Command="{Binding BianJieTiaoJianFileBrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
                     </StackPanel>
                 </StackPanel>
 

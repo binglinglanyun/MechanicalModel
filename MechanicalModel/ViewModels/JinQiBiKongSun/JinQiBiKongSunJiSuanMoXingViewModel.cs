@@ -49,6 +49,7 @@ namespace MechanicalModel.ViewModels
                     System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
                     dialog.Description = "模型位置";
                     dialog.SelectedPath = this.LocationString;
+                    dialog.RootFolder = Environment.SpecialFolder.MyComputer;
                     System.Windows.Forms.DialogResult result = dialog.ShowDialog();
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {
@@ -109,7 +110,7 @@ namespace MechanicalModel.ViewModels
         #endregion
 
         #region Properties
-        private string _locationString = "E:\\TorqueAnalysisSystem-NoLoadLoss\\Scripts\\Surface\\JinQiBiKongSun";
+        private string _locationString = ScriptWrapperForJinQiBiKongSun.SurfaceDirectory;
         public string LocationString
         {
             get

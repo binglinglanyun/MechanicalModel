@@ -14,9 +14,13 @@ namespace MechanicalModel.Scripts
         public const string ScriptName = "HydrSys_retarder.py";
 
         public static string WorkDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "Temp", "YeYa");
-        public static string DestModulePath = Path.Combine(ScriptWrapperForYeYa.WorkDirectory, ScriptWrapperForYeYa.ModuleName);
+        public static string DefaultModuleDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", "Module");
+        public static string DefaultResultDirectory = Path.Combine(CommonUtils.CurrentWorkDirectory, "Results");
 
-        public static string SourceScriptPath = Path.Combine(CommonUtils.CurrentWorkDirectory, "Scripts", ScriptName);
-        public static string DestScriptPath = Path.Combine(ScriptWrapperForYeYa.WorkDirectory, ScriptWrapperForYeYa.ScriptName);
+        public static string DefaultSourceModulePath = Path.Combine(DefaultModuleDirectory, ModuleName);
+        public static string DestModulePath = Path.Combine(WorkDirectory, ModuleName);
+
+        public static string SourceScriptPath = Path.Combine(DefaultModuleDirectory, ScriptName);
+        public static string DestScriptPath = Path.Combine(WorkDirectory, ScriptName);
     }
 }

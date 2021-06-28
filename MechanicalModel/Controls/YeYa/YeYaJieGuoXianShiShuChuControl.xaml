@@ -34,9 +34,9 @@
             <Label Content="三维流动液力计算边界条件结果导出" Style="{DynamicResource LabelBoldTextStyle}"/>
             <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
                 <TextBlock Text="结果位置:" VerticalAlignment="Center"/>
-                <ComboBox Text="{Binding JieGuoFileLocation}" HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0"/>
+                <ComboBox Text="{Binding BianJie3DInputFileLocation}" HorizontalAlignment="Stretch" Width="350" IsEditable="True" VerticalAlignment="Stretch" Margin="10,0,0,0"/>
 
-                <Button Name="buttonBrowse2" Content="浏览..." Command="{Binding JieGuoFileBrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
+                <Button Name="buttonBrowse2" Content="浏览..." Command="{Binding BianJie3DInputFileBrowseButtonClick}" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
             <Button Content="确认导出" Margin="20,0,0,0" Command="{Binding ExportButtonClick}" MinWidth="50" HorizontalAlignment="Left"/>
 

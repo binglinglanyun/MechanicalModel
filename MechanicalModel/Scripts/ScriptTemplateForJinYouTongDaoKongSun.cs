@@ -554,7 +554,7 @@ namespace MechanicalModel.Scripts
     den=table(""{ScriptWrapperForJinYouTongDaoKongSun.DensityFileName}"",temp)
     vis=table(""{ScriptWrapperForJinYouTongDaoKongSun.ViscosityFileName}"",temp)
     cond=table(""{ScriptWrapperForJinYouTongDaoKongSun.HeatConductivityFileName}"",temp)
-    capa=table(""{ScriptWrapperForJinYouTongDaoKongSun.HeatConductivityFileName}"",temp)
+    capa=table(""{ScriptWrapperForJinYouTongDaoKongSun.HeatCapacityFileName}"",temp)
     Vall=0.00623
     Qflux=(iteration>50)?(-1)*flow.pow@rotor_blades/Vall:0
   </expressions>
