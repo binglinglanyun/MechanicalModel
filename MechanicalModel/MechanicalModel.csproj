@@ -326,6 +326,11 @@
       Resources\YeYaRuKouLiuLiangYaLi.png;
       Resources\YeYaQiTiZhiLiangFenShu.png;
       Resources\YeYaXiTongJieGouTu.png;
+      Resources\ZhiDongNiuJuSuiShiJian.png;
+      Resources\DongLunZhuanSuSuiShiJian.png;
+      Resources\DongLunJingYaFenBu_New.png;
+      Resources\YouYeFenBuDengZhiMian.png;
+      Resources\PouMianSuDuFenBu.png;
     </PngResources>
   </PropertyGroup>
   <ItemGroup>

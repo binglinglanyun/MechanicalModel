@@ -40,24 +40,9 @@
                     <TextBlock Text="s" Margin="5,0,0,0"/>
                 </StackPanel>
                 <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                    <TextBlock Text="起效时刻缓速器出口压力值:" />
-                    <TextBox Text="{Binding ChuKouYaLiZhi}" Margin="23,0,0,0"/>
-                    <TextBlock Text="MPa" Margin="5,0,0,0"/>
-                </StackPanel>
-                <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                    <TextBlock Text="起效时刻动轮转速:" />
-                    <TextBox Text="{Binding DongLunZhuanSu}"  Margin="60,0,0,0"/>
-                    <TextBlock Text="rpm" Margin="5,0,0,0"/>
-                </StackPanel>
-                <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                    <TextBlock Text="控制扭矩Mk:" />
-                    <TextBox Text="{Binding KongZhiNiuJu}"  Margin="60,0,0,0"/> 
+                    <TextBlock Text="制动扭矩平均值:" />
+                    <TextBox Text="{Binding NiuJuPingJunZhi}"  Margin="60,0,0,0"/>
                     <TextBlock Text="N.m" Margin="5,0,0,0"/>
-                </StackPanel>
-                <StackPanel Style="{DynamicResource PropertyItemStyle}">
-                    <TextBlock Text="起效时刻缓速器出口温度值:" />
-                    <TextBox Text="{Binding ChuKouWenDuZhi}" Margin="23,0,0,0"/>
-                    <TextBlock Text="℃" Margin="5,0,0,0"/>
                 </StackPanel>
             </StackPanel>
 
@@ -82,14 +67,14 @@
                 <TabItem Header="动轮转速随时间变化曲线">
                     <Image Source="{Binding DongLunZhuanSuSourceUri}" Margin="40,10,0,0" HorizontalAlignment="Left" Height="400" Width="650"/>
                 </TabItem>
-                <TabItem Header="工作腔内充液量随时间变化曲线">
-                    <Image Source="{Binding ChongYeLiangSourceUri}" Margin="40,0,0,0" HorizontalAlignment="Left" Height="400" Width="650"/>
+                <TabItem Header="动轮静压分布云图">
+                    <Image Source="{Binding JingYaFenBuSourceUri}" Margin="40,0,0,0" HorizontalAlignment="Left" Height="400" Width="650"/>
                 </TabItem>
-                <TabItem Header="缓速器出口压力随时间变化曲线">
-                    <Image Source="{Binding ChuKouYaLiSourceUri}" Margin="40,0,0,0" HorizontalAlignment="Left" Height="400" Width="650"/>
+                <TabItem Header="油液分布等值面云图">
+                    <Image Source="{Binding YouYeFenBuSourceUri}" Margin="40,0,0,0" HorizontalAlignment="Left" Height="400" Width="650"/>
                 </TabItem>
-                <TabItem Header="制动扭矩随动轮转速变化曲线">
-                    <Image Source="{Binding ZhiDongNiuJuBianHuaSourceUri}" Margin="40,10,0,0" HorizontalAlignment="Left" Height="400" Width="650"/>
+                <TabItem Header="剖面速度分布云图/">
+                    <Image Source="{Binding PouMianSuDuFenBuSourceUri}" Margin="40,10,0,0" HorizontalAlignment="Left" Height="400" Width="650"/>
                 </TabItem>
             </TabControl>
         </StackPanel>   

@@ -82,7 +82,7 @@
                         <StackPanel Style="{DynamicResource PropertyItemStyle}">
                             <TextBlock Text="动轮初始转速:" />
                             <TextBox Text="{Binding DongLunChuShiZhuanSu}"/>
-                            <TextBlock Text="rpm" Margin="5,0,0,0"/>
+                            <TextBlock Text="r/min" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Grid.Column="1">

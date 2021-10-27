@@ -67,16 +67,16 @@ namespace MechanicalModel.ViewModels
         #endregion
 
         #region BianJieTiaoJianDingYi
-        private string _chongYouJinKou = "0.2";
+        private string _jinKouYaLi = "0.3";
         public string JinKouYaLi
         {
             get
             {
-                return _chongYouJinKou;
+                return _jinKouYaLi;
             }
             set
             {
-                SetValueProperty(value, ref _chongYouJinKou);
+                SetValueProperty(value, ref _jinKouYaLi);
             }
         }
 
@@ -93,7 +93,7 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _dongLunChuShiZhuanSu = "3600";
+        private string _dongLunChuShiZhuanSu = "3500";
         public string DongLunChuShiZhuanSu
         {
             get

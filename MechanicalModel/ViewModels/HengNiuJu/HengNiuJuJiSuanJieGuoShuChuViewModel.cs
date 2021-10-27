@@ -38,55 +38,16 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        private string _kongZhiNiuJu = "0";
-        public string KongZhiNiuJu
+        private string _niuJuPingJunZhi = "0";
+        public string NiuJuPingJunZhi
         {
             get
             {
-                return _kongZhiNiuJu;
+                return _niuJuPingJunZhi;
             }
             set
             {
-                SetValueProperty(value, ref _kongZhiNiuJu);
-            }
-        }
-
-        private string _chuKouYaLiZhi = "0";
-        public string ChuKouYaLiZhi
-        {
-            get
-            {
-                return _chuKouYaLiZhi;
-            }
-            set
-            {
-                SetValueProperty(value, ref _chuKouYaLiZhi);
-            }
-        }
-
-        private string _dongLunZhuanSu = "0";
-        public string DongLunZhuanSu
-        {
-            get
-            {
-                return _dongLunZhuanSu;
-            }
-            set
-            {
-                SetValueProperty(value, ref _dongLunZhuanSu);
-            }
-        }
-
-        private string _chuKouWenDuZhi = "0";
-        public string ChuKouWenDuZhi
-        {
-            get
-            {
-                return _chuKouWenDuZhi;
-            }
-            set
-            {
-                SetValueProperty(value, ref _chuKouWenDuZhi);
+                SetValueProperty(value, ref _niuJuPingJunZhi);
             }
         }
 
@@ -103,19 +64,11 @@ namespace MechanicalModel.ViewModels
             }
         }
 
-        public string SourceUri
-        {
-            get
-            {
-                return Path.GetFullPath("Resources/KongSunJiHeMoXing.png"); ;
-            }
-        }
-
         public string ZhiDongNiuJuSourceUri
         {
             get
             {
-                return Path.GetFullPath("Resources/NiuJuQuXian.jpg"); ;
+                return Path.GetFullPath("Resources/ZhiDongNiuJuSuiShiJian.png"); ;
             }
         }
 
@@ -123,31 +76,31 @@ namespace MechanicalModel.ViewModels
         {
             get
             {
-                return Path.GetFullPath("Resources/ZhuanSuBianHua.jpg"); ;
+                return Path.GetFullPath("Resources/DongLunZhuanSuSuiShiJian.png"); ;
             }
         }
 
-        public string ChongYeLiangSourceUri
+        public string JingYaFenBuSourceUri
         {
             get
             {
-                return Path.GetFullPath("Resources/ChongYeLvBianHua.jpg"); ;
+                return Path.GetFullPath("Resources/DongLunJingYaFenBu_New.png"); ;
             }
         }
 
-        public string ChuKouYaLiSourceUri
+        public string YouYeFenBuSourceUri
         {
             get
             {
-                return Path.GetFullPath("Resources/ChuKouYaLi.jpg"); ;
+                return Path.GetFullPath("Resources/YouYeFenBuDengZhiMian.png"); ;
             }
         }
 
-        public string ZhiDongNiuJuBianHuaSourceUri
+        public string PouMianSuDuFenBuSourceUri
         {
             get
             {
-                return Path.GetFullPath("Resources/NiuJuZhuanSuBianHua.jpg"); ;
+                return Path.GetFullPath("Resources/PouMianSuDuFenBu.png"); ;
             }
         }
 
@@ -241,12 +194,8 @@ namespace MechanicalModel.ViewModels
                             }
                             */
                             
-                            this.QiXiaoShiJian = "0.122033";
-                            this.DongLunZhuanSu = "3456.9";
-                            this.ChuKouYaLiZhi = "8.9";
-                            this.KongZhiNiuJu = "3612";
-                            this.KongZhiNiuJu = "22275";
-                            this.ChuKouWenDuZhi = "68.788";
+                            this.QiXiaoShiJian = "0.262";
+                            this.NiuJuPingJunZhi = "16510";
                         }
                     }
                     else
